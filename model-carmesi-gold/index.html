@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Nuestra Boda de Gala — Sofía & Alejandro</title>
+  <meta name="description" content="Invitación digital exclusiva para la boda de Sofía & Alejandro. Sábado 20 de Noviembre de 2027. Ciudad de México.">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Nuestra Boda — Sofía & Alejandro">
+  <meta property="og:description" content="Acompáñanos a celebrar nuestra unión matrimonial. Sábado 20 de Noviembre de 2027.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts Preconnect & Luxury Typography Stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HIGH COUTURE FIXED BACKGROUND & CANVAS -->
+  <div class="fixed-bg-layer"></div>
+  <canvas id="ambient-canvas" class="ambient-canvas"></canvas>
+
+  
+
+
+  <!-- AUDIO ELEMENT FOR BACKGROUND MUSIC -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/wedding-song.mp3" type="audio/mpeg">
+    <source src="../mp3/A Thousand Years — Christina Perri  Sub. Español  Lyrics - cherry subs.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-112191.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- DYNAMIC ISLAND (APPLE STYLE) -->
+  <nav class="dynamic-island" id="dynamic-island">
+    <div class="di-vinyl-wrap"><div class="di-vinyl" id="di-vinyl"></div></div>
+    <div class="di-info">
+      <span class="di-title">A Thousand Years</span>
+      <span class="di-eq" id="di-eq"><i></i><i></i><i></i><i></i></span>
+    </div>
+    <button id="di-play-btn" class="di-btn" aria-label="Play/Pause"><i class="fa-solid fa-play"></i></button>
+    <button id="di-menu-btn" class="di-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+  <div class="di-dropdown" id="di-dropdown">
+    <a href="#section-hero">Inicio</a>
+    <a href="#section-countdown">Cuenta Regresiva</a>
+    <a href="#section-events">Ubicaciones</a>
+    <a href="#section-gifts">Mesa de Regalos</a>
+  </div>
+
+  <!-- ==========================================================================
+     SECTION 0: PANTALLA DE ENTRADA (SOBRE DE ALTA COSTURA / COVER OVERLAY)
+     ========================================================================== -->
+  <div id="cover-overlay" class="cover-overlay">
+    <div class="royal-entrance-container" id="royal-entrance-container">
+      
+      <!-- Royal Invitation Card with 3D Tilt & Corner Filigrees -->
+      <div class="royal-invitation-card" id="royal-invitation-card">
+        
+        <!-- Light Shimmer Reflection -->
+        <div class="card-light-glare" id="card-light-glare"></div>
+
+        <!-- Corner Ornaments -->
+        <span class="card-corner-filigree tl">❖</span>
+        <span class="card-corner-filigree tr">❖</span>
+        <span class="card-corner-filigree bl">❖</span>
+        <span class="card-corner-filigree br">❖</span>
+
+        <div class="cover-content" id="cover-content">
+          
+          <div class="cover-crest-container">
+            <img src="assets/svg/luxury-royal-crest.svg" alt="Cresta Real" class="cover-crest-img">
+          </div>
+
+          <p class="subtitle-tag font-sans-body">INVITACIÓN DE GALA DE BODA</p>
+          <h1 class="names-title font-script gold-text">Sofía &amp; Alejandro</h1>
+          
+          <img src="assets/svg/luxury-floral-divider.svg" alt="" class="cover-divider-svg">
+          
+          <p class="date-creative font-serif-classic">SÁBADO, 20 DE NOVIEMBRE DE 2027</p>
+          <p class="venue-brief font-sans-body">CIUDAD DE MÉXICO</p>
+
+          <!-- 3D Realistic Wax Seal with Golden Monogram -->
+          <div class="wax-seal-container" id="wax-seal-trigger" title="Toca el sello para abrir">
+            <div class="wax-seal-glow-aura"></div>
+            <div class="wax-seal-spark-ring"></div>
+            <img src="assets/wax_seal_luxury.png" alt="Sello de Cera Real" class="wax-seal-image" id="wax-seal-img">
+            <span class="wax-seal-hint font-sans-body"><i class="fa-solid fa-hand-pointer"></i> TOCA EL SELLO PARA ABRIR</span>
+          </div>
+
+          <button id="enter-invitation-btn" class="btn-gold btn-enter">
+            <i class="fa-solid fa-envelope-open-text"></i> ABRIR INVITACIÓN
+          </button>
+
+          <p class="audio-notice font-sans-body">
+            <i class="fa-solid fa-volume-high gold-icon"></i> Experiencia inmersiva con música de gala
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN INVITATION CONTENT WRAPPER -->
+  <main class="main-wrapper" id="main-content">
+
+    <!-- ==========================================================================
+       SECTION 1: HERO PRINCIPAL DE GALA
+       ========================================================================== -->
+    <section class="hero-section text-center" id="section-hero">
+      <div class="container">
+        <div class="hero-content reveal-on-scroll">
+          
+          <!-- Crest Top -->
+          <div class="hero-crest-top">
+            <img src="assets/svg/luxury-royal-crest.svg" alt="Cresta Nupcial" class="hero-crest-img">
+          </div>
+
+          <span class="section-label font-sans-body">NUESTRA UNIÓN MATRIMONIAL</span>
+          <h1 class="main-names font-script gold-text">Sofía & Alejandro</h1>
+          
+          <!-- Ornamental Floral Divider SVG -->
+          <img src="assets/svg/luxury-floral-divider.svg" alt="" class="decor-divider-svg">
+
+          <p class="invitation-quote font-serif-classic">
+            "Con la bendición de Dios y en presencia de nuestros padres, tenemos el honor de invitarte a celebrar el día más esperado de nuestras vidas."
+          </p>
+          
+          <!-- Couple Main Photo Frame -->
+          <div class="hero-image-frame glass-card">
+            <div class="image-inner-wrapper">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop" alt="Sofía y Alejandro" class="hero-img clip-shape-arch" loading="eager">
+              <div class="image-gold-shimmer"></div>
+            </div>
+          </div>
+
+          <!-- Wedding Date & Location Banner -->
+          <div class="hero-details">
+            <span class="hero-date font-serif-header">20 • NOVIEMBRE • 2027</span>
+            <span class="hero-location font-sans-body"><i class="fa-solid fa-location-dot gold-icon"></i> CIUDAD DE MÉXICO</span>
+          </div>
+
+          <!-- Fast VIP Action Buttons -->
+          <div class="hero-actions-container">
+            <button id="add-to-calendar-btn" class="btn-gold btn-sm">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR EN CALENDARIO
+            </button>
+            <a href="#section-events" class="btn-outline btn-sm">
+              <i class="fa-solid fa-map-pin"></i> VER SEDES & ITINERARIO
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 2: CUENTA REGRESIVA (RELOJERÍA SUIZA)
+       ========================================================================== -->
+    <section class="welcome-countdown-section text-center" id="section-countdown">
+      <div class="container">
+        <div class="glass-card reveal-on-scroll">
+          <span class="section-badge font-sans-body">TIEMPO RESTANTE</span>
+          <h2 class="section-title font-serif-header">CADA SEGUNDO CUENTA</h2>
+          
+          <p class="welcome-text font-serif-classic">
+            El tiempo avanza hacia el momento en que uniremos nuestras vidas para siempre. Acompáñanos en la cuenta regresiva hacia nuestro <em>«Sí, acepto»</em>.
+          </p>
+          
+          <!-- Swiss Chrono Countdown Grid -->
+          <div id="countdown" class="countdown-grid" data-date="2027-11-20T17:00:00">
+            <div class="count-box">
+              <div class="count-inner">
+                <span id="days" class="count-num font-serif-header gold-text">00</span>
+                <span class="count-label font-sans-body">DÍAS</span>
+              </div>
+            </div>
+            <div class="count-box">
+              <div class="count-inner">
+                <span id="hours" class="count-num font-serif-header gold-text">00</span>
+                <span class="count-label font-sans-body">HORAS</span>
+              </div>
+            </div>
+            <div class="count-box">
+              <div class="count-inner">
+                <span id="minutes" class="count-num font-serif-header gold-text">00</span>
+                <span class="count-label font-sans-body">MINUTOS</span>
+              </div>
+            </div>
+            <div class="count-box">
+              <div class="count-inner">
+                <span id="seconds" class="count-num font-serif-header gold-text">00</span>
+                <span class="count-label font-sans-body">SEGUNDOS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="countdown-rings-icon">
+            <img src="assets/svg/luxury-wedding-rings.svg" alt="Alianzas de Boda" class="rings-decor-img">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 3: BENDICIÓN DE NUESTROS PADRES
+       ========================================================================== -->
+    <section class="parents-section text-center" id="section-parents">
+      <div class="container">
+        <div class="reveal-on-scroll">
+          <span class="section-badge font-sans-body">CON EL AMOR Y LA BENDICIÓN DE</span>
+          <h2 class="section-title font-serif-header">NUESTROS PADRES</h2>
+          
+          <!-- Floral Divider SVG -->
+          <img src="assets/svg/luxury-floral-divider.svg" alt="" class="decor-divider-svg">
+
+          <div class="parents-grid">
+            <div class="parents-card glass-card">
+              <div class="parents-card-crest"><i class="fa-solid fa-crown gold-icon"></i></div>
+              <h3 class="parents-role font-serif-header gold-text">PADRES DE LA NOVIA</h3>
+              <p class="parent-name font-serif-classic">Dra. Carmen Mendoza Ruiz</p>
+              <p class="parent-name font-serif-classic">Ing. Roberto Valenzuela Santos</p>
+            </div>
+            
+            <div class="heart-divider-box">
+              <span class="heart-divider font-script gold-text">&</span>
+            </div>
+
+            <div class="parents-card glass-card">
+              <div class="parents-card-crest"><i class="fa-solid fa-crown gold-icon"></i></div>
+              <h3 class="parents-role font-serif-header gold-text">PADRES DEL NOVIO</h3>
+              <p class="parent-name font-serif-classic">Sra. Patricia Morales Silva</p>
+              <p class="parent-name font-serif-classic">Lic. Alejandro De la Vega Garza</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 4: NUESTRA HISTORIA DE AMOR
+       ========================================================================== -->
+    <section class="story-section text-center" id="section-story">
+      <div class="container">
+        <div class="glass-card reveal-on-scroll">
+          <span class="section-badge font-sans-body">UN AMOR PARA LA ETERNIDAD</span>
+          <h2 class="section-title font-serif-header">NUESTRA HISTORIA</h2>
+          
+          <p class="story-quote font-serif-classic">
+            "Nos conocimos un atardecer de otoño y desde ese instante supimos que el destino tenía preparado un viaje maravilloso juntos."
+          </p>
+
+          <div class="story-gallery">
+            <div class="story-card stagger-child" data-lightbox="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop" data-caption="El Primer Encuentro • 2021">
+              <div class="story-card-img-wrap clip-shape-cameo">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Primer encuentro" loading="lazy">
+                <div class="story-card-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+              <div class="story-caption font-sans-body">El Primer Encuentro • 2021</div>
+            </div>
+
+            <div class="story-card stagger-child" data-lightbox="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" data-caption="La Propuesta • 2026">
+              <div class="story-card-img-wrap clip-shape-cameo">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop" alt="La Propuesta" loading="lazy">
+                <div class="story-card-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+              <div class="story-caption font-sans-body">La Propuesta • 2026</div>
+            </div>
+
+            <div class="story-card stagger-child" data-lightbox="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop" data-caption="Rumbo al Altar • 2027">
+              <div class="story-card-img-wrap clip-shape-cameo">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop" alt="Rumbo al Altar" loading="lazy">
+                <div class="story-card-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+              </div>
+              <div class="story-caption font-sans-body">Rumbo al Altar • 2027</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 5: DÓNDE & CUÁNDO - SEDES & NAVEGACIÓN
+       ========================================================================== -->
+    <section class="events-section text-center" id="section-events">
+      <div class="container">
+        <div class="reveal-on-scroll">
+          <span class="section-badge font-sans-body">UBICACIONES & HORARIOS</span>
+          <h2 class="section-title font-serif-header">DÓNDE & CUÁNDO</h2>
+          
+          <!-- Floral Divider SVG -->
+          <img src="assets/svg/luxury-floral-divider.svg" alt="" class="decor-divider-svg">
+
+          <div class="events-grid">
+            
+            <!-- CEREMONIA RELIGIOSA -->
+            <div class="event-card glass-card stagger-child">
+              <div class="event-icon-circle">
+                <img src="assets/svg/luxury-church-icon.svg" alt="Ceremonia" class="event-svg-icon">
+              </div>
+              <span class="event-tag font-sans-body">CEREMONIA RELIGIOSA</span>
+              <h3 class="event-name font-serif-header">Parroquia de San Juan Bautista</h3>
+              <p class="event-time font-sans-body"><i class="fa-regular fa-clock gold-icon"></i> 17:00 HRS</p>
+              
+              <p class="venue-address font-sans-body">
+                Plaza Hidalgo #8, Col. Del Carmen, Coyoacán, CDMX.
+              </p>
+              
+              <div class="event-map-actions">
+                <a href="https://maps.google.com/?q=Parroquia+de+San+Juan+Bautista+Coyoacan" target="_blank" rel="noopener" class="btn-gold btn-sm">
+                  <i class="fa-solid fa-map-location-dot"></i> GOOGLE MAPS
+                </a>
+                <a href="https://waze.com/ul?q=Parroquia+de+San+Juan+Bautista+Coyoacan" target="_blank" rel="noopener" class="btn-outline btn-sm">
+                  <i class="fa-brands fa-waze"></i> WAZE
+                </a>
+              </div>
+            </div>
+
+            <!-- RECEPCIÓN DE GALA -->
+            <div class="event-card glass-card stagger-child">
+              <div class="event-icon-circle">
+                <img src="assets/svg/luxury-champagne-glasses.svg" alt="Recepción" class="event-svg-icon">
+              </div>
+              <span class="event-tag font-sans-body">RECEPCIÓN DE GALA</span>
+              <h3 class="event-name font-serif-header">Hacienda San José de las Palmas</h3>
+              <p class="event-time font-sans-body"><i class="fa-regular fa-clock gold-icon"></i> 19:30 HRS</p>
+              
+              <p class="venue-address font-sans-body">
+                Carretera Federal a Cuernavaca Km 24.5, San Andrés Totoltepec, CDMX.
+              </p>
+              
+              <div class="event-map-actions">
+                <a href="https://maps.google.com/?q=Hacienda+San+Jose+de+las+Palmas+CDMX" target="_blank" rel="noopener" class="btn-gold btn-sm">
+                  <i class="fa-solid fa-map-location-dot"></i> GOOGLE MAPS
+                </a>
+                <a href="https://waze.com/ul?q=Hacienda+San+Jose+de+las+Palmas+CDMX" target="_blank" rel="noopener" class="btn-outline btn-sm">
+                  <i class="fa-brands fa-waze"></i> WAZE
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 6: ITINERARIO INTERACTIVO DE LA BODA
+       ========================================================================== -->
+    <section class="itinerary-section text-center" id="section-itinerary">
+      <div class="container">
+        <div class="glass-card reveal-on-scroll">
+          <span class="section-badge font-sans-body">CRONOGRAMA DE CELEBRACIÓN</span>
+          <h2 class="section-title font-serif-header">ITINERARIO DE GALA</h2>
+
+          <div class="timeline">
+            
+            <div class="timeline-item stagger-child">
+              <div class="timeline-icon"><i class="fa-solid fa-church"></i></div>
+              <div class="timeline-content">
+                <span class="time font-sans-body gold-text">17:00 HRS</span>
+                <h4 class="title font-serif-header">Ceremonia Nupcial</h4>
+                <p class="desc font-serif-classic">Entrada solemne y bendición de los novios.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item stagger-child">
+              <div class="timeline-icon"><i class="fa-solid fa-camera-retro"></i></div>
+              <div class="timeline-content">
+                <span class="time font-sans-body gold-text">18:30 HRS</span>
+                <h4 class="title font-serif-header">Sesión de Fotos & Recuerdos</h4>
+                <p class="desc font-serif-classic">Retratos memorables con familiares y amigos.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item stagger-child">
+              <div class="timeline-icon"><i class="fa-solid fa-wine-glass"></i></div>
+              <div class="timeline-content">
+                <span class="time font-sans-body gold-text">19:30 HRS</span>
+                <h4 class="title font-serif-header">Cóctel de Bienvenida</h4>
+                <p class="desc font-serif-classic">Bebidas de autor y canapés finos en los jardines.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item stagger-child">
+              <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+              <div class="timeline-content">
+                <span class="time font-sans-body gold-text">20:45 HRS</span>
+                <h4 class="title font-serif-header">Banquete de 3 Tiempos</h4>
+                <p class="desc font-serif-classic">Cena de alta cocina y brindis de honor.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item stagger-child">
+              <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
+              <div class="timeline-content">
+                <span class="time font-sans-body gold-text">22:00 HRS</span>
+                <h4 class="title font-serif-header">Vals & Apertura de Pista</h4>
+                <p class="desc font-serif-classic">Primer baile de los esposos e inicio de la fiesta.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item stagger-child">
+              <div class="timeline-icon"><i class="fa-solid fa-compact-disc"></i></div>
+              <div class="timeline-content">
+                <span class="time font-sans-body gold-text">00:00 HRS</span>
+                <h4 class="title font-serif-header">Fiesta & Trasnocho Gourmet</h4>
+                <p class="desc font-serif-classic">DJ en vivo y bocadillos nocturnos de medianoche.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 7: CÓDIGO DE VESTIMENTA (DRESS CODE INTERACTIVO)
+       ========================================================================== -->
+    <section class="dresscode-section text-center" id="section-dresscode">
+      <div class="container">
+        <div class="glass-card reveal-on-scroll">
+          <div class="dresscode-icon">
+            <i class="fa-solid fa-user-tie gold-icon"></i>
+          </div>
+          <span class="section-badge font-sans-body">ETIQUETA REQUERIDA</span>
+          <h2 class="section-title font-serif-header">CÓDIGO DE VESTIMENTA</h2>
+          
+          <h3 class="dress-style font-serif-header gold-text">RIGUROSA ETIQUETA / GALA FORMAL</h3>
+          
+          <div class="dress-details font-serif-classic">
+            <p><strong>Damas:</strong> Vestido largo de noche en tonos elegantes y sobrios.</p>
+            <p><strong>Caballeros:</strong> Smoking / Black Tie o Traje oscuro formal.</p>
+          </div>
+
+          <div class="color-palette-container">
+            <p class="palette-title font-sans-body">PALETA RECOMENDADA (TOCA PARA CONOCER CADA TONO):</p>
+            <div class="color-swatches">
+              <div class="swatch-wrap" data-color-name="Borgoña Imperial">
+                <span class="swatch" style="background-color: #6B1D2F;"></span>
+                <span class="swatch-lbl">Borgoña</span>
+              </div>
+              <div class="swatch-wrap" data-color-name="Verde Esmeralda Noche">
+                <span class="swatch" style="background-color: #1C261B;"></span>
+                <span class="swatch-lbl">Esmeralda</span>
+              </div>
+              <div class="swatch-wrap" data-color-name="Negro Azabache">
+                <span class="swatch" style="background-color: #121212;"></span>
+                <span class="swatch-lbl">Negro</span>
+              </div>
+              <div class="swatch-wrap" data-color-name="Oro Viejo Metálico">
+                <span class="swatch" style="background-color: #D4AF37;"></span>
+                <span class="swatch-lbl">Oro</span>
+              </div>
+              <div class="swatch-wrap" data-color-name="Marrón Imperial">
+                <span class="swatch" style="background-color: #4A3E3D;"></span>
+                <span class="swatch-lbl">Marrón</span>
+              </div>
+            </div>
+            
+            <div class="reserve-note-card">
+              <i class="fa-solid fa-circle-info gold-icon"></i>
+              <p class="reserve-note font-sans-body">
+                Reservamos con amor y respeto los colores <strong>blanco, marfil e ivory</strong> exclusivamente para la novia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 8: HOSPEDAJE SUGERIDO
+       ========================================================================== -->
+    <section class="hotels-section text-center" id="section-hotels">
+      <div class="container">
+        <div class="reveal-on-scroll">
+          <span class="section-badge font-sans-body">PARA INVITADOS FORÁNEOS</span>
+          <h2 class="section-title font-serif-header">HOSPEDAJE SUGERIDO</h2>
+          
+          <!-- Floral Divider SVG -->
+          <img src="assets/svg/luxury-floral-divider.svg" alt="" class="decor-divider-svg">
+
+          <div class="hotels-grid">
+            
+            <div class="hotel-card glass-card stagger-child tilt-card">
+              <i class="fa-solid fa-hotel hotel-icon gold-icon"></i>
+              <h3 class="hotel-name font-serif-header">Hotel Grand Fiesta Americana Coyoacán</h3>
+              <p class="hotel-info font-sans-body">A 15 minutos de la Ceremonia y Recepción</p>
+              
+              <div class="hotel-code-box">
+                <span class="hotel-code-label font-sans-body">Código de Convenio Nupcial:</span>
+                <div class="code-copy-row">
+                  <strong id="code-hotel-1">BODA-SOFIA-ALE</strong>
+                  <button class="btn-copy-code" data-code="BODA-SOFIA-ALE" aria-label="Copiar código"><i class="fa-regular fa-copy"></i></button>
+                </div>
+              </div>
+              
+              <a href="tel:+525555555555" class="btn-outline btn-sm"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVACIONES</a>
+            </div>
+
+            <div class="hotel-card glass-card stagger-child tilt-card">
+              <i class="fa-solid fa-building-user hotel-icon gold-icon"></i>
+              <h3 class="hotel-name font-serif-header">Hotel Radisson Paraíso Pedregal</h3>
+              <p class="hotel-info font-sans-body">A 20 minutos de la Hacienda</p>
+              
+              <div class="hotel-code-box">
+                <span class="hotel-code-label font-sans-body">Tarifa Preferencial:</span>
+                <div class="code-copy-row">
+                  <strong id="code-hotel-2">CONVENIO SOFIA & ALE</strong>
+                  <button class="btn-copy-code" data-code="CONVENIO SOFIA & ALE" aria-label="Copiar código"><i class="fa-regular fa-copy"></i></button>
+                </div>
+              </div>
+              
+              <a href="tel:+525555555556" class="btn-outline btn-sm"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVACIONES</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 9: MESA DE REGALOS / LLUVIA DE SOBRES
+       ========================================================================== -->
+    <section class="gifts-section text-center" id="section-gifts">
+      <div class="container">
+        <div class="glass-card reveal-on-scroll">
+          <div class="gift-icon-badge">
+            <i class="fa-solid fa-gift gold-icon"></i>
+          </div>
+          <span class="section-badge font-sans-body">MESA DE REGALOS</span>
+          <h2 class="section-title font-serif-header">LLUVIA DE SOBRES & OBSEQUIOS</h2>
+
+          <p class="gift-intro font-serif-classic">
+            Tu presencia y bendición en nuestro día es nuestro mejor regalo. Si deseas hacernos un presente, ponemos a tu disposición las siguientes opciones:
+          </p>
+
+          <div class="gift-options-grid">
+            
+            <!-- TIENDAS ONLINE -->
+            <div class="gift-option-card stagger-child tilt-card">
+              <div class="gift-card-icon"><i class="fa-solid fa-bag-shopping gold-icon"></i></div>
+              <h3 class="gift-option-title font-serif-header gold-text">Mesa de Regalos Online</h3>
+              <p class="font-sans-body event-num-tag">Evento: <strong>#5098231</strong></p>
+              
+              <div class="gift-btns">
+                <a href="https://www.liverpool.com.mx" target="_blank" rel="noopener" class="btn-outline btn-sm">
+                  <i class="fa-solid fa-store"></i> LIVERPOOL
+                </a>
+                <a href="https://www.amazon.com.mx" target="_blank" rel="noopener" class="btn-outline btn-sm">
+                  <i class="fa-brands fa-amazon"></i> AMAZON
+                </a>
+              </div>
+            </div>
+
+            <!-- TRANSFERENCIA BANCARIA -->
+            <div class="gift-option-card stagger-child tilt-card">
+              <div class="gift-card-icon"><i class="fa-solid fa-building-columns gold-icon"></i></div>
+              <h3 class="gift-option-title font-serif-header gold-text">Transferencia Bancaria</h3>
+              
+              <div class="bank-details font-sans-body">
+                <div><strong>Banco:</strong> BBVA México</div>
+                <div><strong>Titular:</strong> Sofía Valenzuela Mendoza</div>
+                <div class="clabe-highlight"><strong>CLABE:</strong> <span id="clabe-number">012180015489302194</span></div>
+              </div>
+              
+              <button class="btn-gold btn-copy-clabe btn-sm" data-clabe="012180015489302194">
+                <i class="fa-solid fa-copy"></i> COPIAR NÚMERO CLABE
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 10: AVISO IMPORTANTE (NO NIÑOS / ADULT ONLY)
+       ========================================================================== -->
+    <section class="notice-section text-center" id="section-notice">
+      <div class="container">
+        <div class="notice-card glass-card reveal-on-scroll">
+          <i class="fa-solid fa-champagne-glasses notice-icon gold-icon"></i>
+          <span class="notice-badge font-sans-body gold-text">EVENTO EXCLUSIVO DE ADULTOS</span>
+          <h2 class="notice-title font-serif-header">NO NIÑOS / ADULT ONLY</h2>
+          <p class="notice-text font-serif-classic">
+            Amamos profundamente a los pequeños, pero hemos reservado esta noche exclusivamente para que puedas brindar, relajarte y bailar sin preocupaciones con nosotros. Agradecemos infinitamente tu comprensión.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 11: GALERÍA FOTOGRÁFICA & HASHTAG
+       ========================================================================== -->
+    <section class="gallery-section text-center" id="section-gallery">
+      <div class="container">
+        <div class="reveal-on-scroll">
+          <span class="section-badge font-sans-body">MOMENTOS INOLVIDABLES</span>
+          <h2 class="section-title font-serif-header">NUESTRA GALERÍA</h2>
+          
+          <div class="hashtag-box" id="hashtag-trigger" title="Haz clic para copiar hashtag">
+            <span class="hashtag-text font-serif-header">#BodaSofiaYAlejandro</span>
+            <i class="fa-regular fa-copy hashtag-copy-icon"></i>
+          </div>
+
+          <div class="photo-grid">
+            <div class="photo-item stagger-child" data-lightbox="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" data-caption="Amor Incondicional">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Foto Boda 1" loading="lazy">
+              <div class="photo-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            
+            <div class="photo-item stagger-child" data-lightbox="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop" data-caption="Caminando Juntos">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Foto Boda 2" loading="lazy">
+              <div class="photo-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            
+            <div class="photo-item stagger-child" data-lightbox="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" data-caption="Promesa Eterna">
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop" alt="Foto Boda 3" loading="lazy">
+              <div class="photo-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            
+            <div class="photo-item stagger-child" data-lightbox="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop" data-caption="La Alegría de Compartir">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop" alt="Foto Boda 4" loading="lazy">
+              <div class="photo-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            
+            <div class="photo-item stagger-child" data-lightbox="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200&auto=format&fit=crop" data-caption="Destino y Felicidad">
+              <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop" alt="Foto Boda 5" loading="lazy">
+              <div class="photo-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            
+            <div class="photo-item stagger-child" data-lightbox="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1200&auto=format&fit=crop" data-caption="Rumbo al Gran Día">
+              <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=800&auto=format&fit=crop" alt="Foto Boda 6" loading="lazy">
+              <div class="photo-item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 12: CONFIRMACIÓN DE ASISTENCIA (RSVP POR WHATSAPP)
+       ========================================================================== -->
+    <section class="rsvp-section text-center" id="section-rsvp">
+      <div class="container">
+        <div class="glass-card reveal-on-scroll">
+          
+          <!-- Floral Divider SVG -->
+          <img src="assets/svg/luxury-floral-divider.svg" alt="" class="decor-divider-svg">
+
+          <div class="rsvp-header">
+            <i class="fa-solid fa-envelope-open-text rsvp-icon gold-icon"></i>
+            <span class="section-badge font-sans-body">FAVOR DE CONFIRMAR ANTES DEL 20 DE OCTUBRE</span>
+            <h2 class="section-title font-serif-header">CONFIRMACIÓN DE ASISTENCIA</h2>
+            <p class="rsvp-subtitle font-serif-classic">
+              Por favor ayúdanos confirmando tu asistencia para preparar cada detalle exclusivo para ti.
+            </p>
+          </div>
+
+          <form id="rsvp-form" class="rsvp-form-container">
+            <div class="form-group">
+              <label for="rsvp-name-input" class="form-label font-sans-body">Nombre Completo de los Invitados:</label>
+              <input type="text" id="rsvp-name-input" class="form-input" placeholder="Ej. Familia Mendoza Valenzuela o Carlos y Esposa" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label font-sans-body">¿Asistirás a nuestra boda?:</label>
+              <div class="radio-options">
+                <label class="radio-label font-sans-body">
+                  <input type="radio" name="attendance" value="¡Sí, con mucho gusto asistiré!" checked>
+                  <span class="radio-custom"></span> <span>✨ ¡Sí, con mucho gusto asistiré!</span>
+                </label>
+                <label class="radio-label font-sans-body">
+                  <input type="radio" name="attendance" value="Lo siento con todo mi corazón, no podré asistir">
+                  <span class="radio-custom"></span> <span>💔 Lo siento, no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label font-sans-body">Número de pases a confirmar:</label>
+              <div class="passes-selector">
+                <label class="pass-box"><input type="radio" name="guests-count" value="1 pase" checked><span>1 Pase</span></label>
+                <label class="pass-box"><input type="radio" name="guests-count" value="2 pases"><span>2 Pases</span></label>
+                <label class="pass-box"><input type="radio" name="guests-count" value="3 pases"><span>3 Pases</span></label>
+                <label class="pass-box"><input type="radio" name="guests-count" value="4 pases"><span>4 Pases</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvp-notes" class="form-label font-sans-body">Restricciones alimentarias, alergias o canción especial:</label>
+              <textarea id="rsvp-notes" class="form-textarea" rows="3" placeholder="Ej. Menú vegetariano, alergia a mariscos, o '¡Pongan la canción...'"></textarea>
+            </div>
+
+            <button type="submit" class="btn-gold btn-block">
+              <i class="fa-brands fa-whatsapp"></i> ENVIAR CONFIRMACIÓN POR WHATSAPP
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SECTION 13: PIE DE PÁGINA & AGRADECIMIENTO
+       ========================================================================== -->
+    <footer class="footer-section text-center" id="section-footer">
+      <div class="container reveal-on-scroll footer-content">
+        
+        <!-- Floral Divider SVG -->
+        <img src="assets/svg/luxury-floral-divider.svg" alt="" class="footer-divider-svg">
+
+        <!-- Monogram Badge -->
+        <div class="footer-monogram-wrap">
+          <span class="monogram-badge font-cinzel gold-text">S &amp; A</span>
+        </div>
+
+        <!-- Gratitude Message -->
+        <h3 class="footer-gratitude font-script gold-text">¡Gracias por ser parte de nuestra historia!</h3>
+        
+        <!-- Names and Date -->
+        <p class="footer-names font-serif-classic">Sofía &amp; Alejandro</p>
+        <p class="footer-date font-sans-body">20 DE NOVIEMBRE DE 2027 • CIUDAD DE MÉXICO</p>
+        
+        <div class="footer-line"></div>
+        <p class="copyright-text font-sans-body">Exquisite Digital Wedding Invitations • Diseñado con alta costura.</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ==========================================================================
+     MODAL LIGHTBOX PARA FOTOGRAFÍAS
+     ========================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-container glass-card">
+      <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Cerrar vista previa"><i class="fa-solid fa-xmark"></i></button>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Vista previa">
+      </div>
+      <p id="lightbox-caption" class="lightbox-caption font-serif-classic"></p>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="main.js"></script>
+</body>
+</html>

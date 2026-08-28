@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isabella & Mateo - Nuestra Boda</title>
+  <meta name="description" content="Tenemos el honor de invitarte a celebrar nuestro matrimonio. Isabella y Mateo, 15 de Noviembre de 2027, La Paz, Bolivia.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="no-scroll">
+
+  <!-- 1. Global SVG Defs for Sculptural Silhouettes (Clip Paths) -->
+  <svg width="0" height="0" style="position: absolute; width: 0; height: 0; pointer-events: none;">
+    <defs>
+      <!-- Gothic Arch (Ojival) -->
+      <clipPath id="clip-gothic-arch" clipPathUnits="objectBoundingBox">
+        <path d="M0.5,0 C0.8,0.2 1,0.5 1,1 L0,1 C0,0.5 0.2,0.2 0.5,0 Z" />
+      </clipPath>
+      
+      <!-- Octagonal Gem -->
+      <clipPath id="clip-gem" clipPathUnits="objectBoundingBox">
+        <polygon points="0.3,0 0.7,0 1,0.3 1,0.7 0.7,1 0.3,1 0,0.7 0,0.3" />
+      </clipPath>
+      
+      <!-- Imperial Oval Cameo -->
+      <clipPath id="clip-cameo" clipPathUnits="objectBoundingBox">
+        <ellipse cx="0.5" cy="0.5" rx="0.5" ry="0.5" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- 2. Performance Optimized Fixed Background & Ambient Canvas -->
+  <div class="fixed-bg-layer"></div>
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Audio Element -->
+  <audio id="wedding-audio" src="assets/wedding-song.mp3" preload="auto" loop></audio>
+
+  <!-- 3. Dynamic Island Navigation (Apple HIG Style) -->
+  <div class="dynamic-island-container">
+    <div id="dynamic-island" class="dynamic-island">
+      <div class="di-left">
+        <div id="di-play-btn" class="di-play-btn" title="Reproducir / Pausar">
+          <i class="fa-solid fa-play" id="di-play-icon"></i>
+        </div>
+        <div class="di-music-info">
+          <span class="di-title">A Thousand Years</span>
+          <span class="di-equalizer">
+            <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+          </span>
+        </div>
+      </div>
+      <div class="di-right" id="di-menu-btn" title="Menú de Navegación">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+    <div id="di-dropdown" class="di-dropdown">
+      <a href="#inicio">Inicio</a>
+      <a href="#historia">Nuestra Historia</a>
+      <a href="#eventos">Dónde & Cuándo</a>
+      <a href="#itinerario">Itinerario</a>
+      <a href="#regalos">Mesa de Regalos</a>
+      <a href="#rsvp">Confirmar Asistencia</a>
+    </div>
+  </div>
+
+  <!-- 4. Ceremonial Gatefold 3D Presentation Box (Alta Costura) -->
+  <div id="cover-overlay">
+    <div class="ceremony-backdrop-glow"></div>
+    <div class="ceremony-container">
+      
+      <!-- 3D Gatefold Box -->
+      <div class="ceremony-box" id="ceremony-box">
+        
+        <!-- Inner Luxury Card (Revealed upon opening) -->
+        <div class="ceremony-inner-card">
+          <div class="inner-card-border">
+            <div class="inner-monogram">
+              <img src="assets/svg/monogram-im-luxury.svg" alt="Monograma Real">
+            </div>
+            <p class="inner-intro">Nuestra Boda</p>
+            <h2 class="inner-names">Isabella & Mateo</h2>
+            <div class="inner-gold-line"></div>
+            <p class="inner-date">15 de Noviembre de 2027</p>
+            <p class="inner-place">La Paz &bull; Bolivia</p>
+          </div>
+        </div>
+
+        <!-- Left Gatefold Velvet Door -->
+        <div class="ceremony-gate gate-left" id="gate-left">
+          <div class="gate-surface">
+            <div class="gate-filigree gate-filigree-top"></div>
+            <div class="gate-monogram-emblem">
+              <span>I</span>
+            </div>
+            <div class="gate-filigree gate-filigree-bottom"></div>
+            <div class="gate-gold-border"></div>
+          </div>
+        </div>
+
+        <!-- Right Gatefold Velvet Door -->
+        <div class="ceremony-gate gate-right" id="gate-right">
+          <div class="gate-surface">
+            <div class="gate-filigree gate-filigree-top"></div>
+            <div class="gate-monogram-emblem">
+              <span>M</span>
+            </div>
+            <div class="gate-filigree gate-filigree-bottom"></div>
+            <div class="gate-gold-border"></div>
+          </div>
+        </div>
+
+        <!-- Central Royal Wax Seal Lock -->
+        <div class="ceremony-seal-lock" id="ceremony-seal" title="Toca para abrir la invitación">
+          <div class="seal-halo"></div>
+          <div class="seal-ring"></div>
+          <img src="assets/wax-seal.png" alt="Sello de Cera Real" class="seal-img">
+        </div>
+
+      </div>
+
+      <!-- Action Button & Date below -->
+      <div class="ceremony-actions" id="ceremony-actions">
+        <p class="ceremony-callout">Invitación de Honor</p>
+        <button id="enter-btn" class="btn-royal-open">
+          <span class="btn-shimmer"></span>
+          <i class="fa-solid fa-envelope-open-text"></i> Abrir Invitación
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ Main Full-Bleed Wedding Experience ═══ -->
+  <main id="main-content">
+    
+    <!-- Section 1: Hero with Crowned Jewel Arch & Luxury Typography -->
+    <div class="bg-champagne-silk section-corner-container" id="inicio">
+        <div class="corner-flower top-left"></div>
+        <div class="corner-flower top-right"></div>
+
+        <section class="section hero-section reveal">
+          
+          <!-- Crowning Royal Monogram -->
+          <div class="hero-crest-top">
+            <img src="assets/svg/monogram-im-luxury.svg" alt="Monograma Imperial" class="hero-crest-img">
+          </div>
+
+          <p class="hero-pre-title">Nuestra Boda</p>
+
+          <!-- Royal Romanesque Cathedral Arch Frame -->
+          <div class="hero-arch-wrapper">
+            <div class="hero-arch-frame">
+              <div class="hero-arch-inner">
+                <img src="assets/couple-hero.jpg" alt="Isabella & Mateo" class="hero-img-portrait">
+                <div class="hero-arch-glow"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Golden Floral Ornament Divider -->
+          <div class="hero-divider-wrap">
+            <img src="assets/svg/luxury-floral-divider.svg" alt="Ornamento Real" class="hero-divider-img">
+          </div>
+
+          <h1 class="script-text hero-names">Isabella & Mateo</h1>
+          <p class="hero-subtitle">Tenemos el honor de invitarte a celebrar nuestro matrimonio</p>
+          
+          <div class="hero-date-badge">
+            <span class="date-line"></span>
+            <span class="date-text">SÁBADO &bull; 15 DE NOVIEMBRE &bull; 2027</span>
+            <span class="date-line"></span>
+          </div>
+
+          <p class="hero-city-tag">LA PAZ &bull; BOLIVIA</p>
+        </section>
+      </div>
+
+      <!-- Organic Fluid Shape Divider (Wave) -->
+      <div class="shape-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,40 C300,120 600,-40 1200,60 L1200,120 L0,120 Z" class="shape-fill-rose"></path>
+        </svg>
+      </div>
+
+      <!-- Section 2: Countdown & Welcome -->
+      <div class="bg-rose-silk">
+        <section class="section reveal">
+          <div class="glass-card tilt-card text-center">
+            <h2 class="section-title gold-text">El Gran Día</h2>
+            <p class="section-body">Nos llena de felicidad compartir contigo uno de los momentos más trascendentales de nuestras vidas. Acompáñanos a bendecir el comienzo de nuestra historia para siempre.</p>
+            <div class="countdown-container tabular-nums">
+              <div class="countdown-box"><span class="cd-number" id="cd-days">00</span><span class="cd-label">Días</span></div>
+              <div class="countdown-box"><span class="cd-number" id="cd-hours">00</span><span class="cd-label">Horas</span></div>
+              <div class="countdown-box"><span class="cd-number" id="cd-minutes">00</span><span class="cd-label">Min</span></div>
+              <div class="countdown-box"><span class="cd-number" id="cd-seconds">00</span><span class="cd-label">Seg</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Organic Liquid Divider to Wine Panel -->
+      <div class="shape-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0 C400,100 800,0 1200,80 L1200,120 L0,120 Z" class="shape-fill-wine"></path>
+        </svg>
+      </div>
+
+      <!-- Section 3: Parents (Deep Carmesí Velvet Panel) -->
+      <div class="bg-wine-panel section-corner-container">
+        <div class="corner-flower bottom-left"></div>
+        <div class="corner-flower bottom-right"></div>
+        <section class="section reveal">
+          <h2 class="section-title text-gold-light">Con la bendición de Dios y nuestros padres</h2>
+          <div class="glass-card-wine tilt-card text-center">
+            <div class="parent-block mb-4">
+              <h3 class="parents-label">Padres de la Novia</h3>
+              <p class="parents-name">María Teresa Vargas & Roberto Guzmán</p>
+            </div>
+            
+            <div class="svg-divider-center my-3">
+              <svg width="120" height="24" viewBox="0 0 120 24" fill="none">
+                <line x1="0" y1="12" x2="45" y2="12" stroke="#D4AF37" stroke-width="0.8"/>
+                <circle cx="60" cy="12" r="4" fill="#D4AF37"/>
+                <line x1="75" y1="12" x2="120" y2="12" stroke="#D4AF37" stroke-width="0.8"/>
+              </svg>
+            </div>
+
+            <div class="parent-block">
+              <h3 class="parents-label">Padres del Novio</h3>
+              <p class="parents-name">Carmen Suárez & Fernando Ayala</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Organic Gothic Divider back to Champagne -->
+      <div class="shape-divider" style="transform: rotate(180deg); margin-top: -2px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+           <path d="M0,120 C300,120 400,0 600,0 C800,0 900,120 1200,120 L1200,0 L0,0 Z" class="shape-fill-champagne"></path>
+        </svg>
+      </div>
+
+      <!-- Section 4: Our Story with Cameo Image -->
+      <div class="bg-champagne-silk" id="historia">
+        <section class="section reveal">
+          <h2 class="section-title gold-text">Nuestra Historia</h2>
+          <div class="sculptural-image story-sculpture mb-4">
+            <img src="assets/champagne-toast.jpg" alt="Brindis">
+            <div class="sculpture-glow"></div>
+          </div>
+          <p class="section-body story-quote">
+            "Dos caminos se cruzaron por casualidad y descubrieron que estaban destinados a caminar juntos para siempre."
+          </p>
+        </section>
+      </div>
+
+      <!-- Section 5: Events (Centered with Grid) -->
+      <div class="bg-champagne-silk section-corner-container" id="eventos">
+        <section class="section reveal">
+          <h2 class="section-title gold-text">Dónde & Cuándo</h2>
+          
+          <div class="events-grid">
+            <div class="glass-card tilt-card text-center">
+              <i class="fa-solid fa-church event-icon"></i>
+              <h3 class="event-title">Ceremonia Religiosa</h3>
+              <p class="event-time">17:00 HRS</p>
+              <p class="event-loc">Basílica de San Francisco<br>Plaza Mayor, La Paz</p>
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-outline"><i class="fa-solid fa-map-location-dot"></i> Ver Mapa</a>
+            </div>
+
+            <div class="glass-card tilt-card text-center">
+              <i class="fa-solid fa-champagne-glasses event-icon"></i>
+              <h3 class="event-title">Recepción & Gala</h3>
+              <p class="event-time">19:30 HRS</p>
+              <p class="event-loc">Hotel Casa Grande<br>Calacoto, La Paz</p>
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-outline"><i class="fa-solid fa-map-location-dot"></i> Ver Mapa</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Organic Divider to Wine Panel -->
+      <div class="shape-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,80 C300,140 600,-20 1200,60 L1200,120 L0,120 Z" class="shape-fill-wine"></path>
+        </svg>
+      </div>
+
+      <!-- Section 6: Itinerary (Deep Carmesí) -->
+      <div class="bg-wine-panel" id="itinerario">
+        <section class="section reveal">
+          <h2 class="section-title text-gold-light">Itinerario</h2>
+          <div class="timeline">
+            <div class="timeline-item tilt-card-subtle"><div class="timeline-icon"><i class="fa-solid fa-church"></i></div><div class="timeline-content"><h4>17:00</h4><p>Ceremonia</p></div></div>
+            <div class="timeline-item tilt-card-subtle"><div class="timeline-icon"><i class="fa-solid fa-camera"></i></div><div class="timeline-content"><h4>18:30</h4><p>Sesión de Fotos</p></div></div>
+            <div class="timeline-item tilt-card-subtle"><div class="timeline-icon"><i class="fa-solid fa-champagne-glasses"></i></div><div class="timeline-content"><h4>19:30</h4><p>Cóctel de Honor</p></div></div>
+            <div class="timeline-item tilt-card-subtle"><div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div><div class="timeline-content"><h4>20:30</h4><p>Cena de Gala</p></div></div>
+            <div class="timeline-item tilt-card-subtle"><div class="timeline-icon"><i class="fa-solid fa-music"></i></div><div class="timeline-content"><h4>22:00</h4><p>Fiesta & Brindis</p></div></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Liquid Wave to Rose Silk -->
+      <div class="shape-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0 C600,150 900,0 1200,80 L1200,120 L0,120 Z" class="shape-fill-rose"></path>
+        </svg>
+      </div>
+
+      <!-- Section 7 & 8: Dress Code -->
+      <div class="bg-rose-silk">
+        <section class="section reveal">
+          <i class="fa-solid fa-user-tie event-icon"></i>
+          <h2 class="section-title gold-text">Código de Vestimenta</h2>
+          <h3 class="dresscode-subtitle">Etiqueta Rigurosa / Black Tie</h3>
+          <p class="section-body">Caballeros: Traje Oscuro o Tuxedo.<br>Damas: Vestido Largo de Gala.</p>
+          <div class="color-palette">
+            <div class="color-circle color-1" title="Vino Tinto Imperial"></div>
+            <div class="color-circle color-2" title="Negro Ébano"></div>
+            <div class="color-circle color-3" title="Borgoña"></div>
+            <div class="color-circle color-4" title="Oro Real"></div>
+          </div>
+          <p class="dresscode-note">Reservamos el blanco exclusivamente para la novia.</p>
+        </section>
+      </div>
+
+      <!-- Wave to Wine Panel -->
+      <div class="shape-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,50 C400,-50 800,150 1200,50 L1200,120 L0,120 Z" class="shape-fill-wine"></path>
+        </svg>
+      </div>
+
+      <!-- Section 9: VIP Gift Card (3D Tilt) -->
+      <div class="bg-wine-panel section-corner-container" id="regalos">
+        <div class="corner-flower bottom-right"></div>
+        <section class="section reveal">
+          <div class="glass-card-wine tilt-card vip-gift-card text-center">
+            <i class="fa-solid fa-gift gift-icon"></i>
+            <h2 class="section-title text-gold-light mb-2">Mesa de Regalos</h2>
+            <p class="section-body gift-body">Tu presencia es nuestro mejor obsequio. Si deseas tener un detalle adicional con nosotros, ponemos a tu disposición nuestra cuenta bancaria:</p>
+            
+            <div class="bank-card inner-tilt-element">
+              <p class="bank-title">BANCO NACIONAL DE BOLIVIA (BNB)</p>
+              <p class="bank-owner">Titulares: Isabella & Mateo</p>
+              <p class="account-number tabular-nums">100000012345</p>
+              <p class="bank-currency">Cuenta en Bolivianos (BOB)</p>
+            </div>
+            
+            <div class="gift-btn-container inner-tilt-element">
+              <button id="copy-account-btn" class="btn-gold" data-account="100000012345">
+                <i class="fa-regular fa-copy"></i> Copiar Número de Cuenta
+              </button>
+            </div>
+            <div id="copy-toast" class="copy-toast">¡Número de cuenta copiado al portapapeles!</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Divider to Rose -->
+      <div class="shape-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,120 C500,0 700,0 1200,120 L1200,120 L0,120 Z" class="shape-fill-rose"></path>
+        </svg>
+      </div>
+
+      <!-- Section 10, 11 & 12: Adults, Gallery, RSVP -->
+      <div class="bg-rose-silk section-corner-container" id="rsvp">
+        <div class="corner-flower top-left"></div>
+
+        <section class="section reveal">
+          <div class="adults-only-card">
+            <i class="fa-solid fa-wine-glass" style="color:var(--color-primary); margin-bottom:0.5rem;"></i>
+            <h3 class="adults-only-label">Evento solo para adultos</h3>
+            <p style="font-size:0.88rem; max-width:400px; margin:0.5rem auto 0; color:var(--color-text-body);">Queremos que disfrutes y celebres al máximo nuestra noche. Agradecemos tu comprensión al no asistir con niños.</p>
+          </div>
+        </section>
+
+        <!-- Sculptural Gallery -->
+        <section class="section reveal">
+          <h2 class="script-text" style="font-size:3rem; margin-bottom:0.5rem">Momentos Mágicos</h2>
+          <p class="gold-text mb-4" style="font-weight:600; font-size:1.1rem;">#BodaIsaYMateo</p>
+          
+          <div class="sculptural-gallery">
+            <div class="sculptural-image gallery-gem">
+              <img src="assets/luxury-rings.jpg" alt="Anillos">
+              <div class="sculpture-glow"></div>
+            </div>
+            <div class="sculptural-image gallery-arch">
+              <img src="assets/couple-hero.jpg" alt="Pareja">
+              <div class="sculpture-glow"></div>
+            </div>
+            <div class="sculptural-image gallery-gem">
+              <img src="assets/luxury-cake.jpg" alt="Pastel">
+              <div class="sculpture-glow"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RSVP Form in Tilt Card -->
+        <section class="section reveal">
+          <div class="glass-card tilt-card text-center">
+            <h2 class="section-title gold-text">Confirmar Asistencia</h2>
+            <p class="section-body">Por favor, confirma tu asistencia antes del 1 de Noviembre de 2027.</p>
+            
+            <form id="rsvp-form" class="inner-tilt-element">
+              <div class="form-group">
+                <label for="rsvp-name">Nombre Completo</label>
+                <input type="text" id="rsvp-name" class="form-control" required placeholder="Tu nombre y apellido">
+              </div>
+              <div class="form-group">
+                <label for="rsvp-status">¿Asistirás?</label>
+                <select id="rsvp-status" class="form-control" required>
+                  <option value="si">¡Sí, ahí estaré con alegría!</option>
+                  <option value="no">Lamentablemente no podré asistir</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rsvp-pases">Número de Personas</label>
+                <select id="rsvp-pases" class="form-control">
+                  <option value="1">1 Persona</option>
+                  <option value="2">2 Personas</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rsvp-comments">Mensaje o Canción Especial (Opcional)</label>
+                <textarea id="rsvp-comments" class="form-control" rows="2" placeholder="Dedicatoria o sugerencia musical..."></textarea>
+              </div>
+              
+              <div class="form-action-center">
+                <button type="submit" class="btn-gold">
+                  <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="section reveal text-center" style="padding-top:2rem; padding-bottom:4rem;">
+          <div class="svg-monogram-container mb-3">
+            <img src="assets/svg/monogram-im-luxury.svg" alt="Monograma I & M" style="width:100%; height:100%;">
+          </div>
+          <p class="footer-quote">"El amor no se mira con los ojos, sino con el alma."</p>
+          <p class="footer-thanks">Gracias por ser parte fundamental de nuestras vidas.</p>
+          <p class="footer-year">2027 &bull; LA PAZ, BOLIVIA</p>
+        </section>
+      </div>
+
+    </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

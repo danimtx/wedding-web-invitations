@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Luxury Wax Seal">
+  <defs>
+    <radialGradient id="waxBaseGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#B83A5A"/>
+      <stop offset="45%" stop-color="#8B2942"/>
+      <stop offset="85%" stop-color="#4A101D"/>
+      <stop offset="100%" stop-color="#2A0810"/>
+    </radialGradient>
+    <linearGradient id="sealGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8DC"/>
+      <stop offset="25%" stop-color="#FFD700"/>
+      <stop offset="60%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <filter id="sealShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sealShadow)">
+    <!-- Organic Melted Wax Outer Contour -->
+    <path d="M 100 15 
+             C 125 12, 148 25, 165 42 
+             C 182 60, 192 85, 188 112 
+             C 184 138, 168 162, 145 178 
+             C 122 192, 95 190, 70 184 
+             C 45 178, 22 160, 14 135 
+             C 6 110, 12 82, 26 60 
+             C 40 38, 68 18, 100 15 Z" 
+          fill="url(#waxBaseGrad)" stroke="#5A1222" stroke-width="2"/>
+
+    <!-- Inner Wax Ridge Rim -->
+    <circle cx="100" cy="100" r="68" fill="none" stroke="#681525" stroke-width="6" opacity="0.6"/>
+    <circle cx="100" cy="100" r="62" fill="#75182B" stroke="url(#sealGoldGrad)" stroke-width="2.5"/>
+
+    <!-- Gold Beaded Ring -->
+    <circle cx="100" cy="100" r="54" fill="none" stroke="url(#sealGoldGrad)" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Central Crown & Monogram Emblem -->
+    <g transform="translate(100, 75)">
+      <!-- Mini Crown -->
+      <path d="M -16 0 L -12 -12 L -6 -5 L 0 -15 L 6 -5 L 12 -12 L 16 0 Z" fill="url(#sealGoldGrad)"/>
+      <rect x="-18" y="0" width="36" height="3" rx="1" fill="url(#sealGoldGrad)"/>
+    </g>
+
+    <!-- Stylized Monogram S & A -->
+    <g transform="translate(100, 115)" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="700" fill="url(#sealGoldGrad)">
+      <text x="0" y="0" font-size="28" letter-spacing="1">S &amp; A</text>
+    </g>
+  </g>
+</svg>

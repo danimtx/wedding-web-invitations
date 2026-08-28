@@ -1,0 +1,17 @@
+# Archivos de salida y configuraciones locales
+skill_output.txt
+skills-lock.json
+
+# Ignorar todo dentro del directorio de agentes por defecto
+.agents/*
+
+# Permitir la evaluación del directorio de skills
+!.agents/skills/
+
+# Ignorar todas las skills individuales
+.agents/skills/*
+
+# Pero NO ignorar nuestra skill principal de creación de invitaciones
+!.agents/skills/wedding-invitation-builder/
+!.agents/skills/wedding-invitation-builder/**
+
