@@ -15,11 +15,11 @@ Este repositorio contiene una colección de **plantillas y modelos de invitacion
 
 El proyecto está organizado de manera modular:
 
-*   **Carpetas `model-*`** (ej. `model-carmesi-gold`, `model-dark-luxury-1`, `model-dark-marble-kintsugi`):
-    Cada una de estas carpetas es una invitación web completa y autosuficiente. Contiene todo su código (`index.html`, `styles.css`, `main.js`) y una carpeta interna `assets/` con sus fotos, fondos y tipografías específicas.
-*   **`svg/`**: Colección de archivos vectoriales e iconos genéricos utilizados para adornar las invitaciones.
-*   **`mp3/`**: Banco de sonidos y canciones de fondo libres o de muestra utilizadas en los diseños.
-*   **`resources/`**: Galería de recursos gráficos de apoyo (texturas de acuarela, papel, mármol, flores, marcos dorados) que sirven de base para nuevos diseños.
+*   **`templates/`**: Aquí viven todos los diseños completos (ej. `carmesi-gold`, `dark-luxury-1`, `dark-marble-kintsugi`). Cada carpeta es una invitación web 100% independiente con su código (`index.html`, `styles.css`, `main.js`) y sus recursos (`assets/`).
+*   **`shared_assets/`**: Es la caja de herramientas global del proyecto de donde sacamos piezas para construir nuevas invitaciones.
+    *   **`audio/`**: Banco de canciones de fondo en MP3.
+    *   **`icons/`**: Colección de archivos vectoriales e iconos genéricos (SVG).
+    *   **`images/`**: Galería de texturas de acuarela, papel, mármol, flores y marcos decorativos.
 *   **`scripts/`**: Utilidades y pequeños scripts de ayuda para el desarrollo del proyecto.
 
 ## 🛠️ Skill de Desarrollo: `wedding-invitation-builder`
@@ -34,8 +34,8 @@ Esta skill actúa como el "motor" y la documentación principal del proyecto. De
 
 ## 🚀 Cómo usar una plantilla
 
-1. Copia cualquiera de las carpetas `model-*` y renómbrala para tu nuevo proyecto.
+1. Entra a `templates/` y copia la carpeta del diseño que te guste, luego renómbrala para tu nuevo proyecto.
 2. Reemplaza las imágenes genéricas dentro de la carpeta `assets/` (como `couple-hero.jpg` o `background.jpg`) con las fotografías reales de los novios.
 3. Edita el archivo `index.html` para actualizar los nombres, fechas, ubicaciones y textos.
 4. Ajusta el número de teléfono en `main.js` para que el RSVP llegue al destino correcto.
-5. Sube la carpeta a cualquier servicio de hosting estático (GitHub Pages, Netlify, Vercel, etc.) y estará lista para compartirse mediante un enlace.
+5. Sube tu carpeta a cualquier servicio de hosting estático (GitHub Pages, Netlify, Vercel, etc.) y estará lista para compartirse mediante un enlace.
