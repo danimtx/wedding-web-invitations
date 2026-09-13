@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <defs>
+    <!-- Gradiente de Pan de Oro Envejecido -->
+    <linearGradient id="goldAntique" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7EAC4" />
+      <stop offset="50%" stop-color="#C5A059" />
+      <stop offset="100%" stop-color="#8C6826" />
+    </linearGradient>
+
+    <!-- Gradiente Verde Ciprés -->
+    <linearGradient id="cypressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#55755E" />
+      <stop offset="100%" stop-color="#233827" />
+    </linearGradient>
+
+    <!-- Divisor Botánico con Ramitas de Olivo -->
+    <g id="divider-botanical">
+      <path d="M 0,15 L 130,15" stroke="url(#goldAntique)" stroke-width="1.2" />
+      <path d="M 230,15 L 360,15" stroke="url(#goldAntique)" stroke-width="1.2" />
+      <!-- Ramitas de olivo centrales entrelazadas -->
+      <path d="M 130,15 Q 180,5 230,15" fill="none" stroke="url(#cypressGrad)" stroke-width="1.5" />
+      <path d="M 160,10 C 152,4 165,0 170,8 Z" fill="url(#cypressGrad)" />
+      <path d="M 175,9 C 182,2 195,6 190,12 Z" fill="url(#goldAntique)" />
+      <path d="M 200,11 C 205,3 218,8 212,14 Z" fill="url(#cypressGrad)" />
+      <ellipse cx="180" cy="18" rx="3.5" ry="5" fill="url(#goldAntique)" />
+    </g>
+
+    <!-- Esquina Botánica Rústica -->
+    <g id="corner-botanical">
+      <path d="M 5,50 L 5,20 C 5,11.7 11.7,5 20,5 L 50,5" fill="none" stroke="url(#goldAntique)" stroke-width="1.5" stroke-linecap="round" />
+      <!-- Hojas de olivo que brotan de la esquina -->
+      <path d="M 5,20 C -2,10 12,8 14,18 Z" fill="url(#cypressGrad)" />
+      <path d="M 20,5 C 10,-2 8,12 18,14 Z" fill="url(#goldAntique)" />
+      <ellipse cx="12" cy="12" rx="3" ry="4.5" fill="url(#goldAntique)" />
+    </g>
+  </defs>
+</svg>

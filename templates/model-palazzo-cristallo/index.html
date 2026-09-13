@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Isabella &amp; Sebastián · Nuestra Boda · 23.10.2027 · Santa Cruz, Bolivia</title>
+  <meta name="description"
+    content="Invitación digital exclusiva a la boda de Isabella & Sebastián en el Palacio de Cristal. Sábado 23 de Octubre de 2027. Santa Cruz de la Sierra, Bolivia.">
+  <meta name="theme-color" content="#FAF7F5">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:title" content="Isabella & Sebastián · Nuestra Boda en el Palacio de Cristal 💎✨">
+  <meta property="og:type" content="website">
+  <meta property="og:description"
+    content="Tenemos el honor de invitarte a celebrar nuestro matrimonio en el Gran Orangerie &amp; Palacio de Cristal. Sábado 23 de Octubre de 2027. Santa Cruz de la Sierra, Bolivia.">
+  <meta property="og:image" content="https://danimtx.github.io/wedding-web-invitations/assets/couple-hero.jpg">
+
+  <!-- Google Fonts: Alta Joyería & Cristal Contemporáneo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Pinyon+Script&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome 6.5.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Three.js r128 para WebGL 3D Experience (Cáusticas Prismáticas & Polvo de Nácar) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Hoja de Estilos Palazzo di Cristallo -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- CAPA DE FONDO FIJA CON TEXTURA DE MÁRMOL BLANCO Y POLVO DE NÁCAR -->
+  <div class="fixed-crystal-bg" aria-hidden="true"></div>
+
+  <!-- SVG CLIP PATHS GLOBALES PARA BISELES DE CRISTAL Y GEMAS -->
+  <svg class="svg-defs-global" width="0" height="0" viewBox="0 0 100 100" style="position:absolute; width:0; height:0;">
+    <defs>
+      <!-- Gradientes Maestros en Oro Champagne Rosado -->
+      <linearGradient id="roseGoldGlobal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFF5E6" />
+        <stop offset="35%" stop-color="#EED5BF" />
+        <stop offset="70%" stop-color="#D4AA85" />
+        <stop offset="100%" stop-color="#9E6E4A" />
+      </linearGradient>
+
+      <!-- 1. Corte Octogonal Biselado (Hero Principal) -->
+      <clipPath id="clipOctagonBevel" clipPathUnits="objectBoundingBox">
+        <polygon points="0.25,0 0.75,0 1,0.22 1,0.78 0.75,1 0.25,1 0,0.78 0,0.22" />
+      </clipPath>
+
+      <!-- 2. Diamante Marquise / Ventana Ojival de Cristal (Story 1) -->
+      <clipPath id="clipMarquiseCrystal" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5,0 C 0.85,0.1 1,0.35 1,0.65 L 1,0.95 C 1,0.98 0.96,1 0.92,1 L 0.08,1 C 0.04,1 0,0.98 0,0.95 L 0,0.65 C 0,0.35 0.15,0.1 0.5,0 Z" />
+      </clipPath>
+
+      <!-- 3. Faceta de Esmeralda Rectangular (Story 2) -->
+      <clipPath id="clipEmeraldCut" clipPathUnits="objectBoundingBox">
+        <polygon points="0.12,0 0.88,0 1,0.12 1,0.88 0.88,1 0.12,1 0,0.88 0,0.12" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- CANVAS 3D DE CÁUSTICAS PRISMÁTICAS Y POLVO DE NÁCAR EN THREE.JS -->
+  <canvas id="prism-3d-canvas" class="prism-3d-canvas" aria-hidden="true"></canvas>
+
+  <!-- ELEMENTO DE AUDIO PRINCIPAL (Piano & Cello Contemporáneo) -->
+  <audio id="bg-music" src="assets/song.mp3" loop preload="auto"></audio>
+
+  <!-- ==================================================================
+       SECCIÓN 0 · ESTUCHE DE LINO CON PLACA DE ACRÍLICO 3D (COVER SCREEN)
+  =================================================================== -->
+  <div id="cover-overlay" class="cover-overlay" role="dialog" aria-modal="true" aria-label="Apertura de Estuche de Cristal">
+    <div class="cover-iridescent-glow"></div>
+
+    <div class="slipcase-scene">
+      <div class="slipcase-container" id="slipcase-box">
+
+        <!-- Estuche de Lino Aperlado (Slipcase Exterior) -->
+        <div class="slipcase-sheath" id="slipcase-sheath">
+          <div class="sheath-cutout-notch"></div>
+          <div class="sheath-monogram-emboss">
+            <img src="svg/crystal-crest.svg" alt="Monograma de Isabella & Sebastián" class="sheath-crest-icon">
+          </div>
+          <span class="sheath-hint"><i class="fa-solid fa-gem"></i> DESLIZAR PARA ABRIR</span>
+        </div>
+
+        <!-- Placa de Acrílico Translúcido 3D (Se extrae deslizándose hacia arriba) -->
+        <div class="acrylic-invitation-plate" id="acrylic-plate">
+          <div class="acrylic-shimmer-beam"></div>
+          <div class="acrylic-beveled-edge"></div>
+
+          <!-- Broche Joya Facetado de Oro Champagne -->
+          <div class="jewel-clasp-wrap" id="jewel-clasp-btn" tabindex="0" role="button" aria-label="Extraer placa de acrílico y abrir invitación">
+            <div class="jewel-pulse-halo"></div>
+            <div class="jewel-octagon-disc">
+              <div class="jewel-crest-letters">
+                <span>I</span><span class="jewel-amp">&amp;</span><span>S</span>
+              </div>
+              <div class="jewel-star-sparkle"></div>
+            </div>
+            <span class="jewel-tap-hint"><i class="fa-regular fa-hand-pointer"></i> TOCAR EL CRISTAL</span>
+          </div>
+
+          <p class="acrylic-eyebrow">NUESTRA BODA</p>
+          <h1 class="acrylic-names">
+            <span>Isabella</span>
+            <span class="acrylic-amp">&amp;</span>
+            <span>Sebastián</span>
+          </h1>
+
+          <div class="acrylic-divider" aria-hidden="true">
+            <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
+              <path d="M 0,10 L 75,10 L 100,2 L 125,10 L 200,10" stroke="url(#roseGoldGlobal)" stroke-width="1.4" />
+              <polygon points="100,2 105,7 100,12 95,7" fill="url(#roseGoldGlobal)" />
+            </svg>
+          </div>
+
+          <p class="acrylic-date">SÁBADO · 23 DE OCTUBRE DE 2027</p>
+          <p class="acrylic-city">SANTA CRUZ DE LA SIERRA · BOLIVIA</p>
+
+          <!-- Saludo Personalizado al Invitado (URL ?invitado=...) -->
+          <div class="guest-card-acrylic">
+            <span class="guest-tag-crystal"><i class="fa-regular fa-gem"></i> INVITACIÓN PERSONAL</span>
+            <p id="guest-greeting" class="guest-greeting-text">Tenemos el honor de invitarte</p>
+          </div>
+
+          <button id="enter-invitation-btn" class="btn-crystal-gold btn-open-acrylic">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>INGRESAR A LA INVITACIÓN</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       DYNAMIC ISLAND · CÁPSULA DE CRISTAL FACETADO (APPLE STYLE)
+  =================================================================== -->
+  <aside id="dynamic-island" class="dynamic-island" aria-label="Controlador musical flotante">
+    <div class="island-pill" id="island-pill-trigger">
+      <!-- Mini Vinilo de Oro Champagne -->
+      <div class="mini-vinyl-wrap" id="island-vinyl">
+        <div class="mini-vinyl-grooves"></div>
+        <div class="mini-vinyl-center"></div>
+      </div>
+
+      <!-- Ondas Ecualizadoras Prismáticas -->
+      <div class="audio-wave-visualizer" id="island-wave">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </div>
+
+      <div class="island-meta">
+        <span class="island-song-title">A Thousand Years · Cello Solo</span>
+        <span class="island-song-artist">Orquesta de Cámara · Melodía Nupcial</span>
+      </div>
+
+      <button class="island-ctrl-btn" id="island-play-pause" aria-label="Reproducir o pausar música">
+        <i class="fa-solid fa-play" id="island-icon-state"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================================================================
+       CONTENEDOR PRINCIPAL DE LA INVITACIÓN
+  =================================================================== -->
+  <main id="main-content" class="invitation-container">
+
+    <!-- ================================================================
+         SECCIÓN 1 · HERO PRINCIPAL
+    ================================================================= -->
+    <header class="hero-section" id="hero">
+      <div class="hero-crest-container scroll-reveal">
+        <img src="svg/crystal-crest.svg" alt="Monograma Joya de Isabella & Sebastián" class="hero-crest-img">
+      </div>
+
+      <div class="hero-eyebrow-wrap scroll-reveal">
+        <span class="hero-eyebrow-pill">NUESTRO MATRIMONIO</span>
+      </div>
+
+      <h1 class="hero-title scroll-reveal">
+        <span class="hero-name">Isabella</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="hero-name">Sebastián</span>
+      </h1>
+
+      <p class="hero-subtitle scroll-reveal">
+        Con inmenso gozo y bajo el resplandor de nuestro amor, tenemos el honor de invitarte a celebrar nuestra unión matrimonial
+      </p>
+
+      <!-- Retrato de los Novios en Marco Octogonal de Cristal Biselado -->
+      <div class="hero-portrait-container scroll-reveal">
+        <div class="portrait-crystal-frame">
+          <div class="portrait-crystal-inner">
+            <img src="assets/couple-hero.jpg" alt="Retrato de gala de Isabella y Sebastián" class="portrait-image">
+          </div>
+          <div class="portrait-crystal-bevel-border" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="hero-meta-badge scroll-reveal">
+        <span class="meta-crystal-icon"><i class="fa-solid fa-gem"></i></span>
+        <span class="meta-date-text">23 DE OCTUBRE DE 2027</span>
+        <span class="meta-sep">·</span>
+        <span class="meta-city-text">SANTA CRUZ DE LA SIERRA</span>
+      </div>
+    </header>
+
+    <!-- ================================================================
+         SECCIÓN 2 · BIENVENIDA & CUENTA REGRESIVA
+    ================================================================= -->
+    <section class="section-welcome" id="bienvenida">
+      <div class="content-wrapper">
+        <div class="welcome-card acrylic-card scroll-reveal">
+          <div class="crystal-prism-icon" aria-hidden="true">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <h2 class="section-title">El Resplandor De Una Promesa Eterna</h2>
+          <p class="welcome-prose">
+            La vida nos unió con la delicadeza y la fuerza de un diamante. Hoy queremos compartir con ustedes,
+            nuestros seres más queridos, el instante en que sellamos este compromiso para siempre.
+          </p>
+        </div>
+
+        <!-- Reloj de Alta Joyería (Tabular Nums) -->
+        <div class="countdown-row scroll-reveal" id="countdown-clock">
+          <div class="countdown-card acrylic-box">
+            <span class="count-num" id="timer-days">00</span>
+            <span class="count-lbl">DÍAS</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-card acrylic-box">
+            <span class="count-num" id="timer-hours">00</span>
+            <span class="count-lbl">HORAS</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-card acrylic-box">
+            <span class="count-num" id="timer-minutes">00</span>
+            <span class="count-lbl">MINUTOS</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-card acrylic-box">
+            <span class="count-num" id="timer-seconds">00</span>
+            <span class="count-lbl">SEGUNDOS</span>
+          </div>
+        </div>
+
+        <!-- Estado Especial de Celebración -->
+        <div class="celebration-box acrylic-card" id="celebration-banner" style="display:none;">
+          <i class="fa-solid fa-sparkles celebration-icon"></i>
+          <h3>¡HOY ES NUESTRO GRAN DÍA!</h3>
+          <p>El Palacio de Cristal abre sus puertas. Gracias por acompañarnos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 3 · BENDICIÓN DE NUESTROS PADRES
+    ================================================================= -->
+    <section class="section-parents" id="padres">
+      <div class="content-wrapper">
+        <div class="parents-card acrylic-card scroll-reveal">
+          <span class="section-eyebrow">CON LA BENDICIÓN DE NUESTROS PADRES</span>
+          <h2 class="section-title">Nuestras Familias</h2>
+
+          <div class="parents-layout">
+            <!-- Padres de la Novia -->
+            <div class="parents-column">
+              <span class="column-tag">PADRES DE LA NOVIA</span>
+              <h3 class="parent-name">Claudia Justiniano de Antelo</h3>
+              <h3 class="parent-name">Mauricio Antelo Cronenbold</h3>
+            </div>
+
+            <!-- Divisor de Diamante Central -->
+            <div class="parents-prism-divider" aria-hidden="true">
+              <div class="divider-beam"></div>
+              <div class="divider-diamond-badge">
+                <i class="fa-solid fa-gem"></i>
+              </div>
+              <div class="divider-beam"></div>
+            </div>
+
+            <!-- Padres del Novio -->
+            <div class="parents-column">
+              <span class="column-tag">PADRES DEL NOVIO</span>
+              <h3 class="parent-name">Mariela Vaca Díez de Landívar</h3>
+              <h3 class="parent-name">Sebastián Landívar Gutiérrez</h3>
+            </div>
+          </div>
+
+          <p class="parents-blessing-quote">
+            Agradecidos por su ejemplo inquebrantable, su apoyo generoso y el amor con el que han iluminado nuestras vidas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 4 · NUESTRA HISTORIA (LOVE STORY)
+    ================================================================= -->
+    <section class="section-story" id="historia">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">NUESTRO CAMINO JUNTOS</span>
+          <h2 class="section-title">Momentos Que Brillan</h2>
+          <p class="section-lead">Los tres instantes que forjaron la promesa de una vida entera compartida.</p>
+        </div>
+
+        <div class="story-facets-list">
+          <!-- Hito 1 -->
+          <article class="facet-story-item facet-even scroll-reveal">
+            <div class="facet-photo shape-marquise">
+              <img src="assets/story/story-1.jpg" alt="Primer encuentro de la pareja">
+            </div>
+            <div class="facet-text acrylic-card">
+              <span class="facet-year">OCTUBRE 2021</span>
+              <h3 class="facet-title">El Primer Destello</h3>
+              <p class="facet-desc">
+                Una coincidencia perfecta en una galería de arte contemporáneo. Una conversación de minutos se transformó
+                en horas que parecieron segundos, descubriendo una complicidad mágica.
+              </p>
+            </div>
+          </article>
+
+          <!-- Hito 2 -->
+          <article class="facet-story-item facet-odd scroll-reveal">
+            <div class="facet-photo shape-emerald-cut">
+              <img src="assets/story/story-2.jpg" alt="Viajes y aventuras compartidas">
+            </div>
+            <div class="facet-text acrylic-card">
+              <span class="facet-year">AGOSTO 2024</span>
+              <h3 class="facet-title">Nuestra Mayor Travesía</h3>
+              <p class="facet-desc">
+                Recorriendo ciudades, compartiendo proyectos y superando desafíos de la mano. Cada experiencia reafirmó
+                la convicción de que juntos cualquier meta se vuelve luminosa y posible.
+              </p>
+            </div>
+          </article>
+
+          <!-- Hito 3 -->
+          <article class="facet-story-item facet-even scroll-reveal">
+            <div class="facet-photo shape-marquise">
+              <img src="assets/story/story-3.jpg" alt="La propuesta matrimonial">
+            </div>
+            <div class="facet-text acrylic-card">
+              <span class="facet-year">DICIEMBRE 2025</span>
+              <h3 class="facet-title">Un "Sí" Grabado en Cristal</h3>
+              <p class="facet-desc">
+                En una terraza iluminada al caer la noche, entre velas y melodías de piano, el destello de un anillo y la
+                pregunta más hermosa que selló nuestro destino para siempre.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 5 · DÓNDE & CUÁNDO (EVENTOS)
+    ================================================================= -->
+    <section class="section-events" id="eventos">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">DÓNDE &amp; CUÁNDO</span>
+          <h2 class="section-title">Ceremonia &amp; Recepción</h2>
+          <p class="section-lead">Acompáñanos en los escenarios donde celebraremos nuestro matrimonio.</p>
+        </div>
+
+        <div class="events-crystal-grid">
+          <!-- Ceremonia -->
+          <div class="event-crystal-card acrylic-card scroll-reveal">
+            <div class="event-prism-badge">
+              <i class="fa-solid fa-church"></i>
+            </div>
+            <span class="event-tag">CEREMONIA RELIGIOSA</span>
+            <h3 class="event-name">Capilla Nuestra Señora de la Encarnación</h3>
+
+            <div class="event-info-rows">
+              <div class="info-item">
+                <i class="fa-regular fa-clock"></i>
+                <span><strong>17:00 HRS</strong> · Se ruega puntualidad</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Av. San Martín esq. Calle 7 Este, Equipetrol Norte</span>
+              </div>
+            </div>
+
+            <div class="event-btn-stack">
+              <a href="https://maps.google.com/?q=Equipetrol+Norte+Santa+Cruz+Bolivia" target="_blank" rel="noopener" class="btn-crystal-outline">
+                <i class="fa-solid fa-map-location-dot"></i> VER EN GOOGLE MAPS
+              </a>
+              <button class="btn-crystal-gold add-to-calendar-btn" data-event="ceremony">
+                <i class="fa-solid fa-calendar-plus"></i> AGREGAR AL CALENDARIO
+              </button>
+            </div>
+          </div>
+
+          <!-- Recepción -->
+          <div class="event-crystal-card acrylic-card scroll-reveal">
+            <div class="event-prism-badge">
+              <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <span class="event-tag">RECEPCIÓN DE GALA</span>
+            <h3 class="event-name">Palacio de Cristal · Gran Orangerie</h3>
+
+            <div class="event-info-rows">
+              <div class="info-item">
+                <i class="fa-regular fa-clock"></i>
+                <span><strong>19:30 HRS</strong> · Cóctel de Bienvenida &amp; Cena</span>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Urubó Country Club, Km 3 Camino al Urubó</span>
+              </div>
+            </div>
+
+            <div class="event-btn-stack">
+              <a href="https://maps.google.com/?q=Urubo+Santa+Cruz+Bolivia" target="_blank" rel="noopener" class="btn-crystal-outline">
+                <i class="fa-solid fa-map-location-dot"></i> VER EN GOOGLE MAPS
+              </a>
+              <button class="btn-crystal-gold add-to-calendar-btn" data-event="reception">
+                <i class="fa-solid fa-calendar-plus"></i> AGREGAR AL CALENDARIO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 6 · ITINERARIO CRONOLÓGICO
+    ================================================================= -->
+    <section class="section-itinerary" id="itinerario">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">CRONOGRAMA NUPCIAL</span>
+          <h2 class="section-title">Itinerario de la Noche</h2>
+          <p class="section-lead">Los tiempos clave para acompañarnos en cada instante memorable.</p>
+        </div>
+
+        <div class="itinerary-rail-wrapper scroll-reveal">
+          <div class="itinerary-crystal-rail" aria-hidden="true"></div>
+
+          <!-- 17:00 Ceremonia -->
+          <div class="rail-item">
+            <div class="rail-node"><i class="fa-solid fa-ring"></i></div>
+            <div class="rail-box acrylic-card">
+              <span class="rail-time">17:00 HRS</span>
+              <h3 class="rail-title">Ceremonia Religiosa</h3>
+              <p class="rail-desc">Bendición y votos matrimoniales en la Capilla de la Encarnación.</p>
+            </div>
+          </div>
+
+          <!-- 18:30 Sesión de Fotos -->
+          <div class="rail-item">
+            <div class="rail-node"><i class="fa-solid fa-camera"></i></div>
+            <div class="rail-box acrylic-card">
+              <span class="rail-time">18:30 HRS</span>
+              <h3 class="rail-title">Sesión Fotográfica &amp; Traslado</h3>
+              <p class="rail-desc">Retratos familiares y recepción en la Orangerie de Cristal del Urubó.</p>
+            </div>
+          </div>
+
+          <!-- 19:30 Cóctel -->
+          <div class="rail-item">
+            <div class="rail-node"><i class="fa-solid fa-martini-glass"></i></div>
+            <div class="rail-box acrylic-card">
+              <span class="rail-time">19:30 HRS</span>
+              <h3 class="rail-title">Cóctel de Bienvenida &amp; Champagne</h3>
+              <p class="rail-desc">Mixología de autor, canapés gourmet y violines contemporáneos en vivo.</p>
+            </div>
+          </div>
+
+          <!-- 21:00 Banquete -->
+          <div class="rail-item">
+            <div class="rail-node"><i class="fa-solid fa-utensils"></i></div>
+            <div class="rail-box acrylic-card">
+              <span class="rail-time">21:00 HRS</span>
+              <h3 class="rail-title">Cena de Gala &amp; Brindis de Honor</h3>
+              <p class="rail-desc">Menú en cuatro tiempos de alta gastronomía maridado con vinos de reserva.</p>
+            </div>
+          </div>
+
+          <!-- 22:30 Primer Baile -->
+          <div class="rail-item">
+            <div class="rail-node"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="rail-box acrylic-card">
+              <span class="rail-time">22:30 HRS</span>
+              <h3 class="rail-title">Primer Baile de Esposos</h3>
+              <p class="rail-desc">Apertura ceremonial de la pista con espectáculo de luces y niebla baja.</p>
+            </div>
+          </div>
+
+          <!-- 23:30 Gran Fiesta -->
+          <div class="rail-item">
+            <div class="rail-node"><i class="fa-solid fa-music"></i></div>
+            <div class="rail-box acrylic-card">
+              <span class="rail-time">23:30 HRS</span>
+              <h3 class="rail-title">Fiesta del Palacio &amp; DJ</h3>
+              <p class="rail-desc">Barra libre premium, banda en vivo y fiesta inolvidable hasta el amanecer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 7 · CÓDIGO DE VESTIMENTA (DRESS CODE)
+    ================================================================= -->
+    <section class="section-dresscode" id="vestimenta">
+      <div class="content-wrapper">
+        <div class="dresscode-card acrylic-card scroll-reveal">
+          <div class="dresscode-crest-icon">
+            <i class="fa-solid fa-vest-patches"></i>
+          </div>
+          <span class="section-eyebrow">CÓDIGO DE VESTIMENTA</span>
+          <h2 class="section-title">Black Tie · Rigurosa Etiqueta</h2>
+
+          <div class="dresscode-guides-grid">
+            <div class="guide-box">
+              <div class="guide-title"><i class="fa-solid fa-user-tie"></i> CABALLEROS</div>
+              <p class="guide-desc">
+                Smoking clásico negro (Tuxedo) con solapa de seda, camisa blanca de etiqueta y pajarita negra.
+              </p>
+            </div>
+            <div class="guide-box">
+              <div class="guide-title"><i class="fa-solid fa-person-dress"></i> DAMAS</div>
+              <p class="guide-desc">
+                Vestido largo de noche en telas sofisticadas (satén, mikado, gasa de seda). Joyería fina y calzado de gala.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paleta de Colores Sugerida -->
+          <div class="swatches-palette-wrap">
+            <span class="palette-headline">PALETA DE COLORES RECOMENDADA PARA INVITADOS:</span>
+            <div class="swatches-row">
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #14171E; border: 1.5px solid #D4AA85;"></span>
+                <span class="swatch-name">Midnight Black</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #253347;"></span>
+                <span class="swatch-name">Sapphire Slate</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #A07865;"></span>
+                <span class="swatch-name">Champagne Rose</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #5B4752;"></span>
+                <span class="swatch-name">Plum Quartz</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #D8C3B0; border: 1px solid #D4AA85;"></span>
+                <span class="swatch-name">Silk Pearl</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="courtesy-note-pill">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Por favor, reservamos exclusivamente el color blanco e ivory para la novia.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 8 · HOSPEDAJE DE LUJO SUGERIDO
+    ================================================================= -->
+    <section class="section-hotels" id="hospedaje">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">HOSPEDAJE DE GRAN CATEGORÍA</span>
+          <h2 class="section-title">Hoteles Recomendados</h2>
+          <p class="section-lead">Convenios y tarifas corporativas preferenciales para nuestros invitados de fuera de la ciudad.</p>
+        </div>
+
+        <div class="hotels-crystal-grid">
+          <!-- Hotel 1 -->
+          <div class="hotel-crystal-card acrylic-card scroll-reveal">
+            <div class="hotel-stars-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="hotel-name">Los Tajibos · Tribute Portfolio Hotel</h3>
+            <p class="hotel-address"><i class="fa-solid fa-location-dot"></i> Av. San Martín #455, Equipetrol</p>
+            <p class="hotel-desc">Comodidad icónica 5 estrellas, jardines tropicales, spa de lujo y gastronomía internacional.</p>
+            <div class="hotel-coupon-box">
+              <span class="coupon-lbl">CÓDIGO DE TARIFA NUPCIAL:</span>
+              <span class="coupon-val">BODA-ISABELLA-SEBAS</span>
+            </div>
+            <a href="tel:+59133421000" class="btn-crystal-outline"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVAS</a>
+          </div>
+
+          <!-- Hotel 2 -->
+          <div class="hotel-crystal-card acrylic-card scroll-reveal">
+            <div class="hotel-stars-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="hotel-name">Marriott Hotel Santa Cruz</h3>
+            <p class="hotel-address"><i class="fa-solid fa-location-dot"></i> 4to Anillo esq. Av. San Martín</p>
+            <p class="hotel-desc">Diseño contemporáneo de alta gama, piscina panorámica en terraza y cercanía directa al Urubó.</p>
+            <div class="hotel-coupon-box">
+              <span class="coupon-lbl">CÓDIGO DE TARIFA NUPCIAL:</span>
+              <span class="coupon-val">BODA-MARRIOTT-LUX</span>
+            </div>
+            <a href="tel:+59133718000" class="btn-crystal-outline"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVAS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 9 · MESA DE REGALOS / LLUVIA DE SOBRES
+    ================================================================= -->
+    <section class="section-gifts" id="regalos">
+      <div class="content-wrapper">
+        <div class="gifts-card acrylic-card scroll-reveal">
+          <div class="gifts-jewel-header">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <span class="section-eyebrow">MESA DE REGALOS</span>
+          <h2 class="section-title">Lluvia de Sobres</h2>
+          <p class="gifts-prose">
+            Su compañía y bendición en nuestra boda es el mayor regalo que podemos recibir. Si desean hacernos un presente
+            adicional para iniciar nuestro nuevo hogar, ponemos a su disposición nuestras cuentas bancarias.
+          </p>
+
+          <div class="bank-accounts-grid">
+            <!-- Cuenta 1: BNB -->
+            <div class="bank-card acrylic-box">
+              <div class="bank-card-top">
+                <span class="bank-title">Banco Nacional de Bolivia (BNB)</span>
+                <span class="bank-currency">CUENTA EN BOLIVIANOS (BOB)</span>
+              </div>
+              <div class="bank-card-details">
+                <p><strong>Titular:</strong> Isabella Antelo Justiniano</p>
+                <p><strong>CI:</strong> 8214950 SC</p>
+                <p><strong>Número de Cuenta:</strong> <span class="bank-num" id="acc-bnb">3501984201</span></p>
+              </div>
+              <button class="btn-copy-account" data-target="acc-bnb">
+                <i class="fa-regular fa-copy"></i> COPIAR CUENTA
+              </button>
+            </div>
+
+            <!-- Cuenta 2: Banco Mercantil -->
+            <div class="bank-card acrylic-box">
+              <div class="bank-card-top">
+                <span class="bank-title">Banco Mercantil Santa Cruz</span>
+                <span class="bank-currency">CUENTA EN DÓLARES (USD)</span>
+              </div>
+              <div class="bank-card-details">
+                <p><strong>Titular:</strong> Sebastián Landívar Vaca Díez</p>
+                <p><strong>CI:</strong> 7910243 SC</p>
+                <p><strong>Número de Cuenta:</strong> <span class="bank-num" id="acc-bmsc">4012903847</span></p>
+              </div>
+              <button class="btn-copy-account" data-target="acc-bmsc">
+                <i class="fa-regular fa-copy"></i> COPIAR CUENTA
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 10 · AVISO IMPORTANTE (SOLO ADULTOS)
+    ================================================================= -->
+    <section class="section-notice" id="aviso">
+      <div class="content-wrapper">
+        <div class="notice-card acrylic-card scroll-reveal">
+          <div class="notice-crest">
+            <i class="fa-solid fa-martini-glass-citrus"></i>
+          </div>
+          <span class="notice-tag">PROTOCOLO NUPCIAL</span>
+          <h2 class="notice-title">Recepción Exclusiva Para Adultos</h2>
+          <p class="notice-text">
+            Amamos profundamente a los niños de nuestras familias y amigos, sin embargo, deseamos que esta velada sea un
+            momento de absoluto descanso y diversión para todos. Agradecemos su comprensión al asistir sin pequeños a la fiesta.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 11 · GALERÍA DE FOTOS & HASHTAG
+    ================================================================= -->
+    <section class="section-gallery" id="galeria">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">RECUERDOS DE ALTA GAMA</span>
+          <h2 class="section-title">Galería Fotográfica</h2>
+          <div class="hashtag-pill">
+            <i class="fa-brands fa-instagram"></i>
+            <span>#BodaIsabellaYSebastian</span>
+          </div>
+          <p class="section-lead">Captura y comparte tus recuerdos con nosotros utilizando nuestro hashtag oficial.</p>
+        </div>
+
+        <div class="gallery-crystal-grid scroll-reveal">
+          <div class="gallery-tile" data-index="0">
+            <img src="assets/gallery/gallery-1.jpg" alt="Fotografía de preboda 1">
+            <div class="tile-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-tile" data-index="1">
+            <img src="assets/gallery/gallery-2.jpg" alt="Fotografía de preboda 2">
+            <div class="tile-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-tile" data-index="2">
+            <img src="assets/gallery/gallery-3.jpg" alt="Fotografía de preboda 3">
+            <div class="tile-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-tile" data-index="3">
+            <img src="assets/gallery/gallery-4.jpg" alt="Fotografía de preboda 4">
+            <div class="tile-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-tile" data-index="4">
+            <img src="assets/gallery/gallery-5.jpg" alt="Fotografía de preboda 5">
+            <div class="tile-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-tile" data-index="5">
+            <img src="assets/gallery/gallery-6.jpg" alt="Fotografía de preboda 6">
+            <div class="tile-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 12 · CONFIRMACIÓN DE ASISTENCIA RSVP (WHATSAPP)
+    ================================================================= -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="content-wrapper">
+        <div class="rsvp-card acrylic-card scroll-reveal">
+          <div class="rsvp-icon">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+          <span class="section-eyebrow">CONFIRMACIÓN PROTOCOLAR</span>
+          <h2 class="section-title">Confirma Tu Asistencia</h2>
+          <p class="rsvp-prompt">
+            Agradecemos confirmar tu asistencia antes del <strong>25 de Septiembre de 2027</strong> para asegurar tu lugar en nuestro banquete de bodas.
+          </p>
+
+          <form id="rsvp-form" class="rsvp-form" onsubmit="return false;">
+            <!-- Nombre Completo -->
+            <div class="form-field">
+              <label for="guest-name" class="field-label">Nombre Completo del Invitado</label>
+              <input type="text" id="guest-name" class="field-input" placeholder="Ej. Familia Vargas Peña o Carlos Antelo" required>
+            </div>
+
+            <!-- Asistencia -->
+            <div class="form-field">
+              <label class="field-label">¿Nos acompañarás en el Palacio de Cristal?</label>
+              <div class="radios-group">
+                <label class="radio-card">
+                  <input type="radio" name="attendance" value="si" checked>
+                  <span class="radio-gem"></span>
+                  <span>Sí, con gran ilusión asistiré</span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="attendance" value="no">
+                  <span class="radio-gem"></span>
+                  <span>Lamentablemente no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Número de Pases -->
+            <div class="form-field" id="guest-passes-group">
+              <label for="guest-count" class="field-label">Número de Pases a Confirmar</label>
+              <select id="guest-count" class="field-select">
+                <option value="1">1 Pase</option>
+                <option value="2" selected>2 Pases</option>
+                <option value="3">3 Pases</option>
+                <option value="4">4 Pases</option>
+              </select>
+            </div>
+
+            <!-- Canción -->
+            <div class="form-field">
+              <label for="guest-song" class="field-label">¿Qué canción no puede faltar en la fiesta?</label>
+              <input type="text" id="guest-song" class="field-input" placeholder="Canción y artista favorito">
+            </div>
+
+            <!-- Restricciones Dietéticas -->
+            <div class="form-field">
+              <label for="guest-diet" class="field-label">Restricciones Alimentarias (Opcional)</label>
+              <input type="text" id="guest-diet" class="field-input" placeholder="Ej. Vegetariano, celíaco, mariscos, etc.">
+            </div>
+
+            <button type="button" id="rsvp-submit-btn" class="btn-crystal-gold btn-submit-rsvp">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>CONFIRMAR ASISTENCIA POR WHATSAPP</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 13 · PIE DE PÁGINA & AGRADECIMIENTO
+    ================================================================= -->
+    <footer class="section-footer" id="pie">
+      <div class="content-wrapper">
+        <div class="footer-crest scroll-reveal">
+          <img src="svg/crystal-crest.svg" alt="Monograma de Isabella y Sebastián" class="footer-crest-svg">
+        </div>
+
+        <h2 class="footer-names scroll-reveal">Isabella &amp; Sebastián</h2>
+        <p class="footer-farewell scroll-reveal">
+          Gracias por iluminar nuestras vidas con su presencia y cariño en nuestro día más especial.
+        </p>
+
+        <p class="footer-date scroll-reveal">23 · OCTUBRE · 2027</p>
+
+        <button id="back-to-top-btn" class="btn-back-top" aria-label="Volver arriba">
+          <i class="fa-solid fa-arrow-up"></i>
+          <span>VOLVER ARRIBA</span>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==================================================================
+       MODAL LIGHTBOX PARA LA GALERÍA
+  =================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar visor">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Foto anterior">&#10094;</button>
+    <div class="lightbox-container">
+      <img id="lightbox-img" src="" alt="Fotografía ampliada en cristal">
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Foto siguiente">&#10095;</button>
+  </div>
+
+  <!-- ==================================================================
+       NOTIFICACIÓN TOAST DE CRISTAL
+  =================================================================== -->
+  <div id="toast-notification" class="toast-crystal-notification" aria-live="polite" role="status">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Cuenta copiada al portapapeles</span>
+  </div>
+
+  <!-- SCRIPT MAESTRO DE LÓGICA Y THREE.JS -->
+  <script src="main.js"></script>
+</body>
+
+</html>

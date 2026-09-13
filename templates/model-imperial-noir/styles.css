@@ -1,0 +1,2135 @@
+/* ==========================================================================
+   MODEL IMPERIAL NOIR · HOJA DE ESTILOS DE ULTRA-LUJO & ALTA COSTURA
+   Diseño: Imperial Obsidian & Liquid Gold · Arquitectura Estándar de 14 Secciones
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & VARIABLES MAESTRAS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Base Nocturna */
+  --color-bg-base: #08090C;
+  --color-bg-surface: #0E1017;
+  --color-bg-card: rgba(14, 17, 24, 0.72);
+  --color-bg-card-hover: rgba(20, 24, 34, 0.85);
+  --color-bg-translucent: rgba(8, 9, 12, 0.88);
+
+  /* Acentos de Pan de Oro Líquido */
+  --color-accent-gold: #D4AF37;
+  --color-accent-gold-light: #FFF8D6;
+  --color-accent-gold-mid: #F3DC7C;
+  --color-accent-gold-dark: #8A6818;
+  --color-accent-gold-deep: #5A400C;
+
+  /* Gradientes Metálicos */
+  --gold-gradient: linear-gradient(135deg, #FFF8D6 0%, #F3DC7C 25%, #D4AF37 50%, #EED59B 75%, #8A6818 100%);
+  --gold-gradient-soft: linear-gradient(135deg, rgba(243, 220, 124, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+  --gold-shimmer: linear-gradient(90deg, transparent, rgba(255, 248, 214, 0.45), transparent);
+
+  /* Tipografía & Textos */
+  --color-text-primary: #F7F5F0;
+  --color-text-secondary: #BDB7AB;
+  --color-text-muted: #7A756C;
+  --color-text-gold: #E5C158;
+
+  /* Bordes & Resplandores */
+  --color-border-gold: rgba(212, 175, 55, 0.28);
+  --color-border-gold-glow: rgba(243, 220, 124, 0.65);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* Sombras Escultóricas de Alta Gama */
+  --shadow-luxury: 0 24px 60px -12px rgba(0, 0, 0, 0.92), 0 0 35px -5px rgba(212, 175, 55, 0.14);
+  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-gold-glow: 0 0 25px rgba(212, 175, 55, 0.35);
+
+  /* Sistema Espacial y Geometría */
+  --radius-card: 18px;
+  --radius-button: 9999px;
+  --radius-sm: 8px;
+  --transition-spring: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & ESTILOS BASE (IMPECCABLE CRAFT FLOOR)
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.7;
+  overflow-x: hidden;
+  letter-spacing: 0.015em;
+  background-color: var(--color-bg-base);
+}
+
+/* Selección Personalizada de Lujo */
+::selection {
+  background-color: var(--color-accent-gold);
+  color: #08090C;
+}
+
+/* Scrollbar Tematizada de Pan de Oro */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #08090C;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-accent-gold-dark), var(--color-accent-gold));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-gold-light);
+}
+
+/* Focus Visible Accesible de Alta Gama */
+:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 3px;
+}
+
+/* Capa de Fondo Fija con Textura de Mármol y Grano Suave */
+.fixed-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(circle at 50% 15%, rgba(26, 32, 45, 0.55) 0%, transparent 65%),
+                    radial-gradient(circle at 80% 85%, rgba(35, 25, 15, 0.4) 0%, transparent 55%),
+                    url('assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.72) contrast(1.1);
+  pointer-events: none;
+}
+
+/* Canvas Global de Polvo de Oro Flotante */
+.global-gold-dust-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* Envoltorio de Contenido Centrado */
+.content-wrapper {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Paneles Glassmorphism de Lujo */
+.glass-panel {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-luxury);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--transition-spring), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--color-border-gold-glow);
+  box-shadow: 0 28px 70px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.22);
+}
+
+/* Textos y Jerarquía Tipográfica */
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.04em;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.header-eyebrow {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.8rem;
+}
+
+.header-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.6;
+}
+
+.section-header-center {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. BOTONES DE ALTA GAMA & MICRO-INTERACCIONES
+   -------------------------------------------------------------------------- */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2rem;
+  background: var(--gold-gradient);
+  color: #08090C;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+  transition: transform 0.25s var(--transition-spring), box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+}
+
+.btn-gold:active {
+  transform: scale(0.97);
+}
+
+.btn-gold-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gold-shimmer);
+  animation: btnShimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes btnShimmer {
+  0% { left: -100%; }
+  35% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.btn-gold-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.8rem;
+  background: rgba(8, 9, 12, 0.6);
+  color: var(--color-accent-gold-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-accent-gold);
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.btn-gold-outline:hover {
+  background: var(--color-accent-gold);
+  color: #08090C;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-gold-outline:active {
+  transform: scale(0.97);
+}
+
+/* --------------------------------------------------------------------------
+   4. SECCIÓN 0 · COVER SCREEN OVERLAY (SOBRE 3D & SELLO DE CERA)
+   -------------------------------------------------------------------------- */
+.cover-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  background-color: #060709;
+  transition: opacity 1.2s var(--transition-smooth), visibility 1.2s var(--transition-smooth);
+  overflow: hidden;
+  perspective: 1400px;
+}
+
+.cover-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cover-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(28, 33, 46, 0.7) 0%, #060709 85%);
+  z-index: 1;
+}
+
+.cover-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cover-webgl-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.envelope-3d-scene {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 520px;
+  perspective: 1200px;
+  margin: auto;
+}
+
+.envelope-3d-container {
+  position: relative;
+  width: 100%;
+  background: #0D0F15;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 12px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(212, 175, 55, 0.2);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+  transition: transform 0.6s var(--transition-spring);
+  transform-style: preserve-3d;
+}
+
+/* Solapa Superior 3D */
+.envelope-flap-top {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 15;
+  pointer-events: none;
+}
+
+.flap-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.8));
+}
+
+.envelope-flap-top.flap-open {
+  transform: rotateX(180deg);
+}
+
+.envelope-body-front {
+  position: relative;
+  z-index: 20;
+}
+
+/* Ornamentos de Esquina */
+.ornament {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+}
+.ornament-tl { top: -2.2rem; left: -1.2rem; }
+.ornament-tr { top: -2.2rem; right: -1.2rem; }
+
+.cover-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  color: var(--color-accent-gold);
+  margin-bottom: 1.2rem;
+}
+
+/* Sello de Cera 3D Interactivo */
+.seal-3d-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0.5rem auto 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s var(--transition-spring);
+}
+
+.seal-3d-wrap:hover {
+  transform: scale(1.08);
+}
+
+.seal-halo-pulse {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+  animation: sealPulse 2.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.seal-orbit-spin {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 175, 55, 0.45);
+  animation: orbitSpin 16s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes orbitSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.seal-disc {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.3);
+  position: relative;
+  background: #7A0C14;
+}
+
+.wax-seal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.seal-3d-wrap:hover .wax-seal-img {
+  transform: rotate(12deg) scale(1.05);
+}
+
+.seal-fallback-badge {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: radial-gradient(circle, #8C101B 0%, #4D050C 100%);
+  border: 2px solid var(--color-accent-gold);
+  border-radius: 50%;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: var(--color-accent-gold-light);
+  font-size: 1.2rem;
+}
+
+.seal-tap-label {
+  position: absolute;
+  bottom: -26px;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent-gold);
+  white-space: nowrap;
+  font-weight: 600;
+  animation: bounceHint 2s infinite;
+}
+
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.cover-monogram {
+  font-family: 'Italiana', 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 1.2rem 0 0.8rem;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mono-amp {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 1.2em;
+  margin: 0 0.2rem;
+  color: var(--color-accent-gold-light);
+  -webkit-text-fill-color: var(--color-accent-gold-light);
+}
+
+.cover-divider {
+  margin: 0.8rem auto;
+}
+
+.cover-date {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.cover-city {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.8rem;
+}
+
+/* Tarjeta Personalizada de Invitado en el Sobre */
+.guest-card-envelope {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.guest-card-tag {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-gold);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.guest-greeting-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-primary);
+}
+
+/* Botón de Apertura del Sobre */
+.btn-open-envelope {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   5. DYNAMIC ISLAND · CONTROLADOR DE MÚSICA FLOTANTE (APPLE STYLE)
+   -------------------------------------------------------------------------- */
+.dynamic-island {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  transition: transform 0.4s var(--transition-spring);
+}
+
+.island-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(12, 14, 20, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 9999px;
+  padding: 0.5rem 1.2rem 0.5rem 0.6rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+  cursor: pointer;
+  transition: all 0.3s var(--transition-spring);
+}
+
+.island-pill:hover {
+  border-color: var(--color-accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.35);
+}
+
+/* Mini Vinilo de Oro Giratorio */
+.mini-vinyl-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #111;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.mini-vinyl-grooves {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #252525 0, #151515 2px, #303030 4px);
+  animation: vinylSpin 4s linear infinite;
+  animation-play-state: paused;
+}
+
+.mini-vinyl-wrap.spinning .mini-vinyl-grooves {
+  animation-play-state: running;
+}
+
+@keyframes vinylSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.mini-vinyl-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  border: 1.5px solid #111;
+}
+
+/* Ondas Ecualizadoras */
+.audio-wave-visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+
+.audio-wave-visualizer .bar {
+  width: 3px;
+  height: 4px;
+  background: var(--color-accent-gold);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.audio-wave-visualizer.active .bar-1 { animation: wavePulse 0.9s infinite ease-in-out alternate; }
+.audio-wave-visualizer.active .bar-2 { animation: wavePulse 0.7s infinite ease-in-out alternate 0.15s; }
+.audio-wave-visualizer.active .bar-3 { animation: wavePulse 1.1s infinite ease-in-out alternate 0.3s; }
+.audio-wave-visualizer.active .bar-4 { animation: wavePulse 0.8s infinite ease-in-out alternate 0.2s; }
+
+@keyframes wavePulse {
+  0% { height: 4px; }
+  100% { height: 18px; }
+}
+
+.island-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.island-song-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.island-song-artist {
+  font-size: 0.68rem;
+  color: var(--color-text-secondary);
+}
+
+.island-ctrl-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-accent-gold);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN 1 · HERO PRINCIPAL
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  padding: 5rem 1.5rem 6rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-glow-back {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 65%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-crest-wrap {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.8rem;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 25px rgba(212, 175, 55, 0.25));
+}
+
+.hero-crest-svg {
+  width: 100%;
+  height: 100%;
+  animation: crestFloat 5s ease-in-out infinite;
+}
+
+@keyframes crestFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.hero-eyebrow-badge {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  color: var(--color-accent-gold);
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 9999px;
+  background: rgba(14, 17, 24, 0.6);
+  backdrop-filter: blur(12px);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-couple-title {
+  font-family: 'Italiana', 'Cinzel Decorative', serif;
+  font-size: clamp(3.2rem, 9vw, 6.2rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-amp {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 1.1em;
+  margin: 0 0.3rem;
+  color: var(--color-accent-gold-light);
+  -webkit-text-fill-color: var(--color-accent-gold-light);
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
+}
+
+/* Silueta de Arco Catedralicio Escultórico */
+.hero-portrait-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 3rem;
+}
+
+.portrait-arch-outer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 6px;
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95));
+}
+
+.portrait-arch-inner {
+  width: 100%;
+  height: 100%;
+  clip-path: url(#clipCathedralArch);
+  -webkit-clip-path: url(#clipCathedralArch);
+  overflow: hidden;
+  position: relative;
+  background: #000;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 1.2s var(--transition-spring);
+}
+
+.portrait-arch-outer:hover .portrait-img {
+  transform: scale(1.05);
+}
+
+.portrait-gold-contour {
+  position: absolute;
+  inset: 0;
+  clip-path: url(#clipCathedralArch);
+  -webkit-clip-path: url(#clipCathedralArch);
+  border: 2px solid var(--color-accent-gold);
+  pointer-events: none;
+  box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.4);
+}
+
+.hero-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 2rem;
+  background: rgba(14, 17, 24, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 9999px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+  box-shadow: 0 0 8px var(--color-accent-gold);
+}
+
+.badge-separator {
+  color: var(--color-accent-gold);
+}
+
+/* --------------------------------------------------------------------------
+   7. SECCIÓN 2 · BIENVENIDA & CUENTA REGRESIVA
+   -------------------------------------------------------------------------- */
+.section-welcome {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.welcome-card {
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.card-filigree-top {
+  margin-bottom: 1.5rem;
+}
+
+.welcome-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* Cajas del Contador */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.countdown-unit-box {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  min-width: 110px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s var(--transition-spring), border-color 0.3s ease;
+}
+
+.countdown-unit-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-gold-glow);
+}
+
+.unit-number {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--color-accent-gold-light);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.unit-label {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-text-secondary);
+}
+
+.countdown-colon {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-accent-gold);
+  line-height: 1;
+}
+
+.celebration-banner {
+  background: var(--gold-gradient-soft);
+  border: 1px solid var(--color-accent-gold);
+  border-radius: var(--radius-card);
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-gold-glow);
+  margin-top: 2rem;
+}
+
+.celebration-banner .banner-icon {
+  font-size: 2.5rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1rem;
+}
+
+.celebration-banner h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: var(--color-accent-gold-light);
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECCIÓN 3 · BENDICIÓN DE LOS PADRES
+   -------------------------------------------------------------------------- */
+.section-parents {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.parents-card {
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+
+.parents-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 3rem 0;
+}
+
+.parents-column {
+  padding: 1.5rem;
+}
+
+.column-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent-gold);
+  margin-bottom: 1rem;
+}
+
+.parent-names {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.parents-center-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.parents-center-divider .divider-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, var(--color-accent-gold), transparent);
+}
+
+.parents-center-divider .divider-crest {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-gold);
+  font-size: 0.9rem;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.parents-footer-note p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   9. SECCIÓN 4 · NUESTRA HISTORIA (LOVE STORY)
+   -------------------------------------------------------------------------- */
+.section-story {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.story-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.story-item {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.story-right {
+  grid-template-columns: 1.2fr 1fr;
+}
+.story-right .story-photo-wrap {
+  order: 2;
+}
+.story-right .story-content {
+  order: 1;
+}
+
+.story-photo-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.6s var(--transition-spring);
+}
+
+.story-photo-wrap:hover {
+  transform: scale(1.03);
+}
+
+.story-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Siluetas Escultóricas SVG */
+.shape-octagon {
+  clip-path: url(#clipOctagonGem);
+  -webkit-clip-path: url(#clipOctagonGem);
+  border: 2px solid var(--color-border-gold);
+}
+
+.shape-gothic {
+  clip-path: url(#clipGothicWindow);
+  -webkit-clip-path: url(#clipGothicWindow);
+  border: 2px solid var(--color-border-gold);
+}
+
+.shape-cameo {
+  clip-path: url(#clipImperialCameo);
+  -webkit-clip-path: url(#clipImperialCameo);
+  border: 2px solid var(--color-border-gold);
+}
+
+.story-content {
+  padding: 3rem 2.5rem;
+}
+
+.story-year {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.story-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.story-text {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECCIÓN 5 · EVENTOS (BENTO GRID CEREMONIA & RECEPCIÓN)
+   -------------------------------------------------------------------------- */
+.section-events {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.events-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.event-bento-card {
+  padding: 3.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.event-icon-badge {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--color-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.event-type-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.6rem;
+}
+
+.event-venue-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1.8rem;
+}
+
+.event-details-list {
+  width: 100%;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.detail-row i {
+  color: var(--color-accent-gold);
+  margin-top: 0.25rem;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.event-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.event-actions .btn-gold,
+.event-actions .btn-gold-outline {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   11. SECCIÓN 6 · ITINERARIO CRONOLÓGICO DE GALA
+   -------------------------------------------------------------------------- */
+.section-itinerary {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.itinerary-path-wrapper {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.itinerary-gold-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 28px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent 0%, var(--color-accent-gold) 15%, var(--color-accent-gold) 85%, transparent 100%);
+}
+
+.itinerary-node {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.itinerary-node:last-child {
+  margin-bottom: 0;
+}
+
+.node-bullet {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0E1017;
+  border: 2px solid var(--color-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-gold);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  transition: transform 0.3s var(--transition-spring);
+}
+
+.itinerary-node:hover .node-bullet {
+  transform: scale(1.15);
+  background: var(--color-accent-gold);
+  color: #08090C;
+}
+
+.node-content {
+  flex: 1;
+  padding: 1.8rem 2rem;
+}
+
+.node-time {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.4rem;
+}
+
+.node-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.35rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.node-desc {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. SECCIÓN 7 · CÓDIGO DE VESTIMENTA (DRESS CODE)
+   -------------------------------------------------------------------------- */
+.section-dresscode {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.dresscode-card {
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+
+.dresscode-icon-header {
+  font-size: 2.8rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1.2rem;
+}
+
+.dresscode-instructions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0 3.5rem;
+  text-align: left;
+}
+
+.dresscode-guide-col {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  padding: 1.8rem;
+}
+
+.guide-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.8rem;
+}
+
+.guide-text {
+  color: var(--color-text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.palette-swatches-wrap {
+  margin-bottom: 2.5rem;
+}
+
+.palette-title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.2rem;
+}
+
+.swatches-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.swatch-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s var(--transition-spring);
+  cursor: pointer;
+}
+
+.swatch-circle:hover {
+  transform: scale(1.18);
+}
+
+.swatch-name {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.dresscode-courtesy-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.85rem 1.8rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  color: var(--color-accent-gold-light);
+  max-width: 680px;
+}
+
+/* --------------------------------------------------------------------------
+   13. SECCIÓN 8 · HOSPEDAJE DE LUJO SUGERIDO
+   -------------------------------------------------------------------------- */
+.section-hotels {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.hotel-card {
+  padding: 3rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hotel-stars {
+  color: var(--color-accent-gold);
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.hotel-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.45rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.hotel-location {
+  font-size: 0.85rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1rem;
+}
+
+.hotel-desc {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.hotel-promo-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--color-accent-gold);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.promo-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.3rem;
+}
+
+.promo-code {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-accent-gold-light);
+  letter-spacing: 0.15em;
+}
+
+/* --------------------------------------------------------------------------
+   14. SECCIÓN 9 · MESA DE REGALOS / LLUVIA DE SOBRES
+   -------------------------------------------------------------------------- */
+.section-gifts {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.gifts-card {
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+
+.gifts-icon-top {
+  font-size: 2.8rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1.2rem;
+}
+
+.gifts-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.bank-accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  text-align: left;
+}
+
+.bank-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 14px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.bank-header .bank-name {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.currency-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-accent-gold);
+}
+
+.bank-details p {
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+}
+
+.bank-acc-num {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-accent-gold-light);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-copy-account {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--color-accent-gold);
+  border-radius: var(--radius-button);
+  color: var(--color-accent-gold-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.btn-copy-account:hover {
+  background: var(--color-accent-gold);
+  color: #08090C;
+}
+
+.btn-copy-account:active {
+  transform: scale(0.97);
+}
+
+/* --------------------------------------------------------------------------
+   15. SECCIÓN 10 · AVISO IMPORTANTE (SOLO ADULTOS)
+   -------------------------------------------------------------------------- */
+.section-notice {
+  padding: 3rem 1.5rem 5rem;
+}
+
+.notice-card {
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.notice-crest {
+  font-size: 2.4rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1rem;
+}
+
+.notice-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.notice-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.notice-body {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   16. SECCIÓN 11 · GALERÍA DE FOTOS & HASHTAG
+   -------------------------------------------------------------------------- */
+.section-gallery {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.hashtag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.5rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 9999px;
+  color: var(--color-accent-gold-light);
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.gallery-sculptural-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-gold);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--transition-spring);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 9, 12, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-gold);
+  font-size: 1.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Modal Lightbox */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(5, 6, 8, 0.95);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  position: relative;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-gold);
+  box-shadow: var(--shadow-luxury);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: var(--color-accent-gold-light);
+  font-size: 2.8rem;
+  cursor: pointer;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(14, 17, 24, 0.6);
+  border: 1px solid var(--color-border-gold);
+  color: var(--color-accent-gold);
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.lightbox-nav:hover {
+  background: var(--color-accent-gold);
+  color: #08090C;
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+/* --------------------------------------------------------------------------
+   17. SECCIÓN 12 · CONFIRMACIÓN DE ASISTENCIA RSVP
+   -------------------------------------------------------------------------- */
+.section-rsvp {
+  padding: 4rem 1.5rem 6rem;
+}
+
+.rsvp-card {
+  padding: 4rem 2.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rsvp-icon-top {
+  font-size: 2.8rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 1.2rem;
+}
+
+.rsvp-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 2.8rem;
+  line-height: 1.7;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  caret-color: var(--color-accent-gold);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--color-accent-gold-light);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+  outline: none;
+}
+
+.form-select option {
+  background: #0D0F15;
+  color: var(--color-text-primary);
+}
+
+.rsvp-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.radio-label input[type="radio"] {
+  display: none;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-accent-gold);
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+}
+
+.btn-rsvp-submit {
+  width: 100%;
+  padding: 1.1rem;
+  margin-top: 1rem;
+  font-size: 0.92rem;
+}
+
+/* --------------------------------------------------------------------------
+   18. SECCIÓN 13 · PIE DE PÁGINA & AGRADECIMIENTO
+   -------------------------------------------------------------------------- */
+.section-footer {
+  padding: 6rem 1.5rem 5rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border-gold);
+  background: linear-gradient(180deg, transparent 0%, rgba(14, 17, 24, 0.8) 100%);
+  position: relative;
+}
+
+.footer-crest {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 6px 15px rgba(212, 175, 55, 0.2));
+}
+
+.footer-crest-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer-names {
+  font-family: 'Italiana', 'Cinzel Decorative', serif;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.footer-gratitude {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.footer-date {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  color: var(--color-accent-gold);
+  margin-bottom: 3rem;
+}
+
+.btn-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-button);
+  padding: 0.75rem 1.8rem;
+  color: var(--color-accent-gold);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back-to-top:hover {
+  background: var(--color-accent-gold);
+  color: #08090C;
+  transform: translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   19. NOTIFICACIÓN TOAST FLOTANTE
+   -------------------------------------------------------------------------- */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(12, 14, 20, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--color-accent-gold);
+  border-radius: var(--radius-button);
+  padding: 0.9rem 2rem;
+  color: var(--color-text-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.3);
+  z-index: 999999;
+  opacity: 0;
+  transition: all 0.4s var(--transition-spring);
+  pointer-events: none;
+}
+
+.toast-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-notification i {
+  color: var(--color-accent-gold);
+  font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   20. ANIMACIONES DE SCROLL REVEAL (PURPOSEFUL MOTION)
+   -------------------------------------------------------------------------- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.165, 0.84, 0.44, 1),
+              transform 0.85s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   21. RESPONSIVIDAD & MEDIA QUERIES (MOBILE FIRST COMPATIBILITY)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .envelope-3d-scene {
+    max-width: 92%;
+  }
+
+  .envelope-3d-container {
+    padding: 2.5rem 1.2rem 2rem;
+  }
+
+  .parents-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .parents-center-divider .divider-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+  }
+
+  .parents-center-divider {
+    flex-direction: row;
+  }
+
+  .story-item,
+  .story-right {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .story-right .story-photo-wrap {
+    order: 0;
+  }
+  .story-right .story-content {
+    order: 1;
+  }
+
+  .countdown-container {
+    gap: 0.6rem;
+  }
+
+  .countdown-unit-box {
+    padding: 1rem 0.8rem;
+    min-width: 70px;
+  }
+
+  .countdown-colon {
+    font-size: 1.5rem;
+  }
+
+  .dynamic-island {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .itinerary-gold-line {
+    left: 20px;
+  }
+
+  .node-bullet {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  .itinerary-node {
+    gap: 1.2rem;
+  }
+
+  .node-content {
+    padding: 1.4rem;
+  }
+}
+
+/* Reducción de movimiento para accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>L'Édition Nupciale · Sofía & Leonardo</title>
+  <meta name="description" content="Edición Privada de la boda de Sofía de la Torre y Leonardo Alba. San Miguel de Allende, México.">
+
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="svg/vogue-crest.svg">
+
+  <!-- Google Fonts: Bodoni Moda, Cormorant Garamond, Italianno, Montserrat, Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Italianno&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons for UI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN for utility baseline -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vogue: {
+              cream: '#FBF8F3',
+              paper: '#F3EFE6',
+              parchment: '#EBE5D8',
+              gold: '#C59B51',
+              goldlight: '#E2C485',
+              darkgold: '#8C672A',
+              espresso: '#1A1817',
+              charcoal: '#2D2926',
+              muted: '#7E766D'
+            }
+          },
+          fontFamily: {
+            bodoni: ['"Bodoni Moda"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Italianno"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif'],
+            cinzel: ['"Cinzel"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Three.js for 3D Silk Ribbon Untie Experience -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-vogue-cream text-vogue-espresso selection:bg-vogue-gold selection:text-white antialiased overflow-x-hidden">
+
+  <!-- ========================================================================= -->
+  <!-- 1. MAGAZINE COVER EXPERIENCE WITH 3D SILK RIBBON (INTERACTIVE UNTIE)      -->
+  <!-- ========================================================================= -->
+  <div id="magazine-cover-container" class="fixed inset-0 z-50 flex items-center justify-center bg-[#121110] transition-transform duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)]">
+    
+    <!-- Left and Right Magazine Flaps (Bookfold Effect) -->
+    <div class="magazine-gate absolute inset-0 flex w-full h-full pointer-events-none">
+      <div id="gate-left" class="w-1/2 h-full bg-[#1A1817] border-r border-[#C59B51]/30 transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] origin-left"></div>
+      <div id="gate-right" class="w-1/2 h-full bg-[#1A1817] border-l border-[#C59B51]/30 transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)] origin-right"></div>
+    </div>
+
+    <!-- Magazine Outer Cover Wrapper -->
+    <div id="magazine-cover-content" class="relative z-10 w-full max-w-4xl h-[92vh] max-h-[860px] mx-4 bg-[#FAF7F2] shadow-2xl border border-[#C59B51]/40 flex flex-col justify-between p-6 sm:p-10 md:p-12 overflow-hidden select-none transition-opacity duration-700">
+      
+      <!-- Subtle Paper Grain Background -->
+      <div class="absolute inset-0 bg-[radial-gradient(#C59B51_0.5px,transparent_0.5px)] [background-size:16px_16px] opacity-10 pointer-events-none"></div>
+
+      <!-- Top Editorial Barcode & Header Details -->
+      <div class="flex justify-between items-start border-b border-vogue-espresso/20 pb-4 relative z-20">
+        <div>
+          <p class="font-cinzel text-[10px] tracking-[0.3em] uppercase text-vogue-darkgold font-bold">ÉDITION SPÉCIALE D'AMOUR</p>
+          <p class="font-sans text-[11px] tracking-[0.2em] text-vogue-muted uppercase mt-0.5">VOL. I / N° 084 / NOVEMBRE 2026</p>
+        </div>
+
+        <div class="text-center hidden sm:block">
+          <p class="font-bodoni italic text-sm text-vogue-espresso/80">L'amour est l'ultime chef-d'œuvre</p>
+        </div>
+
+        <div class="text-right flex items-center gap-3">
+          <div class="text-right">
+            <span class="inline-block px-2 py-0.5 border border-vogue-gold text-[9px] font-sans font-semibold tracking-widest text-vogue-darkgold uppercase">R.S.V.P. PRIVÉ</span>
+            <p class="text-[9px] tracking-[0.15em] text-vogue-muted mt-0.5 uppercase">SAN MIGUEL DE ALLENDE</p>
+          </div>
+          <!-- Barcode Graphic -->
+          <div class="hidden md:flex flex-col items-end opacity-70">
+            <div class="h-6 w-14 bg-[repeating-linear-gradient(90deg,#1A1817,#1A1817_1px,transparent_1px,transparent_3px,#1A1817_3px,#1A1817_5px)]"></div>
+            <span class="text-[7px] font-mono tracking-widest text-vogue-espresso mt-0.5">14112026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giant Vogue Masthead -->
+      <div class="relative text-center my-auto py-4 z-20">
+        <h1 class="font-bodoni text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extralight tracking-[-0.04em] text-vogue-espresso uppercase leading-none">
+          L'ÉDITION
+        </h1>
+        <p class="font-script text-4xl sm:text-6xl md:text-7xl text-vogue-gold absolute top-[55%] left-1/2 -translate-x-1/2 -rotate-6 pointer-events-none drop-shadow-sm whitespace-nowrap">
+          Nupciale
+        </p>
+      </div>
+
+      <!-- Center Hero Editorial Frame Preview -->
+      <div class="relative w-full max-w-lg mx-auto aspect-[16/10] sm:aspect-[16/9] border border-vogue-gold/30 p-2 bg-white shadow-sm z-20">
+        <div class="w-full h-full relative overflow-hidden group">
+          <img src="assets/couple-hero.jpg" alt="Sofía y Leonardo" class="w-full h-full object-cover grayscale contrast-105 group-hover:scale-105 transition-transform duration-1000">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end text-white">
+            <div>
+              <p class="text-[9px] font-cinzel tracking-[0.25em] text-vogue-goldlight uppercase">CELEBRACIÓN MATRIMONIAL</p>
+              <h2 class="font-bodoni text-xl sm:text-2xl font-light tracking-wide">Sofía de la Torre & Leonardo Alba</h2>
+            </div>
+            <p class="font-sans text-[10px] tracking-widest text-white/80 uppercase">14.11.2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Cover Footer & Subtitles -->
+      <div class="border-t border-vogue-espresso/20 pt-4 flex flex-col sm:flex-row justify-between items-center gap-2 relative z-20 text-center sm:text-left">
+        <div>
+          <p class="font-cinzel text-[10px] tracking-[0.2em] text-vogue-espresso uppercase font-semibold">LE GRAND BAL & LA CÉRÉMONIE</p>
+          <p class="font-sans text-[10px] tracking-[0.15em] text-vogue-muted uppercase">SAN MIGUEL DE ALLENDE / GUANAJUATO</p>
+        </div>
+        
+        <!-- Golden Wax Seal & Untie Prompt Button -->
+        <div class="flex items-center gap-3">
+          <div class="text-right hidden sm:block">
+            <p class="font-cinzel text-[9px] tracking-widest text-vogue-gold uppercase font-bold">DESLIZA O TOCA</p>
+            <p class="text-[9px] text-vogue-muted uppercase">PARA ABRIR LA EDICIÓN</p>
+          </div>
+          <button id="btn-untie-ribbon" type="button" aria-label="Abrir invitación desatando cinta" class="group relative flex items-center gap-2 px-5 py-2.5 bg-vogue-espresso text-vogue-cream rounded-full border border-vogue-gold/60 shadow-lg hover:bg-vogue-gold hover:text-vogue-espresso hover:border-vogue-espresso transition-all duration-300 transform hover:scale-105 cursor-pointer pointer-events-auto">
+            <span class="w-2 h-2 rounded-full bg-vogue-gold group-hover:bg-vogue-espresso animate-ping"></span>
+            <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase font-bold">DESATAR CINTA</span>
+            <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Three.js 3D Ribbon Interactive Canvas Layer (Overlaid across the magazine cover) -->
+      <div id="ribbon-3d-wrapper" class="absolute inset-0 z-30 pointer-events-none overflow-hidden flex items-center justify-center">
+        <canvas id="canvas-ribbon-3d" class="w-full h-full pointer-events-auto cursor-grab active:cursor-grabbing"></canvas>
+        
+        <!-- Floating Central Gold Medallion on Ribbon -->
+        <div id="ribbon-medallion" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-[#9A7B4F] via-[#DFBA73] to-[#8F6B38] p-[2px] shadow-2xl cursor-pointer pointer-events-auto transition-transform duration-300 hover:scale-110 active:scale-95 flex items-center justify-center animate-pulse">
+          <div class="w-full h-full rounded-full bg-[#1A1817] flex flex-col items-center justify-center border border-[#DFBA73]/50 text-[#DFBA73] relative overflow-hidden">
+            <img src="svg/vogue-crest.svg" alt="Monograma S&L" class="w-12 h-12 object-contain">
+            <span class="text-[7px] font-cinzel tracking-[0.2em] uppercase font-bold text-center mt-0.5">TIRAR</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. STICKY TOP MINIMALIST EDITORIAL TICKER & SOUND FREQUENCY BAR          -->
+  <!-- ========================================================================= -->
+  <header id="top-editorial-bar" class="sticky top-0 z-40 bg-vogue-cream/90 backdrop-blur-md border-b border-vogue-gold/30 px-4 sm:px-8 py-2.5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Editorial Masthead Tag -->
+      <div class="flex items-center gap-3">
+        <a href="#cover" class="font-cinzel text-xs sm:text-sm tracking-[0.25em] font-bold text-vogue-espresso uppercase hover:text-vogue-gold transition-colors flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-vogue-gold"></span>
+          L'ÉDITION NUPCIALE
+        </a>
+        <span class="hidden md:inline-block text-vogue-muted/50">/</span>
+        <span class="hidden md:inline-block font-sans text-[11px] tracking-widest text-vogue-muted uppercase">SOFÍA & LEONARDO</span>
+      </div>
+
+      <!-- Music Player & Animated Audio Frequency Bars -->
+      <div class="flex items-center gap-3 sm:gap-4 bg-white/80 border border-vogue-gold/40 px-3 sm:px-4 py-1.5 rounded-full shadow-sm">
+        
+        <!-- Live Audio Waveform Bars -->
+        <div id="audio-waveform" class="flex items-end gap-1 h-3.5 w-6 cursor-pointer" title="Frecuencia Sonora">
+          <span class="wave-bar w-[2px] bg-vogue-gold rounded-full h-2"></span>
+          <span class="wave-bar w-[2px] bg-vogue-gold rounded-full h-3.5"></span>
+          <span class="wave-bar w-[2px] bg-vogue-gold rounded-full h-1.5"></span>
+          <span class="wave-bar w-[2px] bg-vogue-gold rounded-full h-3"></span>
+        </div>
+
+        <div class="hidden sm:block text-[10px] font-sans tracking-wider uppercase text-vogue-charcoal truncate max-w-[170px]">
+          <span id="track-name">Nocturne No. 2 · Chopin</span>
+        </div>
+
+        <button id="btn-toggle-audio" type="button" aria-label="Reproducir o pausar música" class="w-7 h-7 rounded-full bg-vogue-espresso text-vogue-gold hover:bg-vogue-gold hover:text-vogue-espresso transition-colors flex items-center justify-center text-xs">
+          <i id="audio-icon" class="fa-solid fa-play"></i>
+        </button>
+
+        <!-- Hidden Audio Element -->
+        <audio id="wedding-audio" loop preload="auto">
+          <source src="assets/song.mp3" type="audio/mp3">
+        </audio>
+      </div>
+
+      <!-- Quick Action / RSVP Link -->
+      <div class="flex items-center gap-2">
+        <a href="#rsvp" class="px-3.5 py-1 text-[10px] sm:text-xs font-cinzel font-semibold tracking-widest uppercase border border-vogue-espresso text-vogue-espresso hover:bg-vogue-espresso hover:text-white transition-all rounded-sm">
+          CONFIRMAR RSVP
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. MAIN LOOKBOOK CONTENT                                                  -->
+  <!-- ========================================================================= -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-24 sm:space-y-36">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 01: THE COVER STORY / GRAND EDITORIAL SPREAD                   -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="story" class="lookbook-section pt-6">
+      
+      <!-- Issue Date Header Ticker -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-y border-vogue-espresso/20 py-2 mb-8 text-[11px] font-sans tracking-[0.25em] text-vogue-muted uppercase">
+        <span>SÁBADO, 14 DE NOVIEMBRE DE 2026</span>
+        <span class="font-bodoni italic normal-case text-sm text-vogue-espresso">Édition Spéciale de Haute Société</span>
+        <span>SAN MIGUEL DE ALLENDE, MÉXICO</span>
+      </div>
+
+      <!-- Giant Editorial Title -->
+      <div class="text-center mb-12">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">ARTICLE DE FOND // COVER STORY</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-vogue-espresso uppercase leading-[0.95]">
+          L'Éternité d'un Regard
+        </h2>
+        <p class="font-script text-3xl sm:text-5xl text-vogue-gold mt-2 -rotate-1">
+          La promesa que une dos universos
+        </p>
+      </div>
+
+      <!-- Asymmetric Two-Column Magazine Spread -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        
+        <!-- Left Column: High-Fashion Narrative & Pull-Quote (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="border-l-2 border-vogue-gold pl-6 py-2 my-4">
+            <blockquote class="font-bodoni italic text-2xl sm:text-3xl text-vogue-espresso leading-snug">
+              "El amor auténtico no se mira el uno al otro; camina hacia el horizonte con la certeza de que toda la vida fue un ensayo para encontrarse."
+            </blockquote>
+            <cite class="block font-sans text-xs tracking-[0.2em] text-vogue-muted uppercase mt-3 font-semibold">
+              Sofía de la Torre & Leonardo Alba / Votos Privados
+            </cite>
+          </div>
+
+          <!-- Editorial Multi-Column Paragraphs with Drop Cap -->
+          <div class="prose max-w-none text-vogue-charcoal/90 text-sm sm:text-base leading-relaxed space-y-4">
+            <p>
+              <span class="editorial-dropcap float-left font-bodoni text-5xl sm:text-6xl font-light leading-none mr-3 mt-1 text-vogue-gold">E</span>
+              n los atardeceres dorados donde la arquitectura colonial y la serenidad de los olivares se funden en silencio, dos almas decidieron transformar su complicidad en un juramento eterno. Sofía y Leonardo convocan a sus seres más queridos a una noche concebida como una oda a la devoción, la belleza clásica y el arte de celebrar la vida.
+            </p>
+            <p>
+              Esta no es una velada ordinaria; es un banquete sensorial, un encuentro íntimo de alta sociedad donde cada detalle, desde las notas orquestales que acarician el crepúsculo hasta la última copa de reserva familiar, ha sido curado para permanecer en la memoria como una obra inmortal.
+            </p>
+          </div>
+
+          <!-- Chronometer of Anticipation (Editorial Countdown) -->
+          <div class="pt-6 border-t border-vogue-espresso/15">
+            <span class="font-cinzel text-[10px] tracking-[0.3em] uppercase text-vogue-darkgold font-bold block mb-4">COMPTE À REBOURS // TIEMPO RESTANTE</span>
+            
+            <div id="editorial-countdown" class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+              <div class="bg-white border border-vogue-gold/30 p-3 sm:p-4 shadow-sm">
+                <span id="countdown-days" class="font-bodoni text-2xl sm:text-4xl text-vogue-espresso font-light block">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-vogue-muted uppercase">DÍAS</span>
+              </div>
+              <div class="bg-white border border-vogue-gold/30 p-3 sm:p-4 shadow-sm">
+                <span id="countdown-hours" class="font-bodoni text-2xl sm:text-4xl text-vogue-espresso font-light block">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-vogue-muted uppercase">HORAS</span>
+              </div>
+              <div class="bg-white border border-vogue-gold/30 p-3 sm:p-4 shadow-sm">
+                <span id="countdown-minutes" class="font-bodoni text-2xl sm:text-4xl text-vogue-espresso font-light block">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-vogue-muted uppercase">MINUTOS</span>
+              </div>
+              <div class="bg-white border border-vogue-gold/30 p-3 sm:p-4 shadow-sm">
+                <span id="countdown-seconds" class="font-bodoni text-2xl sm:text-4xl text-vogue-espresso font-light block">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-vogue-muted uppercase">SEGUNDOS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Full-Bleed Editorial Portrait (5 cols) -->
+        <div class="lg:col-span-5 space-y-3">
+          <div class="relative bg-white p-3 border border-vogue-gold/40 shadow-xl">
+            <div class="relative overflow-hidden aspect-[4/5] group">
+              <img src="assets/couple-hero.jpg" alt="Sofía y Leonardo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div class="absolute top-3 right-3 px-2 py-1 bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest text-vogue-goldlight uppercase">
+                FIG. 01 // ARCHIVE 2026
+              </div>
+            </div>
+            <div class="pt-3 pb-1 text-center border-t border-vogue-gold/20 mt-2">
+              <p class="font-bodoni italic text-sm text-vogue-espresso">"El destino nos unió en París; San Miguel sellará nuestra promesa."</p>
+              <p class="font-sans text-[9px] tracking-[0.2em] text-vogue-muted uppercase mt-0.5">FOTOGRAFÍA EDITORIAL EXCLUSIVA</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 02: THE CELEBRATION (SANCTUAIRE & HACIENDA)                     -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="celebration" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">LES LIEUX DE CÉLÉBRATION // DESTINOS</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          La Cérémonie & La Fête
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-vogue-muted uppercase">
+          DOS ESPACIOS HISTÓRICOS ELEGIDOS PARA UNA VELADA IRREPETIBLE
+        </p>
+      </div>
+
+      <!-- Two Architectural Cards in Editorial Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Location 1: Ceremonia Religiosa -->
+        <div class="bg-white border border-vogue-gold/40 p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:border-vogue-gold transition-colors">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start border-b border-vogue-gold/30 pb-3">
+              <div>
+                <span class="text-[10px] font-cinzel tracking-[0.3em] text-vogue-darkgold uppercase font-bold">ACTO SOLEMNE</span>
+                <h3 class="font-bodoni text-2xl sm:text-3xl text-vogue-espresso font-normal">Capilla de San Antonio</h3>
+              </div>
+              <span class="font-bodoni text-2xl text-vogue-gold italic">16:30 h</span>
+            </div>
+
+            <p class="text-sm font-sans text-vogue-charcoal leading-relaxed">
+              Consagración del sacramento matrimonial en el corazón histórico de San Miguel. Solicitamos puntualidad de etiqueta para dar inicio a la liturgia con el cortejo de honor.
+            </p>
+
+            <div class="space-y-1.5 py-2 text-xs font-sans text-vogue-muted">
+              <p><i class="fa-solid fa-location-dot text-vogue-gold mr-2"></i> Calle del Campanario N° 14, Centro Histórico</p>
+              <p><i class="fa-solid fa-compass text-vogue-gold mr-2"></i> 20°54'52.3"N 100°44'43.8"W</p>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-6 border-t border-vogue-espresso/10 flex flex-wrap items-center gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-vogue-espresso text-vogue-cream text-[10px] font-cinzel tracking-[0.2em] uppercase rounded-sm hover:bg-vogue-gold hover:text-vogue-espresso transition-all flex items-center gap-2">
+              <i class="fa-solid fa-diamond-turn-right"></i> GOOGLE MAPS
+            </a>
+            <button type="button" onclick="window.downloadCalendarEvent('ceremony')" class="px-4 py-2 border border-vogue-espresso text-vogue-espresso text-[10px] font-cinzel tracking-[0.2em] uppercase rounded-sm hover:bg-vogue-paper transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR FECHA
+            </button>
+          </div>
+        </div>
+
+        <!-- Location 2: Banquete & Gala Nocturna -->
+        <div class="bg-white border border-vogue-gold/40 p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:border-vogue-gold transition-colors">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start border-b border-vogue-gold/30 pb-3">
+              <div>
+                <span class="text-[10px] font-cinzel tracking-[0.3em] text-vogue-darkgold uppercase font-bold">RÉCEPTION & GALA</span>
+                <h3 class="font-bodoni text-2xl sm:text-3xl text-vogue-espresso font-normal">Hacienda Las Trinitarias</h3>
+              </div>
+              <span class="font-bodoni text-2xl text-vogue-gold italic">18:30 h</span>
+            </div>
+
+            <p class="text-sm font-sans text-vogue-charcoal leading-relaxed">
+              Cóctel de bienvenida en los jardines de cipreses, seguido de banquete gastronómico en el gran salón de cristal, brindis de honor y fiesta hasta la madrugada.
+            </p>
+
+            <div class="space-y-1.5 py-2 text-xs font-sans text-vogue-muted">
+              <p><i class="fa-solid fa-location-dot text-vogue-gold mr-2"></i> Camino a la Alborada Km 3.5, Valle de Alcocer</p>
+              <p><i class="fa-solid fa-car text-vogue-gold mr-2"></i> Servicio de Valet Parking & Seguridad privada</p>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-6 border-t border-vogue-espresso/10 flex flex-wrap items-center gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-vogue-espresso text-vogue-cream text-[10px] font-cinzel tracking-[0.2em] uppercase rounded-sm hover:bg-vogue-gold hover:text-vogue-espresso transition-all flex items-center gap-2">
+              <i class="fa-solid fa-diamond-turn-right"></i> CÓMO LLEGAR
+            </a>
+            <button type="button" onclick="window.downloadCalendarEvent('party')" class="px-4 py-2 border border-vogue-espresso text-vogue-espresso text-[10px] font-cinzel tracking-[0.2em] uppercase rounded-sm hover:bg-vogue-paper transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR GALA
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 03: THE MICHELIN-STAR ITINERARY / MENU DÉGUSTATION            -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="itinerary" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">ORDRE DU JOUR // MENU DÉGUSTATION</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          L'Itinéraire Gastronomique
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-vogue-muted uppercase">
+          SEIS TIEMPOS CURADOS PARA UNA VELADA SENSORIAL SIN PRECEDENTES
+        </p>
+      </div>
+
+      <!-- Michelin Tasting Menu Course Layout -->
+      <div class="max-w-4xl mx-auto bg-white border border-vogue-gold/40 p-8 sm:p-14 shadow-lg relative">
+        <div class="absolute inset-3 border border-vogue-gold/20 pointer-events-none"></div>
+
+        <div class="space-y-10 relative z-10">
+
+          <!-- Service I -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-vogue-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-bodoni text-xl font-medium text-vogue-darkgold">16:30 hrs</span>
+              <span class="block font-sans text-[10px] tracking-widest text-vogue-muted uppercase">SERVICE I</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-bodoni text-lg sm:text-xl font-normal text-vogue-espresso">L'Arrivée & Sainte Cérémonie</h4>
+              <p class="font-sans text-xs text-vogue-charcoal/80 mt-1">
+                Entrada del cortejo solemne, marcha nupcial con ensamble de cuerdas y entrega de votos eternos ante el altar.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service II -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-vogue-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-bodoni text-xl font-medium text-vogue-darkgold">18:00 hrs</span>
+              <span class="block font-sans text-[10px] tracking-widest text-vogue-muted uppercase">SERVICE II</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-bodoni text-lg sm:text-xl font-normal text-vogue-espresso">Cocktail d'Or & Jazz au Crépuscule</h4>
+              <p class="font-sans text-xs text-vogue-charcoal/80 mt-1">
+                Aperitivos de autor en las terrazas de la hacienda, copas de bienvenida y sesión de saxofón al atardecer.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service III -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-vogue-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-bodoni text-xl font-medium text-vogue-darkgold">19:30 hrs</span>
+              <span class="block font-sans text-[10px] tracking-widest text-vogue-muted uppercase">SERVICE III</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-bodoni text-lg sm:text-xl font-normal text-vogue-espresso">Banquet de Haute Cuisine</h4>
+              <p class="font-sans text-xs text-vogue-charcoal/80 mt-1">
+                Cena de gala en 4 tiempos maridada con selección de vinos reserva de Rioja y Valle de Guadalupe.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service IV -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-vogue-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-bodoni text-xl font-medium text-vogue-darkgold">21:30 hrs</span>
+              <span class="block font-sans text-[10px] tracking-widest text-vogue-muted uppercase">SERVICE IV</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-bodoni text-lg sm:text-xl font-normal text-vogue-espresso">La Première Valse & Toast d'Honneur</h4>
+              <p class="font-sans text-xs text-vogue-charcoal/80 mt-1">
+                Apertura oficial de la pista de baile, vals de los recién casados y cascada de champaña junto a los padrinos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service V -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-vogue-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-bodoni text-xl font-medium text-vogue-darkgold">22:30 hrs</span>
+              <span class="block font-sans text-[10px] tracking-widest text-vogue-muted uppercase">SERVICE V</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-bodoni text-lg sm:text-xl font-normal text-vogue-espresso">Grand Bal & DJ Set Électronique</h4>
+              <p class="font-sans text-xs text-vogue-charcoal/80 mt-1">
+                Iluminación inmersiva, barra libre de mixología prémium y fiesta hasta altas horas de la noche.
+              </p>
+            </div>
+          </div>
+
+          <!-- Service VI -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline">
+            <div class="sm:col-span-3">
+              <span class="font-bodoni text-xl font-medium text-vogue-darkgold">02:00 hrs</span>
+              <span class="block font-sans text-[10px] tracking-widest text-vogue-muted uppercase">SERVICE VI</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-bodoni text-lg sm:text-xl font-normal text-vogue-espresso">Tornaboda de Medianoche & Churros</h4>
+              <p class="font-sans text-xs text-vogue-charcoal/80 mt-1">
+                Estación gourmet de trasnochadores con antojitos mexicanos de autor, chocolate caliente y café de olla.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 04: STYLE GUIDE & HAUTE COUTURE RUNWAY MOODBOARD               -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="style" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">LOOKBOOK & DRESS CODE // ETIQUETA</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          Guide de Style
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.2em] text-vogue-darkgold uppercase font-semibold">
+          BLACK TIE EDITORIAL / ÉLÉGANCE FORMELLE
+        </p>
+      </div>
+
+      <!-- Editorial Runway Cards & Swatch Palette -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Dames Guidelines -->
+        <div class="lg:col-span-4 bg-white border border-vogue-gold/30 p-6 sm:p-8 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="border-b border-vogue-gold/30 pb-3 mb-4">
+              <span class="text-[10px] font-cinzel tracking-[0.25em] text-vogue-muted uppercase">SILHOUETTE NO. 1</span>
+              <h3 class="font-bodoni text-2xl text-vogue-espresso font-normal">Pour les Dames</h3>
+            </div>
+            <p class="text-sm font-sans text-vogue-charcoal leading-relaxed mb-4">
+              Vestido largo de noche o alta costura. Telas sugeridas: seda, terciopelo, satén, crepé estructurado o gasa.
+            </p>
+            <div class="p-3 bg-vogue-paper/60 border-l-2 border-vogue-gold text-xs font-sans text-vogue-charcoal">
+              <p class="font-semibold text-vogue-espresso">Nota de exclusividad:</p>
+              <p class="text-vogue-muted mt-0.5">Agradecemos reservar los tonos blanco, marfil, perla y champagne claro exclusivamente para la novia.</p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-vogue-espresso/10 text-[10px] font-sans tracking-widest text-vogue-muted uppercase">
+            CALZADO RECOMENDADO: TACÓN CÓMODO O BLOQUE
+          </div>
+        </div>
+
+        <!-- Central Palette Swatches -->
+        <div class="lg:col-span-4 bg-white border border-vogue-gold/50 p-6 sm:p-8 flex flex-col justify-between shadow-md text-center">
+          <div>
+            <span class="text-[10px] font-cinzel tracking-[0.3em] text-vogue-darkgold uppercase font-bold block mb-1">NUANCIER TEXTILE</span>
+            <h3 class="font-bodoni text-2xl text-vogue-espresso font-normal mb-6">Paleta de Inspiración</h3>
+            
+            <div class="grid grid-cols-5 gap-2 sm:gap-3 my-6">
+              <!-- Swatch 1 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#141414] shadow-md border border-black/10 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-vogue-muted uppercase block mt-1.5 font-semibold">Noir</span>
+                <span class="font-mono text-[7px] text-vogue-muted/60 block">#141414</span>
+              </div>
+              <!-- Swatch 2 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#2C2523] shadow-md border border-black/10 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-vogue-muted uppercase block mt-1.5 font-semibold">Cacao</span>
+                <span class="font-mono text-[7px] text-vogue-muted/60 block">#2C2523</span>
+              </div>
+              <!-- Swatch 3 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#7A8B7B] shadow-md border border-black/10 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-vogue-muted uppercase block mt-1.5 font-semibold">Sauge</span>
+                <span class="font-mono text-[7px] text-vogue-muted/60 block">#7A8B7B</span>
+              </div>
+              <!-- Swatch 4 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#B87352] shadow-md border border-black/10 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-vogue-muted uppercase block mt-1.5 font-semibold">Terre</span>
+                <span class="font-mono text-[7px] text-vogue-muted/60 block">#B87352</span>
+              </div>
+              <!-- Swatch 5 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#C59B51] shadow-md border border-black/10 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-vogue-muted uppercase block mt-1.5 font-semibold">Or</span>
+                <span class="font-mono text-[7px] text-vogue-muted/60 block">#C59B51</span>
+              </div>
+            </div>
+
+            <p class="text-xs font-sans text-vogue-muted italic">
+              "Una sinfonía cromática sobria, cálida y de alta costura inspirada en la luz de San Miguel."
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-vogue-espresso/10 text-[10px] font-cinzel tracking-widest text-vogue-gold uppercase font-bold">
+            ATMÓSFERA EDITORIAL
+          </div>
+        </div>
+
+        <!-- Messieurs Guidelines -->
+        <div class="lg:col-span-4 bg-white border border-vogue-gold/30 p-6 sm:p-8 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="border-b border-vogue-gold/30 pb-3 mb-4">
+              <span class="text-[10px] font-cinzel tracking-[0.25em] text-vogue-muted uppercase">SILHOUETTE NO. 2</span>
+              <h3 class="font-bodoni text-2xl text-vogue-espresso font-normal">Pour les Messieurs</h3>
+            </div>
+            <p class="text-sm font-sans text-vogue-charcoal leading-relaxed mb-4">
+              Smoking formal (esmoquin) negro o azul noche con solapa de seda, camisa blanca de gala, corbatín o pajarita de seda y pañuelo.
+            </p>
+            <div class="p-3 bg-vogue-paper/60 border-l-2 border-vogue-gold text-xs font-sans text-vogue-charcoal">
+              <p class="font-semibold text-vogue-espresso">Detalle sartorial:</p>
+              <p class="text-vogue-muted mt-0.5">Zapato formal de charol o cuero lustrado. El uso de corbata tradicional es opcional si se prefiere pajarita clásica.</p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-vogue-espresso/10 text-[10px] font-sans tracking-widest text-vogue-muted uppercase">
+            ETIQUETA RIGUROSA / BLACK TIE
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 05: INTERACTIVE 3D FLIP-CARD FOR GIFTS / HONEYMOON FUND        -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="gifts" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">LISTE DE MARIAGE // COFRE NUPCIAL</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          Mesa de Regalos & Luna de Miel
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-vogue-muted uppercase">
+          NUESTRO MEJOR REGALO ES TU COMPAÑÍA. SI DESEAS TENER UN DETALLE CON NOSOTROS:
+        </p>
+      </div>
+
+      <!-- 3D Card Stage Container -->
+      <div class="max-w-xl mx-auto perspective-container py-6">
+        
+        <p class="text-center text-[11px] font-cinzel tracking-[0.2em] text-vogue-gold uppercase font-semibold mb-4 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-arrows-rotate text-xs animate-spin-slow"></i> TOCA LA TARJETA PARA VER LOS DATOS BANCARIOS
+        </p>
+
+        <!-- The 3D Flip Card -->
+        <div id="card-3d-flipper" class="card-3d-flipper w-full aspect-[16/10] sm:aspect-[1.586/1] relative cursor-pointer select-none">
+          
+          <!-- FRONT FACE: Haute Joaillerie Black Obsidian & Gold Foil -->
+          <div class="card-face card-face-front absolute inset-0 rounded-2xl bg-gradient-to-br from-[#201D1B] via-[#121110] to-[#0A0908] p-6 sm:p-8 text-white shadow-2xl border border-vogue-gold/40 flex flex-col justify-between overflow-hidden">
+            <!-- Background Gold Watermark Pattern -->
+            <div class="absolute -right-16 -bottom-16 w-64 h-64 opacity-10 pointer-events-none">
+              <img src="svg/vogue-crest.svg" alt="" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Top Row: Monogram & Microchip -->
+            <div class="flex justify-between items-start z-10">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-8 rounded bg-gradient-to-tr from-[#D4AF37] to-[#F5E6AB] p-0.5 flex flex-col justify-around px-1.5 shadow-inner">
+                  <div class="h-[1px] bg-black/40"></div>
+                  <div class="h-[1px] bg-black/40"></div>
+                  <div class="h-[1px] bg-black/40"></div>
+                </div>
+                <span class="font-cinzel text-xs tracking-[0.2em] text-vogue-gold font-bold">L'ÉDITION CARD</span>
+              </div>
+              <img src="svg/vogue-crest.svg" alt="Monogram" class="w-10 h-10 object-contain opacity-80">
+            </div>
+
+            <!-- Middle: Card Purpose -->
+            <div class="z-10 my-auto">
+              <p class="font-sans text-[10px] tracking-[0.25em] text-vogue-gold uppercase">FONDO DE LUNA DE MIEL</p>
+              <h3 class="font-bodoni text-2xl sm:text-3xl font-light tracking-wide text-[#FAF7F2]">
+                Costa Amalfitana & Tokio
+              </h3>
+              <p class="font-mono text-xs sm:text-sm tracking-widest text-white/60 mt-1">**** **** **** 2026</p>
+            </div>
+
+            <!-- Bottom Row: Couple Names & Expiry -->
+            <div class="flex justify-between items-end z-10 text-[10px] sm:text-xs font-sans tracking-widest uppercase">
+              <div>
+                <span class="text-white/40 block text-[8px]">TITULARES</span>
+                <span class="font-medium text-white/90">SOFÍA & LEONARDO</span>
+              </div>
+              <div class="text-right">
+                <span class="text-white/40 block text-[8px]">VÁLIDA HASTA</span>
+                <span class="font-medium text-vogue-gold">11 / 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK FACE: Golden Magnetic Strip & Bank Details -->
+          <div class="card-face card-face-back absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1E1C1A] to-[#141312] p-6 sm:p-8 text-white shadow-2xl border border-vogue-gold/40 flex flex-col justify-between overflow-hidden">
+            
+            <!-- Magnetic Stripe -->
+            <div class="-mx-6 sm:-mx-8 -mt-2 h-10 bg-black border-y border-vogue-gold/30 flex items-center justify-end px-6">
+              <span class="font-mono text-[9px] text-vogue-gold tracking-widest">ÉDITION NUPCIALE 2026 PRIVÉE</span>
+            </div>
+
+            <!-- Bank Data in Letterpress Box -->
+            <div class="bg-white/5 border border-vogue-gold/30 rounded-lg p-3 sm:p-4 my-auto space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-sans text-vogue-gold uppercase text-[10px] tracking-wider">BANCO:</span>
+                <span class="font-mono text-white font-bold">BBVA BANCOMER</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-sans text-vogue-gold uppercase text-[10px] tracking-wider">BENEFICIARIO:</span>
+                <span class="font-sans text-white/90">Sofía de la Torre</span>
+              </div>
+              <div class="flex justify-between items-center text-xs pt-1 border-t border-white/10">
+                <span class="font-sans text-vogue-gold uppercase text-[10px] tracking-wider">CLABE:</span>
+                <span id="clabe-number" class="font-mono text-xs sm:text-sm text-white font-bold tracking-wider">012 180 015489201934</span>
+              </div>
+            </div>
+
+            <!-- Copy Button on Back -->
+            <div class="flex justify-between items-center pt-2">
+              <button id="btn-copy-clabe" type="button" class="w-full py-2 bg-vogue-gold text-vogue-espresso font-cinzel text-[10px] tracking-[0.2em] font-bold uppercase rounded hover:bg-vogue-goldlight transition-colors flex items-center justify-center gap-2">
+                <i class="fa-regular fa-copy"></i> COPIAR CLABE INTERBANCARIA
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- External Department Stores Links -->
+        <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="https://www.elpalaciodehierro.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 bg-white border border-vogue-gold/40 text-vogue-espresso font-cinzel text-xs tracking-widest uppercase hover:bg-vogue-espresso hover:text-white transition-all text-center rounded-sm shadow-sm">
+            <i class="fa-solid fa-gift text-vogue-gold mr-2"></i> EL PALACIO DE HIERRO (N° 384920)
+          </a>
+          <a href="https://www.liverpool.com.mx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 bg-white border border-vogue-gold/40 text-vogue-espresso font-cinzel text-xs tracking-widest uppercase hover:bg-vogue-espresso hover:text-white transition-all text-center rounded-sm shadow-sm">
+            <i class="fa-solid fa-gift text-vogue-gold mr-2"></i> LIVERPOOL (N° 50928174)
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 06: EDITORIAL LETTERPRESS RSVP & REAL-TIME CALLIGRAPHY PREVIEW -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="rsvp" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">RÉPONSE S'IL VOUS PLAÎT // ASISTENCIA</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          Correspondance de Gala
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-vogue-muted uppercase">
+          CONFIRMACIÓN INDISPENSABLE ANTES DEL 15 DE OCTUBRE DE 2026
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-10">
+
+        <!-- REAL-TIME CALLIGRAPHY ENVELOPE / PASS PREVIEW -->
+        <div class="bg-[#FAF7F2] border-2 border-vogue-gold/40 p-6 sm:p-10 shadow-xl relative overflow-hidden text-center transition-all duration-300">
+          <div class="absolute inset-2 border border-vogue-gold/20 pointer-events-none"></div>
+          
+          <div class="flex justify-between items-start mb-4">
+            <span class="font-cinzel text-[9px] tracking-[0.25em] text-vogue-darkgold uppercase font-bold">PASE DE HONOR PERSONALIZADO</span>
+            <span class="font-mono text-[9px] text-vogue-muted">FOLIO #SL-2026-084</span>
+          </div>
+
+          <p class="font-cinzel text-[10px] tracking-[0.3em] text-vogue-muted uppercase">TENEMOS EL INMENSO PRIVILEGIO DE RECIBIR A:</p>
+          
+          <!-- Live Name Display (Updates dynamically as user types) -->
+          <div class="my-4 py-2 min-h-[50px] flex items-center justify-center">
+            <h3 id="calligraphy-guest-name" class="font-script text-4xl sm:text-6xl text-vogue-darkgold drop-shadow-sm transition-all duration-300">
+              Distinguido Invitado
+            </h3>
+          </div>
+
+          <p id="calligraphy-guest-status" class="font-sans text-xs tracking-wider text-vogue-charcoal">
+            Aguardamos con ilusión el honor de celebrar juntos en San Miguel de Allende.
+          </p>
+
+          <div class="flex justify-between items-end border-t border-vogue-gold/20 pt-4 mt-6">
+            <div class="text-left">
+              <span class="text-[8px] font-sans text-vogue-muted uppercase tracking-widest block">PASES RESERVADOS</span>
+              <span id="calligraphy-pass-count" class="font-bodoni text-lg text-vogue-espresso font-semibold">2 Boletos</span>
+            </div>
+            <img src="svg/vogue-crest.svg" alt="Monogram" class="w-10 h-10 object-contain opacity-70">
+            <div class="text-right">
+              <span class="text-[8px] font-sans text-vogue-muted uppercase tracking-widest block">ESTADO</span>
+              <span id="calligraphy-status-badge" class="font-sans text-[10px] tracking-widest text-vogue-gold uppercase font-bold">PENDIENTE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- The RSVP Form -->
+        <form id="rsvp-form" class="bg-white border border-vogue-gold/40 p-6 sm:p-10 shadow-md space-y-6">
+          
+          <div class="space-y-4">
+            <!-- Full Name Input -->
+            <div>
+              <label for="rsvp-name" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-vogue-espresso font-semibold mb-2">
+                Nombre y Apellidos de los Invitados *
+              </label>
+              <input type="text" id="rsvp-name" required placeholder="Escriba su nombre completo..." class="w-full px-4 py-3 bg-vogue-paper/50 border border-vogue-gold/40 rounded-sm text-sm font-sans focus:outline-none focus:border-vogue-gold focus:ring-1 focus:ring-vogue-gold transition-all">
+            </div>
+
+            <!-- Attendance Radio Selection -->
+            <div>
+              <label class="block font-cinzel text-xs tracking-[0.2em] uppercase text-vogue-espresso font-semibold mb-2">
+                ¿Nos acompañarás en esta velada? *
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3 p-3.5 border border-vogue-gold/30 rounded-sm cursor-pointer hover:bg-vogue-paper/40 transition-colors">
+                  <input type="radio" name="attendance" value="accepted" checked class="text-vogue-gold focus:ring-vogue-gold">
+                  <span class="font-sans text-xs font-medium text-vogue-espresso">Acepto con infinito honor</span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 border border-vogue-gold/30 rounded-sm cursor-pointer hover:bg-vogue-paper/40 transition-colors">
+                  <input type="radio" name="attendance" value="declined" class="text-vogue-gold focus:ring-vogue-gold">
+                  <span class="font-sans text-xs font-medium text-vogue-espresso">Lamentablemente no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Number of Passes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="rsvp-passes" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-vogue-espresso font-semibold mb-2">
+                  Número de Asistentes
+                </label>
+                <select id="rsvp-passes" class="w-full px-4 py-3 bg-vogue-paper/50 border border-vogue-gold/40 rounded-sm text-sm font-sans focus:outline-none focus:border-vogue-gold">
+                  <option value="1">1 Asistente (Pase Individual)</option>
+                  <option value="2" selected>2 Asistentes (Pase Doble)</option>
+                  <option value="3">3 Asistentes</option>
+                  <option value="4">4 Asistentes (Familiar)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="rsvp-diet" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-vogue-espresso font-semibold mb-2">
+                  Restricciones Dietéticas
+                </label>
+                <input type="text" id="rsvp-diet" placeholder="Ej. Vegetariano, alergia a nueces..." class="w-full px-4 py-3 bg-vogue-paper/50 border border-vogue-gold/40 rounded-sm text-sm font-sans focus:outline-none focus:border-vogue-gold">
+              </div>
+            </div>
+
+            <!-- Song Dedication -->
+            <div>
+              <label for="rsvp-song" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-vogue-espresso font-semibold mb-2">
+                Canción que no puede faltar en la fiesta
+              </label>
+              <input type="text" id="rsvp-song" placeholder="Título y artista para el DJ..." class="w-full px-4 py-3 bg-vogue-paper/50 border border-vogue-gold/40 rounded-sm text-sm font-sans focus:outline-none focus:border-vogue-gold">
+            </div>
+
+            <!-- Message to the Couple -->
+            <div>
+              <label for="rsvp-message" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-vogue-espresso font-semibold mb-2">
+                Mensaje o dedicatoria para Sofía & Leonardo
+              </label>
+              <textarea id="rsvp-message" rows="3" placeholder="Escriba aquí sus buenos deseos para los novios..." class="w-full px-4 py-3 bg-vogue-paper/50 border border-vogue-gold/40 rounded-sm text-sm font-sans focus:outline-none focus:border-vogue-gold"></textarea>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4 border-t border-vogue-espresso/10">
+            <button type="submit" class="w-full py-4 bg-vogue-espresso text-vogue-cream font-cinzel text-xs tracking-[0.25em] font-bold uppercase rounded-sm hover:bg-vogue-gold hover:text-vogue-espresso transition-all duration-300 shadow-md">
+              ENVIAR CONFIRMACIÓN EDITORIAL
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 07: EDITORIAL LOOKBOOK GALLERY                                 -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="gallery" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">PORTFOLIO // LOOKBOOK DE NOVIOS</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          Galería Editorial
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-vogue-muted uppercase">
+          MOMENTOS CAPTURADOS EN LA PREVIA DE NUESTRA CELEBRACIÓN
+        </p>
+      </div>
+
+      <!-- Asymmetric Editorial Photo Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Photo 1 -->
+        <div class="group relative bg-white p-3 border border-vogue-gold/30 shadow-sm hover:shadow-xl transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-1.jpg" data-caption="Atardecer en los callejones empedrados / San Miguel de Allende">
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img src="assets/gallery/gallery-1.jpg" alt="Editorial 1" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-white/90 rounded-full text-vogue-espresso text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-vogue-muted uppercase">
+            <span>PLANCHE NO. 01</span>
+            <span>SAN MIGUEL</span>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="group relative bg-white p-3 border border-vogue-gold/30 shadow-sm hover:shadow-xl transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-2.jpg" data-caption="Primer baile en privado bajo los laureles">
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img src="assets/gallery/gallery-2.jpg" alt="Editorial 2" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-white/90 rounded-full text-vogue-espresso text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-vogue-muted uppercase">
+            <span>PLANCHE NO. 02</span>
+            <span>INTIMITÉ</span>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="group relative bg-white p-3 border border-vogue-gold/30 shadow-sm hover:shadow-xl transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-3.jpg" data-caption="Detalles sartoriales y joyería de compromiso">
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img src="assets/gallery/gallery-3.jpg" alt="Editorial 3" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-white/90 rounded-full text-vogue-espresso text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-vogue-muted uppercase">
+            <span>PLANCHE NO. 03</span>
+            <span>HAUTE COUTURE</span>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="group relative bg-white p-3 border border-vogue-gold/30 shadow-sm hover:shadow-xl transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-4.jpg" data-caption="La promesa bajo la cantera virreinal">
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img src="assets/gallery/gallery-4.jpg" alt="Editorial 4" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-white/90 rounded-full text-vogue-espresso text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-vogue-muted uppercase">
+            <span>PLANCHE NO. 04</span>
+            <span>CANTERA & SOLEIL</span>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="group relative bg-white p-3 border border-vogue-gold/30 shadow-sm hover:shadow-xl transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-5.jpg" data-caption="Brindis con reserva privada en la cava subterránea">
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img src="assets/gallery/gallery-5.jpg" alt="Editorial 5" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-white/90 rounded-full text-vogue-espresso text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-vogue-muted uppercase">
+            <span>PLANCHE NO. 05</span>
+            <span>CHAMPAGNE</span>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="group relative bg-white p-3 border border-vogue-gold/30 shadow-sm hover:shadow-xl transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-6.jpg" data-caption="Miradas que narran un compromiso para la eternidad">
+          <div class="relative overflow-hidden aspect-[3/4]">
+            <img src="assets/gallery/gallery-6.jpg" alt="Editorial 6" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-white/90 rounded-full text-vogue-espresso text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-vogue-muted uppercase">
+            <span>PLANCHE NO. 06</span>
+            <span>ÉTERNITÉ</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SPREAD 08: SAN MIGUEL CONCIERGE & GUIDE DE SÉJOUR                    -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="concierge" class="lookbook-section pt-8 border-t border-vogue-espresso/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-vogue-darkgold font-bold block mb-2">GUIDE DE SÉJOUR // CONCIERGE</span>
+        <h2 class="font-bodoni text-4xl sm:text-6xl font-light text-vogue-espresso uppercase leading-tight">
+          Hospedaje & Recomendaciones
+        </h2>
+        <div class="w-16 h-0.5 bg-vogue-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-vogue-muted uppercase">
+          SELECCIÓN EXCLUSIVA DE HOTELES BOUTIQUE PARA NUESTROS INVITADOS
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Hotel 1 -->
+        <div class="bg-white border border-vogue-gold/30 p-6 flex flex-col justify-between shadow-sm">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-vogue-gold uppercase font-bold">HÔTEL BOUTIQUE 5 ÉTOILES</span>
+            <h3 class="font-bodoni text-xl text-vogue-espresso font-normal mt-1">Rosewood San Miguel</h3>
+            <p class="text-xs font-sans text-vogue-muted mt-2">Nemesio Diez 11, Zona Centro</p>
+            <p class="text-xs font-sans text-vogue-charcoal mt-3">Tarifa preferencial mencionando la Boda Sofía & Leonardo.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-vogue-espresso/10 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-vogue-darkgold font-bold">CÓDIGO: BODA-SL26</span>
+            <a href="https://www.rosewoodhotels.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-vogue-espresso hover:text-vogue-gold font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="bg-white border border-vogue-gold/30 p-6 flex flex-col justify-between shadow-sm">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-vogue-gold uppercase font-bold">RELAIS & CHÂTEAUX</span>
+            <h3 class="font-bodoni text-xl text-vogue-espresso font-normal mt-1">Belmond Casa de Sierra Nevada</h3>
+            <p class="text-xs font-sans text-vogue-muted mt-2">Hospicio 35, Zona Centro</p>
+            <p class="text-xs font-sans text-vogue-charcoal mt-3">Mansión colonial del siglo XVI con jardines privados y piscina termal.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-vogue-espresso/10 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-vogue-darkgold font-bold">CÓDIGO: BELMOND-SL</span>
+            <a href="https://www.belmond.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-vogue-espresso hover:text-vogue-gold font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="bg-white border border-vogue-gold/30 p-6 flex flex-col justify-between shadow-sm">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-vogue-gold uppercase font-bold">DESIGN HOTEL</span>
+            <h3 class="font-bodoni text-xl text-vogue-espresso font-normal mt-1">Hotel Matilda</h3>
+            <p class="text-xs font-sans text-vogue-muted mt-2">Aldama 53, Zona Centro</p>
+            <p class="text-xs font-sans text-vogue-charcoal mt-3">Arte contemporáneo, gastronomía de autor y spa de clase mundial.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-vogue-espresso/10 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-vogue-darkgold font-bold">CÓDIGO: MATILDA-WED</span>
+            <a href="https://hotelmatilda.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-vogue-espresso hover:text-vogue-gold font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================= -->
+  <!-- 4. FLOATING BOTTOM CHAPTER SCRUBBER BAR (MINIMAL DOCK)                   -->
+  <!-- ========================================================================= -->
+  <nav id="chapter-scrubber-bar" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-vogue-espresso/95 backdrop-blur-md border border-vogue-gold/40 px-3 sm:px-6 py-2 rounded-full shadow-2xl flex items-center gap-2 sm:gap-4 max-w-[95vw] overflow-x-auto text-[10px] sm:text-xs font-cinzel tracking-widest text-vogue-cream/70 select-none">
+    
+    <a href="#story" class="chapter-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-vogue-gold active">
+      01 · HISTOIRE
+    </a>
+    <span class="text-vogue-gold/30">/</span>
+
+    <a href="#celebration" class="chapter-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-vogue-gold">
+      02 · CÉLÉBRATION
+    </a>
+    <span class="text-vogue-gold/30">/</span>
+
+    <a href="#itinerary" class="chapter-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-vogue-gold">
+      03 · DÉGUSTATION
+    </a>
+    <span class="text-vogue-gold/30">/</span>
+
+    <a href="#style" class="chapter-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-vogue-gold">
+      04 · STYLE
+    </a>
+    <span class="text-vogue-gold/30">/</span>
+
+    <a href="#gifts" class="chapter-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-vogue-gold">
+      05 · CADEAUX
+    </a>
+    <span class="text-vogue-gold/30">/</span>
+
+    <a href="#rsvp" class="chapter-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-vogue-gold text-vogue-gold font-bold">
+      06 · RSVP
+    </a>
+  </nav>
+
+
+  <!-- ========================================================================= -->
+  <!-- 5. LIGHTBOX MODAL FOR GALLERY ZOOM                                        -->
+  <!-- ========================================================================= -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+    <button id="btn-close-lightbox" class="absolute top-6 right-6 text-white text-3xl hover:text-vogue-gold transition-colors z-10" aria-label="Cerrar vista previa">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Ampliación" class="max-w-full max-h-[75vh] object-contain border border-vogue-gold/40 shadow-2xl">
+      <p id="lightbox-caption" class="font-bodoni italic text-vogue-cream text-base mt-4 text-center"></p>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 6. EDITORIAL FOOTER & COLOPHON                                            -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-vogue-espresso/20 bg-[#121110] text-vogue-cream py-16 px-4 sm:px-8 text-center relative z-10">
+    <div class="max-w-2xl mx-auto space-y-6">
+      <img src="svg/vogue-crest.svg" alt="Monograma Sofía & Leonardo" class="w-16 h-16 mx-auto object-contain">
+      
+      <div>
+        <h3 class="font-bodoni text-3xl text-vogue-cream font-light tracking-wide uppercase">Sofía & Leonardo</h3>
+        <p class="font-cinzel text-xs tracking-[0.3em] text-vogue-gold mt-1 uppercase">14 · NOVEMBRE · 2026</p>
+      </div>
+
+      <p class="font-bodoni italic text-sm text-vogue-cream/70 max-w-md mx-auto">
+        "Nuestra historia apenas comienza. Gracias por ser parte de las páginas más memorables de nuestra vida."
+      </p>
+
+      <div class="border-t border-white/10 pt-6 text-[9px] font-sans tracking-[0.25em] text-vogue-cream/40 uppercase">
+        L'ÉDITION NUPCIALE · NUMÉRO D'HOMMAGE PRIVÉ · SAN MIGUEL DE ALLENDE
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-20 right-6 z-50 pointer-events-none"></div>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>

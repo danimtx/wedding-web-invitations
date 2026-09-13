@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dialRoseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C97A68" />
+      <stop offset="30%" stop-color="#FCDAD1" />
+      <stop offset="60%" stop-color="#E7A18C" />
+      <stop offset="100%" stop-color="#9A5041" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Escapement Gear Teeth in Rose Gold -->
+  <g fill="none" stroke="url(#dialRoseGold)" stroke-width="2" opacity="0.85">
+    <circle cx="300" cy="300" r="280" stroke-width="1.5" stroke-dasharray="3 7"/>
+    <circle cx="300" cy="300" r="270" stroke-width="2"/>
+    <circle cx="300" cy="300" r="255" stroke-width="1"/>
+    <circle cx="300" cy="300" r="235" stroke-width="1.5" stroke-dasharray="8 4"/>
+  </g>
+
+  <!-- 12 Sectors & Radial Meridian Lines -->
+  <g stroke="url(#dialRoseGold)" stroke-width="0.8" opacity="0.35">
+    <line x1="300" y1="20" x2="300" y2="580" />
+    <line x1="20" y1="300" x2="580" y2="300" />
+    <line x1="102" y1="102" x2="498" y2="498" />
+    <line x1="102" y1="498" x2="498" y2="102" />
+  </g>
+
+  <!-- Concentric Orbits -->
+  <circle cx="300" cy="300" r="210" fill="none" stroke="url(#dialRoseGold)" stroke-width="1" opacity="0.6"/>
+  <circle cx="300" cy="300" r="180" fill="none" stroke="url(#dialRoseGold)" stroke-width="1.5" opacity="0.75"/>
+  <circle cx="300" cy="300" r="140" fill="none" stroke="url(#dialRoseGold)" stroke-width="0.8" opacity="0.5" stroke-dasharray="4 6"/>
+  <circle cx="300" cy="300" r="100" fill="none" stroke="url(#dialRoseGold)" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- Roman Numerals -->
+  <g font-family="'Cinzel', serif" font-size="12" fill="url(#dialRoseGold)" font-weight="600" text-anchor="middle" dominant-baseline="central" opacity="0.9">
+    <text x="300" y="55">XII</text>
+    <text x="422" y="88">I</text>
+    <text x="512" y="178">II</text>
+    <text x="545" y="300">III</text>
+    <text x="512" y="422">IV</text>
+    <text x="422" y="512">V</text>
+    <text x="300" y="545">VI</text>
+    <text x="178" y="512">VII</text>
+    <text x="88" y="422">VIII</text>
+    <text x="55" y="300">IX</text>
+    <text x="88" y="178">X</text>
+    <text x="178" y="88">XI</text>
+  </g>
+
+  <!-- Rose Gold Star Points -->
+  <g fill="url(#dialRoseGold)" opacity="0.85">
+    <circle cx="300" cy="90" r="3"/>
+    <circle cx="450" cy="195" r="2.5"/>
+    <circle cx="480" cy="360" r="3.5"/>
+    <circle cx="390" cy="480" r="2.5"/>
+    <circle cx="210" cy="480" r="3"/>
+    <circle cx="120" cy="360" r="2.5"/>
+    <circle cx="150" cy="195" r="3"/>
+  </g>
+</svg>

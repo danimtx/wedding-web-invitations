@@ -593,6 +593,79 @@ Category: Romántico / Clásico
 
 ---
 
+### Theme 23: Édition Vogue & Haute Couture (Revista Editorial & Pasarela)
+High-fashion editorial magazine aesthetic inspired by Paris, Lake Como, and Vogue Weddings. Clean newsprint contrast with liquid champagne gold and Parisian espresso noir.
+Category: Editorial / High-Fashion / Haute Couture
+
+```css
+:root {
+  /* Primary Tones */
+  --color-primary: #1A1817;          /* Parisian Espresso Noir */
+  --color-primary-dark: #121110;     /* Deep Ink Obsidian */
+  --color-primary-light: #2D2926;    /* Soft Charcoal */
+  
+  /* Accent & Metallics */
+  --color-accent: #C59B51;          /* Champagne Satin Gold */
+  --color-accent-gold-light: #DFBA73;/* Specular Liquid Gold */
+  --accent-gradient: linear-gradient(135deg, #9A7B4F 0%, #DFBA73 35%, #C59B51 70%, #8F6B38 100%);
+  
+  /* Runway Color Accents */
+  --color-sage: #7A8B7B;            /* Sage Cashmere */
+  --color-terracotta: #B87352;      /* Terracotta Silk */
+  
+  /* Backgrounds & Paper */
+  --color-bg-base: #FBF8F3;         /* Warm French Linen Paper */
+  --color-bg-card: #FFFFFF;         /* Editorial White Card */
+  --color-bg-translucent: rgba(251, 248, 243, 0.92);
+  
+  /* Text & Borders */
+  --color-text-headline: #1A1817;   /* Ink Black */
+  --color-text-body: #2D2926;       /* High-contrast Subtitles & Body */
+  --color-text-muted: #7E766D;      /* Secondary Captions & Dates */
+  --color-border-accent: rgba(197, 155, 81, 0.4);
+  --color-shadow: rgba(26, 24, 23, 0.08);
+}
+```
+
+---
+
+### Theme 24: Aurore Céleste & Or Rose (Alta Relojería en Oro Rosa & Nácar)
+Feminine high-horology celestial aesthetic inspired by sunset nebulae, pink quartz, mother-of-pearl, and Swiss rose gold grand complications.
+Category: Romántico / Alta Relojería / Femenino Prémium
+
+```css
+:root {
+  /* Primary Tones */
+  --color-primary: #200A11;          /* Deep Rosewood Noir */
+  --color-primary-dark: #14060A;     /* Obsidian Wine Void */
+  --color-primary-light: #32101B;    /* Rich Mauve Velvet */
+  
+  /* Accent & Rose Metallics */
+  --color-accent: #E7A18C;          /* Liquid Rose Gold */
+  --color-accent-gold-light: #F8D5CB;/* Specular Rose Quartz */
+  --accent-gradient: linear-gradient(135deg, #B86855 0%, #F8D5CB 35%, #E7A18C 70%, #964736 100%);
+  
+  /* Celestial Accents */
+  --color-blush: #F8E7E7;           /* Soft Peony Blush */
+  --color-nacre: #FAF5F2;           /* Mother of Pearl / Nácar */
+  --color-quartz: #F2D5D5;          /* Rose Quartz */
+  
+  /* Backgrounds & Card */
+  --color-bg-base: #14060A;         /* Deep Sunset Void */
+  --color-bg-card: rgba(32, 10, 17, 0.85); /* Rosewood Glass */
+  --color-bg-translucent: rgba(20, 6, 10, 0.92);
+  
+  /* Text & Borders */
+  --color-text-headline: #FAF5F2;   /* Pure Nacre Ivory */
+  --color-text-body: #F2D5D5;       /* Warm Rose Quartz */
+  --color-text-muted: #C498A3;      /* Muted Mauve Coordinates */
+  --color-border-accent: rgba(231, 161, 140, 0.4);
+  --color-shadow: rgba(20, 6, 10, 0.7);
+}
+```
+
+---
+
 ## 2. Typography Stack (Google Fonts Integration)
 
 Add this script load inside the HTML `<head>` for instant Google Fonts support. This includes all 20+ fonts needed for the recommended pairings.

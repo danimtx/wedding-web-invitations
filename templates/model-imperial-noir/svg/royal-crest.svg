@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%" role="img" aria-labelledby="crestTitle crestDesc">
+  <title id="crestTitle">Monograma Heráldico Imperial · Valeria &amp; Fernando</title>
+  <desc id="crestDesc">Escudo nupcial de alta costura con iniciales entrelazadas, laureles botánicos, corona imperial y acabado en pan de oro líquido.</desc>
+  <defs>
+    <!-- Gradiente de Oro Líquido Maestro Ultra-Reflectante -->
+    <linearGradient id="goldMaster" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8D6" />
+      <stop offset="20%" stop-color="#F3DC7C" />
+      <stop offset="45%" stop-color="#D4AF37" />
+      <stop offset="70%" stop-color="#EED59B" />
+      <stop offset="90%" stop-color="#AA7E30" />
+      <stop offset="100%" stop-color="#704F18" />
+    </linearGradient>
+
+    <!-- Gradiente de Brillo Intenso (Highlight) -->
+    <linearGradient id="goldGleam" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#AA7E30" />
+      <stop offset="35%" stop-color="#FFFDF0" />
+      <stop offset="50%" stop-color="#F7E599" />
+      <stop offset="65%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#5C4010" />
+    </linearGradient>
+
+    <!-- Resplandor Dorado Radial -->
+    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF4B8" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#D4AF37" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#121212" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filtro de Sombra Suave Escultórica -->
+    <filter id="royalShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Aura Resplandeciente de Fondo -->
+  <circle cx="300" cy="300" r="240" fill="url(#goldGlow)" />
+
+  <!-- ARO EXTERIOR PERLADO Y GEOMETRÍA SAGRADA -->
+  <g id="outer-rings" filter="url(#royalShadow)">
+    <circle cx="300" cy="300" r="230" fill="none" stroke="url(#goldMaster)" stroke-width="2" stroke-dasharray="8 6" opacity="0.6" />
+    <circle cx="300" cy="300" r="218" fill="none" stroke="url(#goldMaster)" stroke-width="1" opacity="0.8" />
+    <circle cx="300" cy="300" r="208" fill="none" stroke="url(#goldMaster)" stroke-width="3" />
+    <circle cx="300" cy="300" r="198" fill="none" stroke="url(#goldMaster)" stroke-width="0.75" opacity="0.7" />
+
+    <!-- Diamantes en Puntos Cardinales -->
+    <polygon points="300,60 306,72 300,84 294,72" fill="url(#goldMaster)" />
+    <polygon points="300,516 306,528 300,540 294,528" fill="url(#goldMaster)" />
+    <polygon points="60,300 72,306 84,300 72,294" fill="url(#goldMaster)" />
+    <polygon points="516,300 528,306 540,300 528,294" fill="url(#goldMaster)" />
+  </g>
+
+  <!-- CORONA IMPERIAL SUPERIOR -->
+  <g id="imperial-crown" transform="translate(0, -10)" filter="url(#royalShadow)">
+    <!-- Base de la corona con gemas -->
+    <path d="M250,140 Q300,148 350,140 L354,148 Q300,156 246,148 Z" fill="url(#goldMaster)" />
+    <circle cx="270" cy="144" r="2" fill="#FFFDF0" />
+    <circle cx="300" cy="146" r="2.5" fill="#FFFDF0" />
+    <circle cx="330" cy="144" r="2" fill="#FFFDF0" />
+    <!-- Puntas de la corona -->
+    <path d="M250,140 L242,108 L266,126 L300,92 L334,126 L358,108 L350,140 Z" fill="url(#goldGleam)" stroke="url(#goldMaster)" stroke-width="1.5" stroke-linejoin="round" />
+    <!-- Perlas superiores de la corona -->
+    <circle cx="242" cy="106" r="3.5" fill="url(#goldMaster)" />
+    <circle cx="266" cy="124" r="2.5" fill="url(#goldMaster)" />
+    <circle cx="300" cy="90" r="4.5" fill="url(#goldMaster)" />
+    <circle cx="334" cy="124" r="2.5" fill="url(#goldMaster)" />
+    <circle cx="358" cy="106" r="3.5" fill="url(#goldMaster)" />
+    <!-- Cruz Imperial central -->
+    <path d="M298,76 L302,76 L302,86 L298,86 Z M295,79 L305,79 L305,83 L295,83 Z" fill="url(#goldMaster)" />
+  </g>
+
+  <!-- GUIRNALDA DE LAURELES HERÁLDICOS (LADO IZQUIERDO Y DERECHO) -->
+  <g id="laurel-wreath" fill="url(#goldMaster)" opacity="0.9" filter="url(#royalShadow)">
+    <!-- Ramo Izquierdo -->
+    <g id="laurel-left">
+      <!-- Tallo elegante -->
+      <path d="M 300,470 C 210,470 140,400 140,300 C 140,240 165,190 205,155" fill="none" stroke="url(#goldMaster)" stroke-width="2" stroke-linecap="round" />
+      <!-- Hojas de laurel izquierda -->
+      <path d="M195,165 C185,155 188,140 205,155 C215,165 210,180 195,165 Z" />
+      <path d="M172,192 C158,185 158,168 178,180 C188,192 184,206 172,192 Z" />
+      <path d="M154,230 C140,225 138,205 160,215 C172,228 168,242 154,230 Z" />
+      <path d="M144,272 C128,270 125,250 148,256 C162,268 156,282 144,272 Z" />
+      <path d="M142,316 C126,318 122,338 144,332 C158,320 162,306 142,316 Z" />
+      <path d="M148,360 C132,366 132,386 152,376 C166,362 170,348 148,360 Z" />
+      <path d="M168,402 C154,412 156,432 174,418 C186,402 188,388 168,402 Z" />
+      <path d="M200,436 C188,450 196,468 210,450 C220,434 218,420 200,436 Z" />
+      <path d="M242,460 C234,475 248,488 258,470 C264,454 258,442 242,460 Z" />
+    </g>
+
+    <!-- Ramo Derecho (Espejado) -->
+    <g id="laurel-right" transform="translate(600,0) scale(-1,1)">
+      <!-- Tallo elegante -->
+      <path d="M 300,470 C 210,470 140,400 140,300 C 140,240 165,190 205,155" fill="none" stroke="url(#goldMaster)" stroke-width="2" stroke-linecap="round" />
+      <!-- Hojas de laurel derecha -->
+      <path d="M195,165 C185,155 188,140 205,155 C215,165 210,180 195,165 Z" />
+      <path d="M172,192 C158,185 158,168 178,180 C188,192 184,206 172,192 Z" />
+      <path d="M154,230 C140,225 138,205 160,215 C172,228 168,242 154,230 Z" />
+      <path d="M144,272 C128,270 125,250 148,256 C162,268 156,282 144,272 Z" />
+      <path d="M142,316 C126,318 122,338 144,332 C158,320 162,306 142,316 Z" />
+      <path d="M148,360 C132,366 132,386 152,376 C166,362 170,348 148,360 Z" />
+      <path d="M168,402 C154,412 156,432 174,418 C186,402 188,388 168,402 Z" />
+      <path d="M200,436 C188,450 196,468 210,450 C220,434 218,420 200,436 Z" />
+      <path d="M242,460 C234,475 248,488 258,470 C264,454 258,442 242,460 Z" />
+    </g>
+
+    <!-- Cinta y Lazo Inferior de Unión -->
+    <g id="wreath-ribbon" transform="translate(0, 10)">
+      <path d="M275,462 Q300,455 325,462 Q335,472 320,476 Q300,470 280,476 Q265,472 275,462 Z" fill="url(#goldMaster)" />
+      <path d="M285,474 Q275,502 260,518 Q272,504 288,480 Z" fill="url(#goldMaster)" />
+      <path d="M315,474 Q325,502 340,518 Q328,504 312,480 Z" fill="url(#goldMaster)" />
+    </g>
+  </g>
+
+  <!-- ==========================================================
+       MONOGRAMA CENTRAL INTERCONECTADO · V & F
+  =========================================================== -->
+  <g id="letters-monogram" filter="url(#royalShadow)">
+    <!-- Letra V Clásica Romana con Trazo Grueso y Fino Esculpido -->
+    <g id="letter-V">
+      <!-- Asta descendente izquierda (Fina con remate) -->
+      <path d="M 215,220 L 255,220 L 255,226 L 244,226 L 284,354 L 286,354 L 320,236 L 310,236 L 310,230 L 340,230 L 340,236 L 330,236 L 286,380 L 274,380 L 222,226 L 215,226 Z" fill="url(#goldGleam)" />
+      <!-- Serifas caligráficas añadidas -->
+      <circle cx="215" cy="223" r="3" fill="url(#goldMaster)" />
+      <circle cx="340" cy="233" r="3" fill="url(#goldMaster)" />
+    </g>
+
+    <!-- Símbolo Ampersand (&) Romántico entretejido -->
+    <g id="symbol-ampersand" transform="translate(296, 290) scale(0.68)">
+      <text x="0" y="0" font-family="'Italiana', 'Cinzel', serif" font-size="74" font-style="italic" font-weight="300" text-anchor="middle" fill="url(#goldMaster)" opacity="0.85">&amp;</text>
+    </g>
+
+    <!-- Letra F Clásica Imperial Interpenetrada -->
+    <g id="letter-F">
+      <!-- Fuste vertical -->
+      <path d="M 320,240 L 358,240 L 358,246 L 346,246 L 346,370 L 358,370 L 358,376 L 318,376 L 318,370 L 330,370 L 330,246 L 320,246 Z" fill="url(#goldMaster)" />
+      <!-- Brazo superior -->
+      <path d="M 346,240 L 400,240 C 404,240 408,244 406,252 L 402,266 L 396,266 L 398,252 L 346,252 Z" fill="url(#goldGleam)" />
+      <!-- Brazo medio con gota ornamental -->
+      <path d="M 346,298 L 388,298 C 392,298 394,302 393,306 L 390,314 L 385,314 L 387,306 L 346,306 Z" fill="url(#goldMaster)" />
+    </g>
+
+    <!-- Voluta caligráfica envolvente de unión -->
+    <path d="M 230,360 C 270,410 330,410 370,360 C 390,335 385,300 360,290 C 330,280 300,310 270,330" fill="none" stroke="url(#goldMaster)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4 2" opacity="0.75" />
+  </g>
+
+  <!-- LEMA INFERIOR EN ARCO CURVO HERÁLDICO -->
+  <g id="heraldic-banner" transform="translate(0, 15)">
+    <path id="textCurve" d="M 170,430 Q 300,470 430,430" fill="none" stroke="none" />
+    <text font-family="'Cinzel', 'Times New Roman', serif" font-size="11" font-weight="600" letter-spacing="4.5" fill="url(#goldMaster)" text-anchor="middle">
+      <textPath href="#textCurve" startOffset="50%">SEMPER IN PERPETUUM</textPath>
+    </text>
+  </g>
+
+  <!-- AÑO Y FECHA DE BODA EN NÚMEROS ROMANOS -->
+  <text x="300" y="508" font-family="'Cinzel', serif" font-size="9" font-weight="600" letter-spacing="5" fill="url(#goldMaster)" text-anchor="middle" opacity="0.8">
+    MMXXVII
+  </text>
+</svg>

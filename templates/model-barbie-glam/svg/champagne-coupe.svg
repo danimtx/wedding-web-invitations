@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
+      <stop offset="30%" stop-color="#FFE4F0" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#FF69B4" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="wineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF69B4" />
+      <stop offset="100%" stop-color="#FF1493" />
+    </linearGradient>
+  </defs>
+
+  <!-- Coupe Bowl Liquid -->
+  <path d="M22,35 C24,70 50,80 60,80 C70,80 96,70 98,35 Z" fill="url(#wineGrad)" opacity="0.85" />
+
+  <!-- Champagne Bubbles -->
+  <circle cx="50" cy="55" r="2.5" fill="#FFFFFF" opacity="0.8" />
+  <circle cx="65" cy="45" r="3" fill="#FFFFFF" opacity="0.9" />
+  <circle cx="42" cy="40" r="2" fill="#FFFFFF" opacity="0.7" />
+  <circle cx="75" cy="60" r="2.5" fill="#FFFFFF" opacity="0.8" />
+  <circle cx="58" cy="68" r="2" fill="#FFFFFF" opacity="0.7" />
+  <circle cx="60" cy="28" r="3" fill="#FF1493" opacity="0.9" />
+  <circle cx="68" cy="20" r="2.5" fill="#FF69B4" opacity="0.8" />
+  <circle cx="52" cy="18" r="2" fill="#FFA6D5" opacity="0.8" />
+
+  <!-- Coupe Glass Outline -->
+  <path d="M18,32 C20,75 52,85 58,85 L58,135 L40,135 C35,135 30,138 30,142 C30,146 35,148 40,148 L80,148 C85,148 90,146 90,142 C90,138 85,135 80,135 L62,135 L62,85 C68,85 100,75 102,32 Z" fill="none" stroke="url(#glassGrad)" stroke-width="2.5" stroke-linejoin="round" />
+
+  <!-- Glass Rim Highlight -->
+  <ellipse cx="60" cy="32" rx="42" ry="5" fill="none" stroke="#FFFFFF" stroke-width="2" />
+  
+  <!-- Sparkle Star above glass -->
+  <path d="M60,6 Q60,14 55,14 Q60,14 60,22 Q60,14 65,14 Q60,14 60,6 Z" fill="#FF1493" />
+</svg>

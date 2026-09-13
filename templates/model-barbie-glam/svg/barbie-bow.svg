@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bowGradLeft" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#FF1493" />
+      <stop offset="60%" stop-color="#FF69B4" />
+      <stop offset="100%" stop-color="#FFA6D5" />
+    </linearGradient>
+    <linearGradient id="bowGradRight" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#FF1493" />
+      <stop offset="60%" stop-color="#FF69B4" />
+      <stop offset="100%" stop-color="#FFA6D5" />
+    </linearGradient>
+    <linearGradient id="knotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="30%" stop-color="#FF69B4" />
+      <stop offset="100%" stop-color="#C70066" />
+    </linearGradient>
+    <filter id="bowShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#FF1493" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Left Ribbon Tail -->
+  <path d="M90,65 Q60,95 40,115 C55,105 75,100 85,90 Q95,75 100,65 Z" fill="url(#bowGradLeft)" opacity="0.9" />
+  
+  <!-- Right Ribbon Tail -->
+  <path d="M110,65 Q140,95 160,115 C145,105 125,100 115,90 Q105,75 100,65 Z" fill="url(#bowGradRight)" opacity="0.9" />
+
+  <!-- Left Wing Loop -->
+  <path d="M95,55 C70,30 20,25 15,55 C10,85 70,75 95,65 Z" fill="url(#bowGradLeft)" filter="url(#bowShadow)" stroke="#FFFFFF" stroke-width="1.5" />
+  <!-- Left Wing Inner Fold -->
+  <path d="M90,56 C75,45 35,42 30,58 C35,68 75,64 90,62 Z" fill="#FF1493" opacity="0.3" />
+
+  <!-- Right Wing Loop -->
+  <path d="M105,55 C130,30 180,25 185,55 C190,85 130,75 105,65 Z" fill="url(#bowGradRight)" filter="url(#bowShadow)" stroke="#FFFFFF" stroke-width="1.5" />
+  <!-- Right Wing Inner Fold -->
+  <path d="M110,56 C125,45 165,42 170,58 C165,68 125,64 110,62 Z" fill="#FF1493" opacity="0.3" />
+
+  <!-- Central Knot -->
+  <ellipse cx="100" cy="58" rx="14" ry="16" fill="url(#knotGrad)" stroke="#FFFFFF" stroke-width="2" filter="url(#bowShadow)" />
+  
+  <!-- Little Diamond Sparkle on Knot -->
+  <circle cx="96" cy="53" r="2.5" fill="#FFFFFF" />
+  <path d="M100,48 Q100,58 92,58 Q100,58 100,68 Q100,58 108,58 Q100,58 100,48 Z" fill="#FFFFFF" opacity="0.8" />
+</svg>

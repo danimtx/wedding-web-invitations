@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFA6D5" />
+      <stop offset="40%" stop-color="#FF1493" />
+      <stop offset="100%" stop-color="#B80058" />
+    </linearGradient>
+    <linearGradient id="lensGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3D0022" />
+      <stop offset="50%" stop-color="#14020D" />
+      <stop offset="100%" stop-color="#3D0022" />
+    </linearGradient>
+    <filter id="sunglassGlow">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#FF1493" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Left Frame Outer Cat-Eye -->
+  <path d="M110,48 C105,30 80,18 45,18 C15,18 5,38 12,65 C18,85 55,85 85,78 C102,74 108,60 110,48 Z" fill="url(#frameGrad)" filter="url(#sunglassGlow)" stroke="#FFFFFF" stroke-width="2" />
+  <!-- Left Lens -->
+  <path d="M102,48 C98,34 78,25 48,25 C24,25 18,39 22,60 C26,75 55,75 78,70 C94,66 100,56 102,48 Z" fill="url(#lensGrad)" />
+  <!-- Left Lens Glint -->
+  <path d="M35,32 Q75,32 85,55" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+  <circle cx="28" cy="40" r="3" fill="#FFFFFF" opacity="0.8" />
+
+  <!-- Bridge -->
+  <path d="M108,42 Q120,38 132,42" stroke="url(#frameGrad)" stroke-width="6" stroke-linecap="round" fill="none" />
+  <path d="M110,42 Q120,38 130,42" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7" />
+
+  <!-- Right Frame Outer Cat-Eye -->
+  <path d="M130,48 C135,30 160,18 195,18 C225,18 235,38 228,65 C222,85 185,85 155,78 C138,74 132,60 130,48 Z" fill="url(#frameGrad)" filter="url(#sunglassGlow)" stroke="#FFFFFF" stroke-width="2" />
+  <!-- Right Lens -->
+  <path d="M138,48 C142,34 162,25 192,25 C216,25 222,39 218,60 C214,75 185,75 162,70 C146,66 140,56 138,48 Z" fill="url(#lensGrad)" />
+  <!-- Right Lens Glint -->
+  <path d="M155,32 Q195,32 205,55" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+  <circle cx="148" cy="40" r="3" fill="#FFFFFF" opacity="0.8" />
+
+  <!-- Diamond Studs on Frame Corners -->
+  <circle cx="18" cy="28" r="3" fill="#FFFFFF" />
+  <circle cx="222" cy="28" r="3" fill="#FFFFFF" />
+</svg>

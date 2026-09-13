@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%" role="img" aria-labelledby="botanicalCrestTitle botanicalCrestDesc">
+  <title id="botanicalCrestTitle">Monograma Botánico Villa Royale · Camila &amp; Mateo</title>
+  <desc id="botanicalCrestDesc">Escudo nupcial aristocrático de inspiración toscana con ramas de olivo, iniciales C &amp; M y pan de oro florentino envejecido.</desc>
+  <defs>
+    <!-- Gradiente Oro Florentino Envejecido (Antique Florentine Gold) -->
+    <linearGradient id="antiqueGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7EAC4" />
+      <stop offset="25%" stop-color="#DEBE76" />
+      <stop offset="50%" stop-color="#C5A059" />
+      <stop offset="75%" stop-color="#E2C882" />
+      <stop offset="100%" stop-color="#8C6826" />
+    </linearGradient>
+
+    <!-- Gradiente Verde Ciprés / Salvia Lujoso -->
+    <linearGradient id="cypressOlive" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#55755E" />
+      <stop offset="50%" stop-color="#344D3A" />
+      <stop offset="100%" stop-color="#1B2B1F" />
+    </linearGradient>
+
+    <!-- Resplandor Solar Cálido Toscano -->
+    <radialGradient id="tuscanSunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBF4DD" stop-opacity="0.5" />
+      <stop offset="50%" stop-color="#E2C882" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#F9F7F2" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Sombra Suave Orgánica -->
+    <filter id="botanicalShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1B2B1F" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Resplandor de Fondo Toscana -->
+  <circle cx="300" cy="300" r="230" fill="url(#tuscanSunGlow)" />
+
+  <!-- Aros Circulares de Papel y Filigrana -->
+  <g id="concentric-rings" filter="url(#botanicalShadow)">
+    <circle cx="300" cy="300" r="222" fill="none" stroke="url(#antiqueGold)" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.65" />
+    <circle cx="300" cy="300" r="212" fill="none" stroke="url(#antiqueGold)" stroke-width="1.8" />
+    <circle cx="300" cy="300" r="198" fill="none" stroke="url(#antiqueGold)" stroke-width="0.8" opacity="0.8" />
+    <circle cx="300" cy="300" r="190" fill="none" stroke="url(#cypressOlive)" stroke-width="0.6" stroke-dasharray="2 4" opacity="0.5" />
+  </g>
+
+  <!-- Puntos Cardinales Botánicos: Pequeñas Aceitunas de Oro -->
+  <g id="cardinal-olives">
+    <ellipse cx="300" cy="80" rx="5" ry="7" fill="url(#antiqueGold)" transform="rotate(15 300 80)" />
+    <ellipse cx="300" cy="520" rx="5" ry="7" fill="url(#antiqueGold)" transform="rotate(-15 300 520)" />
+    <ellipse cx="80" cy="300" rx="7" ry="5" fill="url(#antiqueGold)" transform="rotate(20 80 300)" />
+    <ellipse cx="520" cy="300" rx="7" ry="5" fill="url(#antiqueGold)" transform="rotate(-20 520 300)" />
+  </g>
+
+  <!-- CORONA DE RAMAS DE OLIVO TOSCANO (IZQUIERDA Y DERECHA) -->
+  <g id="olive-wreath" filter="url(#botanicalShadow)">
+    <!-- Rama Izquierda -->
+    <g id="branch-left">
+      <!-- Tallo sutil y sinuoso -->
+      <path d="M 300,470 C 190,470 120,380 120,290 C 120,210 160,150 230,120" fill="none" stroke="url(#cypressOlive)" stroke-width="2.2" stroke-linecap="round" />
+      
+      <!-- Hojas de Olivo Izquierda en Verde Ciprés y Oro -->
+      <!-- Par 1 -->
+      <path d="M 230,120 C 215,105 210,85 235,100 C 250,110 245,128 230,120 Z" fill="url(#antiqueGold)" opacity="0.95" />
+      <path d="M 215,135 C 198,125 192,108 216,120 C 230,128 226,145 215,135 Z" fill="url(#cypressOlive)" />
+      <!-- Par 2 -->
+      <path d="M 185,160 C 165,150 160,130 182,142 C 198,152 195,170 185,160 Z" fill="url(#antiqueGold)" />
+      <path d="M 168,185 C 148,178 142,160 166,170 C 180,180 178,198 168,185 Z" fill="url(#cypressOlive)" />
+      <!-- Aceitunas silvestres colgantes -->
+      <ellipse cx="178" cy="192" rx="4.5" ry="6.5" fill="url(#antiqueGold)" transform="rotate(30 178 192)" />
+      <path d="M 174,187 L 178,192" stroke="url(#cypressOlive)" stroke-width="1" />
+      
+      <!-- Par 3 -->
+      <path d="M 145,225 C 125,220 120,202 142,212 C 158,222 156,240 145,225 Z" fill="url(#antiqueGold)" />
+      <path d="M 132,260 C 112,260 108,242 130,250 C 145,260 142,278 132,260 Z" fill="url(#cypressOlive)" />
+      <!-- Par 4 -->
+      <path d="M 128,300 C 108,305 106,325 128,318 C 142,310 142,295 128,300 Z" fill="url(#antiqueGold)" />
+      <ellipse cx="134" cy="285" rx="5" ry="7" fill="url(#cypressOlive)" transform="rotate(-25 134 285)" />
+
+      <!-- Par 5 -->
+      <path d="M 138,348 C 118,358 120,378 140,366 C 152,355 152,340 138,348 Z" fill="url(#cypressOlive)" />
+      <path d="M 155,392 C 138,405 142,425 160,412 C 172,398 170,385 155,392 Z" fill="url(#antiqueGold)" />
+      <!-- Par 6 -->
+      <path d="M 188,430 C 175,446 182,465 198,448 C 208,432 205,420 188,430 Z" fill="url(#cypressOlive)" />
+      <path d="M 230,455 C 220,470 232,485 245,468 C 252,452 246,442 230,455 Z" fill="url(#antiqueGold)" />
+      <ellipse cx="218" cy="442" rx="4.5" ry="6.5" fill="url(#antiqueGold)" transform="rotate(45 218 442)" />
+    </g>
+
+    <!-- Rama Derecha (Simetría Espejada) -->
+    <g id="branch-right" transform="translate(600,0) scale(-1,1)">
+      <path d="M 300,470 C 190,470 120,380 120,290 C 120,210 160,150 230,120" fill="none" stroke="url(#cypressOlive)" stroke-width="2.2" stroke-linecap="round" />
+      <path d="M 230,120 C 215,105 210,85 235,100 C 250,110 245,128 230,120 Z" fill="url(#antiqueGold)" opacity="0.95" />
+      <path d="M 215,135 C 198,125 192,108 216,120 C 230,128 226,145 215,135 Z" fill="url(#cypressOlive)" />
+      <path d="M 185,160 C 165,150 160,130 182,142 C 198,152 195,170 185,160 Z" fill="url(#antiqueGold)" />
+      <path d="M 168,185 C 148,178 142,160 166,170 C 180,180 178,198 168,185 Z" fill="url(#cypressOlive)" />
+      <ellipse cx="178" cy="192" rx="4.5" ry="6.5" fill="url(#antiqueGold)" transform="rotate(30 178 192)" />
+      <path d="M 174,187 L 178,192" stroke="url(#cypressOlive)" stroke-width="1" />
+      <path d="M 145,225 C 125,220 120,202 142,212 C 158,222 156,240 145,225 Z" fill="url(#antiqueGold)" />
+      <path d="M 132,260 C 112,260 108,242 130,250 C 145,260 142,278 132,260 Z" fill="url(#cypressOlive)" />
+      <path d="M 128,300 C 108,305 106,325 128,318 C 142,310 142,295 128,300 Z" fill="url(#antiqueGold)" />
+      <ellipse cx="134" cy="285" rx="5" ry="7" fill="url(#cypressOlive)" transform="rotate(-25 134 285)" />
+      <path d="M 138,348 C 118,358 120,378 140,366 C 152,355 152,340 138,348 Z" fill="url(#cypressOlive)" />
+      <path d="M 155,392 C 138,405 142,425 160,412 C 172,398 170,385 155,392 Z" fill="url(#antiqueGold)" />
+      <path d="M 188,430 C 175,446 182,465 198,448 C 208,432 205,420 188,430 Z" fill="url(#cypressOlive)" />
+      <path d="M 230,455 C 220,470 232,485 245,468 C 252,452 246,442 230,455 Z" fill="url(#antiqueGold)" />
+      <ellipse cx="218" cy="442" rx="4.5" ry="6.5" fill="url(#antiqueGold)" transform="rotate(45 218 442)" />
+    </g>
+
+    <!-- Cinta de Seda Rústica Inferior -->
+    <g id="rustic-ribbon" transform="translate(0, 15)">
+      <path d="M 270,455 Q 300,448 330,455 Q 345,470 325,472 Q 300,465 275,472 Q 255,470 270,455 Z" fill="url(#antiqueGold)" />
+      <path d="M 280,470 Q 268,505 250,520 Q 265,502 284,475 Z" fill="url(#cypressOlive)" />
+      <path d="M 320,470 Q 332,505 350,520 Q 335,502 316,475 Z" fill="url(#cypressOlive)" />
+    </g>
+  </g>
+
+  <!-- ==========================================================
+       MONOGRAMA CENTRAL RENACENTISTA · C & M
+  =========================================================== -->
+  <g id="letters-florentine" filter="url(#botanicalShadow)">
+    <!-- Letra C Caligráfica Italiana Envolvente -->
+    <g id="letter-C">
+      <path d="M 310,215 C 250,215 205,255 205,315 C 205,375 250,415 315,415 C 335,415 350,408 360,400 L 352,388 C 342,396 330,402 312,402 C 262,402 225,368 225,315 C 225,262 262,228 310,228 C 328,228 342,234 352,242 L 360,230 C 348,220 332,215 310,215 Z" fill="url(#antiqueGold)" />
+      <!-- Terminal de gota floral superior e inferior -->
+      <circle cx="360" cy="235" r="4.5" fill="url(#antiqueGold)" />
+      <circle cx="360" cy="395" r="4.5" fill="url(#antiqueGold)" />
+    </g>
+
+    <!-- Símbolo Ampersand (&) en Cursiva Fina -->
+    <g id="ampersand-florentine" transform="translate(298, 305) scale(0.65)">
+      <text x="0" y="0" font-family="'Italiana', 'Cormorant Garamond', serif" font-size="70" font-style="italic" text-anchor="middle" fill="url(#cypressOlive)" opacity="0.9">&amp;</text>
+    </g>
+
+    <!-- Letra M Romana Florentina con Serifas Grabadas -->
+    <g id="letter-M">
+      <!-- Fuste izquierdo -->
+      <path d="M 292,235 L 322,235 L 322,242 L 310,242 L 310,388 L 322,388 L 322,395 L 285,395 L 285,388 L 297,388 L 297,242 L 292,242 Z" fill="url(#antiqueGold)" />
+      <!-- Trazo diagonal descendente -->
+      <path d="M 307,242 L 350,370 L 354,370 L 395,242 L 385,242 L 385,235 L 420,235 L 420,242 L 410,242 L 410,388 L 422,388 L 422,395 L 385,395 L 385,388 L 397,388 L 397,262 L 356,395 L 348,395 L 307,265 Z" fill="url(#antiqueGold)" />
+    </g>
+  </g>
+
+  <!-- LEMA TOSCANO EN ARCO INFERIOR -->
+  <g id="florentine-banner" transform="translate(0, 15)">
+    <path id="curveSemper" d="M 180,440 Q 300,480 420,440" fill="none" stroke="none" />
+    <text font-family="'Cinzel', serif" font-size="11" font-weight="600" letter-spacing="4.5" fill="url(#cypressOlive)" text-anchor="middle">
+      <textPath href="#curveSemper" startOffset="50%">SEMPER UNA</textPath>
+    </text>
+  </g>
+
+  <!-- AÑO EN NÚMEROS ROMANOS FLORENTINOS -->
+  <text x="300" y="512" font-family="'Cinzel', serif" font-size="9.5" font-weight="600" letter-spacing="5" fill="url(#antiqueGold)" text-anchor="middle">
+    MMXXVII
+  </text>
+</svg>

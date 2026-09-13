@@ -113,12 +113,12 @@ Tarjetas individuales con diseño glassmorphism. Cada evento debe incluir opcion
 
 ### Section 6: Itinerario de la Boda
 Línea de tiempo cronológica con íconos:
-- `17:00 HRS` — Ceremonia Religiosa ⛪
-- `18:00 HRS` — Sesión Fotográfica 📸
-- `19:00 HRS` — Cóctel de Bienvenida 🥂
-- `20:30 HRS` — Cena de Gala 🍽️
-- `21:30 HRS` — Brindis & Primer Baile 💃
-- `22:30 HRS` — Fiesta & DJ 🎶
+- `17:00 HRS` · Ceremonia Religiosa ⛪
+- `18:00 HRS` · Sesión Fotográfica 📸
+- `19:00 HRS` · Cóctel de Bienvenida 🥂
+- `20:30 HRS` · Cena de Gala 🍽️
+- `21:30 HRS` · Brindis & Primer Baile 💃
+- `22:30 HRS` · Fiesta & DJ 🎶
 
 ---
 

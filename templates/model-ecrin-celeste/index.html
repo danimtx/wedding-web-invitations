@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>L'Écrin Céleste · Valentina & Maximiliano</title>
+  <meta name="description" content="Invitación de boda de alta relojería y esfera celeste astronómica para el enlace matrimonial de Valentina & Maximiliano en San Miguel de Allende.">
+
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="svg/celestial-crest.svg">
+
+  <!-- Google Fonts: Cinzel, Bodoni Moda, Cormorant Garamond, Italianno, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Italianno&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons for UI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            celestial: {
+              void: '#05070D',
+              midnight: '#090E1A',
+              lapis: '#0E172A',
+              nebula: '#1A233A',
+              gold: '#E5C158',
+              goldlight: '#F5DC92',
+              darkgold: '#9A7532',
+              ivory: '#F7F8FA',
+              moonlight: '#C8D1DC',
+              muted: '#8A95A5'
+            }
+          },
+          fontFamily: {
+            cinzelDeco: ['"Cinzel Decorative"', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            bodoni: ['"Bodoni Moda"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Italianno"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Three.js for 3D Astrolabe & Constellation Dome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-celestial-void text-celestial-ivory selection:bg-celestial-gold selection:text-celestial-void antialiased overflow-x-hidden">
+
+  <!-- ========================================================================= -->
+  <!-- 1. HAUTE HORLOGERIE 3D ASTROLABE ENTRANCE OVERLAY                         -->
+  <!-- ========================================================================= -->
+  <div id="astrolabe-entrance" class="fixed inset-0 z-50 flex items-center justify-center bg-radial-cosmos transition-all duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)]">
+    
+    <!-- Background Star Nebulae Glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(229,193,88,0.15)_0%,_rgba(9,14,26,0.95)_70%,_#05070D_100%)] pointer-events-none"></div>
+
+    <!-- Outer Astrolabe Shell Frame -->
+    <div class="relative z-10 w-full max-w-xl aspect-square mx-4 p-4 flex flex-col items-center justify-center select-none">
+      
+      <!-- Astronomical Ring Borders -->
+      <div class="absolute inset-2 sm:inset-4 rounded-full border border-celestial-gold/30 pointer-events-none animate-spin-extremely-slow"></div>
+      <div class="absolute inset-6 sm:inset-10 rounded-full border border-celestial-gold/20 border-dashed pointer-events-none"></div>
+
+      <!-- Three.js Canvas: 3D Mechanical Gears & Astrolabe -->
+      <div class="relative w-full h-full flex items-center justify-center">
+        <canvas id="canvas-astrolabe-3d" class="w-full h-full cursor-pointer"></canvas>
+
+        <!-- Center Monogram & Horological Medallion -->
+        <div id="astrolabe-center-piece" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-[#9A7532] via-[#F5DC92] to-[#7B571D] p-[2px] shadow-2xl pointer-events-auto cursor-pointer group transition-transform duration-500 hover:scale-105 active:scale-95">
+          <div class="w-full h-full rounded-full bg-celestial-midnight/90 backdrop-blur-sm flex flex-col items-center justify-center border border-celestial-gold/50 text-celestial-gold relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(229,193,88,0.25)_0%,_transparent_70%)]"></div>
+            <img src="svg/celestial-crest.svg" alt="Monograma V&M" class="w-16 h-16 sm:w-20 sm:h-20 object-contain relative z-10 transition-transform group-hover:rotate-12 duration-700">
+            <span class="text-[8px] sm:text-[9px] font-cinzel tracking-[0.25em] uppercase font-bold text-celestial-goldlight mt-1 relative z-10">PULSAR</span>
+          </div>
+        </div>
+
+        <!-- Astrolabe Top & Bottom Badges -->
+        <div class="absolute top-2 sm:top-6 text-center pointer-events-none">
+          <p class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.35em] text-celestial-gold uppercase font-bold">HAUTE HORLOGERIE CELESTE</p>
+          <p class="font-sans text-[9px] tracking-[0.2em] text-celestial-muted uppercase mt-0.5">PIÈCE UNIQUE N° 021 / 2026</p>
+        </div>
+
+        <div class="absolute bottom-2 sm:bottom-6 text-center pointer-events-none">
+          <p class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.3em] text-celestial-goldlight uppercase font-semibold">SAN MIGUEL DE ALLENDE</p>
+          <p class="font-sans text-[8px] sm:text-[9px] tracking-[0.15em] text-celestial-muted uppercase">20°54'55"N 100°44'38"W</p>
+        </div>
+      </div>
+
+      <!-- Tactile Winding Crown Button -->
+      <div class="relative z-20 mt-4 text-center">
+        <button id="btn-wind-astrolabe" type="button" aria-label="Dar cuerda al astrolabio y abrir invitación" class="group relative inline-flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-[#1A233A] via-[#0E172A] to-[#1A233A] border border-celestial-gold rounded-full text-celestial-gold shadow-[0_0_25px_rgba(229,193,88,0.3)] hover:shadow-[0_0_40px_rgba(245,220,146,0.6)] hover:border-celestial-goldlight transition-all duration-300 transform hover:scale-105 cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-celestial-gold group-hover:bg-white animate-ping"></span>
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] uppercase font-bold">DAR CUERDA AL ASTROLABIO</span>
+          <i class="fa-solid fa-gear text-xs transition-transform group-hover:rotate-180 duration-700"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. TOP CELESTIAL OBSERVATORY TICKER & AUDIO FREQUENCY BAR                -->
+  <!-- ========================================================================= -->
+  <header id="observatory-bar" class="sticky top-0 z-40 bg-celestial-void/90 backdrop-blur-lg border-b border-celestial-gold/30 px-4 sm:px-8 py-3 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Astrological Monogram Title -->
+      <div class="flex items-center gap-3">
+        <a href="#hero" class="font-cinzel text-xs sm:text-sm tracking-[0.25em] font-bold text-celestial-gold uppercase flex items-center gap-2 hover:text-celestial-goldlight transition-colors">
+          <i class="fa-regular fa-compass text-sm text-celestial-gold"></i>
+          <span>L'ÉCRIN CÉLESTE</span>
+        </a>
+        <span class="hidden md:inline-block text-celestial-gold/30">/</span>
+        <span class="hidden md:inline-block font-sans text-[11px] tracking-widest text-celestial-muted uppercase">VALENTINA & MAXIMILIANO</span>
+      </div>
+
+      <!-- Astronomical Music Player -->
+      <div class="flex items-center gap-3 sm:gap-4 bg-celestial-midnight/80 border border-celestial-gold/40 px-3.5 sm:px-5 py-1.5 rounded-full shadow-inner">
+        
+        <!-- Live Star Pulse Waveform -->
+        <div id="audio-waveform" class="flex items-end gap-1 h-3.5 w-6 cursor-pointer" title="Oscilación Acústica">
+          <span class="astro-bar w-[2px] bg-celestial-gold rounded-full h-2"></span>
+          <span class="astro-bar w-[2px] bg-celestial-gold rounded-full h-3.5"></span>
+          <span class="astro-bar w-[2px] bg-celestial-gold rounded-full h-1.5"></span>
+          <span class="astro-bar w-[2px] bg-celestial-gold rounded-full h-3"></span>
+        </div>
+
+        <div class="hidden sm:block text-[10px] font-sans tracking-wider uppercase text-celestial-ivory/80 truncate max-w-[180px]">
+          <span id="track-name">Chopin / Nocturne Op. 9 No. 2</span>
+        </div>
+
+        <button id="btn-toggle-audio" type="button" aria-label="Reproducir o pausar música" class="w-7 h-7 rounded-full bg-celestial-gold text-celestial-void hover:bg-celestial-goldlight transition-colors flex items-center justify-center text-xs shadow-md">
+          <i id="audio-icon" class="fa-solid fa-play"></i>
+        </button>
+
+        <!-- Audio Source -->
+        <audio id="wedding-audio" loop preload="auto">
+          <source src="assets/song.mp3" type="audio/mp3">
+        </audio>
+      </div>
+
+      <!-- Quick Action: Ignite Star RSVP -->
+      <div class="flex items-center gap-2">
+        <a href="#rsvp" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-cinzel font-semibold tracking-widest uppercase bg-gradient-to-r from-celestial-darkgold via-celestial-gold to-celestial-darkgold text-celestial-void hover:brightness-110 transition-all rounded-full shadow-[0_0_15px_rgba(229,193,88,0.3)]">
+          ENCENDER ESTRELLA
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. MAIN CELESTIAL UNIVERSE CONTENT                                        -->
+  <!-- ========================================================================= -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 space-y-28 sm:space-y-40">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT I: L'HISTOIRE CÉLESTE & HERO SPREAD                               -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="hero" class="celestial-section pt-4">
+      
+      <!-- Coordinate Astronomical Ticker -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-y border-celestial-gold/20 py-2.5 mb-10 text-[10px] sm:text-[11px] font-sans tracking-[0.3em] text-celestial-muted uppercase">
+        <span>SÁBADO, 21 DE NOVIEMBRE DE 2026</span>
+        <span class="font-cinzel text-xs text-celestial-gold font-bold">ALINEACIÓN ESTELAR DE SAN MIGUEL</span>
+        <span>20°54'55"N 100°44'38"W</span>
+      </div>
+
+      <!-- Grand Celestial Title -->
+      <div class="text-center mb-16 relative">
+        <div class="inline-block px-4 py-1 border border-celestial-gold/40 rounded-full text-[9px] font-cinzel tracking-[0.35em] text-celestial-gold uppercase mb-3 bg-celestial-midnight/50">
+          CONJUNCIÓN NUPCIAL EXTRAORDINARIA
+        </div>
+        <h1 class="font-cinzelDeco text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5D6] via-[#E5C158] to-[#9A7532] uppercase leading-tight">
+          L'Écrin Céleste
+        </h1>
+        <p class="font-script text-4xl sm:text-6xl text-celestial-goldlight mt-2 -rotate-1 drop-shadow-md">
+          Valentina de la Garza & Maximiliano Silva
+        </p>
+      </div>
+
+      <!-- Asymmetric 2-Column Hero Spread -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        
+        <!-- Left Column: High-Horology Narrative & Precision Chronometer (7 cols) -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <div class="border-l-2 border-celestial-gold pl-6 py-2 bg-gradient-to-r from-celestial-gold/5 to-transparent">
+            <blockquote class="font-cormorant italic text-2xl sm:text-3xl text-celestial-ivory leading-relaxed">
+              "Dicen los astrónomos que cada ser humano nace bajo una estrella; lo extraordinario es cuando dos constelaciones colisionan para crear un universo nuevo."
+            </blockquote>
+            <cite class="block font-cinzel text-[10px] tracking-[0.25em] text-celestial-gold uppercase mt-3 font-semibold">
+              Votos de Valentina & Maximiliano / Crónica Celeste
+            </cite>
+          </div>
+
+          <div class="prose max-w-none text-celestial-moonlight text-sm sm:text-base leading-relaxed space-y-4 font-sans font-light">
+            <p>
+              <span class="float-left font-cinzel text-5xl sm:text-6xl font-bold leading-none mr-3 mt-1 text-celestial-gold">B</span>
+              ajo la serenidad infinita del firmamento de San Miguel de Allende, donde la cantera colonial se baña con la luz de mil estrellas, dos vidas convergen en un juramento eterno. Como los engranajes de un reloj de gran complicación que aguardaron siglos para sincronizar su latido perfecto, Valentina y Maximiliano abren las puertas de su celebración.
+            </p>
+            <p>
+              Una velada concebida como una experiencia inmersiva bajo la bóveda celeste: música de cámara, gastronomía de autor a la luz de los candelabros y una fiesta que orbitará hasta el despuntar de la aurora.
+            </p>
+          </div>
+
+          <!-- Chronomètre Astronomique (Countdown with Horological Second Sweep) -->
+          <div class="pt-6 border-t border-celestial-gold/20">
+            <div class="flex justify-between items-center mb-4">
+              <span class="font-cinzel text-[10px] tracking-[0.3em] uppercase text-celestial-gold font-bold flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-xs"></i> CHRONOMÈTRE DE HAUTE PRÉCISION
+              </span>
+              <span class="font-mono text-[9px] text-celestial-muted tracking-widest">CALIBRE SL-2026</span>
+            </div>
+
+            <!-- 4 Watch-Dial Counters -->
+            <div id="celestial-chronometer" class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+              
+              <div class="bg-celestial-midnight/80 border border-celestial-gold/40 p-3 sm:p-4 rounded-xl shadow-lg relative overflow-hidden group hover:border-celestial-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(229,193,88,0.15),_transparent_70%)]"></div>
+                <span id="chrono-days" class="font-cinzel text-2xl sm:text-4xl text-celestial-ivory font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-celestial-gold uppercase block mt-1 relative z-10">DÍAS</span>
+              </div>
+
+              <div class="bg-celestial-midnight/80 border border-celestial-gold/40 p-3 sm:p-4 rounded-xl shadow-lg relative overflow-hidden group hover:border-celestial-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(229,193,88,0.15),_transparent_70%)]"></div>
+                <span id="chrono-hours" class="font-cinzel text-2xl sm:text-4xl text-celestial-ivory font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-celestial-gold uppercase block mt-1 relative z-10">HORAS</span>
+              </div>
+
+              <div class="bg-celestial-midnight/80 border border-celestial-gold/40 p-3 sm:p-4 rounded-xl shadow-lg relative overflow-hidden group hover:border-celestial-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(229,193,88,0.15),_transparent_70%)]"></div>
+                <span id="chrono-minutes" class="font-cinzel text-2xl sm:text-4xl text-celestial-ivory font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-celestial-gold uppercase block mt-1 relative z-10">MINUTOS</span>
+              </div>
+
+              <div class="bg-celestial-midnight/80 border border-celestial-gold/40 p-3 sm:p-4 rounded-xl shadow-lg relative overflow-hidden group hover:border-celestial-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(229,193,88,0.15),_transparent_70%)]"></div>
+                <span id="chrono-seconds" class="font-cinzel text-2xl sm:text-4xl text-celestial-gold font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-celestial-gold uppercase block mt-1 relative z-10">SEGUNDOS</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Nocturnal Hero Portrait in Astrolabe Orbit (5 cols) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md aspect-square p-4 flex items-center justify-center">
+            
+            <!-- Rotating Constellation Dial Frame -->
+            <div class="absolute inset-0 rounded-full border border-celestial-gold/40 border-dashed animate-spin-extremely-slow pointer-events-none"></div>
+            <div class="absolute inset-3 rounded-full border-2 border-celestial-gold/30 pointer-events-none"></div>
+
+            <!-- The Portrait Disc -->
+            <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-celestial-gold shadow-[0_0_50px_rgba(229,193,88,0.25)] group">
+              <img src="assets/couple-hero.jpg" alt="Valentina y Maximiliano" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+              <div class="absolute inset-0 bg-gradient-to-t from-celestial-void/80 via-transparent to-transparent"></div>
+              
+              <div class="absolute bottom-6 left-0 right-0 text-center px-4">
+                <p class="font-cinzel text-[10px] tracking-[0.25em] text-celestial-gold uppercase font-bold">ALPHA LYRAE & BETA CYGNI</p>
+                <h3 class="font-cormorant italic text-xl text-white">"Guiados por la misma constelación"</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT II: LE PLANÉTAIRE EN DIRECT (LIVE 3D CONSTELLATION DOME)          -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="sky-dome" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">DOMO ASTRONÓMICO EN VIVO // CIELO DEL 21.XI.2026</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          La Bóveda Celeste
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.2em] text-celestial-muted uppercase">
+          EXPLORA EL FIRMAMENTO EXACTO QUE ILUMINARÁ NUESTRA BODA EN SAN MIGUEL
+        </p>
+      </div>
+
+      <!-- 3D Interactive Sky Dome Container -->
+      <div class="relative w-full h-[450px] sm:h-[550px] bg-celestial-midnight rounded-2xl border border-celestial-gold/40 shadow-2xl overflow-hidden group">
+        
+        <!-- Three.js Starry Dome Canvas -->
+        <canvas id="canvas-sky-dome" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+
+        <!-- Overlay Astrological Metadata & Drag Hint -->
+        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 pointer-events-none bg-celestial-void/60 backdrop-blur-md px-3 sm:px-4 py-2 rounded-lg border border-celestial-gold/30">
+          <p class="text-[9px] font-cinzel text-celestial-gold uppercase tracking-widest font-bold">CONSTELACIONES ACTIVAS</p>
+          <p class="text-[10px] font-sans text-white/90">Cygnus · Lyra · Cassiopeia · Orion</p>
+        </div>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-celestial-void/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-celestial-gold/40 text-[10px] font-cinzel tracking-widest text-celestial-goldlight uppercase flex items-center gap-2">
+          <i class="fa-solid fa-arrows-up-down-left-right text-xs animate-pulse"></i> ARRASTRA PARA ROTAR EL CIELO NOCTURNO
+        </div>
+
+        <!-- Binary Stars Pin Indicator -->
+        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 pointer-events-none bg-celestial-void/60 backdrop-blur-md px-3 sm:px-4 py-2 rounded-lg border border-celestial-gold/30 text-right">
+          <p class="text-[9px] font-cinzel text-celestial-gold uppercase tracking-widest font-bold">ESTRELLAS BINARIAS</p>
+          <p class="text-[10px] font-sans text-white/90">Valentina & Maximiliano</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT III: LES SANCTUAIRES D'HONNEUR (CEREMONIA & RECEPCIÓN)             -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="venues" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">LES SANCTUAIRES // DESTINOS NOCTURNOS</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          Dónde & Cuándo
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-celestial-muted uppercase">
+          DOS ESCENARIOS EMBLEMÁTICOS PARA UNA CELEBRACIÓN HISTÓRICA
+        </p>
+      </div>
+
+      <!-- Architectural Cards in Celestial Dark Glass -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Venue 1: Parroquia de San Miguel Arcángel -->
+        <div class="bg-celestial-midnight/80 border border-celestial-gold/40 p-6 sm:p-10 rounded-2xl flex flex-col justify-between shadow-xl relative group hover:border-celestial-gold transition-colors">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start border-b border-celestial-gold/30 pb-4">
+              <div>
+                <span class="text-[10px] font-cinzel tracking-[0.3em] text-celestial-gold uppercase font-bold">CEREMONIA SOLEMNE</span>
+                <h3 class="font-cinzel text-2xl sm:text-3xl text-celestial-ivory font-bold mt-1">Parroquia de San Miguel</h3>
+              </div>
+              <span class="font-cinzel text-2xl text-celestial-gold font-bold">16:30 h</span>
+            </div>
+
+            <p class="text-sm font-sans text-celestial-moonlight leading-relaxed">
+              Consagración litúrgica del sacramento matrimonial en el majestuoso templo gótico de cantera rosa. Se ruega estricta puntualidad para el inicio del cortejo nupcial.
+            </p>
+
+            <div class="space-y-2 py-2 text-xs font-sans text-celestial-muted">
+              <p><i class="fa-solid fa-location-dot text-celestial-gold mr-2"></i> Plaza Principal S/N, Centro Histórico</p>
+              <p><i class="fa-solid fa-compass text-celestial-gold mr-2"></i> 20°54'52.3"N 100°44'43.8"W</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-6 border-t border-celestial-gold/20 flex flex-wrap items-center gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-celestial-gold text-celestial-void text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-celestial-goldlight transition-all flex items-center gap-2">
+              <i class="fa-solid fa-diamond-turn-right"></i> GOOGLE MAPS
+            </a>
+            <button type="button" onclick="window.downloadCelestialCalendar('ceremony')" class="px-5 py-2.5 border border-celestial-gold/60 text-celestial-gold text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-celestial-gold/10 transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR CEREMONIA
+            </button>
+          </div>
+        </div>
+
+        <!-- Venue 2: Rancho Las Sabinas (Jardín de las Constelaciones) -->
+        <div class="bg-celestial-midnight/80 border border-celestial-gold/40 p-6 sm:p-10 rounded-2xl flex flex-col justify-between shadow-xl relative group hover:border-celestial-gold transition-colors">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start border-b border-celestial-gold/30 pb-4">
+              <div>
+                <span class="text-[10px] font-cinzel tracking-[0.3em] text-celestial-gold uppercase font-bold">GALA & BANQUETE NOCTURNO</span>
+                <h3 class="font-cinzel text-2xl sm:text-3xl text-celestial-ivory font-bold mt-1">Rancho Las Sabinas</h3>
+              </div>
+              <span class="font-cinzel text-2xl text-celestial-gold font-bold">18:30 h</span>
+            </div>
+
+            <p class="text-sm font-sans text-celestial-moonlight leading-relaxed">
+              Cóctel al crepúsculo en los jardines de sabinos centenarios, seguido de banquete imperial a la luz de las velas, fuegos celestes y gran baile bajo el firmamento.
+            </p>
+
+            <div class="space-y-2 py-2 text-xs font-sans text-celestial-muted">
+              <p><i class="fa-solid fa-location-dot text-celestial-gold mr-2"></i> Camino a la Cieneguita Km 4.2, San Miguel</p>
+              <p><i class="fa-solid fa-car text-celestial-gold mr-2"></i> Servicio exclusivo de Valet Parking & Seguridad</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-6 border-t border-celestial-gold/20 flex flex-wrap items-center gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-celestial-gold text-celestial-void text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-celestial-goldlight transition-all flex items-center gap-2">
+              <i class="fa-solid fa-diamond-turn-right"></i> CÓMO LLEGAR
+            </a>
+            <button type="button" onclick="window.downloadCelestialCalendar('party')" class="px-5 py-2.5 border border-celestial-gold/60 text-celestial-gold text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-celestial-gold/10 transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR FIESTA
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT IV: LE CARNET NOCTURNE (ITINERARIO ASTRONÓMICO EN 6 ALINEACIONES)  -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="program" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">ORDRE DES ASTRES // CARNET DE SOIRÉE</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          El Itinerario Celeste
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-celestial-muted uppercase">
+          SEIS MOMENTOS INMORTALES COORDINADOS CON EL MOVIMIENTO DE LOS ASTROS
+        </p>
+      </div>
+
+      <!-- Astrological Horology Sequence -->
+      <div class="max-w-4xl mx-auto bg-celestial-midnight/70 border border-celestial-gold/40 p-6 sm:p-12 rounded-3xl shadow-2xl relative">
+        <div class="space-y-8">
+
+          <!-- Alignment I -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-celestial-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-celestial-gold">16:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-celestial-muted uppercase">ALINEACIÓN I</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-celestial-ivory">I. La Conjunción Sagrada</h4>
+              <p class="font-sans text-xs text-celestial-moonlight mt-1">
+                Entrada solemne, votos eternos ante el altar y bendición de argollas bajo la nave central de la Parroquia.
+              </p>
+            </div>
+          </div>
+
+          <!-- Alignment II -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-celestial-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-celestial-gold">18:00 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-celestial-muted uppercase">ALINEACIÓN II</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-celestial-ivory">II. Le Crépuscule d'Or & Violonchelos</h4>
+              <p class="font-sans text-xs text-celestial-moonlight mt-1">
+                Recepción en los jardines al ocultarse el sol, barra de coctelería de autor y acordes de cuerdas en vivo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Alignment III -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-celestial-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-celestial-gold">19:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-celestial-muted uppercase">ALINEACIÓN III</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-celestial-ivory">III. Banquete Imperial bajo las Estrellas</h4>
+              <p class="font-sans text-xs text-celestial-moonlight mt-1">
+                Cena de alta gastronomía en cuatro tiempos maridada con selección de vinos de cosecha privada.
+              </p>
+            </div>
+          </div>
+
+          <!-- Alignment IV -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-celestial-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-celestial-gold">21:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-celestial-muted uppercase">ALINEACIÓN IV</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-celestial-ivory">IV. La Première Valse & Cascadas de Luz</h4>
+              <p class="font-sans text-xs text-celestial-moonlight mt-1">
+                Primer vals nupcial de los recién casados bajo la cúpula iluminada y brindis de honor con champaña.
+              </p>
+            </div>
+          </div>
+
+          <!-- Alignment V -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-celestial-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-celestial-gold">22:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-celestial-muted uppercase">ALINEACIÓN V</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-celestial-ivory">V. Grand Bal Cosmique & DJ Set</h4>
+              <p class="font-sans text-xs text-celestial-moonlight mt-1">
+                Apertura de la pista de cristal estelar, iluminación inmersiva, barra libre prémium y fiesta sin fin.
+              </p>
+            </div>
+          </div>
+
+          <!-- Alignment VI -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-celestial-gold">02:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-celestial-muted uppercase">ALINEACIÓN VI</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-celestial-ivory">VI. L'Aurore & Serenata de Trasnochadores</h4>
+              <p class="font-sans text-xs text-celestial-moonlight mt-1">
+                Churros artesanales con chocolate de metate, café de olla y estación gourmet para celebrar el amanecer.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT V: CODE VESTIMENTAIRE · NOCTURNE ROYAL (DRESS CODE & MOODBOARD)   -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="style" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">LOOKBOOK // CODE VESTIMENTAIRE</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          Nocturne Royal
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.2em] text-celestial-gold uppercase font-bold">
+          BLACK TIE NOCTURNE & ÉTOILE GLAMOUR
+        </p>
+      </div>
+
+      <!-- 3 Astronomical Style Columns -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Dames Guidelines -->
+        <div class="lg:col-span-4 bg-celestial-midnight/70 border border-celestial-gold/30 p-6 sm:p-8 rounded-2xl flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="border-b border-celestial-gold/30 pb-3 mb-4">
+              <span class="text-[10px] font-cinzel tracking-[0.25em] text-celestial-gold uppercase font-semibold">SILHOUETTE DAMES</span>
+              <h3 class="font-cinzel text-2xl text-celestial-ivory font-bold">Para las Damas</h3>
+            </div>
+            <p class="text-sm font-sans text-celestial-moonlight leading-relaxed mb-4">
+              Vestido largo formal de noche o gala. Sugerencia de tejidos: seda salvaje, satén pesado, terciopelo o crepé con sutiles destellos.
+            </p>
+            <div class="p-3.5 bg-celestial-void/60 border-l-2 border-celestial-gold rounded-r text-xs font-sans text-celestial-moonlight">
+              <p class="font-semibold text-celestial-gold">Cortesía de etiqueta:</p>
+              <p class="text-celestial-muted mt-0.5">Reservar los tonos blanco, ivory, marfil y perla exclusivamente para la novia.</p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-celestial-gold/20 text-[10px] font-sans tracking-widest text-celestial-muted uppercase">
+            CALZADO RECOMENDADO: TACÓN CÓMODO O BLOQUE
+          </div>
+        </div>
+
+        <!-- Central Celestial Swatches -->
+        <div class="lg:col-span-4 bg-celestial-midnight/90 border border-celestial-gold/50 p-6 sm:p-8 rounded-2xl flex flex-col justify-between shadow-2xl text-center">
+          <div>
+            <span class="text-[10px] font-cinzel tracking-[0.3em] text-celestial-gold uppercase font-bold block mb-1">NUANCIER CÉLESTE</span>
+            <h3 class="font-cinzel text-2xl text-celestial-ivory font-bold mb-6">Paleta del Firmamento</h3>
+            
+            <div class="grid grid-cols-5 gap-2 sm:gap-3 my-6">
+              <!-- Swatch 1 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#090E1A] shadow-lg border border-celestial-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-celestial-muted uppercase block mt-2 font-semibold">Nuit</span>
+                <span class="font-mono text-[7px] text-celestial-muted/60 block">#090E1A</span>
+              </div>
+              <!-- Swatch 2 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#0E172A] shadow-lg border border-celestial-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-celestial-muted uppercase block mt-2 font-semibold">Lapis</span>
+                <span class="font-mono text-[7px] text-celestial-muted/60 block">#0E172A</span>
+              </div>
+              <!-- Swatch 3 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#E5C158] shadow-lg border border-celestial-gold/50 transition-transform group-hover:scale-110 shadow-[0_0_10px_rgba(229,193,88,0.4)]"></div>
+                <span class="font-sans text-[8px] tracking-wider text-celestial-gold uppercase block mt-2 font-semibold">Or</span>
+                <span class="font-mono text-[7px] text-celestial-muted/60 block">#E5C158</span>
+              </div>
+              <!-- Swatch 4 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#C8D1DC] shadow-lg border border-celestial-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-celestial-muted uppercase block mt-2 font-semibold">Lune</span>
+                <span class="font-mono text-[7px] text-celestial-muted/60 block">#C8D1DC</span>
+              </div>
+              <!-- Swatch 5 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#121214] shadow-lg border border-celestial-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-celestial-muted uppercase block mt-2 font-semibold">Onyx</span>
+                <span class="font-mono text-[7px] text-celestial-muted/60 block">#121214</span>
+              </div>
+            </div>
+
+            <p class="text-xs font-cormorant italic text-celestial-moonlight">
+              "Inspirada en la profundidad de la noche estrellada y los destellos dorados de la alta relojería."
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-celestial-gold/20 text-[10px] font-cinzel tracking-widest text-celestial-gold uppercase font-bold">
+            ATMÓSFERA ASTRONÓMICA
+          </div>
+        </div>
+
+        <!-- Messieurs Guidelines -->
+        <div class="lg:col-span-4 bg-celestial-midnight/70 border border-celestial-gold/30 p-6 sm:p-8 rounded-2xl flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="border-b border-celestial-gold/30 pb-3 mb-4">
+              <span class="text-[10px] font-cinzel tracking-[0.25em] text-celestial-gold uppercase font-semibold">SILHOUETTE MESSIEURS</span>
+              <h3 class="font-cinzel text-2xl text-celestial-ivory font-bold">Para los Caballeros</h3>
+            </div>
+            <p class="text-sm font-sans text-celestial-moonlight leading-relaxed mb-4">
+              Smoking riguroso (Black Tie) en color negro clásico o azul noche medianoche, con solapa de seda, camisa blanca de gala y pajarita.
+            </p>
+            <div class="p-3.5 bg-celestial-void/60 border-l-2 border-celestial-gold rounded-r text-xs font-sans text-celestial-moonlight">
+              <p class="font-semibold text-celestial-gold">Toque sartorial:</p>
+              <p class="text-celestial-muted mt-0.5">Zapatos formales de charol o cuero lustrado. Gemelos metálicos dorados o plateados.</p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-celestial-gold/20 text-[10px] font-sans tracking-widest text-celestial-muted uppercase">
+            ETIQUETA RIGUROSA / BLACK TIE
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT VI: LINGOT D'OR 3D (INTERACTIVE 3D REVOLVING BULLION CARD)         -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="gifts" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">LINGOT D'OR // LUNA DE MIEL</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          Mesa de Regalos
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-celestial-muted uppercase">
+          VUESTRA COMPAÑÍA ES NUESTRO MAYOR TESORO. SI DESEÁIS TENER UN DETALLE CON NOSOTROS:
+        </p>
+      </div>
+
+      <!-- 3D Gold Bullion Card Container -->
+      <div class="max-w-xl mx-auto perspective-container py-4">
+        
+        <p class="text-center text-[11px] font-cinzel tracking-[0.2em] text-celestial-gold uppercase font-bold mb-4 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-arrows-rotate text-xs animate-spin-slow"></i> TOCA EL LINGOTE PARA VER LOS DATOS BANCARIOS
+        </p>
+
+        <!-- The 3D Bullion Card -->
+        <div id="card-bullion-flipper" class="card-3d-flipper w-full aspect-[16/10] sm:aspect-[1.586/1] relative cursor-pointer select-none">
+          
+          <!-- FRONT FACE: Solid Gilded Bullion Bar with Guilloché Crest -->
+          <div class="card-face card-face-front absolute inset-0 rounded-2xl bg-gradient-to-br from-[#E5C158] via-[#F5DC92] to-[#8C672A] p-6 sm:p-8 text-celestial-void shadow-[0_15px_50px_rgba(229,193,88,0.4)] border-2 border-[#FFF5D6] flex flex-col justify-between overflow-hidden">
+            
+            <!-- Metallic Sheen Sweep & Guilloché Watermark -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(255,255,255,0.4)_0%,_transparent_60%)] pointer-events-none"></div>
+            <div class="absolute -right-10 -bottom-10 w-56 h-56 opacity-20 pointer-events-none">
+              <img src="svg/celestial-crest.svg" alt="" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Top Row: Purity Stamp & Hallmark -->
+            <div class="flex justify-between items-start z-10">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 bg-black/20 rounded font-mono text-[9px] tracking-widest font-bold uppercase text-celestial-void">OR 999.9 PURETÉ</span>
+                <span class="font-cinzel text-[10px] tracking-[0.2em] font-bold">HAUTE HORLOGERIE</span>
+              </div>
+              <img src="svg/celestial-crest.svg" alt="Monogram" class="w-10 h-10 object-contain">
+            </div>
+
+            <!-- Middle: Bullion Destination -->
+            <div class="z-10 my-auto">
+              <span class="font-sans text-[9px] tracking-[0.25em] uppercase font-bold text-celestial-void/70 block">TRAVESÍA DE NOVIOS</span>
+              <h3 class="font-cinzel text-2xl sm:text-3xl font-bold tracking-wide text-celestial-void leading-tight">
+                Islas Griegas & Kioto
+              </h3>
+              <p class="font-mono text-xs tracking-widest text-celestial-void/70 mt-1">FOLIO NO. VM-2026-ASTRO</p>
+            </div>
+
+            <!-- Bottom Row: Holders & Expiry -->
+            <div class="flex justify-between items-end z-10 text-[10px] font-sans tracking-widest uppercase font-semibold">
+              <div>
+                <span class="text-celestial-void/60 block text-[8px]">TITULARES</span>
+                <span class="text-celestial-void font-bold">VALENTINA & MAXIMILIANO</span>
+              </div>
+              <div class="text-right">
+                <span class="text-celestial-void/60 block text-[8px]">VÁLIDO HASTA</span>
+                <span class="text-celestial-void font-bold">11 / 2026</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BACK FACE: Obsidian & Gold Transfer Credentials -->
+          <div class="card-face card-face-back absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1A233A] via-[#0E172A] to-[#070A12] p-6 sm:p-8 text-celestial-ivory shadow-2xl border-2 border-celestial-gold/50 flex flex-col justify-between overflow-hidden">
+            
+            <!-- Security Strip -->
+            <div class="-mx-6 sm:-mx-8 -mt-2 h-10 bg-black border-y border-celestial-gold/30 flex items-center justify-end px-6">
+              <span class="font-mono text-[9px] text-celestial-gold tracking-widest">ÉCRIN CÉLESTE COFFRET PRIVÉ</span>
+            </div>
+
+            <!-- Bank Data Letterpress Box -->
+            <div class="bg-celestial-void/80 border border-celestial-gold/40 rounded-xl p-3 sm:p-4 my-auto space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-cinzel text-celestial-gold uppercase text-[10px] tracking-wider font-bold">BANCO:</span>
+                <span class="font-mono text-white font-bold">BBVA BANCOMER</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-cinzel text-celestial-gold uppercase text-[10px] tracking-wider font-bold">BENEFICIARIO:</span>
+                <span class="font-sans text-white/90">Valentina de la Garza</span>
+              </div>
+              <div class="flex justify-between items-center text-xs pt-1 border-t border-celestial-gold/20">
+                <span class="font-cinzel text-celestial-gold uppercase text-[10px] tracking-wider font-bold">CLABE:</span>
+                <span id="clabe-number" class="font-mono text-xs sm:text-sm text-celestial-gold font-bold tracking-wider">012 180 019283746501</span>
+              </div>
+            </div>
+
+            <!-- 1-Click Copy Button -->
+            <div class="pt-2">
+              <button id="btn-copy-clabe" type="button" class="w-full py-2.5 bg-gradient-to-r from-celestial-darkgold via-celestial-gold to-celestial-darkgold text-celestial-void font-cinzel text-[10px] tracking-[0.2em] font-bold uppercase rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-md">
+                <i class="fa-regular fa-copy"></i> COPIAR CLABE INTERBANCARIA
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- External Department Stores -->
+        <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="https://www.elpalaciodehierro.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 bg-celestial-midnight/80 border border-celestial-gold/40 text-celestial-ivory font-cinzel text-xs tracking-widest uppercase hover:bg-celestial-gold hover:text-celestial-void transition-all text-center rounded-full shadow-md">
+            <i class="fa-solid fa-gift text-celestial-gold mr-2"></i> EL PALACIO DE HIERRO (N° 492018)
+          </a>
+          <a href="https://www.liverpool.com.mx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 bg-celestial-midnight/80 border border-celestial-gold/40 text-celestial-ivory font-cinzel text-xs tracking-widest uppercase hover:bg-celestial-gold hover:text-celestial-void transition-all text-center rounded-full shadow-md">
+            <i class="fa-solid fa-gift text-celestial-gold mr-2"></i> LIVERPOOL (N° 83920174)
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT VII: L'ÉTOILE DES VŒUX (REAL-TIME CONSTELLATION RSVP)              -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="rsvp" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">R.S.V.P. // L'ÉTOILE DES VŒUX</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          Enciende Tu Estrella
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-celestial-muted uppercase">
+          CONFIRMACIÓN INDISPENSABLE ANTES DEL 25 DE OCTUBRE DE 2026
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-10">
+
+        <!-- REAL-TIME CONSTELLATION GUEST PASS PREVIEW -->
+        <div class="bg-gradient-to-b from-celestial-midnight to-celestial-void border-2 border-celestial-gold/40 p-6 sm:p-10 rounded-3xl shadow-[0_0_50px_rgba(229,193,88,0.2)] relative overflow-hidden text-center transition-all duration-300">
+          
+          <div class="flex justify-between items-start mb-4">
+            <span class="font-cinzel text-[9px] tracking-[0.25em] text-celestial-gold uppercase font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-star text-[10px]"></i> ESTRELLA DE HONOR ASIGNADA
+            </span>
+            <span class="font-mono text-[9px] text-celestial-muted">COORD #ASTRO-2026</span>
+          </div>
+
+          <p class="font-cinzel text-[10px] tracking-[0.3em] text-celestial-muted uppercase">RESERVACIÓN CELESTE REGISTRADA PARA:</p>
+          
+          <!-- Live Name Display (Updates dynamically in script calligraphy as user types) -->
+          <div class="my-4 py-2 min-h-[60px] flex items-center justify-center">
+            <h3 id="calligraphy-guest-name" class="font-script text-4xl sm:text-6xl text-celestial-goldlight drop-shadow-md transition-all duration-300">
+              Distinguido Invitado
+            </h3>
+          </div>
+
+          <p id="calligraphy-guest-status" class="font-sans text-xs tracking-wider text-celestial-moonlight">
+            Tu estrella brillará con intensidad en el firmamento de nuestra noche más especial.
+          </p>
+
+          <div class="flex justify-between items-end border-t border-celestial-gold/20 pt-4 mt-6">
+            <div class="text-left">
+              <span class="text-[8px] font-sans text-celestial-muted uppercase tracking-widest block">PASES ASIGNADOS</span>
+              <span id="calligraphy-pass-count" class="font-cinzel text-lg text-celestial-gold font-bold">2 Pases</span>
+            </div>
+            <img src="svg/celestial-crest.svg" alt="Monogram" class="w-10 h-10 object-contain opacity-80">
+            <div class="text-right">
+              <span class="text-[8px] font-sans text-celestial-muted uppercase tracking-widest block">ESTADO</span>
+              <span id="calligraphy-status-badge" class="font-sans text-[10px] tracking-widest text-celestial-gold uppercase font-bold">EN ESPERA</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- The Celestial RSVP Form -->
+        <form id="celestial-rsvp-form" class="bg-celestial-midnight/80 border border-celestial-gold/40 p-6 sm:p-10 rounded-3xl shadow-xl space-y-6">
+          
+          <div class="space-y-4">
+            
+            <!-- Full Name Input -->
+            <div>
+              <label for="rsvp-name" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-celestial-gold font-bold mb-2">
+                Nombre y Apellidos de los Invitados *
+              </label>
+              <input type="text" id="rsvp-name" required placeholder="Escriba su nombre completo..." class="w-full px-4 py-3 bg-celestial-void/80 border border-celestial-gold/40 rounded-xl text-sm font-sans text-celestial-ivory focus:outline-none focus:border-celestial-gold focus:ring-1 focus:ring-celestial-gold transition-all">
+            </div>
+
+            <!-- Attendance Radio Selection -->
+            <div>
+              <label class="block font-cinzel text-xs tracking-[0.2em] uppercase text-celestial-gold font-bold mb-2">
+                ¿Nos acompañarás bajo las estrellas? *
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3 p-3.5 border border-celestial-gold/30 rounded-xl cursor-pointer hover:bg-celestial-void/60 transition-colors">
+                  <input type="radio" name="attendance" value="accepted" checked class="text-celestial-gold focus:ring-celestial-gold">
+                  <span class="font-sans text-xs font-semibold text-celestial-ivory">Acepto con inmensa alegría</span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 border border-celestial-gold/30 rounded-xl cursor-pointer hover:bg-celestial-void/60 transition-colors">
+                  <input type="radio" name="attendance" value="declined" class="text-celestial-gold focus:ring-celestial-gold">
+                  <span class="font-sans text-xs font-semibold text-celestial-ivory">Lamentablemente no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Number of Passes & Dietary Restrictions -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="rsvp-passes" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-celestial-gold font-bold mb-2">
+                  Número de Asistentes
+                </label>
+                <select id="rsvp-passes" class="w-full px-4 py-3 bg-celestial-void/80 border border-celestial-gold/40 rounded-xl text-sm font-sans text-celestial-ivory focus:outline-none focus:border-celestial-gold">
+                  <option value="1">1 Asistente (Pase Individual)</option>
+                  <option value="2" selected>2 Asistentes (Pase Doble)</option>
+                  <option value="3">3 Asistentes</option>
+                  <option value="4">4 Asistentes (Pase Familiar)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="rsvp-diet" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-celestial-gold font-bold mb-2">
+                  Restricciones Dietéticas
+                </label>
+                <input type="text" id="rsvp-diet" placeholder="Ej. Vegetariano, intolerancia al gluten..." class="w-full px-4 py-3 bg-celestial-void/80 border border-celestial-gold/40 rounded-xl text-sm font-sans text-celestial-ivory focus:outline-none focus:border-celestial-gold">
+              </div>
+            </div>
+
+            <!-- Song Dedication -->
+            <div>
+              <label for="rsvp-song" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-celestial-gold font-bold mb-2">
+                Canción que deseas escuchar en la pista cósmica
+              </label>
+              <input type="text" id="rsvp-song" placeholder="Título y artista para el DJ..." class="w-full px-4 py-3 bg-celestial-void/80 border border-celestial-gold/40 rounded-xl text-sm font-sans text-celestial-ivory focus:outline-none focus:border-celestial-gold">
+            </div>
+
+            <!-- Message to the Couple -->
+            <div>
+              <label for="rsvp-message" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-celestial-gold font-bold mb-2">
+                Deseo o bendición para Valentina & Maximiliano
+              </label>
+              <textarea id="rsvp-message" rows="3" placeholder="Escriba aquí sus palabras para los novios..." class="w-full px-4 py-3 bg-celestial-void/80 border border-celestial-gold/40 rounded-xl text-sm font-sans text-celestial-ivory focus:outline-none focus:border-celestial-gold"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4 border-t border-celestial-gold/20">
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-celestial-darkgold via-celestial-gold to-celestial-darkgold text-celestial-void font-cinzel text-xs sm:text-sm tracking-[0.25em] font-bold uppercase rounded-xl hover:brightness-110 transition-all duration-300 shadow-[0_0_30px_rgba(229,193,88,0.4)]">
+              CONFIRMAR ASISTENCIA & ENCENDER ESTRELLA
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT VIII: GALERIE DES ÉTOILES (NOCTURNAL PHOTO GALLERY & LIGHTBOX)    -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="gallery" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">PORTFOLIO // GALERIE NOCTURNE</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          Galería de las Estrellas
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-celestial-muted uppercase">
+          DESTellos de Amor capturados en la antesala de nuestra noche eterna
+        </p>
+      </div>
+
+      <!-- Celestial Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Photo 1 -->
+        <div class="group relative bg-celestial-midnight/70 p-3 rounded-2xl border border-celestial-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(229,193,88,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-1.jpg" data-caption="Atardecer bajo la cantera colonial / San Miguel de Allende">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-xl">
+            <img src="assets/gallery/gallery-1.jpg" alt="Galería 1" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-celestial-gold/90 rounded-full text-celestial-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-celestial-muted uppercase px-1">
+            <span>CLICHÉ NO. 01</span>
+            <span>SAN MIGUEL</span>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="group relative bg-celestial-midnight/70 p-3 rounded-2xl border border-celestial-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(229,193,88,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-2.jpg" data-caption="Primer vals íntimo bajo los sabinos centenarios">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-xl">
+            <img src="assets/gallery/gallery-2.jpg" alt="Galería 2" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-celestial-gold/90 rounded-full text-celestial-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-celestial-muted uppercase px-1">
+            <span>CLICHÉ NO. 02</span>
+            <span>INTIMITÉ</span>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="group relative bg-celestial-midnight/70 p-3 rounded-2xl border border-celestial-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(229,193,88,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-3.jpg" data-caption="Detalles de alta joyería y argollas astronómicas">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-xl">
+            <img src="assets/gallery/gallery-3.jpg" alt="Galería 3" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-celestial-gold/90 rounded-full text-celestial-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-celestial-muted uppercase px-1">
+            <span>CLICHÉ NO. 03</span>
+            <span>HORLOGERIE</span>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="group relative bg-celestial-midnight/70 p-3 rounded-2xl border border-celestial-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(229,193,88,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-4.jpg" data-caption="La promesa bajo la luz de los faroles coloniales">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-xl">
+            <img src="assets/gallery/gallery-4.jpg" alt="Galería 4" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-celestial-gold/90 rounded-full text-celestial-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-celestial-muted uppercase px-1">
+            <span>CLICHÉ NO. 04</span>
+            <span>PROMESSE</span>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="group relative bg-celestial-midnight/70 p-3 rounded-2xl border border-celestial-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(229,193,88,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-5.jpg" data-caption="Brindis con champaña a la luz de las velas">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-xl">
+            <img src="assets/gallery/gallery-5.jpg" alt="Galería 5" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-celestial-gold/90 rounded-full text-celestial-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-celestial-muted uppercase px-1">
+            <span>CLICHÉ NO. 05</span>
+            <span>CHAMPAGNE</span>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="group relative bg-celestial-midnight/70 p-3 rounded-2xl border border-celestial-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(229,193,88,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-6.jpg" data-caption="Miradas sincronizadas para toda la eternidad">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-xl">
+            <img src="assets/gallery/gallery-6.jpg" alt="Galería 6" class="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-celestial-gold/90 rounded-full text-celestial-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-celestial-muted uppercase px-1">
+            <span>CLICHÉ NO. 06</span>
+            <span>ÉTERNITÉ</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT IX: CONCIERGE & HOSPEDAJE BOUTIQUE                                -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="concierge" class="celestial-section pt-8 border-t border-celestial-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-celestial-gold font-bold block mb-2">CONCIERGE // HOSPEDAJE RECOMENDADO</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-celestial-ivory uppercase leading-tight">
+          Estadía en San Miguel
+        </h2>
+        <div class="w-16 h-0.5 bg-celestial-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-celestial-muted uppercase">
+          SELECCIÓN PRIVILEGIADA DE HOTELES BOUTIQUE CON TARIFA DE BODA
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Hotel 1 -->
+        <div class="bg-celestial-midnight/70 border border-celestial-gold/30 p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-celestial-gold uppercase font-bold">5 ÉTOILES LUXE</span>
+            <h3 class="font-cinzel text-xl text-celestial-ivory font-bold mt-1">Rosewood San Miguel</h3>
+            <p class="text-xs font-sans text-celestial-muted mt-2">Nemesio Diez 11, Zona Centro</p>
+            <p class="text-xs font-sans text-celestial-moonlight mt-3">Tarifa preferencial de boda mencionando Valentina & Maximiliano.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-celestial-gold/20 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-celestial-gold font-bold">CÓDIGO: VM-ASTRO</span>
+            <a href="https://www.rosewoodhotels.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-celestial-gold hover:text-celestial-goldlight font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="bg-celestial-midnight/70 border border-celestial-gold/30 p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-celestial-gold uppercase font-bold">RELAIS & CHÂTEAUX</span>
+            <h3 class="font-cinzel text-xl text-celestial-ivory font-bold mt-1">Belmond Casa de Sierra Nevada</h3>
+            <p class="text-xs font-sans text-celestial-muted mt-2">Hospicio 35, Centro Histórico</p>
+            <p class="text-xs font-sans text-celestial-moonlight mt-3">Mansión colonial del siglo XVI con spa y jardines de ciprés.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-celestial-gold/20 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-celestial-gold font-bold">CÓDIGO: BELMOND-VM</span>
+            <a href="https://www.belmond.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-celestial-gold hover:text-celestial-goldlight font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="bg-celestial-midnight/70 border border-celestial-gold/30 p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-celestial-gold uppercase font-bold">RESORT URBANO</span>
+            <h3 class="font-cinzel text-xl text-celestial-ivory font-bold mt-1">Live Aqua San Miguel</h3>
+            <p class="text-xs font-sans text-celestial-muted mt-2">Calzada de la Presa 10, Centro</p>
+            <p class="text-xs font-sans text-celestial-moonlight mt-3">Arquitectura contemporánea con albercas climatizadas y vistas al valle.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-celestial-gold/20 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-celestial-gold font-bold">CÓDIGO: AQUA-WED26</span>
+            <a href="https://www.liveaqua.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-celestial-gold hover:text-celestial-goldlight font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================= -->
+  <!-- 4. FLOATING CELESTIAL ASTROLABE DOCK (BOTTOM NAVIGATION)                  -->
+  <!-- ========================================================================= -->
+  <nav id="celestial-dock" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-celestial-midnight/95 backdrop-blur-md border border-celestial-gold/40 px-3 sm:px-6 py-2.5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center gap-2 sm:gap-4 max-w-[95vw] overflow-x-auto text-[10px] sm:text-xs font-cinzel tracking-widest text-celestial-moonlight select-none">
+    
+    <a href="#hero" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-celestial-gold active">
+      01 · HISTOIRE
+    </a>
+    <span class="text-celestial-gold/30">/</span>
+
+    <a href="#sky-dome" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-celestial-gold">
+      02 · BÓVEDA
+    </a>
+    <span class="text-celestial-gold/30">/</span>
+
+    <a href="#venues" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-celestial-gold">
+      03 · DESTINOS
+    </a>
+    <span class="text-celestial-gold/30">/</span>
+
+    <a href="#program" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-celestial-gold">
+      04 · ITINERARIO
+    </a>
+    <span class="text-celestial-gold/30">/</span>
+
+    <a href="#gifts" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-celestial-gold">
+      05 · REGALOS
+    </a>
+    <span class="text-celestial-gold/30">/</span>
+
+    <a href="#rsvp" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-celestial-gold text-celestial-gold font-bold">
+      06 · RSVP
+    </a>
+  </nav>
+
+
+  <!-- ========================================================================= -->
+  <!-- 5. LIGHTBOX MODAL FOR GALLERY ZOOM                                        -->
+  <!-- ========================================================================= -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+    <button id="btn-close-lightbox" class="absolute top-6 right-6 text-white text-3xl hover:text-celestial-gold transition-colors z-10" aria-label="Cerrar vista previa">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Ampliación" class="max-w-full max-h-[75vh] object-contain border border-celestial-gold/40 shadow-2xl rounded-xl">
+      <p id="lightbox-caption" class="font-cinzel text-celestial-gold text-sm sm:text-base mt-4 text-center"></p>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 6. EDITORIAL FOOTER & COLOPHON                                            -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-celestial-gold/20 bg-celestial-void text-celestial-ivory py-16 px-4 sm:px-8 text-center relative z-10">
+    <div class="max-w-2xl mx-auto space-y-6">
+      <img src="svg/celestial-crest.svg" alt="Monograma Valentina & Maximiliano" class="w-16 h-16 mx-auto object-contain">
+      
+      <div>
+        <h3 class="font-cinzel text-3xl text-celestial-ivory font-bold tracking-wide uppercase">Valentina & Maximiliano</h3>
+        <p class="font-cinzel text-xs tracking-[0.35em] text-celestial-gold mt-1 uppercase">XXI · NOVEMBRE · MMXXVI</p>
+      </div>
+
+      <p class="font-cormorant italic text-sm sm:text-base text-celestial-muted max-w-md mx-auto">
+        "El universo conspiró a favor de nuestro encuentro. Gracias por acompañarnos bajo el cielo más luminoso de nuestras vidas."
+      </p>
+
+      <div class="border-t border-celestial-gold/15 pt-6 text-[9px] font-sans tracking-[0.25em] text-celestial-muted/60 uppercase">
+        L'ÉCRIN CÉLESTE · ÉDITION PRIVÉE DE HAUTE HORLOGERIE · SAN MIGUEL DE ALLENDE
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-20 right-6 z-50 pointer-events-none"></div>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>

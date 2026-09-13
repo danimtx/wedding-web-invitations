@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="vipGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF1493" />
+      <stop offset="50%" stop-color="#FF69B4" />
+      <stop offset="100%" stop-color="#FF1493" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="300" height="120" rx="16" fill="#1A0510" stroke="#FF1493" stroke-width="2" />
+  <rect x="10" y="10" width="280" height="100" rx="10" fill="none" stroke="#FF69B4" stroke-width="1" stroke-dasharray="6 4" opacity="0.5" />
+  
+  <!-- Holographic Star -->
+  <circle cx="45" cy="60" r="24" fill="url(#vipGrad)" />
+  <path d="M45,42 Q45,55 35,60 Q45,65 45,78 Q45,65 55,60 Q45,55 45,42 Z" fill="#FFFFFF" />
+
+  <!-- VIP Text -->
+  <text x="85" y="48" font-family="'Syne', 'Montserrat', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF" letter-spacing="2">ALL ACCESS PASS</text>
+  <text x="85" y="70" font-family="'Outfit', sans-serif" font-size="12" font-weight="600" fill="#FF69B4" letter-spacing="3">THE DREAM WEDDING</text>
+  <text x="85" y="92" font-family="'Outfit', sans-serif" font-size="9" fill="#FFA6D5" letter-spacing="1">CABO SAN LUCAS · XII.XII.MMXXVI</text>
+  
+  <!-- Barcode on right -->
+  <g transform="translate(245, 25)" fill="#FFFFFF" opacity="0.8">
+    <rect x="0" y="0" width="2" height="70" />
+    <rect x="4" y="0" width="4" height="70" />
+    <rect x="10" y="0" width="1" height="70" />
+    <rect x="13" y="0" width="3" height="70" />
+    <rect x="18" y="0" width="2" height="70" />
+    <rect x="22" y="0" width="5" height="70" />
+    <rect x="29" y="0" width="1" height="70" />
+    <rect x="32" y="0" width="3" height="70" />
+    <rect x="37" y="0" width="2" height="70" />
+  </g>
+</svg>

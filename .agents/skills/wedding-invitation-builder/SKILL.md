@@ -16,6 +16,8 @@ Before generating the invitation, refer to these guides as needed:
 | Reference File | Contents & Purpose |
 | :--- | :--- |
 | **[premium-design-principles.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/premium-design-principles.md)** | **Premium Design Principles**: The signature moment rule, anti-slop rules, typography discipline, purposeful motion, surface polish, pre-flight check, and color philosophy. |
+| **[style-editorial-vogue.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/style-editorial-vogue.md)** | **Editorial Magazine & Fashion Lookbook System**: Complete blueprint for the Vogue / Kinfolk nupcial model featuring interactive 3D Three.js silk ribbon untie, Michelin-star itinerary, 3D flip card, real-time calligraphy RSVP, and chapter scrubber dock. |
+| **[style-ecrin-celeste.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/style-ecrin-celeste.md)** | **Haute Horlogerie & Astrolabe Céleste System**: Master blueprint for the astronomical clockwork wedding model featuring interactive 3D Three.js mechanical astrolabe, live 3D constellation starry dome, 3D gold bullion card, and real-time star ignition RSVP. |
 | **[information-structure.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/information-structure.md)** | **Standardized Section Blueprint & Data Standards**: Defines the 14 mandatory sections (from Cover Screen overlay to Footer). |
 | **[design-styles-palettes.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/design-styles-palettes.md)** | **Visual Design System**: Catalog of 22 color palettes, typography stacks, glassmorphism, background textures. |
 | **[ai-asset-generation.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/ai-asset-generation.md)** | **AI Prompts & Vector Icons**: Prompts for floral overlays, gold frames, wax seals, and vector icon mappings (FontAwesome 6 / Lucide Icons). |
@@ -38,8 +40,8 @@ The primary market for these invitations is **Bolivia**, but the system is adapt
 ## 3. Style Selection Protocol
 
 Before generating ANY code, the agent MUST follow this interactive protocol with the user:
-1. **Ask for Wedding Type**: Ask the user what type of wedding they're planning (classic, modern, rustic, tropical, dark luxury, fairy tale, etc.).
-2. **Recommend Palettes**: Based on their answer, RECOMMEND 2-3 palettes from the catalog of 22 palettes in `design-styles-palettes.md` that best match their style.
+1. **Ask for Wedding Type**: Ask the user what type of wedding they're planning (classic, modern, rustic, tropical, dark luxury, fairy tale, high-fashion editorial magazine / lookbook, or astronomical haute horlogerie).
+2. **Recommend Palettes & Models**: Based on their answer, RECOMMEND 2-3 palettes from the catalog in `design-styles-palettes.md`, the editorial lookbook model in `style-editorial-vogue.md`, or the astronomical model in `style-ecrin-celeste.md` if they seek extreme luxury, nighttime galas, or non-traditional layouts.
 3. **Let the User Decide**: Allow the user to pick from the recommendations or customize their own.
 4. **Typography Preferences**: Ask for their font preference (e.g., serif, sans-serif, script) or recommend typography stacks based on the chosen palette.
 
@@ -67,6 +69,7 @@ model-{estilo}-{variante}/
 │   ├── floral-corner.png       (Floral / graphic corner overlay)
 │   ├── song.mp3                (Background music track)
 │   └── story/                  (Gallery photos)
+├── svg/                        (Bespoke vector crests, monograms, ornaments)
 ├── index.html                  (Complete static HTML structure)
 ├── styles.css                  (Theme variables & layout CSS)
 └── main.js                     (Entry trigger, audio, countdown, RSVP JS)

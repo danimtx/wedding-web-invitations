@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Liquid Champagne Rose Gold Gradient -->
+    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C48477" />
+      <stop offset="25%" stop-color="#FCDCD4" />
+      <stop offset="50%" stop-color="#E2A698" />
+      <stop offset="75%" stop-color="#F5CBC0" />
+      <stop offset="100%" stop-color="#A86154" />
+    </linearGradient>
+
+    <!-- Soft Petal Blush Tint Gradient -->
+    <linearGradient id="petalBlush" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9EDED" />
+      <stop offset="100%" stop-color="#EBB3A8" />
+    </linearGradient>
+
+    <!-- Warm Glow Filter -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Architectural French Cloche Oval -->
+  <ellipse cx="250" cy="250" rx="225" ry="235" fill="none" stroke="url(#roseGold)" stroke-width="1.2" stroke-opacity="0.35" stroke-dasharray="3 4"/>
+  <ellipse cx="250" cy="250" rx="215" ry="225" fill="none" stroke="url(#roseGold)" stroke-width="1.8" stroke-opacity="0.85"/>
+  <ellipse cx="250" cy="250" rx="205" ry="215" fill="none" stroke="url(#roseGold)" stroke-width="0.8" stroke-opacity="0.4"/>
+
+  <!-- English Climbing Roses & Peony Branches -->
+  <g stroke="url(#roseGold)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <!-- Left Rose Stem -->
+    <path d="M 125 330 C 105 270, 110 190, 150 135 C 180 95, 220 75, 250 72" />
+    
+    <!-- Left Blossoms & Leaves -->
+    <path d="M 118 290 Q 95 280, 108 265 Q 120 278, 118 290 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+    <path d="M 125 240 Q 100 225, 115 210 Q 128 225, 125 240 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+    <path d="M 140 170 Q 120 150, 138 138 Q 150 155, 140 170 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+    <path d="M 175 115 Q 165 92, 185 88 Q 192 108, 175 115 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+
+    <!-- Left Rose Bud at Shoulder -->
+    <path d="M 125 200 C 115 190, 120 175, 135 180 C 145 185, 140 205, 125 200 Z" fill="url(#roseGold)" fill-opacity="0.4"/>
+
+    <!-- Right Rose Stem -->
+    <path d="M 375 330 C 395 270, 390 190, 350 135 C 320 95, 280 75, 250 72" />
+    
+    <!-- Right Blossoms & Leaves -->
+    <path d="M 382 290 Q 405 280, 392 265 Q 380 278, 382 290 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+    <path d="M 375 240 Q 400 225, 385 210 Q 372 225, 375 240 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+    <path d="M 360 170 Q 380 150, 362 138 Q 350 155, 360 170 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+    <path d="M 325 115 Q 335 92, 315 88 Q 308 108, 325 115 Z" fill="url(#petalBlush)" fill-opacity="0.5"/>
+
+    <!-- Right Rose Bud at Shoulder -->
+    <path d="M 375 200 C 385 190, 380 175, 365 180 C 355 185, 360 205, 375 200 Z" fill="url(#roseGold)" fill-opacity="0.4"/>
+  </g>
+
+  <!-- Crown Rosebud at Top Apex -->
+  <g transform="translate(250, 58)" fill="url(#roseGold)" filter="url(#softGlow)">
+    <circle cx="0" cy="0" r="5" />
+    <path d="M -8 4 Q 0 -6, 8 4 Q 0 8, -8 4 Z" fill="url(#roseGold)" opacity="0.8"/>
+    <circle cx="-16" cy="3" r="2" />
+    <circle cx="16" cy="3" r="2" />
+  </g>
+
+  <!-- Central Intertwined Monogram: I & J (Isabella & Julián) -->
+  <g id="monogram" fill="url(#roseGold)" filter="url(#softGlow)">
+    <!-- Letter I in Copperplate Serif -->
+    <path d="M 185 180 L 235 180 L 235 192 L 216 192 L 216 308 L 235 308 L 235 320 L 185 320 L 185 308 L 204 308 L 204 192 L 185 192 Z" opacity="0.95"/>
+
+    <!-- Flourish Ampersand / Satin Ribbon -->
+    <path d="M 235 235 Q 248 215, 258 235 Q 265 250, 245 268 Q 235 278, 258 278 Q 268 278, 275 268 L 278 274 Q 268 285, 252 285 Q 230 285, 230 260 Q 230 245, 240 235 Z" opacity="0.85"/>
+
+    <!-- Letter J in Flowing Script Serif -->
+    <path d="M 265 180 L 315 180 L 315 192 L 296 192 L 296 295 C 296 322, 280 332, 255 332 C 240 332, 230 325, 226 318 L 234 308 C 238 314, 245 320, 256 320 C 272 320, 282 312, 282 292 L 282 192 L 265 192 Z" opacity="0.95"/>
+  </g>
+
+  <!-- Lower Satin Ribbon Banner -->
+  <path d="M 155 372 Q 250 388, 345 372 Q 325 398, 250 398 Q 175 398, 155 372 Z" fill="url(#roseGold)" opacity="0.25"/>
+  <path d="M 165 376 Q 250 390, 335 376" fill="none" stroke="url(#roseGold)" stroke-width="1" opacity="0.8"/>
+
+  <!-- Date in Roman Numerals & Location -->
+  <text x="250" y="420" text-anchor="middle" font-family="'Cinzel', 'Bodoni Moda', serif" font-size="13" letter-spacing="6" fill="url(#roseGold)" font-weight="600">XII · XII · MMXXVI</text>
+  <text x="250" y="440" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="9" letter-spacing="4" fill="url(#roseGold)" opacity="0.8">SAN MIGUEL DE ALLENDE</text>
+</svg>

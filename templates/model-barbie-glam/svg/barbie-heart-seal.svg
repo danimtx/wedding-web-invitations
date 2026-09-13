@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sealPinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF69B4" />
+      <stop offset="50%" stop-color="#FF1493" />
+      <stop offset="100%" stop-color="#C70066" />
+    </linearGradient>
+    <path id="curveTop" d="M25,80 A55,55 0 0,1 135,80" />
+    <path id="curveBottom" d="M135,80 A55,55 0 0,1 25,80" />
+  </defs>
+
+  <!-- Serrated / Scalloped Outer Edge of Seal -->
+  <circle cx="80" cy="80" r="74" fill="none" stroke="url(#sealPinkGrad)" stroke-width="3" stroke-dasharray="3 3" />
+  <circle cx="80" cy="80" r="68" fill="#FFF5F9" stroke="#FF1493" stroke-width="1.5" />
+  <circle cx="80" cy="80" r="60" fill="none" stroke="#FF69B4" stroke-width="1" />
+
+  <!-- Circular Text Along Path -->
+  <text font-family="'Syne', sans-serif" font-size="8.5" font-weight="800" fill="#FF1493" letter-spacing="2">
+    <textPath href="#curveTop" startOffset="50%" text-anchor="middle">
+      OFFICIAL GUEST
+    </textPath>
+  </text>
+  <text font-family="'Outfit', sans-serif" font-size="7.5" font-weight="700" fill="#B80058" letter-spacing="1.5">
+    <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">
+      DREAMHOUSE WEDDING
+    </textPath>
+  </text>
+
+  <!-- Central Heart Silhouette with Monogram -->
+  <path d="M80,62 C72,48 56,52 56,68 C56,83 74,96 80,102 C86,96 104,83 104,68 C104,52 88,48 80,62 Z" fill="url(#sealPinkGrad)" />
+  <text x="80" y="78" font-family="'Syne', sans-serif" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">V&amp;R</text>
+
+  <!-- Little Sparkles -->
+  <circle cx="48" cy="80" r="2" fill="#FF1493" />
+  <circle cx="112" cy="80" r="2" fill="#FF1493" />
+</svg>

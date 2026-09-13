@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Camila &amp; Mateo · Nuestra Boda · 18.09.2027 · Tarija, Bolivia</title>
+  <meta name="description"
+    content="Invitación digital exclusiva a la boda de Camila & Mateo en los Viñedos del Valle de la Concepción. Sábado 18 de Septiembre de 2027. Tarija, Bolivia.">
+  <meta name="theme-color" content="#FBF9F4">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:title" content="Camila & Mateo · Nuestra Boda en el Valle 🌿✨">
+  <meta property="og:type" content="website">
+  <meta property="og:description"
+    content="Tenemos el honor de invitarte a celebrar nuestro matrimonio en los Viñedos del Valle de la Concepción. Sábado 18 de Septiembre de 2027. Tarija, Bolivia.">
+  <meta property="og:image" content="https://danimtx.github.io/wedding-web-invitations/assets/couple-hero.jpg">
+
+  <!-- Google Fonts: Estilo Villa Florentina & Old Money -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Pinyon+Script&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome 6.5.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Three.js r128 para WebGL 3D Experience (Hojas de Olivo y Brisa Toscana) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Hoja de Estilos Villa Royale -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- CAPA DE FONDO FIJA CON TEXTURA DE PAPEL ARTESANAL DE ALGODÓN -->
+  <div class="fixed-paper-bg" aria-hidden="true"></div>
+
+  <!-- SVG CLIP PATHS GLOBALES PARA MARCOS BOTÁNICOS -->
+  <svg class="svg-defs-global" width="0" height="0" viewBox="0 0 100 100" style="position:absolute; width:0; height:0;">
+    <defs>
+      <!-- Gradientes Maestros de Oro Florentino -->
+      <linearGradient id="goldFlorentineMaster" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#F7EAC4" />
+        <stop offset="35%" stop-color="#DEBE76" />
+        <stop offset="60%" stop-color="#C5A059" />
+        <stop offset="100%" stop-color="#8C6826" />
+      </linearGradient>
+
+      <!-- 1. Camafeo Oval Botánico (Hero Principal) -->
+      <clipPath id="clipCameoTuscan" clipPathUnits="objectBoundingBox">
+        <ellipse cx="0.5" cy="0.5" rx="0.48" ry="0.49" />
+      </clipPath>
+
+      <!-- 2. Arco Románico de Viñedo (Story 1) -->
+      <clipPath id="clipArchVineyard" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5,0 C 0.82,0.02 1,0.2 1,0.42 L 1,0.95 C 1,0.98 0.96,1 0.92,1 L 0.08,1 C 0.04,1 0,0.98 0,0.95 L 0,0.42 C 0,0.2 0.18,0.02 0.5,0 Z" />
+      </clipPath>
+
+      <!-- 3. Ventana Florentina Suave (Story 2) -->
+      <clipPath id="clipFlorentineWindow" clipPathUnits="objectBoundingBox">
+        <path d="M 0.15,0 L 0.85,0 C 0.94,0 1,0.06 1,0.15 L 1,0.85 C 1,0.94 0.94,1 0.85,1 L 0.15,1 C 0.06,1 0,0.94 0,0.85 L 0,0.15 C 0,0.06 0.06,0 0.15,0 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- CANVAS 3D DE BRISA BOTÁNICA Y HOJAS DE OLIVO EN THREE.JS -->
+  <canvas id="botanical-3d-canvas" class="botanical-3d-canvas" aria-hidden="true"></canvas>
+
+  <!-- ELEMENTO DE AUDIO PRINCIPAL (Música Acústica / Cuerdas) -->
+  <audio id="bg-music" src="assets/song.mp3" loop preload="auto"></audio>
+
+  <!-- ==================================================================
+       SECCIÓN 0 · SOBRE TRIFOLD 3D & FAJILLA VEGETAL (COVER SCREEN)
+  =================================================================== -->
+  <div id="cover-overlay" class="cover-overlay" role="dialog" aria-modal="true" aria-label="Apertura de Sobre Nupcial">
+    <div class="cover-ambient-light"></div>
+
+    <div class="trifold-envelope-scene">
+      <div class="trifold-envelope-box" id="trifold-box">
+
+        <!-- Solapa Izquierda Trifold 3D -->
+        <div class="trifold-flap trifold-flap-left" id="flap-left">
+          <div class="flap-inner-texture">
+            <svg class="flap-deckle-edge" viewBox="0 0 20 500" preserveAspectRatio="none">
+              <path d="M 0,0 Q 8,50 2,100 Q 12,150 4,200 Q 10,250 3,300 Q 12,350 5,400 Q 9,450 0,500 Z" fill="#EFE8DE" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Solapa Derecha Trifold 3D -->
+        <div class="trifold-flap trifold-flap-right" id="flap-right">
+          <div class="flap-inner-texture">
+            <svg class="flap-deckle-edge flap-edge-right" viewBox="0 0 20 500" preserveAspectRatio="none">
+              <path d="M 20,0 Q 12,50 18,100 Q 8,150 16,200 Q 10,250 17,300 Q 8,350 15,400 Q 11,450 20,500 Z" fill="#EFE8DE" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Fajilla de Papel Vegetal Translúcido (Belly Band) -->
+        <div class="belly-band-vellum" id="belly-band">
+          <div class="band-botanical-monogram">
+            <img src="svg/botanical-crest.svg" alt="Monograma Camila & Mateo" class="band-crest-mini">
+          </div>
+          <p class="band-date">18 · 09 · 2027</p>
+        </div>
+
+        <!-- Sello de Cera Verde Esmeralda con Hojuelas de Oro -->
+        <div class="emerald-seal-wrap" id="emerald-seal-btn" tabindex="0" role="button" aria-label="Romper sello de cera y abrir sobre">
+          <div class="seal-glow-ring"></div>
+          <div class="seal-gem-disc">
+            <div class="seal-initials-crest">
+              <span>C</span><span class="seal-amp">&amp;</span><span>M</span>
+            </div>
+            <div class="seal-gold-leaf-flake" aria-hidden="true"></div>
+          </div>
+          <span class="seal-open-instruction"><i class="fa-solid fa-leaf"></i> TOCAR PARA ABRIR</span>
+        </div>
+
+        <!-- Tarjeta Interior Visible al Desplegar -->
+        <div class="envelope-invitation-card deckle-card">
+          <p class="cover-card-eyebrow">NUESTRA BODA EN EL VALLE</p>
+          <h1 class="cover-card-names">
+            <span>Camila</span>
+            <span class="card-amp">&amp;</span>
+            <span>Mateo</span>
+          </h1>
+
+          <div class="cover-card-divider" aria-hidden="true">
+            <svg width="180" height="20" viewBox="0 0 180 20" fill="none">
+              <path d="M 0,10 L 65,10 Q 90,3 115,10 L 180,10" stroke="url(#goldFlorentineMaster)" stroke-width="1.2" />
+              <circle cx="90" cy="6" r="2.5" fill="#3B543D" />
+            </svg>
+          </div>
+
+          <p class="cover-card-date">SÁBADO · 18 DE SEPTIEMBRE DE 2027</p>
+          <p class="cover-card-venue">VIÑEDOS DEL VALLE DE LA CONCEPCIÓN · TARIJA</p>
+
+          <!-- Saludo Personalizado al Invitado (URL ?invitado=...) -->
+          <div class="guest-card-pillow">
+            <span class="guest-tag-leaf"><i class="fa-solid fa-seedling"></i> INVITACIÓN PERSONAL</span>
+            <p id="guest-greeting" class="guest-greeting-text">Tenemos el honor de invitarte</p>
+          </div>
+
+          <button id="enter-invitation-btn" class="btn-botanical-gold btn-open-card">
+            <i class="fa-solid fa-envelope-open"></i>
+            <span>ABRIR INVITACIÓN</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       DYNAMIC ISLAND · REPRODUCTOR ACÚSTICO VINTAGE (ESTILO APPLE)
+  =================================================================== -->
+  <aside id="dynamic-island" class="dynamic-island" aria-label="Controlador de música de fondo">
+    <div class="island-pill" id="island-pill-trigger">
+      <!-- Mini Vinilo de Bronce Toscano -->
+      <div class="mini-vinyl-wrap" id="island-vinyl">
+        <div class="mini-vinyl-grooves"></div>
+        <div class="mini-vinyl-center"></div>
+      </div>
+
+      <!-- Barras Ecualizadoras Acústicas -->
+      <div class="audio-wave-visualizer" id="island-wave">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </div>
+
+      <div class="island-meta">
+        <span class="island-song-title">Cavatina · Guitar &amp; Cello</span>
+        <span class="island-song-artist">Accademia di Musica · Melodía Clásica</span>
+      </div>
+
+      <button class="island-ctrl-btn" id="island-play-pause" aria-label="Reproducir o pausar música">
+        <i class="fa-solid fa-play" id="island-icon-state"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================================================================
+       CONTENEDOR PRINCIPAL DE LA INVITACIÓN
+  =================================================================== -->
+  <main id="main-content" class="invitation-container">
+
+    <!-- ================================================================
+         SECCIÓN 1 · HERO PRINCIPAL
+    ================================================================= -->
+    <header class="hero-section" id="hero">
+      <div class="hero-crest-container scroll-reveal">
+        <img src="svg/botanical-crest.svg" alt="Monograma Botánico de Camila y Mateo" class="hero-crest-img">
+      </div>
+
+      <div class="hero-eyebrow-wrap scroll-reveal">
+        <span class="hero-eyebrow-pill">NUESTRO MATRIMONIO</span>
+      </div>
+
+      <h1 class="hero-title scroll-reveal">
+        <span class="hero-name">Camila</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="hero-name">Mateo</span>
+      </h1>
+
+      <p class="hero-subtitle scroll-reveal">
+        Bajo los cielos abiertos del valle y entre los viñedos de nuestra tierra, celebraremos el comienzo de nuestra vida juntos
+      </p>
+
+      <!-- Retrato de los Novios en Marco Camafeo Oval Florentino -->
+      <div class="hero-portrait-container scroll-reveal">
+        <div class="portrait-cameo-frame">
+          <div class="portrait-cameo-inner">
+            <img src="assets/couple-hero.jpg" alt="Retrato de Camila y Mateo en viñedos" class="portrait-image">
+          </div>
+          <div class="portrait-cameo-border" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="hero-meta-badge scroll-reveal">
+        <span class="meta-leaf-icon"><i class="fa-solid fa-seedling"></i></span>
+        <span class="meta-date-text">18 DE SEPTIEMBRE DE 2027</span>
+        <span class="meta-sep">·</span>
+        <span class="meta-city-text">VALLE DE LA CONCEPCIÓN, TARIJA</span>
+      </div>
+    </header>
+
+    <!-- ================================================================
+         SECCIÓN 2 · BIENVENIDA & CUENTA REGRESIVA
+    ================================================================= -->
+    <section class="section-welcome" id="bienvenida">
+      <div class="content-wrapper">
+        <div class="welcome-card deckle-card scroll-reveal">
+          <div class="olive-branch-header" aria-hidden="true">
+            <svg width="70" height="24" viewBox="0 0 70 24" fill="none">
+              <path d="M 5,12 Q 35,4 65,12" stroke="url(#goldFlorentineMaster)" stroke-width="1.4" />
+              <circle cx="35" cy="8" r="3" fill="#3B543D" />
+            </svg>
+          </div>
+          <h2 class="section-title">El Amor Es El Comienzo De Todo</h2>
+          <p class="welcome-prose">
+            Queremos celebrar este día rodeados de las personas que han sido luz y compañía en nuestras vidas.
+            Nos llena de gozo invitarlos a ser testigos de nuestra promesa de amor eterno.
+          </p>
+        </div>
+
+        <!-- Contador de Días en Cajas de Algodón Artesanal -->
+        <div class="countdown-row scroll-reveal" id="countdown-clock">
+          <div class="countdown-card deckle-box">
+            <span class="count-num" id="timer-days">00</span>
+            <span class="count-lbl">DÍAS</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-card deckle-box">
+            <span class="count-num" id="timer-hours">00</span>
+            <span class="count-lbl">HORAS</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-card deckle-box">
+            <span class="count-num" id="timer-minutes">00</span>
+            <span class="count-lbl">MINUTOS</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-card deckle-box">
+            <span class="count-num" id="timer-seconds">00</span>
+            <span class="count-lbl">SEGUNDOS</span>
+          </div>
+        </div>
+
+        <!-- Estado Especial de Celebración -->
+        <div class="celebration-box deckle-card" id="celebration-banner" style="display:none;">
+          <i class="fa-solid fa-champagne-glasses celebration-icon"></i>
+          <h3>¡HOY ES NUESTRO DÍA!</h3>
+          <p>Los viñedos nos esperan para brindar por una vida juntos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 3 · BENDICIÓN DE NUESTROS PADRES
+    ================================================================= -->
+    <section class="section-parents" id="padres">
+      <div class="content-wrapper">
+        <div class="parents-card deckle-card scroll-reveal">
+          <span class="section-eyebrow">CON LA BENDICIÓN DE DIOS Y DE NUESTROS PADRES</span>
+          <h2 class="section-title">Nuestras Familias</h2>
+
+          <div class="parents-layout">
+            <!-- Padres de la Novia -->
+            <div class="parents-branch">
+              <span class="branch-label">PADRES DE LA NOVIA</span>
+              <h3 class="parent-name">Lucía Mogro de Trigo</h3>
+              <h3 class="parent-name">Guillermo Trigo Navajas</h3>
+            </div>
+
+            <!-- Divisor Botánico Central -->
+            <div class="parents-botanical-divider" aria-hidden="true">
+              <div class="divider-stem"></div>
+              <div class="divider-leaf-badge">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+              <div class="divider-stem"></div>
+            </div>
+
+            <!-- Padres del Novio -->
+            <div class="parents-branch">
+              <span class="branch-label">PADRES DEL NOVIO</span>
+              <h3 class="parent-name">Valeria D'Arlach de Mealla</h3>
+              <h3 class="parent-name">Mateo Mealla Castellanos</h3>
+            </div>
+          </div>
+
+          <p class="parents-blessing-quote">
+            Eternamente agradecidos por sus enseñanzas, su ternura y por ser el ejemplo de amor sobre el cual construimos nuestro hogar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 4 · NUESTRA HISTORIA (LOVE STORY)
+    ================================================================= -->
+    <section class="section-story" id="historia">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">NUESTRA TRAYECTORIA</span>
+          <h2 class="section-title">Cómo Comenzó Nuestra Historia</h2>
+          <p class="section-lead">Tres instantes que transformaron nuestras vidas y sellaron nuestro destino.</p>
+        </div>
+
+        <div class="story-chapters">
+          <!-- Capítulo 1 -->
+          <article class="chapter-item chapter-even scroll-reveal">
+            <div class="chapter-media shape-arch">
+              <img src="assets/story/story-1.jpg" alt="Primer encuentro en el valle">
+            </div>
+            <div class="chapter-text-card deckle-card">
+              <span class="chapter-date">PRIMAVERA 2022</span>
+              <h3 class="chapter-heading">Un Encuentro en la Vendimia</h3>
+              <p class="chapter-body">
+                Coincidimos por casualidad entre las hileras de viñedos durante la fiesta de la cosecha. Una copa compartida
+                al atardecer dio inicio a conversaciones interminables que nunca quisimos que terminaran.
+              </p>
+            </div>
+          </article>
+
+          <!-- Capítulo 2 -->
+          <article class="chapter-item chapter-odd scroll-reveal">
+            <div class="chapter-media shape-window">
+              <img src="assets/story/story-2.jpg" alt="Caminatas y viajes juntos">
+            </div>
+            <div class="chapter-text-card deckle-card">
+              <span class="chapter-date">VERANO 2024</span>
+              <h3 class="chapter-heading">El Vuelo Compartido</h3>
+              <p class="chapter-body">
+                Viajes por cordilleras, noches bajo cielos limpios y la alegría cotidiana de saber que cada sueño se multiplicaba
+                al caminarlo juntos. Supimos que éramos el refugio y el hogar del otro.
+              </p>
+            </div>
+          </article>
+
+          <!-- Capítulo 3 -->
+          <article class="chapter-item chapter-even scroll-reveal">
+            <div class="chapter-media shape-cameo-story">
+              <img src="assets/story/story-3.jpg" alt="La propuesta de matrimonio">
+            </div>
+            <div class="chapter-text-card deckle-card">
+              <span class="chapter-date">OTOÑO 2026</span>
+              <h3 class="chapter-heading">La Promesa Bajo los Sauces</h3>
+              <p class="chapter-body">
+                A orillas del río y al caer el sol de abril, un anillo guardado con paciencia y una pregunta que abrió las puertas
+                a nuestra mayor aventura: pasar la vida entera juntos.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 5 · DÓNDE & CUÁNDO (EVENTOS)
+    ================================================================= -->
+    <section class="section-events" id="eventos">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">UBICACIONES &amp; HORARIOS</span>
+          <h2 class="section-title">Ceremonia &amp; Recepción</h2>
+          <p class="section-lead">Acompáñanos en cada uno de los momentos de nuestra boda campestre.</p>
+        </div>
+
+        <div class="events-cards-grid">
+          <!-- Ceremonia -->
+          <div class="event-card deckle-card scroll-reveal">
+            <div class="event-icon-wreath">
+              <i class="fa-solid fa-church"></i>
+            </div>
+            <span class="event-tag">CEREMONIA RELIGIOSA</span>
+            <h3 class="event-title">Capilla Colonial de los Viñedos</h3>
+
+            <div class="event-info-block">
+              <div class="info-row">
+                <i class="fa-regular fa-clock"></i>
+                <span><strong>15:30 HRS</strong> · Agradecemos su puntualidad</span>
+              </div>
+              <div class="info-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Ruta del Vino Km 12, Valle de la Concepción, Tarija</span>
+              </div>
+            </div>
+
+            <div class="event-btn-group">
+              <a href="https://maps.google.com/?q=Valle+de+la+Concepcion+Tarija" target="_blank" rel="noopener" class="btn-botanical-outline">
+                <i class="fa-solid fa-map-pin"></i> VER EN GOOGLE MAPS
+              </a>
+              <button class="btn-botanical-gold add-to-calendar-btn" data-event="ceremony">
+                <i class="fa-solid fa-calendar-check"></i> AGREGAR AL CALENDARIO
+              </button>
+            </div>
+          </div>
+
+          <!-- Recepción -->
+          <div class="event-card deckle-card scroll-reveal">
+            <div class="event-icon-wreath">
+              <i class="fa-solid fa-wine-glass"></i>
+            </div>
+            <span class="event-tag">RECEPCIÓN DE BODA</span>
+            <h3 class="event-title">Hacienda &amp; Jardines de la Concepción</h3>
+
+            <div class="event-info-block">
+              <div class="info-row">
+                <i class="fa-regular fa-clock"></i>
+                <span><strong>17:30 HRS</strong> · Cóctel al Atardecer &amp; Fiesta</span>
+              </div>
+              <div class="info-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Camino a Calamuchita #250, Valle de la Concepción</span>
+              </div>
+            </div>
+
+            <div class="event-btn-group">
+              <a href="https://maps.google.com/?q=Valle+de+la+Concepcion+Tarija" target="_blank" rel="noopener" class="btn-botanical-outline">
+                <i class="fa-solid fa-map-pin"></i> VER EN GOOGLE MAPS
+              </a>
+              <button class="btn-botanical-gold add-to-calendar-btn" data-event="reception">
+                <i class="fa-solid fa-calendar-check"></i> AGREGAR AL CALENDARIO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 6 · ITINERARIO CRONOLÓGICO
+    ================================================================= -->
+    <section class="section-itinerary" id="itinerario">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">CRONOGRAMA NUPCIAL</span>
+          <h2 class="section-title">Itinerario de la Boda</h2>
+          <p class="section-lead">Cada momento pensado para disfrutar junto a ti en el valle.</p>
+        </div>
+
+        <div class="itinerary-timeline scroll-reveal">
+          <div class="itinerary-spine" aria-hidden="true"></div>
+
+          <!-- 15:30 Ceremonia -->
+          <div class="itinerary-step">
+            <div class="step-point"><i class="fa-solid fa-ring"></i></div>
+            <div class="step-box deckle-card">
+              <span class="step-time">15:30 HRS</span>
+              <h3 class="step-heading">Ceremonia Religiosa</h3>
+              <p class="step-desc">Bendición y votos nupciales en la Capilla Colonial de los Viñedos.</p>
+            </div>
+          </div>
+
+          <!-- 17:00 Fotos y Traslado -->
+          <div class="itinerary-step">
+            <div class="step-point"><i class="fa-solid fa-camera"></i></div>
+            <div class="step-box deckle-card">
+              <span class="step-time">17:00 HRS</span>
+              <h3 class="step-heading">Sesión Fotográfica en Viñedos</h3>
+              <p class="step-desc">Retratos con familiares y bienvenida a los jardines de la hacienda.</p>
+            </div>
+          </div>
+
+          <!-- 17:30 Cóctel -->
+          <div class="itinerary-step">
+            <div class="step-point"><i class="fa-solid fa-wine-bottle"></i></div>
+            <div class="step-box deckle-card">
+              <span class="step-time">17:30 HRS</span>
+              <h3 class="step-heading">Cóctel de Vendimia &amp; Canapés</h3>
+              <p class="step-desc">Cata de vinos de altura, tabla de quesos artesanales y música en vivo.</p>
+            </div>
+          </div>
+
+          <!-- 19:30 Banquete -->
+          <div class="itinerary-step">
+            <div class="step-point"><i class="fa-solid fa-utensils"></i></div>
+            <div class="step-box deckle-card">
+              <span class="step-time">19:30 HRS</span>
+              <h3 class="step-heading">Cena Campestre de Gala</h3>
+              <p class="step-desc">Menú rústico refinado de cuatro tiempos maridado con vinos de la región.</p>
+            </div>
+          </div>
+
+          <!-- 21:00 Brindis y Baile -->
+          <div class="itinerary-step">
+            <div class="step-point"><i class="fa-solid fa-champagne-glasses"></i></div>
+            <div class="step-box deckle-card">
+              <span class="step-time">21:00 HRS</span>
+              <h3 class="step-heading">Brindis &amp; Primer Vals</h3>
+              <p class="step-desc">Apertura de la pista de baile iluminada bajo los árboles del jardín.</p>
+            </div>
+          </div>
+
+          <!-- 22:00 Fiesta -->
+          <div class="itinerary-step">
+            <div class="step-point"><i class="fa-solid fa-music"></i></div>
+            <div class="step-box deckle-card">
+              <span class="step-time">22:00 HRS</span>
+              <h3 class="step-heading">Fiesta del Valle &amp; DJ</h3>
+              <p class="step-desc">Barra libre, música y celebración festiva hasta el amanecer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 7 · CÓDIGO DE VESTIMENTA (DRESS CODE)
+    ================================================================= -->
+    <section class="section-dresscode" id="vestimenta">
+      <div class="content-wrapper">
+        <div class="dresscode-card deckle-card scroll-reveal">
+          <div class="dresscode-icon">
+            <i class="fa-solid fa-vest"></i>
+          </div>
+          <span class="section-eyebrow">CÓDIGO DE VESTIMENTA</span>
+          <h2 class="section-title">Elegante Campestre · Garden Formal</h2>
+
+          <div class="dresscode-advice-columns">
+            <div class="advice-card">
+              <div class="advice-tag"><i class="fa-solid fa-user-tie"></i> CABALLEROS</div>
+              <p class="advice-desc">
+                Traje formal en tonos tierra, lino refinado, azul marino o gris suave. Zapatos de piel adecuados para jardín.
+              </p>
+            </div>
+            <div class="advice-card">
+              <div class="advice-tag"><i class="fa-solid fa-person-dress"></i> DAMAS</div>
+              <p class="advice-desc">
+                Vestido largo o midi en tejidos vaporosos, sedas o estampados botánicos discretos. Se sugiere tacón ancho o corrido para césped.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paleta de Colores Sugerida -->
+          <div class="swatches-container">
+            <span class="swatches-title">PALETA DE COLORES INSPIRADA EN EL VALLE:</span>
+            <div class="swatches-flex">
+              <div class="swatch-cell">
+                <span class="swatch-disk" style="background: #1E3324; border: 1px solid #C5A059;"></span>
+                <span class="swatch-label">Ciprés Profundo</span>
+              </div>
+              <div class="swatch-cell">
+                <span class="swatch-disk" style="background: #4E6B52;"></span>
+                <span class="swatch-label">Verde Salvia</span>
+              </div>
+              <div class="swatch-cell">
+                <span class="swatch-disk" style="background: #C5A059;"></span>
+                <span class="swatch-label">Oro Envejecido</span>
+              </div>
+              <div class="swatch-cell">
+                <span class="swatch-disk" style="background: #965B4E;"></span>
+                <span class="swatch-label">Terracota Valle</span>
+              </div>
+              <div class="swatch-cell">
+                <span class="swatch-disk" style="background: #EFE4D2; border: 1px solid #C5A059;"></span>
+                <span class="swatch-label">Lino Natural</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dresscode-note-box">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Agradecemos reservar exclusivamente los colores blanco y crema para la novia.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 8 · HOSPEDAJE BOUTIQUE SUGERIDO
+    ================================================================= -->
+    <section class="section-hotels" id="hospedaje">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">HOSPEDAJE EN EL VALLE</span>
+          <h2 class="section-title">Hoteles &amp; Cabañas Boutique</h2>
+          <p class="section-lead">Opciones con tarifas preferenciales para disfrutar de una estancia inolvidable en Tarija.</p>
+        </div>
+
+        <div class="hotels-deckle-grid">
+          <!-- Hotel 1 -->
+          <div class="hotel-deckle-card deckle-card scroll-reveal">
+            <div class="hotel-leaf-rating">
+              <i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3 class="hotel-heading">Hotel Boutique Los Parrales</h3>
+            <p class="hotel-loc"><i class="fa-solid fa-location-dot"></i> Urb. El Tejar, Tarija</p>
+            <p class="hotel-summary">Confort 5 estrellas con vista panorámica a la ciudad y a los viñedos, piscina y cava de vinos.</p>
+            <div class="hotel-code-badge">
+              <span class="badge-lbl">CÓDIGO DE CONVENIO:</span>
+              <span class="badge-val">BODA-CAMILA-MATEO</span>
+            </div>
+            <a href="tel:+59146648444" class="btn-botanical-outline"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVAS</a>
+          </div>
+
+          <!-- Hotel 2 -->
+          <div class="hotel-deckle-card deckle-card scroll-reveal">
+            <div class="hotel-leaf-rating">
+              <i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3 class="hotel-heading">Cabañas del Valle de la Concepción</h3>
+            <p class="hotel-loc"><i class="fa-solid fa-location-dot"></i> Valle de la Concepción, Tarija</p>
+            <p class="hotel-summary">Cabañas campestres rústicas rodeadas de naturaleza y viñas, a solo 5 minutos del evento.</p>
+            <div class="hotel-code-badge">
+              <span class="badge-lbl">CÓDIGO DE CONVENIO:</span>
+              <span class="badge-val">BODA-VALLE-2027</span>
+            </div>
+            <a href="tel:+59146639900" class="btn-botanical-outline"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVAS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 9 · MESA DE REGALOS / LLUVIA DE SOBRES
+    ================================================================= -->
+    <section class="section-gifts" id="regalos">
+      <div class="content-wrapper">
+        <div class="gifts-deckle-card deckle-card scroll-reveal">
+          <div class="gifts-icon">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <span class="section-eyebrow">MESA DE REGALOS</span>
+          <h2 class="section-title">Lluvia de Sobres</h2>
+          <p class="gifts-prose">
+            Su presencia en nuestro matrimonio es el obsequio más valioso que podemos recibir. Si desean hacernos un presente
+            para nuestra luna de miel y nuevo hogar, dejamos a su disposición nuestras cuentas bancarias.
+          </p>
+
+          <div class="bank-cards-flex">
+            <!-- Cuenta 1: BNB -->
+            <div class="bank-pill-card">
+              <div class="bank-pill-top">
+                <span class="bank-title">Banco Nacional de Bolivia (BNB)</span>
+                <span class="bank-coin">CUENTA EN BOLIVIANOS (BOB)</span>
+              </div>
+              <div class="bank-pill-body">
+                <p><strong>Titular:</strong> Camila Trigo Mogro</p>
+                <p><strong>CI:</strong> 5923104 TJ</p>
+                <p><strong>Cuenta:</strong> <span class="bank-num" id="acc-bnb">2500984123</span></p>
+              </div>
+              <button class="btn-copy-account" data-target="acc-bnb">
+                <i class="fa-regular fa-copy"></i> COPIAR NÚMERO DE CUENTA
+              </button>
+            </div>
+
+            <!-- Cuenta 2: Banco Mercantil -->
+            <div class="bank-pill-card">
+              <div class="bank-pill-top">
+                <span class="bank-title">Banco Mercantil Santa Cruz</span>
+                <span class="bank-coin">CUENTA EN DÓLARES (USD)</span>
+              </div>
+              <div class="bank-pill-body">
+                <p><strong>Titular:</strong> Mateo Mealla D'Arlach</p>
+                <p><strong>CI:</strong> 7120489 TJ</p>
+                <p><strong>Cuenta:</strong> <span class="bank-num" id="acc-bmsc">4020194857</span></p>
+              </div>
+              <button class="btn-copy-account" data-target="acc-bmsc">
+                <i class="fa-regular fa-copy"></i> COPIAR NÚMERO DE CUENTA
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 10 · AVISO IMPORTANTE (SOLO ADULTOS)
+    ================================================================= -->
+    <section class="section-notice" id="aviso">
+      <div class="content-wrapper">
+        <div class="notice-deckle-box deckle-card scroll-reveal">
+          <div class="notice-icon-olive">
+            <i class="fa-solid fa-wine-glass-empty"></i>
+          </div>
+          <span class="notice-tag">PROTOCOLO DE LA CELEBRACIÓN</span>
+          <h2 class="notice-heading">Evento Exclusivo Para Adultos</h2>
+          <p class="notice-text">
+            Adoramos a los más pequeños de la familia, sin embargo, con el deseo de que todos los invitados disfruten
+            y se relajen plenamente en esta velada, hemos reservado la fiesta exclusivamente para adultos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 11 · GALERÍA DE FOTOS & HASHTAG
+    ================================================================= -->
+    <section class="section-gallery" id="galeria">
+      <div class="content-wrapper">
+        <div class="section-title-wrap scroll-reveal">
+          <span class="section-eyebrow">RECUERDOS DE NUESTRO AMOR</span>
+          <h2 class="section-title">Galería Fotográfica</h2>
+          <div class="hashtag-pill">
+            <i class="fa-brands fa-instagram"></i>
+            <span>#BodaCamilaYMateo</span>
+          </div>
+          <p class="section-lead">Comparte tus capturas y momentos de este gran día en redes sociales.</p>
+        </div>
+
+        <div class="gallery-botanical-grid scroll-reveal">
+          <div class="gallery-cell" data-index="0">
+            <img src="assets/gallery/gallery-1.jpg" alt="Fotografía en viñedos 1">
+            <div class="cell-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-cell" data-index="1">
+            <img src="assets/gallery/gallery-2.jpg" alt="Fotografía en viñedos 2">
+            <div class="cell-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-cell" data-index="2">
+            <img src="assets/gallery/gallery-3.jpg" alt="Fotografía en viñedos 3">
+            <div class="cell-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-cell" data-index="3">
+            <img src="assets/gallery/gallery-4.jpg" alt="Fotografía en viñedos 4">
+            <div class="cell-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-cell" data-index="4">
+            <img src="assets/gallery/gallery-5.jpg" alt="Fotografía en viñedos 5">
+            <div class="cell-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-cell" data-index="5">
+            <img src="assets/gallery/gallery-6.jpg" alt="Fotografía en viñedos 6">
+            <div class="cell-zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 12 · CONFIRMACIÓN DE ASISTENCIA RSVP (WHATSAPP)
+    ================================================================= -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="content-wrapper">
+        <div class="rsvp-deckle-card deckle-card scroll-reveal">
+          <div class="rsvp-leaf-header">
+            <i class="fa-solid fa-envelope-circle-check"></i>
+          </div>
+          <span class="section-eyebrow">CONFIRMACIÓN PROTOCOLAR</span>
+          <h2 class="section-title">Confirma Tu Asistencia</h2>
+          <p class="rsvp-prompt">
+            Por favor, confírmanos antes del <strong>20 de Agosto de 2027</strong> para contemplar tu lugar en nuestro banquete de bodas.
+          </p>
+
+          <form id="rsvp-form" class="rsvp-form-botanical" onsubmit="return false;">
+            <!-- Nombre Completo -->
+            <div class="field-wrap">
+              <label for="guest-name" class="field-label">Nombre Completo</label>
+              <input type="text" id="guest-name" class="field-input" placeholder="Ej. Familia Trigo o Carlos Méndez" required>
+            </div>
+
+            <!-- Asistencia -->
+            <div class="field-wrap">
+              <label class="field-label">¿Nos acompañarás en el Valle?</label>
+              <div class="botanical-radios">
+                <label class="radio-item">
+                  <input type="radio" name="attendance" value="si" checked>
+                  <span class="radio-olive-circle"></span>
+                  <span>Sí, asistiré con mucha alegría</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="attendance" value="no">
+                  <span class="radio-olive-circle"></span>
+                  <span>Lamentablemente no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Número de Pases -->
+            <div class="field-wrap" id="guest-passes-group">
+              <label for="guest-count" class="field-label">Pases a Confirmar</label>
+              <select id="guest-count" class="field-select">
+                <option value="1">1 Pase</option>
+                <option value="2" selected>2 Pases</option>
+                <option value="3">3 Pases</option>
+                <option value="4">4 Pases</option>
+              </select>
+            </div>
+
+            <!-- Canción Favorita -->
+            <div class="field-wrap">
+              <label for="guest-song" class="field-label">¿Qué canción no puede faltar en la fiesta?</label>
+              <input type="text" id="guest-song" class="field-input" placeholder="Canción y artista que te hace bailar">
+            </div>
+
+            <!-- Restricciones Dietéticas -->
+            <div class="field-wrap">
+              <label for="guest-diet" class="field-label">Restricciones Alimentarias (Opcional)</label>
+              <input type="text" id="guest-diet" class="field-input" placeholder="Ej. Vegetariano, intolerancia a gluten, etc.">
+            </div>
+
+            <button type="button" id="rsvp-submit-btn" class="btn-botanical-gold btn-submit-rsvp">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>CONFIRMAR ASISTENCIA POR WHATSAPP</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 13 · PIE DE PÁGINA & AGRADECIMIENTO
+    ================================================================= -->
+    <footer class="section-footer" id="pie">
+      <div class="content-wrapper">
+        <div class="footer-crest-wrap scroll-reveal">
+          <img src="svg/botanical-crest.svg" alt="Monograma de Camila y Mateo" class="footer-crest-svg">
+        </div>
+
+        <h2 class="footer-couple-names scroll-reveal">Camila &amp; Mateo</h2>
+        <p class="footer-farewell scroll-reveal">
+          Gracias de corazón por acompañarnos en el día más feliz de nuestras vidas.
+        </p>
+
+        <p class="footer-vintage-date scroll-reveal">18 · SEPTIEMBRE · 2027</p>
+
+        <button id="back-to-top-btn" class="btn-scroll-top" aria-label="Volver arriba">
+          <i class="fa-solid fa-arrow-up"></i>
+          <span>VOLVER ARRIBA</span>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==================================================================
+       MODAL LIGHTBOX PARA FOTOGRAFÍAS
+  =================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar visor">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Foto anterior">&#10094;</button>
+    <div class="lightbox-container">
+      <img id="lightbox-img" src="" alt="Fotografía ampliada">
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Foto siguiente">&#10095;</button>
+  </div>
+
+  <!-- ==================================================================
+       NOTIFICACIÓN TOAST DE PAPEL DE SEDA
+  =================================================================== -->
+  <div id="toast-notification" class="toast-deckle-notification" aria-live="polite" role="status">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Cuenta copiada al portapapeles</span>
+  </div>
+
+  <!-- SCRIPT MAESTRO DE LÓGICA Y THREE.JS -->
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>L'Aurore Céleste · Camila & Mateo</title>
+  <meta name="description" content="Invitación de boda de alta relojería en oro rosa y nácar para el enlace matrimonial de Camila & Mateo en San Miguel de Allende.">
+
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="svg/rosee-crest.svg">
+
+  <!-- Google Fonts: Cinzel, Bodoni Moda, Cormorant Garamond, Italianno, Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Italianno&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons for UI -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosee: {
+              void: '#14060A',
+              rosewood: '#200A11',
+              wine: '#32101B',
+              nebula: '#481827',
+              gold: '#E7A18C',
+              goldlight: '#F8D5CB',
+              darkgold: '#B86855',
+              blush: '#F8E7E7',
+              nacre: '#FAF5F2',
+              quartz: '#F2D5D5',
+              muted: '#C498A3'
+            }
+          },
+          fontFamily: {
+            cinzelDeco: ['"Cinzel Decorative"', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            bodoni: ['"Bodoni Moda"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Italianno"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Three.js for 3D Astrolabe & Constellation Dome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-rosee-void text-rosee-nacre selection:bg-rosee-gold selection:text-rosee-void antialiased overflow-x-hidden">
+
+  <!-- ========================================================================= -->
+  <!-- 1. ROSE GOLD 3D ASTROLABE ENTRANCE OVERLAY                                -->
+  <!-- ========================================================================= -->
+  <div id="rosee-astrolabe-entrance" class="fixed inset-0 z-50 flex items-center justify-center bg-radial-rose-cosmos transition-all duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)]">
+    
+    <!-- Background Pink Starlight Glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(231,161,140,0.2)_0%,_rgba(32,10,17,0.95)_70%,_#14060A_100%)] pointer-events-none"></div>
+
+    <!-- Outer Astrolabe Shell Frame -->
+    <div class="relative z-10 w-full max-w-xl aspect-square mx-4 p-4 flex flex-col items-center justify-center select-none">
+      
+      <!-- Astronomical Ring Borders in Rose Gold -->
+      <div class="absolute inset-2 sm:inset-4 rounded-full border border-rosee-gold/35 pointer-events-none animate-spin-extremely-slow"></div>
+      <div class="absolute inset-6 sm:inset-10 rounded-full border border-rosee-gold/25 border-dashed pointer-events-none"></div>
+
+      <!-- Three.js Canvas: 3D Mechanical Gears in Rose Gold & Pink Pearl -->
+      <div class="relative w-full h-full flex items-center justify-center">
+        <canvas id="canvas-rosee-astrolabe-3d" class="w-full h-full cursor-pointer"></canvas>
+
+        <!-- Center Monogram & Nacre Medallion -->
+        <div id="rosee-center-piece" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-[#B86855] via-[#F8D5CB] to-[#964736] p-[2px] shadow-[0_0_35px_rgba(231,161,140,0.4)] pointer-events-auto cursor-pointer group transition-transform duration-500 hover:scale-105 active:scale-95">
+          <div class="w-full h-full rounded-full bg-rosee-rosewood/90 backdrop-blur-sm flex flex-col items-center justify-center border border-rosee-gold/50 text-rosee-gold relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(231,161,140,0.3)_0%,_transparent_70%)]"></div>
+            <img src="svg/rosee-crest.svg" alt="Monograma C&M" class="w-16 h-16 sm:w-20 sm:h-20 object-contain relative z-10 transition-transform group-hover:rotate-12 duration-700">
+            <span class="text-[8px] sm:text-[9px] font-cinzel tracking-[0.25em] uppercase font-bold text-rosee-goldlight mt-1 relative z-10">PULSAR</span>
+          </div>
+        </div>
+
+        <!-- Astrolabe Top & Bottom Badges -->
+        <div class="absolute top-2 sm:top-6 text-center pointer-events-none">
+          <p class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.35em] text-rosee-gold uppercase font-bold">HAUTE HORLOGERIE EN OR ROSE</p>
+          <p class="font-sans text-[9px] tracking-[0.2em] text-rosee-muted uppercase mt-0.5">PIÈCE DE HAUTE JOAILLERIE / 2026</p>
+        </div>
+
+        <div class="absolute bottom-2 sm:bottom-6 text-center pointer-events-none">
+          <p class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.3em] text-rosee-goldlight uppercase font-semibold">SAN MIGUEL DE ALLENDE</p>
+          <p class="font-sans text-[8px] sm:text-[9px] tracking-[0.15em] text-rosee-muted uppercase">20°54'48"N 100°44'35"W</p>
+        </div>
+      </div>
+
+      <!-- Tactile Winding Crown Button -->
+      <div class="relative z-20 mt-4 text-center">
+        <button id="btn-wind-rosee-astrolabe" type="button" aria-label="Dar cuerda al astrolabio de oro rosa y abrir invitación" class="group relative inline-flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-[#32101B] via-[#200A11] to-[#32101B] border border-rosee-gold rounded-full text-rosee-gold shadow-[0_0_25px_rgba(231,161,140,0.35)] hover:shadow-[0_0_45px_rgba(248,213,203,0.7)] hover:border-rosee-goldlight transition-all duration-300 transform hover:scale-105 cursor-pointer">
+          <span class="w-2.5 h-2.5 rounded-full bg-rosee-gold group-hover:bg-white animate-ping"></span>
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] uppercase font-bold">DAR CUERDA AL ASTROLABIO DE CUARZO</span>
+          <i class="fa-solid fa-gear text-xs transition-transform group-hover:rotate-180 duration-700"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. TOP ROSE GOLD OBSERVATORY TICKER & SOUND BAR                           -->
+  <!-- ========================================================================= -->
+  <header id="rosee-observatory-bar" class="sticky top-0 z-40 bg-rosee-void/90 backdrop-blur-lg border-b border-rosee-gold/30 px-4 sm:px-8 py-3 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Astrological Monogram Title -->
+      <div class="flex items-center gap-3">
+        <a href="#hero" class="font-cinzel text-xs sm:text-sm tracking-[0.25em] font-bold text-rosee-gold uppercase flex items-center gap-2 hover:text-rosee-goldlight transition-colors">
+          <i class="fa-regular fa-compass text-sm text-rosee-gold"></i>
+          <span>L'AURORE CÉLESTE</span>
+        </a>
+        <span class="hidden md:inline-block text-rosee-gold/30">/</span>
+        <span class="hidden md:inline-block font-sans text-[11px] tracking-widest text-rosee-muted uppercase">CAMILA & MATEO</span>
+      </div>
+
+      <!-- Rose Gold Music Player -->
+      <div class="flex items-center gap-3 sm:gap-4 bg-rosee-rosewood/80 border border-rosee-gold/40 px-3.5 sm:px-5 py-1.5 rounded-full shadow-inner">
+        
+        <!-- Live Rose Pulse Waveform -->
+        <div id="rosee-audio-waveform" class="flex items-end gap-1 h-3.5 w-6 cursor-pointer" title="Oscilación Acústica">
+          <span class="rose-bar w-[2px] bg-rosee-gold rounded-full h-2"></span>
+          <span class="rose-bar w-[2px] bg-rosee-gold rounded-full h-3.5"></span>
+          <span class="rose-bar w-[2px] bg-rosee-gold rounded-full h-1.5"></span>
+          <span class="rose-bar w-[2px] bg-rosee-gold rounded-full h-3"></span>
+        </div>
+
+        <div class="hidden sm:block text-[10px] font-sans tracking-wider uppercase text-rosee-nacre/90 truncate max-w-[180px]">
+          <span id="track-name">Debussy / Clair de Lune (Harpe Suite)</span>
+        </div>
+
+        <button id="btn-toggle-audio" type="button" aria-label="Reproducir o pausar música" class="w-7 h-7 rounded-full bg-rosee-gold text-rosee-void hover:bg-rosee-goldlight transition-colors flex items-center justify-center text-xs shadow-md">
+          <i id="audio-icon" class="fa-solid fa-play"></i>
+        </button>
+
+        <!-- Audio Source -->
+        <audio id="wedding-audio" loop preload="auto">
+          <source src="assets/song.mp3" type="audio/mp3">
+        </audio>
+      </div>
+
+      <!-- Quick Action: Ignite Star RSVP -->
+      <div class="flex items-center gap-2">
+        <a href="#rsvp" class="px-3.5 py-1.5 text-[10px] sm:text-xs font-cinzel font-semibold tracking-widest uppercase bg-gradient-to-r from-rosee-darkgold via-rosee-gold to-rosee-darkgold text-rosee-void hover:brightness-110 transition-all rounded-full shadow-[0_0_18px_rgba(231,161,140,0.35)]">
+          ENCENDER ESTRELLA
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. MAIN ROSE CELESTIAL UNIVERSE CONTENT                                   -->
+  <!-- ========================================================================= -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 space-y-28 sm:space-y-40">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT I: L'HISTOIRE D'AURORE & HERO SPREAD                              -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="hero" class="rosee-section pt-4">
+      
+      <!-- Coordinate Astronomical Ticker -->
+      <div class="flex flex-col sm:flex-row justify-between items-center border-y border-rosee-gold/20 py-2.5 mb-10 text-[10px] sm:text-[11px] font-sans tracking-[0.3em] text-rosee-muted uppercase">
+        <span>SÁBADO, 5 DE DICIEMBRE DE 2026</span>
+        <span class="font-cinzel text-xs text-rosee-gold font-bold">ALINEACIÓN NUPCIAL DEL ALBA</span>
+        <span>20°54'48"N 100°44'35"W</span>
+      </div>
+
+      <!-- Grand Rose Celestial Title -->
+      <div class="text-center mb-16 relative">
+        <div class="inline-block px-4 py-1 border border-rosee-gold/40 rounded-full text-[9px] font-cinzel tracking-[0.35em] text-rosee-gold uppercase mb-3 bg-rosee-rosewood/50">
+          CONJUNCIÓN NUPCIAL EN ORO ROSA & NÁCAR
+        </div>
+        <h1 class="font-cinzelDeco text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5F2] via-[#E7A18C] to-[#B86855] uppercase leading-tight">
+          L'Aurore Céleste
+        </h1>
+        <p class="font-script text-4xl sm:text-6xl text-rosee-goldlight mt-2 -rotate-1 drop-shadow-md">
+          Camila Valenzuela & Mateo Rivas
+        </p>
+      </div>
+
+      <!-- Asymmetric 2-Column Hero Spread -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        
+        <!-- Left Column: High-Horology Narrative & Precision Chronometer (7 cols) -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <div class="border-l-2 border-rosee-gold pl-6 py-2 bg-gradient-to-r from-rosee-gold/10 to-transparent">
+            <blockquote class="font-cormorant italic text-2xl sm:text-3xl text-rosee-nacre leading-relaxed">
+              "El amor verdadero es como el cuarzo rosa y la primera luz del alba: infinito, sereno y capaz de iluminar todo el firmamento."
+            </blockquote>
+            <cite class="block font-cinzel text-[10px] tracking-[0.25em] text-rosee-gold uppercase mt-3 font-semibold">
+              Camila Valenzuela & Mateo Rivas / Votos Nupciales
+            </cite>
+          </div>
+
+          <div class="prose max-w-none text-rosee-quartz text-sm sm:text-base leading-relaxed space-y-4 font-sans font-light">
+            <p>
+              <span class="float-left font-cinzel text-5xl sm:text-6xl font-bold leading-none mr-3 mt-1 text-rosee-gold">E</span>
+              n el instante sublime donde la noche cede su manto ante los tonos rosados de la aurora, dos destinos decidieron sellar su promesa para siempre. Inspirados en la delicadeza del oro rosa, el nácar iridiscente y la precisión de los astros, Camila y Mateo abren las puertas a una velada mágica en San Miguel de Allende.
+            </p>
+            <p>
+              Una celebración diseñada con el alma: acordes de arpa al atardecer, alta cocina maridada a la luz de los cirios en viñedos centenarios y una fiesta estelar que vibrará hasta el despuntar del sol.
+            </p>
+          </div>
+
+          <!-- Chronomètre en Or Rose (Countdown with Horological Sweep) -->
+          <div class="pt-6 border-t border-rosee-gold/20">
+            <div class="flex justify-between items-center mb-4">
+              <span class="font-cinzel text-[10px] tracking-[0.3em] uppercase text-rosee-gold font-bold flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-xs"></i> CHRONOMÈTRE D'OR ROSE
+              </span>
+              <span class="font-mono text-[9px] text-rosee-muted tracking-widest">CALIBRE CM-2026</span>
+            </div>
+
+            <!-- 4 Watch-Dial Counters in Rose Gold -->
+            <div id="rosee-chronometer" class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+              
+              <div class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-3 sm:p-4 rounded-2xl shadow-lg relative overflow-hidden group hover:border-rosee-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,161,140,0.2),_transparent_70%)]"></div>
+                <span id="chrono-days" class="font-cinzel text-2xl sm:text-4xl text-rosee-nacre font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-rosee-gold uppercase block mt-1 relative z-10">DÍAS</span>
+              </div>
+
+              <div class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-3 sm:p-4 rounded-2xl shadow-lg relative overflow-hidden group hover:border-rosee-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,161,140,0.2),_transparent_70%)]"></div>
+                <span id="chrono-hours" class="font-cinzel text-2xl sm:text-4xl text-rosee-nacre font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-rosee-gold uppercase block mt-1 relative z-10">HORAS</span>
+              </div>
+
+              <div class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-3 sm:p-4 rounded-2xl shadow-lg relative overflow-hidden group hover:border-rosee-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,161,140,0.2),_transparent_70%)]"></div>
+                <span id="chrono-minutes" class="font-cinzel text-2xl sm:text-4xl text-rosee-nacre font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-rosee-gold uppercase block mt-1 relative z-10">MINUTOS</span>
+              </div>
+
+              <div class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-3 sm:p-4 rounded-2xl shadow-lg relative overflow-hidden group hover:border-rosee-gold transition-colors">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,161,140,0.2),_transparent_70%)]"></div>
+                <span id="chrono-seconds" class="font-cinzel text-2xl sm:text-4xl text-rosee-gold font-bold block relative z-10">00</span>
+                <span class="font-sans text-[9px] sm:text-[10px] tracking-[0.2em] text-rosee-gold uppercase block mt-1 relative z-10">SEGUNDOS</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Romantic Hero Portrait in Rose Gold Astrolabe Orbit (5 cols) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md aspect-square p-4 flex items-center justify-center">
+            
+            <!-- Rotating Constellation Dial Frame in Rose Gold -->
+            <div class="absolute inset-0 rounded-full border border-rosee-gold/40 border-dashed animate-spin-extremely-slow pointer-events-none"></div>
+            <div class="absolute inset-3 rounded-full border-2 border-rosee-gold/30 pointer-events-none"></div>
+
+            <!-- The Portrait Disc with Rose Vignette -->
+            <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-rosee-gold shadow-[0_0_50px_rgba(231,161,140,0.3)] group">
+              <img src="assets/couple-hero.jpg" alt="Camila y Mateo" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+              <div class="absolute inset-0 bg-gradient-to-t from-rosee-void/80 via-transparent to-transparent"></div>
+              
+              <div class="absolute bottom-6 left-0 right-0 text-center px-4">
+                <p class="font-cinzel text-[10px] tracking-[0.25em] text-rosee-gold uppercase font-bold">ALPHA LYRAE & BETA CYGNI</p>
+                <h3 class="font-cormorant italic text-xl text-white">"Un juramento grabado en las estrellas"</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT II: LE PLANÉTAIRE ROSE (LIVE 3D ROSE CONSTELLATION DOME)          -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="sky-dome" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">DOMO ASTRONÓMICO // CIELO DEL 05.XII.2026</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          La Bóveda de Cuarzo
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.2em] text-rosee-muted uppercase">
+          EXPLORA EL FIRMAMENTO EN TONOS DE AURORA QUE CUBRIRÁ NUESTRA CELEBRACIÓN
+        </p>
+      </div>
+
+      <!-- 3D Interactive Sky Dome Container -->
+      <div class="relative w-full h-[450px] sm:h-[550px] bg-rosee-rosewood rounded-3xl border border-rosee-gold/40 shadow-2xl overflow-hidden group">
+        
+        <!-- Three.js Starry Dome Canvas with Rose Nebula Pinks -->
+        <canvas id="canvas-rosee-sky-dome" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+
+        <!-- Overlay Metadata & Hint -->
+        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 pointer-events-none bg-rosee-void/70 backdrop-blur-md px-3.5 sm:px-5 py-2 rounded-xl border border-rosee-gold/30">
+          <p class="text-[9px] font-cinzel text-rosee-gold uppercase tracking-widest font-bold">ALINEACIÓN DE AURORA</p>
+          <p class="text-[10px] font-sans text-white/90">Cygnus · Lyra · Andromeda · Cassiopeia</p>
+        </div>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none bg-rosee-void/80 backdrop-blur-md px-5 py-2 rounded-full border border-rosee-gold/50 text-[10px] font-cinzel tracking-widest text-rosee-goldlight uppercase flex items-center gap-2">
+          <i class="fa-solid fa-arrows-up-down-left-right text-xs animate-pulse"></i> ARRASTRA PARA ROTAR EL FIRMAMENTO
+        </div>
+
+        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 pointer-events-none bg-rosee-void/70 backdrop-blur-md px-3.5 sm:px-5 py-2 rounded-xl border border-rosee-gold/30 text-right">
+          <p class="text-[9px] font-cinzel text-rosee-gold uppercase tracking-widest font-bold">ESTRELLAS BINARIAS</p>
+          <p class="text-[10px] font-sans text-white/90">Camila & Mateo</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT III: LES SANCTUAIRES D'AMOUR (CEREMONIA & RECEPCIÓN)              -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="venues" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">LES SANCTUAIRES // DESTINOS DEL ENLACE</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          Dónde & Cuándo
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-rosee-muted uppercase">
+          DOS RECINTOS DE ENSUEÑO SELECCIONADOS PARA UNA VELADA INOLVIDABLE
+        </p>
+      </div>
+
+      <!-- Architectural Cards in Rosewood & Rose Gold Glass -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Venue 1: Santuario de Guadalupe -->
+        <div class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-6 sm:p-10 rounded-3xl flex flex-col justify-between shadow-xl relative group hover:border-rosee-gold transition-colors">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start border-b border-rosee-gold/30 pb-4">
+              <div>
+                <span class="text-[10px] font-cinzel tracking-[0.3em] text-rosee-gold uppercase font-bold">CEREMONIA RELIGIOSA</span>
+                <h3 class="font-cinzel text-2xl sm:text-3xl text-rosee-nacre font-bold mt-1">Santuario de Guadalupe</h3>
+              </div>
+              <span class="font-cinzel text-2xl text-rosee-gold font-bold">16:30 h</span>
+            </div>
+
+            <p class="text-sm font-sans text-rosee-quartz leading-relaxed">
+              Solemne bendición nupcial en el histórico santuario colonial. Se solicita puntualidad de etiqueta para dar la bienvenida al cortejo de honor y la marcha nupcial.
+            </p>
+
+            <div class="space-y-2 py-2 text-xs font-sans text-rosee-muted">
+              <p><i class="fa-solid fa-location-dot text-rosee-gold mr-2"></i> Calle Real de Guadalupe N° 12, Centro Histórico</p>
+              <p><i class="fa-solid fa-compass text-rosee-gold mr-2"></i> 20°54'48"N 100°44'35"W</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-6 border-t border-rosee-gold/20 flex flex-wrap items-center gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-rosee-gold text-rosee-void text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-rosee-goldlight transition-all flex items-center gap-2">
+              <i class="fa-solid fa-diamond-turn-right"></i> GOOGLE MAPS
+            </a>
+            <button type="button" onclick="window.downloadRoseeCalendar('ceremony')" class="px-5 py-2.5 border border-rosee-gold/60 text-rosee-gold text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-rosee-gold/10 transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR CEREMONIA
+            </button>
+          </div>
+        </div>
+
+        <!-- Venue 2: Hacienda San José Lavista (Viñedos & Rosas) -->
+        <div class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-6 sm:p-10 rounded-3xl flex flex-col justify-between shadow-xl relative group hover:border-rosee-gold transition-colors">
+          <div class="space-y-4">
+            <div class="flex justify-between items-start border-b border-rosee-gold/30 pb-4">
+              <div>
+                <span class="text-[10px] font-cinzel tracking-[0.3em] text-rosee-gold uppercase font-bold">RECEPCIÓN & GALA DE VIÑEDOS</span>
+                <h3 class="font-cinzel text-2xl sm:text-3xl text-rosee-nacre font-bold mt-1">Hacienda San José Lavista</h3>
+              </div>
+              <span class="font-cinzel text-2xl text-rosee-gold font-bold">18:30 h</span>
+            </div>
+
+            <p class="text-sm font-sans text-rosee-quartz leading-relaxed">
+              Cóctel de autor entre viñedos al atardecer, seguido de banquete gastronómico en la terraza principal, brindis con vino espumoso rosado y baile bajo el firmamento.
+            </p>
+
+            <div class="space-y-2 py-2 text-xs font-sans text-rosee-muted">
+              <p><i class="fa-solid fa-location-dot text-rosee-gold mr-2"></i> Carretera a Jalpa Km 10.5, San Miguel de Allende</p>
+              <p><i class="fa-solid fa-car text-rosee-gold mr-2"></i> Servicio exclusivo de Valet Parking & Seguridad privada</p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pt-6 border-t border-rosee-gold/20 flex flex-wrap items-center gap-3">
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-rosee-gold text-rosee-void text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-rosee-goldlight transition-all flex items-center gap-2">
+              <i class="fa-solid fa-diamond-turn-right"></i> CÓMO LLEGAR
+            </a>
+            <button type="button" onclick="window.downloadRoseeCalendar('party')" class="px-5 py-2.5 border border-rosee-gold/60 text-rosee-gold text-[10px] font-cinzel tracking-[0.2em] uppercase font-bold rounded-full hover:bg-rosee-gold/10 transition-all flex items-center gap-2">
+              <i class="fa-regular fa-calendar-plus"></i> AGENDAR FIESTA
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT IV: LE CARNET DE SOIRÉE (ITINERARIO EN 6 TIEMPOS DE GALA)         -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="program" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">ORDRE DES HEURES // PROGRAMA NOCTURNO</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          El Itinerario del Alba
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-rosee-muted uppercase">
+          SEIS TIEMPOS CURADOS PARA UNA EXPERIENCIA SENSORIAL Y POÉTICA
+        </p>
+      </div>
+
+      <!-- Astrological Horology Sequence -->
+      <div class="max-w-4xl mx-auto bg-rosee-rosewood/70 border border-rosee-gold/40 p-6 sm:p-12 rounded-3xl shadow-2xl relative">
+        <div class="space-y-8">
+
+          <!-- Time I -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-rosee-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-rosee-gold">16:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-rosee-muted uppercase">TIEMPO I</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-rosee-nacre">I. La Bénédiction Nuptiale</h4>
+              <p class="font-sans text-xs text-rosee-quartz mt-1">
+                Entrada solemne, entrega de votos y bendición de argollas en oro rosa en el altar de Nuestra Señora de Guadalupe.
+              </p>
+            </div>
+          </div>
+
+          <!-- Time II -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-rosee-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-rosee-gold">18:00 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-rosee-muted uppercase">TIEMPO II</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-rosee-nacre">II. Le Cocktail Rose & Harpe au Crépuscule</h4>
+              <p class="font-sans text-xs text-rosee-quartz mt-1">
+                Aperitivos de autor en los jardines de la hacienda, copas de bienvenida y concierto de arpa al atardecer.
+              </p>
+            </div>
+          </div>
+
+          <!-- Time III -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-rosee-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-rosee-gold">19:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-rosee-muted uppercase">TIEMPO III</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-rosee-nacre">III. Banquet Gastronomique aux Chandelles</h4>
+              <p class="font-sans text-xs text-rosee-quartz mt-1">
+                Cena de gala en cuatro tiempos maridada con vinos de la bodega privada de San José Lavista.
+              </p>
+            </div>
+          </div>
+
+          <!-- Time IV -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-rosee-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-rosee-gold">21:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-rosee-muted uppercase">TIEMPO IV</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-rosee-nacre">IV. La Valse des Roses & Cascades de Champagne</h4>
+              <p class="font-sans text-xs text-rosee-quartz mt-1">
+                Apertura oficial de la pista de cristal, primer vals de los esposos y brindis con champaña rosada.
+              </p>
+            </div>
+          </div>
+
+          <!-- Time V -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline border-b border-rosee-gold/20 pb-6">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-rosee-gold">22:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-rosee-muted uppercase">TIEMPO V</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-rosee-nacre">V. Fête Dorée & Live DJ Set</h4>
+              <p class="font-sans text-xs text-rosee-quartz mt-1">
+                Iluminación inmersiva, coctelería botánica prémium, barra libre y fiesta sin fin.
+              </p>
+            </div>
+          </div>
+
+          <!-- Time VI -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline">
+            <div class="sm:col-span-3">
+              <span class="font-cinzel text-xl font-bold text-rosee-gold">02:30 hrs</span>
+              <span class="block font-sans text-[9px] tracking-widest text-rosee-muted uppercase">TIEMPO VI</span>
+            </div>
+            <div class="sm:col-span-9">
+              <h4 class="font-cinzel text-lg sm:text-xl font-semibold text-rosee-nacre">VI. L'Aurore & Douceurs Nocturnes</h4>
+              <p class="font-sans text-xs text-rosee-quartz mt-1">
+                Tornaboda con antojitos mexicanos gourmet, chocolate artesanal caliente y café de olla bajo el rocío de la mañana.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT V: CODE VESTIMENTAIRE · ROSE POUDRÉ & BLACK TIE (DRESS CODE)      -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="style" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">LOOKBOOK // GUIDE VESTIMENTAIRE</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          Rose Poudré & Black Tie
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.2em] text-rosee-gold uppercase font-bold">
+          BLACK TIE & ÉLÉGANCE EN TONOS DE AURORA
+        </p>
+      </div>
+
+      <!-- 3 Astronomical Style Columns in Rosewood -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Dames Guidelines -->
+        <div class="lg:col-span-4 bg-rosee-rosewood/70 border border-rosee-gold/30 p-6 sm:p-8 rounded-3xl flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="border-b border-rosee-gold/30 pb-3 mb-4">
+              <span class="text-[10px] font-cinzel tracking-[0.25em] text-rosee-gold uppercase font-semibold">SILHOUETTE DAMES</span>
+              <h3 class="font-cinzel text-2xl text-rosee-nacre font-bold">Para las Damas</h3>
+            </div>
+            <p class="text-sm font-sans text-rosee-quartz leading-relaxed mb-4">
+              Vestido largo formal de noche en telas nobles: seda, crepé fluido, terciopelo o gasa. Tonos suaves de rosa, mauve, nácar o negro.
+            </p>
+            <div class="p-3.5 bg-rosee-void/70 border-l-2 border-rosee-gold rounded-r text-xs font-sans text-rosee-quartz">
+              <p class="font-semibold text-rosee-gold">Cortesía de etiqueta:</p>
+              <p class="text-rosee-muted mt-0.5">Agradecemos reservar los tonos blanco puro, marfil y perla exclusivamente para la novia.</p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-rosee-gold/20 text-[10px] font-sans tracking-widest text-rosee-muted uppercase">
+            CALZADO SUGERIDO: TACÓN DE BLOQUE O CÓMODO
+          </div>
+        </div>
+
+        <!-- Central Rose Swatches -->
+        <div class="lg:col-span-4 bg-rosee-rosewood/90 border border-rosee-gold/50 p-6 sm:p-8 rounded-3xl flex flex-col justify-between shadow-2xl text-center">
+          <div>
+            <span class="text-[10px] font-cinzel tracking-[0.3em] text-rosee-gold uppercase font-bold block mb-1">NUANCIER D'AMOUR</span>
+            <h3 class="font-cinzel text-2xl text-rosee-nacre font-bold mb-6">Paleta de Inspiración</h3>
+            
+            <div class="grid grid-cols-5 gap-2 sm:gap-3 my-6">
+              <!-- Swatch 1 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#F2D5D5] shadow-lg border border-rosee-gold/40 transition-transform group-hover:scale-110 shadow-[0_0_10px_rgba(242,213,213,0.3)]"></div>
+                <span class="font-sans text-[8px] tracking-wider text-rosee-muted uppercase block mt-2 font-semibold">Poudré</span>
+                <span class="font-mono text-[7px] text-rosee-muted/60 block">#F2D5D5</span>
+              </div>
+              <!-- Swatch 2 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#E7A18C] shadow-lg border border-rosee-gold/50 transition-transform group-hover:scale-110 shadow-[0_0_12px_rgba(231,161,140,0.5)]"></div>
+                <span class="font-sans text-[8px] tracking-wider text-rosee-gold uppercase block mt-2 font-semibold">Or Rose</span>
+                <span class="font-mono text-[7px] text-rosee-muted/60 block">#E7A18C</span>
+              </div>
+              <!-- Swatch 3 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#5A2E38] shadow-lg border border-rosee-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-rosee-muted uppercase block mt-2 font-semibold">Bois</span>
+                <span class="font-mono text-[7px] text-rosee-muted/60 block">#5A2E38</span>
+              </div>
+              <!-- Swatch 4 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#FAF5F2] shadow-lg border border-rosee-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-rosee-muted uppercase block mt-2 font-semibold">Nacre</span>
+                <span class="font-mono text-[7px] text-rosee-muted/60 block">#FAF5F2</span>
+              </div>
+              <!-- Swatch 5 -->
+              <div class="group text-center">
+                <div class="w-full aspect-square rounded-full bg-[#1C0D12] shadow-lg border border-rosee-gold/30 transition-transform group-hover:scale-110"></div>
+                <span class="font-sans text-[8px] tracking-wider text-rosee-muted uppercase block mt-2 font-semibold">Velours</span>
+                <span class="font-mono text-[7px] text-rosee-muted/60 block">#1C0D12</span>
+              </div>
+            </div>
+
+            <p class="text-xs font-cormorant italic text-rosee-quartz">
+              "Una sinfonía cromática femenina, etérea y radiante inspirada en la luz de los viñedos al amanecer."
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-rosee-gold/20 text-[10px] font-cinzel tracking-widest text-rosee-gold uppercase font-bold">
+            ATMÓSFERA ROMÁNTICA
+          </div>
+        </div>
+
+        <!-- Messieurs Guidelines -->
+        <div class="lg:col-span-4 bg-rosee-rosewood/70 border border-rosee-gold/30 p-6 sm:p-8 rounded-3xl flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="border-b border-rosee-gold/30 pb-3 mb-4">
+              <span class="text-[10px] font-cinzel tracking-[0.25em] text-rosee-gold uppercase font-semibold">SILHOUETTE MESSIEURS</span>
+              <h3 class="font-cinzel text-2xl text-rosee-nacre font-bold">Para los Caballeros</h3>
+            </div>
+            <p class="text-sm font-sans text-rosee-quartz leading-relaxed mb-4">
+              Smoking riguroso (Black Tie) en color negro tradicional o azul noche, con solapa de seda, camisa blanca de piqué y pajarita negra.
+            </p>
+            <div class="p-3.5 bg-rosee-void/70 border-l-2 border-rosee-gold rounded-r text-xs font-sans text-rosee-quartz">
+              <p class="font-semibold text-rosee-gold">Toque sartorial:</p>
+              <p class="text-rosee-muted mt-0.5">Calzado formal de charol o cuero negro lustrado. Gemelos en oro rosa o nácar recomendados.</p>
+            </div>
+          </div>
+          <div class="pt-6 border-t border-rosee-gold/20 text-[10px] font-sans tracking-widest text-rosee-muted uppercase">
+            ETIQUETA RIGUROSA / BLACK TIE
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT VI: LINGOT D'OR ROSE 3D (INTERACTIVE 3D REVOLVING ROSE BULLION)   -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="gifts" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">LINGOT D'OR ROSE // LUNA DE MIEL</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          Mesa de Regalos
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-rosee-muted uppercase">
+          VUESTRO CARIÑO Y COMPAÑÍA ES NUESTRO MEJOR REGALO. SI DESEÁIS TENER UN DETALLE:
+        </p>
+      </div>
+
+      <!-- 3D Rose Bullion Container -->
+      <div class="max-w-xl mx-auto perspective-container py-4">
+        
+        <p class="text-center text-[11px] font-cinzel tracking-[0.2em] text-rosee-gold uppercase font-bold mb-4 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-arrows-rotate text-xs animate-spin-slow"></i> TOCA EL LINGOTE PARA VER LOS DATOS BANCARIOS
+        </p>
+
+        <!-- The 3D Rose Bullion Card -->
+        <div id="card-rosee-bullion-flipper" class="card-3d-flipper w-full aspect-[16/10] sm:aspect-[1.586/1] relative cursor-pointer select-none">
+          
+          <!-- FRONT FACE: Solid Brushed Rose Gold with Crest -->
+          <div class="card-face card-face-front absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E7A18C] via-[#F8D5CB] to-[#B86855] p-6 sm:p-8 text-rosee-void shadow-[0_15px_50px_rgba(231,161,140,0.4)] border-2 border-[#FFE8E2] flex flex-col justify-between overflow-hidden">
+            
+            <!-- Metallic Sheen Sweep & Guilloché Watermark -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(255,255,255,0.45)_0%,_transparent_60%)] pointer-events-none"></div>
+            <div class="absolute -right-10 -bottom-10 w-56 h-56 opacity-20 pointer-events-none">
+              <img src="svg/rosee-crest.svg" alt="" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Top Row: Purity Stamp & Hallmark -->
+            <div class="flex justify-between items-start z-10">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 bg-black/20 rounded font-mono text-[9px] tracking-widest font-bold uppercase text-rosee-void">OR ROSE 999.9</span>
+                <span class="font-cinzel text-[10px] tracking-[0.2em] font-bold">HAUTE JOAILLERIE</span>
+              </div>
+              <img src="svg/rosee-crest.svg" alt="Monogram" class="w-10 h-10 object-contain">
+            </div>
+
+            <!-- Middle: Bullion Destination -->
+            <div class="z-10 my-auto">
+              <span class="font-sans text-[9px] tracking-[0.25em] uppercase font-bold text-rosee-void/70 block">DESTINO DE LUNA DE MIEL</span>
+              <h3 class="font-cinzel text-2xl sm:text-3xl font-bold tracking-wide text-rosee-void leading-tight">
+                Riviera Francesa & Bora Bora
+              </h3>
+              <p class="font-mono text-xs tracking-widest text-rosee-void/70 mt-1">FOLIO NO. CM-ROSE-2026</p>
+            </div>
+
+            <!-- Bottom Row: Holders & Expiry -->
+            <div class="flex justify-between items-end z-10 text-[10px] font-sans tracking-widest uppercase font-semibold">
+              <div>
+                <span class="text-rosee-void/60 block text-[8px]">TITULARES</span>
+                <span class="text-rosee-void font-bold">CAMILA & MATEO</span>
+              </div>
+              <div class="text-right">
+                <span class="text-rosee-void/60 block text-[8px]">VÁLIDO HASTA</span>
+                <span class="text-rosee-void font-bold">12 / 2026</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BACK FACE: Rosewood & Rose Gold Transfer Credentials -->
+          <div class="card-face card-face-back absolute inset-0 rounded-3xl bg-gradient-to-br from-[#32101B] via-[#200A11] to-[#14060A] p-6 sm:p-8 text-rosee-nacre shadow-2xl border-2 border-rosee-gold/50 flex flex-col justify-between overflow-hidden">
+            
+            <!-- Security Strip -->
+            <div class="-mx-6 sm:-mx-8 -mt-2 h-10 bg-black border-y border-rosee-gold/30 flex items-center justify-end px-6">
+              <span class="font-mono text-[9px] text-rosee-gold tracking-widest">AURORE CÉLESTE COFFRET PRIVÉ</span>
+            </div>
+
+            <!-- Bank Data Letterpress Box -->
+            <div class="bg-rosee-void/80 border border-rosee-gold/40 rounded-2xl p-3 sm:p-4 my-auto space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-cinzel text-rosee-gold uppercase text-[10px] tracking-wider font-bold">BANCO:</span>
+                <span class="font-mono text-white font-bold">BBVA BANCOMER</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-cinzel text-rosee-gold uppercase text-[10px] tracking-wider font-bold">BENEFICIARIO:</span>
+                <span class="font-sans text-white/90">Camila Valenzuela</span>
+              </div>
+              <div class="flex justify-between items-center text-xs pt-1 border-t border-rosee-gold/20">
+                <span class="font-cinzel text-rosee-gold uppercase text-[10px] tracking-wider font-bold">CLABE:</span>
+                <span id="clabe-number" class="font-mono text-xs sm:text-sm text-rosee-gold font-bold tracking-wider">012 180 014829104825</span>
+              </div>
+            </div>
+
+            <!-- 1-Click Copy Button -->
+            <div class="pt-2">
+              <button id="btn-copy-clabe" type="button" class="w-full py-2.5 bg-gradient-to-r from-rosee-darkgold via-rosee-gold to-rosee-darkgold text-rosee-void font-cinzel text-[10px] tracking-[0.2em] font-bold uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-md">
+                <i class="fa-regular fa-copy"></i> COPIAR CLABE INTERBANCARIA
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- External Department Stores -->
+        <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="https://www.elpalaciodehierro.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 bg-rosee-rosewood/80 border border-rosee-gold/40 text-rosee-nacre font-cinzel text-xs tracking-widest uppercase hover:bg-rosee-gold hover:text-rosee-void transition-all text-center rounded-full shadow-md">
+            <i class="fa-solid fa-gift text-rosee-gold mr-2"></i> EL PALACIO DE HIERRO (N° 592810)
+          </a>
+          <a href="https://www.liverpool.com.mx" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 bg-rosee-rosewood/80 border border-rosee-gold/40 text-rosee-nacre font-cinzel text-xs tracking-widest uppercase hover:bg-rosee-gold hover:text-rosee-void transition-all text-center rounded-full shadow-md">
+            <i class="fa-solid fa-gift text-rosee-gold mr-2"></i> LIVERPOOL (N° 91028374)
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT VII: L'ÉTOILE DES VŒUX (REAL-TIME ROSE CONSTELLATION RSVP)        -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="rsvp" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">R.S.V.P. // L'ÉTOILE DES VŒUX</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          Enciende Tu Estrella
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-rosee-muted uppercase">
+          CONFIRMACIÓN INDISPENSABLE ANTES DEL 5 DE NOVIEMBRE DE 2026
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-10">
+
+        <!-- REAL-TIME CONSTELLATION GUEST PASS PREVIEW -->
+        <div class="bg-gradient-to-b from-rosee-rosewood to-rosee-void border-2 border-rosee-gold/40 p-6 sm:p-10 rounded-3xl shadow-[0_0_50px_rgba(231,161,140,0.25)] relative overflow-hidden text-center transition-all duration-300">
+          
+          <div class="flex justify-between items-start mb-4">
+            <span class="font-cinzel text-[9px] tracking-[0.25em] text-rosee-gold uppercase font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-star text-[10px]"></i> ESTRELLA DE HONOR ASIGNADA
+            </span>
+            <span class="font-mono text-[9px] text-rosee-muted">COORD #ROSE-2026</span>
+          </div>
+
+          <p class="font-cinzel text-[10px] tracking-[0.3em] text-rosee-muted uppercase">PASE DE GALA REGISTRADO PARA:</p>
+          
+          <!-- Live Name Display (Updates dynamically in script calligraphy as user types) -->
+          <div class="my-4 py-2 min-h-[60px] flex items-center justify-center">
+            <h3 id="calligraphy-guest-name" class="font-script text-4xl sm:text-6xl text-rosee-goldlight drop-shadow-md transition-all duration-300">
+              Distinguido Invitado
+            </h3>
+          </div>
+
+          <p id="calligraphy-guest-status" class="font-sans text-xs tracking-wider text-rosee-quartz">
+            Tu estrella iluminará con calidez la noche de nuestra unión en San Miguel de Allende.
+          </p>
+
+          <div class="flex justify-between items-end border-t border-rosee-gold/20 pt-4 mt-6">
+            <div class="text-left">
+              <span class="text-[8px] font-sans text-rosee-muted uppercase tracking-widest block">PASES ASIGNADOS</span>
+              <span id="calligraphy-pass-count" class="font-cinzel text-lg text-rosee-gold font-bold">2 Pases</span>
+            </div>
+            <img src="svg/rosee-crest.svg" alt="Monogram" class="w-10 h-10 object-contain opacity-85">
+            <div class="text-right">
+              <span class="text-[8px] font-sans text-rosee-muted uppercase tracking-widest block">ESTADO</span>
+              <span id="calligraphy-status-badge" class="font-sans text-[10px] tracking-widest text-rosee-gold uppercase font-bold">EN ESPERA</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- The Rose RSVP Form -->
+        <form id="rosee-rsvp-form" class="bg-rosee-rosewood/80 border border-rosee-gold/40 p-6 sm:p-10 rounded-3xl shadow-xl space-y-6">
+          
+          <div class="space-y-4">
+            
+            <!-- Full Name Input -->
+            <div>
+              <label for="rsvp-name" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-rosee-gold font-bold mb-2">
+                Nombre y Apellidos de los Invitados *
+              </label>
+              <input type="text" id="rsvp-name" required placeholder="Escriba su nombre completo..." class="w-full px-4 py-3 bg-rosee-void/80 border border-rosee-gold/40 rounded-xl text-sm font-sans text-rosee-nacre focus:outline-none focus:border-rosee-gold focus:ring-1 focus:ring-rosee-gold transition-all">
+            </div>
+
+            <!-- Attendance Radio Selection -->
+            <div>
+              <label class="block font-cinzel text-xs tracking-[0.2em] uppercase text-rosee-gold font-bold mb-2">
+                ¿Nos acompañarás en esta velada de alba? *
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3 p-3.5 border border-rosee-gold/30 rounded-xl cursor-pointer hover:bg-rosee-void/60 transition-colors">
+                  <input type="radio" name="attendance" value="accepted" checked class="text-rosee-gold focus:ring-rosee-gold">
+                  <span class="font-sans text-xs font-semibold text-rosee-nacre">Acepto con inmensa alegría</span>
+                </label>
+                <label class="flex items-center gap-3 p-3.5 border border-rosee-gold/30 rounded-xl cursor-pointer hover:bg-rosee-void/60 transition-colors">
+                  <input type="radio" name="attendance" value="declined" class="text-rosee-gold focus:ring-rosee-gold">
+                  <span class="font-sans text-xs font-semibold text-rosee-nacre">Lamentablemente no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Number of Passes & Dietary Restrictions -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="rsvp-passes" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-rosee-gold font-bold mb-2">
+                  Número de Asistentes
+                </label>
+                <select id="rsvp-passes" class="w-full px-4 py-3 bg-rosee-void/80 border border-rosee-gold/40 rounded-xl text-sm font-sans text-rosee-nacre focus:outline-none focus:border-rosee-gold">
+                  <option value="1">1 Asistente (Pase Individual)</option>
+                  <option value="2" selected>2 Asistentes (Pase Doble)</option>
+                  <option value="3">3 Asistentes</option>
+                  <option value="4">4 Asistentes (Pase Familiar)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="rsvp-diet" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-rosee-gold font-bold mb-2">
+                  Restricciones Dietéticas
+                </label>
+                <input type="text" id="rsvp-diet" placeholder="Ej. Vegetariano, alergia a frutos secos..." class="w-full px-4 py-3 bg-rosee-void/80 border border-rosee-gold/40 rounded-xl text-sm font-sans text-rosee-nacre focus:outline-none focus:border-rosee-gold">
+              </div>
+            </div>
+
+            <!-- Song Dedication -->
+            <div>
+              <label for="rsvp-song" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-rosee-gold font-bold mb-2">
+                Canción que deseas bailar en la pista de cristal
+              </label>
+              <input type="text" id="rsvp-song" placeholder="Título y artista para el DJ..." class="w-full px-4 py-3 bg-rosee-void/80 border border-rosee-gold/40 rounded-xl text-sm font-sans text-rosee-nacre focus:outline-none focus:border-rosee-gold">
+            </div>
+
+            <!-- Message to the Couple -->
+            <div>
+              <label for="rsvp-message" class="block font-cinzel text-xs tracking-[0.2em] uppercase text-rosee-gold font-bold mb-2">
+                Deseo o dedicatoria para Camila & Mateo
+              </label>
+              <textarea id="rsvp-message" rows="3" placeholder="Escriba aquí sus palabras para los novios..." class="w-full px-4 py-3 bg-rosee-void/80 border border-rosee-gold/40 rounded-xl text-sm font-sans text-rosee-nacre focus:outline-none focus:border-rosee-gold"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-4 border-t border-rosee-gold/20">
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-rosee-darkgold via-rosee-gold to-rosee-darkgold text-rosee-void font-cinzel text-xs sm:text-sm tracking-[0.25em] font-bold uppercase rounded-xl hover:brightness-110 transition-all duration-300 shadow-[0_0_30px_rgba(231,161,140,0.4)]">
+              CONFIRMAR ASISTENCIA & ENCENDER ESTRELLA
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT VIII: GALERIE DE L'AMOUR (PHOTO GALLERY & LIGHTBOX)               -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="gallery" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">PORTFOLIO // GALERIE D'AMOUR</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          Galería de los Enamorados
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-rosee-muted uppercase">
+          MOMENTOS CAPTURADOS EN LOS VIÑEDOS AL CAER LA TARDE
+        </p>
+      </div>
+
+      <!-- Rose Gold Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Photo 1 -->
+        <div class="group relative bg-rosee-rosewood/70 p-3 rounded-3xl border border-rosee-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(231,161,140,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-1.jpg" data-caption="Atardecer en los callejones empedrados / San Miguel de Allende">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-2xl">
+            <img src="assets/gallery/gallery-1.jpg" alt="Galería 1" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-rosee-gold/90 rounded-full text-rosee-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-rosee-muted uppercase px-1">
+            <span>CLICHÉ NO. 01</span>
+            <span>SAN MIGUEL</span>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="group relative bg-rosee-rosewood/70 p-3 rounded-3xl border border-rosee-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(231,161,140,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-2.jpg" data-caption="Primer vals íntimo en la cava subterránea">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-2xl">
+            <img src="assets/gallery/gallery-2.jpg" alt="Galería 2" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-rosee-gold/90 rounded-full text-rosee-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-rosee-muted uppercase px-1">
+            <span>CLICHÉ NO. 02</span>
+            <span>INTIMITÉ</span>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="group relative bg-rosee-rosewood/70 p-3 rounded-3xl border border-rosee-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(231,161,140,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-3.jpg" data-caption="Argollas en oro rosa y detalles nupciales">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-2xl">
+            <img src="assets/gallery/gallery-3.jpg" alt="Galería 3" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-rosee-gold/90 rounded-full text-rosee-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-rosee-muted uppercase px-1">
+            <span>CLICHÉ NO. 03</span>
+            <span>OR ROSE</span>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="group relative bg-rosee-rosewood/70 p-3 rounded-3xl border border-rosee-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(231,161,140,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-4.jpg" data-caption="La promesa bajo la luz cálida de la tarde">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-2xl">
+            <img src="assets/gallery/gallery-4.jpg" alt="Galería 4" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-rosee-gold/90 rounded-full text-rosee-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-rosee-muted uppercase px-1">
+            <span>CLICHÉ NO. 04</span>
+            <span>PROMESSE</span>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="group relative bg-rosee-rosewood/70 p-3 rounded-3xl border border-rosee-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(231,161,140,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-5.jpg" data-caption="Brindis con champaña rosada de reserva">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-2xl">
+            <img src="assets/gallery/gallery-5.jpg" alt="Galería 5" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-rosee-gold/90 rounded-full text-rosee-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-rosee-muted uppercase px-1">
+            <span>CLICHÉ NO. 05</span>
+            <span>CHAMPAGNE</span>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="group relative bg-rosee-rosewood/70 p-3 rounded-3xl border border-rosee-gold/30 shadow-lg hover:shadow-[0_0_30px_rgba(231,161,140,0.3)] transition-all cursor-pointer gallery-item" data-src="assets/gallery/gallery-6.jpg" data-caption="Miradas cómplices que celebran el amor">
+          <div class="relative overflow-hidden aspect-[3/4] rounded-2xl">
+            <img src="assets/gallery/gallery-6.jpg" alt="Galería 6" class="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-3 bg-rosee-gold/90 rounded-full text-rosee-void text-sm"><i class="fa-solid fa-expand"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex justify-between items-center text-[9px] font-sans tracking-widest text-rosee-muted uppercase px-1">
+            <span>CLICHÉ NO. 06</span>
+            <span>ÉTERNITÉ</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- ACT IX: CONCIERGE & HOSPEDAJE EN SAN MIGUEL                           -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="concierge" class="rosee-section pt-8 border-t border-rosee-gold/20">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-cinzel text-xs tracking-[0.4em] uppercase text-rosee-gold font-bold block mb-2">CONCIERGE // HOSPEDAJE BOUTIQUE</span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-rosee-nacre uppercase leading-tight">
+          Hospedaje Recomendado
+        </h2>
+        <div class="w-16 h-0.5 bg-rosee-gold mx-auto my-4"></div>
+        <p class="font-sans text-xs tracking-[0.15em] text-rosee-muted uppercase">
+          SELECCIÓN EXCLUSIVA DE HOTELES BOUTIQUE CON CÓDIGO DE RESERVACIÓN
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Hotel 1 -->
+        <div class="bg-rosee-rosewood/70 border border-rosee-gold/30 p-6 rounded-3xl flex flex-col justify-between shadow-lg">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-rosee-gold uppercase font-bold">5 ESTRELLAS LUJO</span>
+            <h3 class="font-cinzel text-xl text-rosee-nacre font-bold mt-1">Rosewood San Miguel</h3>
+            <p class="text-xs font-sans text-rosee-muted mt-2">Nemesio Diez 11, Zona Centro</p>
+            <p class="text-xs font-sans text-rosee-quartz mt-3">Tarifa preferencial mencionando la Boda Camila & Mateo.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-rosee-gold/20 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-rosee-gold font-bold">CÓDIGO: CM-AURORE</span>
+            <a href="https://www.rosewoodhotels.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-rosee-gold hover:text-rosee-goldlight font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="bg-rosee-rosewood/70 border border-rosee-gold/30 p-6 rounded-3xl flex flex-col justify-between shadow-lg">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-rosee-gold uppercase font-bold">RELAIS & CHÂTEAUX</span>
+            <h3 class="font-cinzel text-xl text-rosee-nacre font-bold mt-1">Belmond Casa Sierra Nevada</h3>
+            <p class="text-xs font-sans text-rosee-muted mt-2">Hospicio 35, Centro Histórico</p>
+            <p class="text-xs font-sans text-rosee-quartz mt-3">Mansión colonial del siglo XVI con alberca termal y spa botánico.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-rosee-gold/20 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-rosee-gold font-bold">CÓDIGO: BELMOND-CM</span>
+            <a href="https://www.belmond.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-rosee-gold hover:text-rosee-goldlight font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="bg-rosee-rosewood/70 border border-rosee-gold/30 p-6 rounded-3xl flex flex-col justify-between shadow-lg">
+          <div>
+            <span class="text-[9px] font-cinzel tracking-[0.2em] text-rosee-gold uppercase font-bold">HACIENDA BOUTIQUE</span>
+            <h3 class="font-cinzel text-xl text-rosee-nacre font-bold mt-1">Hacienda de Guadalupe</h3>
+            <p class="text-xs font-sans text-rosee-muted mt-2">Hidalgo 4, Zona Centro</p>
+            <p class="text-xs font-sans text-rosee-quartz mt-3">Elegancia colonial con cava subterránea y servicio personalizado.</p>
+          </div>
+          <div class="pt-4 mt-6 border-t border-rosee-gold/20 flex justify-between items-center">
+            <span class="font-mono text-[10px] text-rosee-gold font-bold">CÓDIGO: GUADALUPE-WED</span>
+            <a href="https://www.haciendadeguadalupe.com" target="_blank" rel="noopener noreferrer" class="text-[10px] font-cinzel text-rosee-gold hover:text-rosee-goldlight font-bold uppercase">RESERVAR</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================= -->
+  <!-- 4. FLOATING ROSE GOLD ASTROLABE DOCK (BOTTOM NAVIGATION)                  -->
+  <!-- ========================================================================= -->
+  <nav id="rosee-dock" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-rosee-rosewood/95 backdrop-blur-md border border-rosee-gold/40 px-3 sm:px-6 py-2.5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.8)] flex items-center gap-2 sm:gap-4 max-w-[95vw] overflow-x-auto text-[10px] sm:text-xs font-cinzel tracking-widest text-rosee-muted select-none">
+    
+    <a href="#hero" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-rosee-gold active">
+      01 · HISTOIRE
+    </a>
+    <span class="text-rosee-gold/30">/</span>
+
+    <a href="#sky-dome" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-rosee-gold">
+      02 · BÓVEDA
+    </a>
+    <span class="text-rosee-gold/30">/</span>
+
+    <a href="#venues" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-rosee-gold">
+      03 · DESTINOS
+    </a>
+    <span class="text-rosee-gold/30">/</span>
+
+    <a href="#program" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-rosee-gold">
+      04 · ITINERARIO
+    </a>
+    <span class="text-rosee-gold/30">/</span>
+
+    <a href="#gifts" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-rosee-gold">
+      05 · REGALOS
+    </a>
+    <span class="text-rosee-gold/30">/</span>
+
+    <a href="#rsvp" class="dock-link px-2 sm:px-3 py-1 rounded-full transition-all hover:text-rosee-gold text-rosee-gold font-bold">
+      06 · RSVP
+    </a>
+  </nav>
+
+
+  <!-- ========================================================================= -->
+  <!-- 5. LIGHTBOX MODAL FOR GALLERY ZOOM                                        -->
+  <!-- ========================================================================= -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+    <button id="btn-close-lightbox" class="absolute top-6 right-6 text-white text-3xl hover:text-rosee-gold transition-colors z-10" aria-label="Cerrar vista previa">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Ampliación" class="max-w-full max-h-[75vh] object-contain border border-rosee-gold/40 shadow-2xl rounded-2xl">
+      <p id="lightbox-caption" class="font-cinzel text-rosee-gold text-sm sm:text-base mt-4 text-center"></p>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 6. EDITORIAL FOOTER & COLOPHON                                            -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-rosee-gold/20 bg-rosee-void text-rosee-nacre py-16 px-4 sm:px-8 text-center relative z-10">
+    <div class="max-w-2xl mx-auto space-y-6">
+      <img src="svg/rosee-crest.svg" alt="Monograma Camila & Mateo" class="w-16 h-16 mx-auto object-contain">
+      
+      <div>
+        <h3 class="font-cinzel text-3xl text-rosee-nacre font-bold tracking-wide uppercase">Camila & Mateo</h3>
+        <p class="font-cinzel text-xs tracking-[0.35em] text-rosee-gold mt-1 uppercase">V · DÉCEMBRE · MMXXVI</p>
+      </div>
+
+      <p class="font-cormorant italic text-sm sm:text-base text-rosee-muted max-w-md mx-auto">
+        "El amor transforma cada instante en poesía eterna. Gracias por ser parte de la aurora de nuestra nueva vida."
+      </p>
+
+      <div class="border-t border-rosee-gold/15 pt-6 text-[9px] font-sans tracking-[0.25em] text-rosee-muted/60 uppercase">
+        L'AURORE CÉLESTE · ÉDITION D'OR ROSE & NACRE · SAN MIGUEL DE ALLENDE
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-20 right-6 z-50 pointer-events-none"></div>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>

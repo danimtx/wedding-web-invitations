@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Archivum Nuptiale · Catálogo de Invitaciones de Boda</title>
+  <meta name="description" content="Colección archival de invitaciones de boda de alta distinción. Gabinete clásico de piezas nupciales exclusivas.">
+
+  <!-- Google Fonts: Cinzel, Cormorant Garamond, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            archival: {
+              void: '#070605',
+              base: '#0B0A09',
+              plate: '#12100E',
+              elevated: '#171512',
+              hover: '#1D1A16',
+              gold: '#C5A880',
+              goldBright: '#DFCAAB',
+              goldMuted: '#9B815B',
+              bronze: '#7D6544',
+              parchment: '#F4F1EA',
+              bone: '#DCD5C5',
+              ash: '#8E867A',
+              border: 'rgba(197, 168, 128, 0.20)',
+              borderSubtle: 'rgba(197, 168, 128, 0.10)'
+            }
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            outfit: ['"Outfit"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #0B0A09;
+      --gold-primary: #C5A880;
+      --gold-bright: #DFCAAB;
+      --gold-muted: #8E7754;
+      --parchment: #F4F1EA;
+      --parchment-dim: #DCD5C5;
+      --border-subtle: rgba(197, 168, 128, 0.18);
+    }
+
+    body {
+      background-color: #0B0A09;
+      color: #F4F1EA;
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(197, 168, 128, 0.07) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(197, 168, 128, 0.03) 0%, transparent 40%),
+        linear-gradient(to right, rgba(197, 168, 128, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(197, 168, 128, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090807;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A241D;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #473B2C;
+    }
+
+    /* Archival Card Styles */
+    .archival-plate {
+      position: relative;
+      background: linear-gradient(175deg, #161310 0%, #100E0C 100%);
+      border: 1px solid rgba(197, 168, 128, 0.22);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .archival-plate::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(197, 168, 128, 0.08);
+      pointer-events: none;
+      transition: border-color 0.35s ease;
+    }
+    .archival-plate:hover {
+      border-color: rgba(197, 168, 128, 0.55);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 30px rgba(197, 168, 128, 0.12);
+      transform: translateY(-4px);
+    }
+    .archival-plate:hover::after {
+      border-color: rgba(197, 168, 128, 0.22);
+    }
+
+    /* Corner Ornamental Filigrees */
+    .corner-mark {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .corner-tl {
+      top: 8px;
+      left: 8px;
+      border-top: 1.5px solid var(--gold-primary);
+      border-left: 1.5px solid var(--gold-primary);
+    }
+    .corner-tr {
+      top: 8px;
+      right: 8px;
+      border-top: 1.5px solid var(--gold-primary);
+      border-right: 1.5px solid var(--gold-primary);
+    }
+    .corner-bl {
+      bottom: 8px;
+      left: 8px;
+      border-bottom: 1.5px solid var(--gold-primary);
+      border-left: 1.5px solid var(--gold-primary);
+    }
+    .corner-br {
+      bottom: 8px;
+      right: 8px;
+      border-bottom: 1.5px solid var(--gold-primary);
+      border-right: 1.5px solid var(--gold-primary);
+    }
+    .archival-plate:hover .corner-tl {
+      top: 6px;
+      left: 6px;
+      border-color: var(--gold-bright);
+    }
+    .archival-plate:hover .corner-tr {
+      top: 6px;
+      right: 6px;
+      border-color: var(--gold-bright);
+    }
+    .archival-plate:hover .corner-bl {
+      bottom: 6px;
+      left: 6px;
+      border-color: var(--gold-bright);
+    }
+    .archival-plate:hover .corner-br {
+      bottom: 6px;
+      right: 6px;
+      border-color: var(--gold-bright);
+    }
+
+    /* Folder Index Pill */
+    .folder-index-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(197, 168, 128, 0.08);
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      color: #DFCAAB;
+      letter-spacing: 0.02em;
+    }
+
+    /* Antique Ornamental Divider */
+    .divider-archival {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 14px 0;
+      color: var(--gold-primary);
+    }
+    .divider-archival::before,
+    .divider-archival::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(197, 168, 128, 0.16);
+    }
+    .divider-archival span {
+      padding: 0 10px;
+      font-size: 8px;
+      opacity: 0.7;
+    }
+
+    /* Heritage Filter Buttons */
+    .heritage-filter-btn {
+      padding: 8px 18px;
+      background: rgba(18, 16, 14, 0.85);
+      border: 1px solid rgba(197, 168, 128, 0.24);
+      color: #DCD5C5;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .heritage-filter-btn:hover {
+      border-color: rgba(197, 168, 128, 0.6);
+      color: #F4F1EA;
+      background: rgba(30, 26, 22, 0.9);
+    }
+    .heritage-filter-btn.active {
+      background: #C5A880;
+      color: #0B0A09;
+      border-color: #C5A880;
+      font-weight: 700;
+      box-shadow: 0 4px 18px rgba(197, 168, 128, 0.25);
+    }
+
+    /* Action Open Button */
+    .archival-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(197, 168, 128, 0.08);
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      color: #F4F1EA;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .archival-open-btn:hover {
+      background: #C5A880;
+      color: #0B0A09;
+      border-color: #C5A880;
+      box-shadow: 0 4px 20px rgba(197, 168, 128, 0.35);
+      transform: translateX(2px);
+    }
+
+    /* Header Heraldic Crest */
+    .crest-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 18px;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      background: rgba(18, 16, 14, 0.6);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#C5A880] selection:text-[#0B0A09]">
+
+  <!-- Top Archival Navigation & Header -->
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-10">
+
+    <!-- Header Section -->
+    <header class="text-center max-w-4xl mx-auto space-y-5">
+      
+      <!-- Seal Badge -->
+      <div class="inline-block">
+        <div class="crest-container">
+          <span class="text-archival-gold text-xs">⚜</span>
+          <span class="font-cinzel text-archival-goldBright text-[11px] tracking-[0.28em] uppercase font-semibold">ARCHIVUM NUPTIALE · COLECCIÓN DE ÉPOCA</span>
+          <span class="text-archival-gold text-xs">⚜</span>
+        </div>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-wider text-archival-parchment leading-tight">
+        Catálogo de Invitaciones
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="font-cormorant italic text-lg sm:text-2xl text-archival-bone font-normal max-w-2xl mx-auto leading-relaxed">
+        Colección privada de piezas nupciales de alta distinción. Seleccione una obra para acceder a su composición, estética y experiencia interactiva en vivo.
+      </p>
+
+      <!-- Decorative Filet Line -->
+      <div class="flex items-center justify-center gap-3 pt-1 text-archival-goldMuted/60 text-xs">
+        <div class="w-16 h-[1px] bg-gradient-to-r from-transparent to-archival-gold/40"></div>
+        <span class="text-archival-gold text-xs">❖</span>
+        <span class="text-archival-gold text-[9px] font-cinzel tracking-[0.2em]">FOLIO GENERAL MDCCXXIV</span>
+        <span class="text-archival-gold text-xs">❖</span>
+        <div class="w-16 h-[1px] bg-gradient-to-l from-transparent to-archival-gold/40"></div>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="pt-6 max-w-lg mx-auto relative">
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 text-archival-gold/60 text-sm"></i>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Buscar por carpeta, estilo, cónyuges o ciudad..." 
+            class="w-full pl-11 pr-10 py-3.5 bg-archival-plate/90 border border-archival-gold/30 rounded-none text-sm text-archival-parchment placeholder-archival-ash focus:outline-none focus:border-archival-gold focus:ring-1 focus:ring-archival-gold/40 transition-all font-outfit shadow-inner"
+          >
+          <button 
+            type="button" 
+            id="clear-search-btn" 
+            class="hidden absolute right-3 text-archival-gold/50 hover:text-archival-gold transition-colors p-1"
+            title="Limpiar búsqueda"
+          >
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-3">
+        <button type="button" class="heritage-filter-btn active" data-filter="all">Todos los Modelos (11)</button>
+        <button type="button" class="heritage-filter-btn" data-filter="dark">Oscuro & Imperial (4)</button>
+        <button type="button" class="heritage-filter-btn" data-filter="romantic">Romántico & Botánico (3)</button>
+        <button type="button" class="heritage-filter-btn" data-filter="editorial">Editorial & Gala (4)</button>
+      </div>
+
+      <!-- Live Results Counter -->
+      <div class="pt-1 text-center">
+        <span id="results-counter" class="font-cinzel text-[11px] tracking-[0.18em] text-archival-goldMuted uppercase">
+          Exhibiendo 11 de 11 piezas conservadas
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Grid of Invitation Pieces -->
+    <main id="templates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8 mt-12 sm:mt-14">
+
+      <!-- ========================================== -->
+      <!-- CARD 01: model-barbie-glam                 -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="editorial">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 01</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-barbie-glam</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              HAUTE COUTURE & RUNWAY GLAMOUR
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              The Pink Palace
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Valentina Ferraro & Rodrigo De La Tour
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Edición inspirada en la pasarela de alta costura: composición gráfica con lazo de seda virtual, sello de lacre interactivo, cuenta regresiva de precisión y credencial VIP de acceso exclusivo.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Alta Costura</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Lazo & Lacre</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Pase VIP</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-location-dot text-[9px] mr-1 text-archival-gold"></i>Cabo San Lucas, MX
+          </span>
+          <a href="model-barbie-glam/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 02: carmesi-gold                      -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="dark">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 02</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>carmesi-gold</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              GALA REAL & ROJO CARMESÍ
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              Nuestra Boda de Gala
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Sofía & Alejandro
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Elegancia aristocrática inspirada en las grandes casas dinásticas: terciopelo carmesí profundo, pátina de oro bruñido, sellos de cera reales e itinerario ceremonial solemne.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Rojo Carmesí</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Oro Bruñido</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Corte Solemne</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-clock text-[9px] mr-1 text-archival-gold"></i>Boda de Gala
+          </span>
+          <a href="carmesi-gold/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 03: dark-luxury-1                     -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="dark">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 03</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>dark-luxury-1</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              BLACK TIE & OBSIDIANA NOCTURNA
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              Dark Luxury
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Isabella & Mateo
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Minimalismo nocturno de ultra lujo: fondos en negro ébano y grafito, filetes dorados milimétricos, sobria tipografía lapidaria y una ambientación de gala privada sumamente reservada.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Negro Ébano</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Oro Satinado</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Black Tie</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-moon text-[9px] mr-1 text-archival-gold"></i>Alta Noche Nupcial
+          </span>
+          <a href="dark-luxury-1/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 04: dark-marble-kintsugi              -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="dark">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 04</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>dark-marble-kintsugi</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              MÁRMOL NEGRO & ORO KINTSUGI
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              Dark Marble Kintsugi
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Valeria & Fernando
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Inspirada en el noble arte japonés del Kintsugi: piedra de mármol negro veteada con oro ancestral. Celebración de la unión indestructible, belleza en la historia y orfebrería de museo.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Mármol Nero</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Vetas de Oro</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Kintsugi Imperial</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-calendar-check text-[9px] mr-1 text-archival-gold"></i>06.11.2027 · La Paz, BO
+          </span>
+          <a href="dark-marble-kintsugi/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 05: model-ecrin-celeste               -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="editorial">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 05</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-ecrin-celeste</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              JOYERO CELESTIAL & AZUL ZAFIRO
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              L'Écrin Céleste
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Valentina & Maximiliano
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Concebida como un estuche de alta joyería nupcial: azul zafiro nocturno profundo, constelaciones grabadas en filigrana de oro y composición tipográfica de alta costura parisina.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Azul Zafiro</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Constelaciones</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Alta Joyería</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-gem text-[9px] mr-1 text-archival-gold"></i>Gabinete de Joyería
+          </span>
+          <a href="model-ecrin-celeste/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 06: model-edition-vogue               -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="editorial">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 06</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-edition-vogue</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              EDITORIAL NUPCIAL & ALTA REVISTA
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              L'Édition Nupciale
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Sofía & Leonardo
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Formato de portada y gaceta nupcial: tipografía serif clásica de imprenta, crónica fotográfica de la pareja, galerías estilo lookbook y rigurosa guía de etiqueta para invitados.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Editorial Impreso</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Lookbook</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Alta Costura</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-newspaper text-[9px] mr-1 text-archival-gold"></i>Gaceta Nupcial
+          </span>
+          <a href="model-edition-vogue/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 07: model-imperial-noir               -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="dark">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 07</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-imperial-noir</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              ARQUITECTURA GÓTICA & ORO ANTIGUO
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              Imperial Noir
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Valeria & Fernando
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Solemne arquitectura de salón imperial: relieves dorados en bajorrelieve, fondos en carbón vegetal noble y atmósfera ceremonial digna de un banquete de la nobleza clásica.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Carbón Vegetal</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Oro Antiguo</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Solemne</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-crown text-[9px] mr-1 text-archival-gold"></i>Corte Imperial
+          </span>
+          <a href="model-imperial-noir/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 08: model-jardin-rose                 -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="romantic">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 08</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-jardin-rose</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              INVERNADERO BOTÁNICO & ROSAS DE ÉPOCA
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              La Serre de Cristal
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Isabella & Julián
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Invernadero botánico decimonónico: grabados florales antiguos sobre fondo oscuro, rosas inglesas clásicas, caligrafía renacentista y sutil acompañamiento orquestal.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Rosas Inglesas</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Cristal Francés</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Botánica Clásica</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-leaf text-[9px] mr-1 text-archival-gold"></i>Primavera Nupcial
+          </span>
+          <a href="model-jardin-rose/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 09: model-palazzo-cristallo           -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="editorial">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 09</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-palazzo-cristallo</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              PALACIO VENECIANO & ESPEJOS BARROCOS
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              Palazzo Cristallo
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Isabella & Sebastián
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Evocación de los grandes palacios sobre el Gran Canal veneciano: candelabros de cristal de Murano, destellos de plata vieja, dorados venecianos y refinada caligrafía nobiliaria.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Cristal de Murano</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Plata & Oro</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Palacio Barroco</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-calendar-check text-[9px] mr-1 text-archival-gold"></i>23.10.2027 · Santa Cruz, BO
+          </span>
+          <a href="model-palazzo-cristallo/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 10: model-rosee-celeste               -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="romantic">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 10</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-rosee-celeste</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              AURORA POÉTICA & ROSA ATENUADO
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              L'Aurore Céleste
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Camila & Mateo
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Tonalidades sobrias de amanecer sobre pergamino antiguo: rosa empolvado tenue, oro champán envejecido, versos líricos de época y un trazo caligráfico de notable distinción.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Rosa Empolvado</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Oro Champán</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Lírica Clásica</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-feather text-[9px] mr-1 text-archival-gold"></i>Romance Poético
+          </span>
+          <a href="model-rosee-celeste/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ========================================== -->
+      <!-- CARD 11: model-villa-botanica              -->
+      <!-- ========================================== -->
+      <article class="archival-plate p-6 sm:p-7 flex flex-col justify-between group" data-category="romantic">
+        <div class="corner-mark corner-tl"></div>
+        <div class="corner-mark corner-tr"></div>
+        <div class="corner-mark corner-bl"></div>
+        <div class="corner-mark corner-br"></div>
+
+        <div class="space-y-4">
+          <!-- Top Metadata: Folio and Folder Name -->
+          <div class="flex items-center justify-between gap-2 border-b border-archival-gold/15 pb-3">
+            <span class="font-cinzel text-[10px] tracking-[0.2em] text-archival-goldMuted uppercase font-bold">FOLIO N° 11</span>
+            <div class="folder-index-badge">
+              <i class="fa-regular fa-folder text-archival-gold text-[10px]"></i>
+              <span>model-villa-botanica</span>
+            </div>
+          </div>
+
+          <!-- Classification & Title -->
+          <div>
+            <span class="font-cinzel text-[10px] tracking-[0.22em] text-archival-gold uppercase font-semibold block">
+              HERBARIO NOBLE & QUINTA MEDITERRÁNEA
+            </span>
+            <h2 class="font-cormorant text-2xl sm:text-3xl text-archival-parchment font-bold mt-1 group-hover:text-archival-goldBright transition-colors leading-tight">
+              Villa Botánica
+            </h2>
+            <p class="font-cormorant italic text-base text-archival-bone mt-1">
+              Camila & Mateo
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="divider-archival"><span>❖</span></div>
+
+          <!-- Description -->
+          <p class="text-xs text-archival-bone/80 leading-relaxed font-light">
+            Celebración campestre de abolengo: botánica de olivo silvestre, eucalipto heráldico, papel verjurado artesanal y sosiego clásico bajo el cielo estrellado de los valles.
+          </p>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Olivo & Lino</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Herbario Noble</span>
+            <span class="px-2.5 py-1 bg-archival-plate border border-archival-gold/20 text-[10px] text-archival-bone font-cinzel">Papel Verjurado</span>
+          </div>
+        </div>
+
+        <!-- Footer: Location / Date & Open Button -->
+        <div class="pt-5 mt-6 border-t border-archival-gold/15 flex items-center justify-between">
+          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
+            <i class="fa-solid fa-calendar-check text-[9px] mr-1 text-archival-gold"></i>18.09.2027 · Tarija, BO
+          </span>
+          <a href="model-villa-botanica/" class="archival-open-btn">
+            <span>ABRIR PIEZA</span>
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+          </a>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Empty State for Search / Filter -->
+    <div id="empty-state" class="hidden text-center py-20 px-4 space-y-4 max-w-md mx-auto">
+      <div class="w-14 h-14 mx-auto rounded-full border border-archival-gold/30 flex items-center justify-center text-archival-gold/50 text-xl bg-archival-plate">
+        <i class="fa-regular fa-folder-open"></i>
+      </div>
+      <h3 class="font-cinzel text-lg font-bold text-archival-parchment tracking-wider uppercase">
+        Ninguna pieza coincide con la búsqueda
+      </h3>
+      <p class="font-cormorant italic text-base text-archival-bone">
+        Verifique los términos ingresados o restablezca los filtros para apreciar toda la colección.
+      </p>
+      <div class="pt-2">
+        <button 
+          type="button" 
+          id="reset-search-btn" 
+          class="heritage-filter-btn"
+        >
+          Restablecer Colección
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Archival Colophon / Footer -->
+  <footer class="mt-20 border-t border-archival-gold/15 py-12 px-4 bg-archival-void/90 text-center space-y-4">
+    <div class="flex items-center justify-center gap-3 text-archival-goldMuted/60 text-xs">
+      <div class="w-12 h-[1px] bg-gradient-to-r from-transparent to-archival-gold/40"></div>
+      <span class="text-archival-gold text-xs">⚜</span>
+      <div class="w-12 h-[1px] bg-gradient-to-l from-transparent to-archival-gold/40"></div>
+    </div>
+    <p class="font-cinzel text-xs tracking-[0.25em] text-archival-gold uppercase font-semibold">
+      ARCHIVUM NUPTIALE · GABINETE DE INVITACIONES DE ALTA DISTINCIÓN
+    </p>
+    <p class="text-xs text-archival-ash font-light max-w-lg mx-auto leading-relaxed">
+      Catálogo interactivo preservado para despliegue estático de alto rendimiento. Once modelos originales clasificados por estilo y repertorio ornamental.
+    </p>
+    <p class="font-cinzel text-[10px] tracking-[0.18em] text-archival-goldMuted/70 uppercase">
+      MCMLXXVIII · MMXXVI · TODOS LOS DERECHOS RESERVADOS
+    </p>
+  </footer>
+
+  <!-- Search & Filter Live Engine Script -->
+  <script>
+    (function () {
+      'use strict';
+      const searchInput = document.getElementById('search-input');
+      const clearSearchBtn = document.getElementById('clear-search-btn');
+      const resetSearchBtn = document.getElementById('reset-search-btn');
+      const filterBtns = document.querySelectorAll('.heritage-filter-btn');
+      const cards = document.querySelectorAll('.archival-plate');
+      const emptyState = document.getElementById('empty-state');
+      const resultsCounter = document.getElementById('results-counter');
+      const totalCount = cards.length;
+
+      let currentFilter = 'all';
+
+      function filterArchive() {
+        const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+        let visibleCount = 0;
+
+        if (clearSearchBtn) {
+          clearSearchBtn.style.display = query.length > 0 ? 'block' : 'none';
+        }
+
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          const category = card.dataset.category || 'all';
+
+          const matchesQuery = !query || text.includes(query);
+          const matchesCategory = (currentFilter === 'all') || (category === currentFilter);
+
+          if (matchesQuery && matchesCategory) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        if (resultsCounter) {
+          if (visibleCount === totalCount) {
+            resultsCounter.textContent = 'Exhibiendo ' + totalCount + ' de ' + totalCount + ' piezas conservadas';
+          } else {
+            resultsCounter.textContent = 'Mostrando ' + visibleCount + ' de ' + totalCount + ' piezas disponibles';
+          }
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', filterArchive);
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', function () {
+          searchInput.value = '';
+          searchInput.focus();
+          filterArchive();
+        });
+      }
+
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', function () {
+          if (searchInput) searchInput.value = '';
+          currentFilter = 'all';
+          filterBtns.forEach(b => {
+            if (b.dataset.filter === 'all') {
+              b.classList.add('active');
+            } else {
+              b.classList.remove('active');
+            }
+          });
+          filterArchive();
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentFilter = this.dataset.filter || 'all';
+          filterArchive();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

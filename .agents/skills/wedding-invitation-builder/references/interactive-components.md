@@ -602,3 +602,17 @@ a {
   .lightbox-next { right: 10px; }
 }
 ```
+
+---
+
+## 9. Advanced 3D & Editorial Components
+
+For high-fashion and editorial magazine models requiring cutting-edge interactivity:
+- **Three.js 3D Silk Ribbon Simulation**: Interactive physical cloth ribbon untie sequence that replaces traditional envelope flaps.
+- **3D Revolving Card (Flip Card 180°)**: Virtual credit/membership card with spring physics for wedding gifts and CLABE copying.
+- **Real-Time Calligraphy RSVP Preview**: Live debossed envelope that renders the guest's name dynamically in script typography as they type.
+- **Floating Chapter Scrubber Bar**: Dock with ScrollSpy tracking section progression.
+
+Refer to the complete blueprints and code snippets in:
+**[style-editorial-vogue.md](file:///c:/Users/72873/Desktop/invitaciones/.agents/skills/wedding-invitation-builder/references/style-editorial-vogue.md)**.
+

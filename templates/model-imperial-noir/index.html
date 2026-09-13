@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Valeria &amp; Fernando · Nuestra Boda · 06.11.2027 · La Paz, Bolivia</title>
+  <meta name="description"
+    content="Invitación digital exclusiva a la boda de Valeria & Fernando. Sábado 06 de Noviembre de 2027. La Paz, Bolivia.">
+  <meta name="theme-color" content="#08090C">
+
+  <!-- Open Graph / Redes Sociales (WhatsApp, Facebook) -->
+  <meta property="og:title" content="Valeria & Fernando · Nos Casamos 💍✨">
+  <meta property="og:type" content="website">
+  <meta property="og:description"
+    content="Tenemos el honor de invitarte a celebrar nuestro matrimonio. Sábado 06 de Noviembre de 2027. La Paz, Bolivia.">
+  <meta property="og:image" content="https://danimtx.github.io/wedding-web-invitations/assets/couple-hero.jpg">
+
+  <!-- Google Fonts de Alta Costura -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Italiana&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&family=Pinyon+Script&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome 6.5.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Three.js r128 para WebGL 3D Experience -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Hoja de Estilos de Ultra-Lujo -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- CAPA DE FONDO FIJA DE MÁRMOL OBSIDIANA -->
+  <div class="fixed-bg-layer" aria-hidden="true"></div>
+
+  <!-- SVG CLIP PATHS GLOBALES PARA SILUETAS ESCULTÓRICAS -->
+  <svg class="svg-defs-global" width="0" height="0" viewBox="0 0 100 100" style="position:absolute; width:0; height:0;">
+    <defs>
+      <!-- Gradientes Maestros de Pan de Oro Líquido -->
+      <linearGradient id="goldLiquidMaster" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFF8D6" />
+        <stop offset="25%" stop-color="#F3DC7C" />
+        <stop offset="50%" stop-color="#D4AF37" />
+        <stop offset="75%" stop-color="#EED59B" />
+        <stop offset="100%" stop-color="#8A6818" />
+      </linearGradient>
+
+      <linearGradient id="goldShimmerBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="rgba(243, 220, 124, 0)" />
+        <stop offset="50%" stop-color="rgba(255, 248, 214, 0.95)" />
+        <stop offset="100%" stop-color="rgba(243, 220, 124, 0)" />
+      </linearGradient>
+
+      <!-- 1. Arco Gótico Catedralicio (Hero Principal) -->
+      <clipPath id="clipCathedralArch" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5,0 C 0.85,0.05 1,0.22 1,0.45 L 1,0.94 C 1,0.98 0.96,1 0.9,1 L 0.1,1 C 0.04,1 0,0.98 0,0.94 L 0,0.45 C 0,0.22 0.15,0.05 0.5,0 Z" />
+      </clipPath>
+
+      <!-- 2. Gema Octogonal Facetada (Story 1 & Gallery 2) -->
+      <clipPath id="clipOctagonGem" clipPathUnits="objectBoundingBox">
+        <path d="M 0.22,0 L 0.78,0 L 1,0.22 L 1,0.78 L 0.78,1 L 0.22,1 L 0,0.78 L 0,0.22 Z" />
+      </clipPath>
+
+      <!-- 3. Camafeo Oval Imperial (Story 3 & Gallery 3) -->
+      <clipPath id="clipImperialCameo" clipPathUnits="objectBoundingBox">
+        <ellipse cx="0.5" cy="0.5" rx="0.48" ry="0.48" />
+      </clipPath>
+
+      <!-- 4. Ventanal de Ojiva Medieval (Story 2) -->
+      <clipPath id="clipGothicWindow" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5,0 C 0.75,0.1 1,0.28 1,0.5 L 1,0.94 C 1,0.98 0.95,1 0.9,1 L 0.1,1 C 0.05,1 0,0.98 0,0.94 L 0,0.5 C 0,0.28 0.25,0.1 0.5,0 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- CANVAS 3D GLOBAL DE POLVO DE ORO ASCENDENTE -->
+  <canvas id="global-gold-dust" class="global-gold-dust-canvas" aria-hidden="true"></canvas>
+
+  <!-- ELEMENTO DE AUDIO PRINCIPAL (Música de fondo) -->
+  <audio id="bg-music" src="assets/song.mp3" loop preload="auto"></audio>
+
+  <!-- ==================================================================
+       SECCIÓN 0 · PANTALLA DE ENTRADA (COVER OVERLAY 3D & SELLO DE CERA)
+  =================================================================== -->
+  <div id="cover-overlay" class="cover-overlay" role="dialog" aria-modal="true" aria-label="Apertura de Invitación">
+    <div class="cover-backdrop"></div>
+    <div class="cover-grain" aria-hidden="true"></div>
+
+    <!-- Canvas WebGL 3D para Constelación de Oro y Sello Físico -->
+    <canvas id="cover-webgl-canvas" class="cover-webgl-canvas" aria-hidden="true"></canvas>
+
+    <div class="envelope-3d-scene">
+      <div class="envelope-3d-container" id="envelope-3d-box">
+        <!-- Solapa Superior 3D (Desdoble en 180deg) -->
+        <div class="envelope-flap-top" id="envelope-flap">
+          <svg viewBox="0 0 500 240" preserveAspectRatio="none" class="flap-svg">
+            <path d="M 0,0 L 250,230 L 500,0 Z" fill="#0E1015" stroke="url(#goldLiquidMaster)" stroke-width="1.8" />
+          </svg>
+        </div>
+
+        <!-- Cuerpo Frontal del Sobre -->
+        <div class="envelope-body-front">
+          <div class="envelope-texture-pattern"></div>
+          
+          <!-- Ornamentos de Esquina en Pan de Oro -->
+          <div class="ornament ornament-tl" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+              <path d="M2,46 L2,16 Q2,2 16,2 L46,2" stroke="url(#goldLiquidMaster)" stroke-width="1.5" />
+              <path d="M7,41 L7,18 Q7,7 18,7 L41,7" stroke="url(#goldLiquidMaster)" stroke-width="0.75" opacity="0.7" />
+              <circle cx="16" cy="16" r="2.5" fill="url(#goldLiquidMaster)" />
+            </svg>
+          </div>
+          <div class="ornament ornament-tr" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
+              <path d="M46,46 L46,16 Q46,2 32,2 L2,2" stroke="url(#goldLiquidMaster)" stroke-width="1.5" />
+              <path d="M41,41 L41,18 Q41,7 30,7 L7,7" stroke="url(#goldLiquidMaster)" stroke-width="0.75" opacity="0.7" />
+              <circle cx="32" cy="16" r="2.5" fill="url(#goldLiquidMaster)" />
+            </svg>
+          </div>
+
+          <p class="cover-eyebrow">NUESTRA BODA</p>
+
+          <!-- Sello de Cera 3D con Escudo Heráldico -->
+          <div class="seal-3d-wrap" id="wax-seal-btn" tabindex="0" role="button" aria-label="Abrir sobre de boda con sello de cera">
+            <div class="seal-halo-pulse"></div>
+            <div class="seal-orbit-spin"></div>
+            <div class="seal-disc">
+              <img class="wax-seal-img" src="assets/wax-seal.png" alt="Sello de cera artesanal" onerror="this.style.display='none'; document.querySelector('.seal-fallback-badge').style.display='flex';">
+              <div class="seal-fallback-badge" style="display:none;">
+                <span class="seal-initial">V</span><span class="seal-amp">&amp;</span><span class="seal-initial">F</span>
+              </div>
+            </div>
+            <span class="seal-tap-label"><i class="fa-solid fa-gem"></i> TOCA EL SELLO</span>
+          </div>
+
+          <!-- Monograma de Alta Costura -->
+          <h1 class="cover-monogram">
+            <span class="mono-letter">Valeria</span>
+            <span class="mono-amp">&amp;</span>
+            <span class="mono-letter">Fernando</span>
+          </h1>
+
+          <div class="cover-divider" aria-hidden="true">
+            <svg width="220" height="20" viewBox="0 0 220 20" fill="none">
+              <path d="M 0,10 L 80,10 L 95,3 L 110,17 L 125,10 L 220,10" stroke="url(#goldLiquidMaster)" stroke-width="1.4" />
+              <circle cx="95" cy="3" r="2" fill="url(#goldLiquidMaster)" />
+              <circle cx="110" cy="17" r="2.5" fill="url(#goldLiquidMaster)" />
+            </svg>
+          </div>
+
+          <p class="cover-date">SÁBADO · 06 DE NOVIEMBRE DE 2027</p>
+          <p class="cover-city">LA PAZ · BOLIVIA</p>
+
+          <!-- Saludo Personalizado para el Invitado (URL ?invitado=...) -->
+          <div class="guest-card-envelope">
+            <span class="guest-card-tag"><i class="fa-solid fa-crown"></i> INVITACIÓN EXCLUSIVA</span>
+            <p id="guest-greeting" class="guest-greeting-text">Tenemos el honor de invitarte</p>
+          </div>
+
+          <!-- Botón Principal de Apertura Ceremonial -->
+          <button id="enter-invitation-btn" class="btn-gold btn-open-envelope">
+            <span class="btn-gold-shimmer"></span>
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <span>ABRIR INVITACIÓN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       DYNAMIC ISLAND · REPRODUCTOR DE ORO Y AUDIO FLOTANTE (APPLE STYLE)
+  =================================================================== -->
+  <aside id="dynamic-island" class="dynamic-island" aria-label="Controlador de música flotante">
+    <div class="island-pill" id="island-pill-trigger">
+      <!-- Mini Vinilo de Oro Giratorio -->
+      <div class="mini-vinyl-wrap" id="island-vinyl">
+        <div class="mini-vinyl-grooves"></div>
+        <div class="mini-vinyl-center"></div>
+      </div>
+
+      <!-- Ondas Ecualizadoras en Tiempo Real -->
+      <div class="audio-wave-visualizer" id="island-wave">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </div>
+
+      <!-- Información de la Pista -->
+      <div class="island-meta">
+        <span class="island-song-title">A Thousand Years</span>
+        <span class="island-song-artist">Christina Perri · Piano &amp; Cello</span>
+      </div>
+
+      <!-- Botón Play/Pause -->
+      <button class="island-ctrl-btn" id="island-play-pause" aria-label="Reproducir o pausar música">
+        <i class="fa-solid fa-play" id="island-icon-state"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================================================================
+       CONTENEDOR PRINCIPAL DE LA INVITACIÓN
+  =================================================================== -->
+  <main id="main-content" class="invitation-container">
+
+    <!-- ================================================================
+         SECCIÓN 1 · HERO PRINCIPAL
+    ================================================================= -->
+    <header class="hero-section" id="hero">
+      <div class="hero-glow-back" aria-hidden="true"></div>
+
+      <!-- Monograma Heráldico de Gala -->
+      <div class="hero-crest-wrap scroll-reveal">
+        <img class="hero-crest-svg" src="svg/royal-crest.svg" alt="Monograma Heráldico de Valeria y Fernando">
+      </div>
+
+      <div class="hero-eyebrow-container scroll-reveal">
+        <span class="hero-eyebrow-badge">NUESTRO MATRIMONIO</span>
+      </div>
+
+      <h1 class="hero-couple-title scroll-reveal">
+        <span class="hero-name">Valeria</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="hero-name">Fernando</span>
+      </h1>
+
+      <p class="hero-tagline scroll-reveal">
+        Tenemos el honor de invitarte a celebrar el día más importante de nuestras vidas
+      </p>
+
+      <!-- Retrato de los Novios con Silueta Catedralicia -->
+      <div class="hero-portrait-frame scroll-reveal">
+        <div class="portrait-arch-outer">
+          <div class="portrait-arch-inner">
+            <img src="assets/couple-hero.jpg" alt="Retrato de los novios Valeria y Fernando" class="portrait-img">
+          </div>
+          <div class="portrait-gold-contour" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="hero-date-badge scroll-reveal">
+        <span class="badge-dot"></span>
+        <span class="badge-date">06 DE NOVIEMBRE DE 2027</span>
+        <span class="badge-separator">·</span>
+        <span class="badge-city">LA PAZ, BOLIVIA</span>
+      </div>
+    </header>
+
+    <!-- ================================================================
+         SECCIÓN 2 · BIENVENIDA & CUENTA REGRESIVA INTELIGENTE
+    ================================================================= -->
+    <section class="section-welcome" id="bienvenida">
+      <div class="content-wrapper">
+        <div class="welcome-card glass-panel scroll-reveal">
+          <div class="card-filigree-top" aria-hidden="true">
+            <svg width="60" height="16" viewBox="0 0 60 16" fill="none">
+              <path d="M 0,8 L 22,8 L 30,2 L 38,14 L 46,8 L 60,8" stroke="url(#goldLiquidMaster)" stroke-width="1.2" />
+            </svg>
+          </div>
+          <h2 class="section-title">El Comienzo De Nuestra Historia Para Siempre</h2>
+          <p class="welcome-quote">
+            Nos llena de infinita felicidad compartir contigo el momento en que nuestras vidas se unen.
+            Acompáñanos a escribir este capítulo que recordaremos eternamente.
+          </p>
+        </div>
+
+        <!-- Timer de Cuenta Regresiva -->
+        <div class="countdown-container scroll-reveal" id="countdown-clock">
+          <div class="countdown-unit-box">
+            <span class="unit-number" id="timer-days">00</span>
+            <span class="unit-label">DÍAS</span>
+          </div>
+          <div class="countdown-colon">:</div>
+          <div class="countdown-unit-box">
+            <span class="unit-number" id="timer-hours">00</span>
+            <span class="unit-label">HORAS</span>
+          </div>
+          <div class="countdown-colon">:</div>
+          <div class="countdown-unit-box">
+            <span class="unit-number" id="timer-minutes">00</span>
+            <span class="unit-label">MINUTOS</span>
+          </div>
+          <div class="countdown-colon">:</div>
+          <div class="countdown-unit-box">
+            <span class="unit-number" id="timer-seconds">00</span>
+            <span class="unit-label">SEGUNDOS</span>
+          </div>
+        </div>
+
+        <!-- Estado de Celebración (Se activa el día del evento) -->
+        <div class="celebration-banner" id="celebration-banner" style="display:none;">
+          <i class="fa-solid fa-champagne-glasses banner-icon"></i>
+          <h3>¡HOY ES NUESTRO GRAN DÍA!</h3>
+          <p>La celebración ha comenzado. Gracias por acompañarnos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 3 · BENDICIÓN DE NUESTROS PADRES
+    ================================================================= -->
+    <section class="section-parents" id="padres">
+      <div class="content-wrapper">
+        <div class="parents-card glass-panel scroll-reveal">
+          <p class="section-subtitle">CON LA BENDICIÓN DE DIOS Y DE NUESTROS PADRES</p>
+          <h2 class="section-title">Nuestras Familias</h2>
+
+          <div class="parents-grid">
+            <!-- Padres de la Novia -->
+            <div class="parents-column">
+              <span class="column-eyebrow">PADRES DE LA NOVIA</span>
+              <h3 class="parent-names">Beatriz Salinas de Medina</h3>
+              <h3 class="parent-names">Carlos Medina Justiniano</h3>
+            </div>
+
+            <!-- Divisor Heráldico Central -->
+            <div class="parents-center-divider" aria-hidden="true">
+              <div class="divider-line"></div>
+              <div class="divider-crest">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+              <div class="divider-line"></div>
+            </div>
+
+            <!-- Padres del Novio -->
+            <div class="parents-column">
+              <span class="column-eyebrow">PADRES DEL NOVIO</span>
+              <h3 class="parent-names">Mariana Vaca Díez de Aguilera</h3>
+              <h3 class="parent-names">Fernando Aguilera Ribera</h3>
+            </div>
+          </div>
+
+          <div class="parents-footer-note">
+            <p>Agradecidos por su amor incondicional, sabiduría y guía en cada paso de nuestro camino.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 4 · NUESTRA HISTORIA (LOVE STORY)
+    ================================================================= -->
+    <section class="section-story" id="historia">
+      <div class="content-wrapper">
+        <div class="section-header-center scroll-reveal">
+          <span class="header-eyebrow">CÓMO EMPEZÓ TODO</span>
+          <h2 class="section-title">Nuestra Historia de Amor</h2>
+          <p class="header-lead">
+            Dos caminos que se cruzaron en el instante perfecto para caminar juntos por el resto de la vida.
+          </p>
+        </div>
+
+        <div class="story-timeline">
+          <!-- Hito 1: Primer Encuentro -->
+          <article class="story-item story-left scroll-reveal">
+            <div class="story-photo-wrap shape-octagon">
+              <img src="assets/story/story-1.jpg" alt="Primer encuentro de la pareja">
+            </div>
+            <div class="story-content glass-panel">
+              <span class="story-year">OCTUBRE 2021</span>
+              <h3 class="story-heading">Una Tarde Inolvidable</h3>
+              <p class="story-text">
+                Un café casual en una tarde lluviosa se convirtió en horas de risas, miradas cómplices y la certeza
+                inmediata de haber encontrado a alguien verdaderamente extraordinario.
+              </p>
+            </div>
+          </article>
+
+          <!-- Hito 2: Nuestra Aventura -->
+          <article class="story-item story-right scroll-reveal">
+            <div class="story-photo-wrap shape-gothic">
+              <img src="assets/story/story-2.jpg" alt="Viaje y aventura juntos">
+            </div>
+            <div class="story-content glass-panel">
+              <span class="story-year">JULIO 2024</span>
+              <h3 class="story-heading">Coleccionando Momentos</h3>
+              <p class="story-text">
+                Recorriendo horizontes, montañas y ciudades juntos. Cada viaje consolidó la certeza de que cualquier
+                lugar del mundo es un hogar cuando estamos el uno al lado del otro.
+              </p>
+            </div>
+          </article>
+
+          <!-- Hito 3: La Propuesta -->
+          <article class="story-item story-left scroll-reveal">
+            <div class="story-photo-wrap shape-cameo">
+              <img src="assets/story/story-3.jpg" alt="La propuesta de matrimonio">
+            </div>
+            <div class="story-content glass-panel">
+              <span class="story-year">DICIEMBRE 2025</span>
+              <h3 class="story-heading">El "Sí, Acepto" Más Dulce</h3>
+              <p class="story-text">
+                Bajo un cielo estrellado y el suave rumor del lago, una rodilla en el suelo y una pregunta que transformó
+                nuestros presentes en un para siempre.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 5 · EVENTOS: DÓNDE & CUÁNDO
+    ================================================================= -->
+    <section class="section-events" id="eventos">
+      <div class="content-wrapper">
+        <div class="section-header-center scroll-reveal">
+          <span class="header-eyebrow">DÓNDE &amp; CUÁNDO</span>
+          <h2 class="section-title">Ceremonia &amp; Recepción</h2>
+          <p class="header-lead">Acompáñanos en cada uno de los momentos sagrados y festivos de nuestra unión.</p>
+        </div>
+
+        <div class="events-bento-grid">
+          <!-- Tarjeta 1: Ceremonia Religiosa -->
+          <div class="event-bento-card glass-panel scroll-reveal">
+            <div class="event-icon-badge">
+              <i class="fa-solid fa-church"></i>
+            </div>
+            <span class="event-type-tag">CEREMONIA RELIGIOSA</span>
+            <h3 class="event-venue-name">Basílica Menor de San Francisco</h3>
+            
+            <div class="event-details-list">
+              <div class="detail-row">
+                <i class="fa-regular fa-clock"></i>
+                <span><strong>16:30 HRS</strong> · Puntualidad apreciada</span>
+              </div>
+              <div class="detail-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Plaza San Francisco, Casco Histórico, La Paz</span>
+              </div>
+            </div>
+
+            <div class="event-actions">
+              <a href="https://maps.google.com/?q=Basilica+San+Francisco+La+Paz+Bolivia" target="_blank" rel="noopener" class="btn-gold-outline">
+                <i class="fa-solid fa-map-location-dot"></i> VER EN GOOGLE MAPS
+              </a>
+              <button class="btn-gold add-to-calendar-btn" data-event="ceremony">
+                <i class="fa-solid fa-calendar-plus"></i> AGREGAR AL CALENDARIO
+              </button>
+            </div>
+          </div>
+
+          <!-- Tarjeta 2: Recepción de Gala -->
+          <div class="event-bento-card glass-panel scroll-reveal">
+            <div class="event-icon-badge">
+              <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <span class="event-type-tag">RECEPCIÓN DE GALA</span>
+            <h3 class="event-venue-name">Castillo de Achumani · Gran Salón</h3>
+            
+            <div class="event-details-list">
+              <div class="detail-row">
+                <i class="fa-regular fa-clock"></i>
+                <span><strong>19:00 HRS</strong> · Cóctel de Bienvenida &amp; Fiesta</span>
+              </div>
+              <div class="detail-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Calle 22 de Achumani #450, Zona Sur, La Paz</span>
+              </div>
+            </div>
+
+            <div class="event-actions">
+              <a href="https://maps.google.com/?q=Castillo+de+Achumani+La+Paz+Bolivia" target="_blank" rel="noopener" class="btn-gold-outline">
+                <i class="fa-solid fa-map-location-dot"></i> VER EN GOOGLE MAPS
+              </a>
+              <button class="btn-gold add-to-calendar-btn" data-event="reception">
+                <i class="fa-solid fa-calendar-plus"></i> AGREGAR AL CALENDARIO
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 6 · ITINERARIO CRONOLÓGICO DE GALA
+    ================================================================= -->
+    <section class="section-itinerary" id="itinerario">
+      <div class="content-wrapper">
+        <div class="section-header-center scroll-reveal">
+          <span class="header-eyebrow">CRONOGRAMA DEL EVENTO</span>
+          <h2 class="section-title">Itinerario de la Boda</h2>
+          <p class="header-lead">Los tiempos clave para disfrutar juntos de principio a fin.</p>
+        </div>
+
+        <div class="itinerary-path-wrapper scroll-reveal">
+          <div class="itinerary-gold-line" aria-hidden="true"></div>
+
+          <!-- 16:30 Ceremonia -->
+          <div class="itinerary-node">
+            <div class="node-bullet"><i class="fa-solid fa-ring"></i></div>
+            <div class="node-content glass-panel">
+              <span class="node-time">16:30 HRS</span>
+              <h3 class="node-title">Ceremonia Religiosa</h3>
+              <p class="node-desc">Intercambio de votos y bendición de argollas en la Basílica de San Francisco.</p>
+            </div>
+          </div>
+
+          <!-- 18:00 Sesión de Fotos -->
+          <div class="itinerary-node">
+            <div class="node-bullet"><i class="fa-solid fa-camera-retro"></i></div>
+            <div class="node-content glass-panel">
+              <span class="node-time">18:00 HRS</span>
+              <h3 class="node-title">Sesión Fotográfica &amp; Traslado</h3>
+              <p class="node-desc">Retratos con la familia y traslado de los invitados al Castillo de Achumani.</p>
+            </div>
+          </div>
+
+          <!-- 19:00 Cóctel -->
+          <div class="itinerary-node">
+            <div class="node-bullet"><i class="fa-solid fa-martini-glass"></i></div>
+            <div class="node-content glass-panel">
+              <span class="node-time">19:00 HRS</span>
+              <h3 class="node-title">Cóctel de Bienvenida</h3>
+              <p class="node-desc">Canapés de alta cocina, mixología de autor y música en vivo de cuerda.</p>
+            </div>
+          </div>
+
+          <!-- 20:30 Cena de Gala -->
+          <div class="itinerary-node">
+            <div class="node-bullet"><i class="fa-solid fa-utensils"></i></div>
+            <div class="node-content glass-panel">
+              <span class="node-time">20:30 HRS</span>
+              <h3 class="node-title">Cena de Gala &amp; Brindis</h3>
+              <p class="node-desc">Menú en 4 tiempos seleccionado por nuestro chef ejecutivo y brindis de honor.</p>
+            </div>
+          </div>
+
+          <!-- 22:00 Primer Baile -->
+          <div class="itinerary-node">
+            <div class="node-bullet"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="node-content glass-panel">
+              <span class="node-time">22:00 HRS</span>
+              <h3 class="node-title">Primer Baile de Esposos</h3>
+              <p class="node-desc">Apertura ceremonial de la pista con lluvia de chispas frías.</p>
+            </div>
+          </div>
+
+          <!-- 23:00 Gran Fiesta -->
+          <div class="itinerary-node">
+            <div class="node-bullet"><i class="fa-solid fa-music"></i></div>
+            <div class="node-content glass-panel">
+              <span class="node-time">23:00 HRS</span>
+              <h3 class="node-title">Fiesta &amp; Barra Libre</h3>
+              <p class="node-desc">Show de DJ internacional, animación estelar y fiesta hasta el amanecer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 7 · CÓDIGO DE VESTIMENTA (DRESS CODE)
+    ================================================================= -->
+    <section class="section-dresscode" id="vestimenta">
+      <div class="content-wrapper">
+        <div class="dresscode-card glass-panel scroll-reveal">
+          <div class="dresscode-icon-header">
+            <i class="fa-solid fa-vest-patches"></i>
+          </div>
+          <span class="header-eyebrow">CÓDIGO DE VESTIMENTA</span>
+          <h2 class="section-title">Black Tie · Rigurosa Etiqueta</h2>
+          
+          <div class="dresscode-instructions-grid">
+            <div class="dresscode-guide-col">
+              <div class="guide-tag"><i class="fa-solid fa-user-tie"></i> CABALLEROS</div>
+              <p class="guide-text">
+                Smoking clásico negro (Tuxedo) con pajarita negra o traje oscuro de máxima etiqueta con corbata sobria.
+              </p>
+            </div>
+            <div class="dresscode-guide-col">
+              <div class="guide-tag"><i class="fa-solid fa-person-dress"></i> DAMAS</div>
+              <p class="guide-text">
+                Vestido largo de noche en telas nobles (satén, seda, terciopelo). Joyería fina y calzado elegante.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paleta de Colores Sugerida -->
+          <div class="palette-swatches-wrap">
+            <span class="palette-title">PALETA DE COLORES RECOMENDADA PARA INVITADOS:</span>
+            <div class="swatches-row">
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #090A0F; border: 1px solid #D4AF37;"></span>
+                <span class="swatch-name">Noir Absolu</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #1C2735;"></span>
+                <span class="swatch-name">Midnight Navy</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #0F281E;"></span>
+                <span class="swatch-name">Emerald Deep</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #3A0F18;"></span>
+                <span class="swatch-name">Burgundy Noir</span>
+              </div>
+              <div class="swatch-item">
+                <span class="swatch-circle" style="background: #5A4A32;"></span>
+                <span class="swatch-name">Antique Bronze</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nota de Cortesía Nupcial -->
+          <div class="dresscode-courtesy-note">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Por favor, reservamos exclusivamente el color blanco, marfil e ivory para la novia.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 8 · HOSPEDAJE SUGERIDO DE ALTA GAMA
+    ================================================================= -->
+    <section class="section-hotels" id="hospedaje">
+      <div class="content-wrapper">
+        <div class="section-header-center scroll-reveal">
+          <span class="header-eyebrow">HOSPEDAJE DE LUJO</span>
+          <h2 class="section-title">Hoteles Recomendados</h2>
+          <p class="header-lead">Convenios y tarifas exclusivas para nuestros invitados que viajan desde fuera de la ciudad.</p>
+        </div>
+
+        <div class="hotels-grid">
+          <!-- Hotel 1 -->
+          <div class="hotel-card glass-panel scroll-reveal">
+            <div class="hotel-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="hotel-name">Hotel Europa La Paz</h3>
+            <p class="hotel-location"><i class="fa-solid fa-location-dot"></i> Calle Tiahuanaco #64, El Prado</p>
+            <p class="hotel-desc">Comodidad ejecutiva 5 estrellas, spa termal y cercanía al centro histórico.</p>
+            <div class="hotel-promo-box">
+              <span class="promo-label">CÓDIGO DE DESCUENTO:</span>
+              <span class="promo-code">BODA-VALERIA-FER</span>
+            </div>
+            <a href="tel:+59122315656" class="btn-gold-outline"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVAS</a>
+          </div>
+
+          <!-- Hotel 2 -->
+          <div class="hotel-card glass-panel scroll-reveal">
+            <div class="hotel-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="hotel-name">Atix Hotel · Luxury Boutique</h3>
+            <p class="hotel-location"><i class="fa-solid fa-location-dot"></i> Calle 16 de Calacoto #800, Zona Sur</p>
+            <p class="hotel-desc">Diseño contemporáneo en piedra comanche, cocina de autor y vista a las montañas.</p>
+            <div class="hotel-promo-box">
+              <span class="promo-label">CÓDIGO DE DESCUENTO:</span>
+              <span class="promo-code">BODA-ATIX-LUX</span>
+            </div>
+            <a href="tel:+59122770555" class="btn-gold-outline"><i class="fa-solid fa-phone"></i> LLAMAR A RESERVAS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 9 · MESA DE REGALOS / LLUVIA DE SOBRES
+    ================================================================= -->
+    <section class="section-gifts" id="regalos">
+      <div class="content-wrapper">
+        <div class="gifts-card glass-panel scroll-reveal">
+          <div class="gifts-icon-top">
+            <i class="fa-solid fa-envelope-circle-check"></i>
+          </div>
+          <span class="header-eyebrow">MESA DE REGALOS</span>
+          <h2 class="section-title">Lluvia de Sobres</h2>
+          <p class="gifts-quote">
+            Tu presencia y bendición en nuestro matrimonio es nuestro mayor regalo. Si deseas hacernos un presente
+            adicional para iniciar nuestro nuevo hogar, ponemos a tu disposición nuestras cuentas bancarias.
+          </p>
+
+          <div class="bank-accounts-grid">
+            <!-- Cuenta 1: Banco Nacional de Bolivia (BNB) -->
+            <div class="bank-card">
+              <div class="bank-header">
+                <span class="bank-name">Banco Nacional de Bolivia (BNB)</span>
+                <span class="currency-tag">CUENTA EN BOLIVIANOS (BOB)</span>
+              </div>
+              <div class="bank-details">
+                <p><strong>Titular:</strong> Valeria Medina Salinas</p>
+                <p><strong>CI:</strong> 4892102 LP</p>
+                <p><strong>Número de Cuenta:</strong> <span class="bank-acc-num" id="acc-bnb">1501238942</span></p>
+              </div>
+              <button class="btn-copy-account" data-target="acc-bnb" aria-label="Copiar cuenta BNB al portapapeles">
+                <i class="fa-regular fa-copy"></i> COPIAR CUENTA
+              </button>
+            </div>
+
+            <!-- Cuenta 2: Banco Mercantil Santa Cruz -->
+            <div class="bank-card">
+              <div class="bank-header">
+                <span class="bank-name">Banco Mercantil Santa Cruz</span>
+                <span class="currency-tag">CUENTA EN DÓLARES (USD)</span>
+              </div>
+              <div class="bank-details">
+                <p><strong>Titular:</strong> Fernando Aguilera Vaca Díez</p>
+                <p><strong>CI:</strong> 6124589 SC</p>
+                <p><strong>Número de Cuenta:</strong> <span class="bank-acc-num" id="acc-bmsc">4010982341</span></p>
+              </div>
+              <button class="btn-copy-account" data-target="acc-bmsc" aria-label="Copiar cuenta BMSC al portapapeles">
+                <i class="fa-regular fa-copy"></i> COPIAR CUENTA
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 10 · AVISO IMPORTANTE (SOLO ADULTOS)
+    ================================================================= -->
+    <section class="section-notice" id="aviso">
+      <div class="content-wrapper">
+        <div class="notice-card glass-panel scroll-reveal">
+          <div class="notice-crest">
+            <i class="fa-solid fa-martini-glass-citrus"></i>
+          </div>
+          <span class="notice-badge">AVISO PROTOCOLAR</span>
+          <h2 class="notice-title">Recepción Exclusiva Para Adultos</h2>
+          <p class="notice-body">
+            Amamos a sus pequeños, pero deseamos que esta noche sea un momento de desconexión absoluta y celebración
+            inolvidable para todos. Agradecemos profundamente su comprensión y apoyo al asistir sin niños a la fiesta.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 11 · GALERÍA DE FOTOS & HASHTAG
+    ================================================================= -->
+    <section class="section-gallery" id="galeria">
+      <div class="content-wrapper">
+        <div class="section-header-center scroll-reveal">
+          <span class="header-eyebrow">RECUERDOS INOLVIDABLES</span>
+          <h2 class="section-title">Galería Fotográfica</h2>
+          <div class="hashtag-badge">
+            <i class="fa-brands fa-instagram"></i>
+            <span>#BodaValeriaYFernando</span>
+          </div>
+          <p class="header-lead">Comparte tus fotos y momentos con nosotros utilizando nuestro hashtag oficial.</p>
+        </div>
+
+        <div class="gallery-sculptural-grid scroll-reveal">
+          <div class="gallery-item" data-index="0">
+            <img src="assets/gallery/gallery-1.jpg" alt="Foto de sesión preboda 1">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" data-index="1">
+            <img src="assets/gallery/gallery-2.jpg" alt="Foto de sesión preboda 2">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" data-index="2">
+            <img src="assets/gallery/gallery-3.jpg" alt="Foto de sesión preboda 3">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" data-index="3">
+            <img src="assets/gallery/gallery-4.jpg" alt="Foto de sesión preboda 4">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" data-index="4">
+            <img src="assets/gallery/gallery-5.jpg" alt="Foto de sesión preboda 5">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" data-index="5">
+            <img src="assets/gallery/gallery-6.jpg" alt="Foto de sesión preboda 6">
+            <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 12 · CONFIRMACIÓN DE ASISTENCIA RSVP (WHATSAPP)
+    ================================================================= -->
+    <section class="section-rsvp" id="rsvp">
+      <div class="content-wrapper">
+        <div class="rsvp-card glass-panel scroll-reveal">
+          <div class="rsvp-icon-top">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+          <span class="header-eyebrow">CONFIRMACIÓN PROTOCOLAR</span>
+          <h2 class="section-title">Confirma Tu Asistencia</h2>
+          <p class="rsvp-subtitle">
+            Agradecemos confirmar tu asistencia antes del <strong>15 de Octubre de 2027</strong> para garantizar tu
+            lugar en nuestro banquete de bodas.
+          </p>
+
+          <form id="rsvp-form" class="rsvp-form" onsubmit="return false;">
+            <!-- Nombre Completo -->
+            <div class="form-group">
+              <label for="guest-name" class="form-label">Nombre Completo del Invitado</label>
+              <input type="text" id="guest-name" class="form-input" placeholder="Ej. Familia Gómez o Juan Pérez" required>
+            </div>
+
+            <!-- Estado de Asistencia -->
+            <div class="form-group">
+              <label class="form-label">¿Nos acompañarás en nuestro gran día?</label>
+              <div class="rsvp-radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="attendance" value="si" checked>
+                  <span class="radio-custom"></span>
+                  <span>Sí, con gran ilusión asistiré</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="attendance" value="no">
+                  <span class="radio-custom"></span>
+                  <span>Lamentablemente no podré asistir</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Cantidad de Pases -->
+            <div class="form-group" id="guest-passes-group">
+              <label for="guest-count" class="form-label">Número de Pases a Confirmar</label>
+              <select id="guest-count" class="form-select">
+                <option value="1">1 Pase</option>
+                <option value="2" selected>2 Pases</option>
+                <option value="3">3 Pases</option>
+                <option value="4">4 Pases</option>
+              </select>
+            </div>
+
+            <!-- Canción o Mensaje Especial -->
+            <div class="form-group">
+              <label for="guest-song" class="form-label">¿Qué canción no puede faltar en la fiesta?</label>
+              <input type="text" id="guest-song" class="form-input" placeholder="Nombre de canción y artista">
+            </div>
+
+            <!-- Restricciones Alimentarias -->
+            <div class="form-group">
+              <label for="guest-diet" class="form-label">Restricciones Alimentarias o Alergias</label>
+              <input type="text" id="guest-diet" class="form-input" placeholder="Ej. Vegetariano, celíaco, etc. (Opcional)">
+            </div>
+
+            <button type="button" id="rsvp-submit-btn" class="btn-gold btn-rsvp-submit">
+              <span class="btn-gold-shimmer"></span>
+              <i class="fa-brands fa-whatsapp"></i> CONFIRMAR ASISTENCIA POR WHATSAPP
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECCIÓN 13 · PIE DE PÁGINA & AGRADECIMIENTO
+    ================================================================= -->
+    <footer class="section-footer" id="pie">
+      <div class="content-wrapper">
+        <div class="footer-crest scroll-reveal">
+          <img src="svg/royal-crest.svg" alt="Monograma Heráldico de Valeria y Fernando" class="footer-crest-svg">
+        </div>
+
+        <h2 class="footer-names scroll-reveal">Valeria &amp; Fernando</h2>
+        <p class="footer-gratitude scroll-reveal">
+          Gracias por ser parte fundamental de nuestras vidas y por acompañarnos en el inicio de nuestro matrimonio.
+        </p>
+
+        <p class="footer-date scroll-reveal">06 · NOVIEMBRE · 2027</p>
+
+        <button id="back-to-top-btn" class="btn-back-to-top" aria-label="Volver al inicio de la invitación">
+          <i class="fa-solid fa-arrow-up"></i>
+          <span>VOLVER ARRIBA</span>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==================================================================
+       MODAL LIGHTBOX PARA LA GALERÍA FOTOGRÁFICA
+  =================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar visor de fotos">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Foto anterior">&#10094;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Ampliación fotográfica">
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Foto siguiente">&#10095;</button>
+  </div>
+
+  <!-- ==================================================================
+       NOTIFICACIÓN TOAST FLOTANTE (COPIADO AL PORTAPAPELES)
+  =================================================================== -->
+  <div id="toast-notification" class="toast-notification" aria-live="polite" role="status">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Número de cuenta copiado exitosamente</span>
+  </div>
+
+  <!-- SCRIPT MAESTRO DE LÓGICA & EXPERIENCIA 3D -->
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldEditorial" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9A7B4F" />
+      <stop offset="35%" stop-color="#DFBA73" />
+      <stop offset="70%" stop-color="#C59B51" />
+      <stop offset="100%" stop-color="#8F6B38" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Geometric Editorial Rings -->
+  <circle cx="250" cy="250" r="230" fill="none" stroke="url(#goldEditorial)" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="url(#goldEditorial)" stroke-width="0.8" stroke-opacity="0.6"/>
+  <circle cx="250" cy="250" r="208" fill="none" stroke="url(#goldEditorial)" stroke-width="2" stroke-opacity="0.85"/>
+  <circle cx="250" cy="250" r="200" fill="none" stroke="url(#goldEditorial)" stroke-width="0.8" stroke-opacity="0.5"/>
+
+  <!-- Botanical Haute Couture Laurel Branches -->
+  <g stroke="url(#goldEditorial)" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <!-- Left Laurel Garland -->
+    <path d="M 120 320 C 105 270, 110 200, 150 145 C 180 105, 220 85, 250 82" />
+    <!-- Left Leaves -->
+    <path d="M 125 305 Q 110 295, 118 285 Q 128 295, 125 305 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 116 270 Q 98 260, 108 248 Q 120 258, 116 270 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 118 230 Q 102 215, 115 205 Q 125 218, 118 230 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 130 190 Q 115 172, 130 162 Q 140 178, 130 190 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 152 150 Q 140 130, 158 122 Q 166 138, 152 150 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 185 118 Q 175 98, 195 95 Q 200 112, 185 118 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 222 95 Q 220 75, 238 78 Q 238 94, 222 95 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+
+    <!-- Right Laurel Garland -->
+    <path d="M 380 320 C 395 270, 390 200, 350 145 C 320 105, 280 85, 250 82" />
+    <!-- Right Leaves -->
+    <path d="M 375 305 Q 390 295, 382 285 Q 372 295, 375 305 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 384 270 Q 402 260, 392 248 Q 380 258, 384 270 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 382 230 Q 398 215, 385 205 Q 375 218, 382 230 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 370 190 Q 385 172, 370 162 Q 360 178, 370 190 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 348 150 Q 360 130, 342 122 Q 334 138, 348 150 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 315 118 Q 325 98, 305 95 Q 300 112, 315 118 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+    <path d="M 278 95 Q 280 75, 262 78 Q 262 94, 278 95 Z" fill="url(#goldEditorial)" fill-opacity="0.3"/>
+  </g>
+
+  <!-- Crown / Diadem Top Accents -->
+  <path d="M 235 68 L 250 50 L 265 68 L 250 63 Z" fill="url(#goldEditorial)" opacity="0.9"/>
+  <circle cx="250" cy="42" r="3" fill="url(#goldEditorial)" />
+  <circle cx="230" cy="54" r="2" fill="url(#goldEditorial)" />
+  <circle cx="270" cy="54" r="2" fill="url(#goldEditorial)" />
+
+  <!-- Monogram S & L Intertwined in High Fashion Typography -->
+  <g id="monogram" fill="url(#goldEditorial)" filter="url(#softGlow)">
+    <!-- Letter S -->
+    <path d="M 230 190 C 230 175, 215 165, 192 165 C 165 165, 150 180, 150 200 C 150 235, 235 230, 235 285 C 235 320, 205 335, 175 335 C 150 335, 135 322, 130 310 L 142 300 C 148 312, 160 322, 176 322 C 198 322, 218 310, 218 285 C 218 250, 132 252, 132 200 C 132 170, 158 152, 193 152 C 215 152, 232 162, 240 178 Z" />
+    
+    <!-- Ampersand / Ribbon Link -->
+    <path d="M 245 235 Q 250 220, 255 235 Q 260 250, 245 265 Q 235 275, 255 275 Q 265 275, 272 268 L 275 274 Q 265 284, 252 284 Q 230 284, 232 260 Q 232 248, 242 238 L 235 228 Q 228 220, 228 210 Q 228 198, 238 190 Q 248 182, 258 182 Q 272 182, 278 195 L 270 200 Q 265 192, 256 192 Q 248 192, 242 198 Q 238 204, 238 212 Q 238 220, 245 235 Z" opacity="0.8"/>
+
+    <!-- Letter L -->
+    <path d="M 275 165 L 292 165 L 292 318 L 355 318 L 355 332 L 275 332 Z" />
+  </g>
+
+  <!-- Lower Ribbon / Banner -->
+  <path d="M 160 380 Q 250 395, 340 380 Q 320 405, 250 405 Q 180 405, 160 380 Z" fill="url(#goldEditorial)" opacity="0.3"/>
+  <path d="M 170 385 Q 250 398, 330 385" fill="none" stroke="url(#goldEditorial)" stroke-width="1" opacity="0.8"/>
+
+  <!-- Date Typography in Monoline Serif -->
+  <text x="250" y="425" text-anchor="middle" font-family="'Bodoni Moda', 'Playfair Display', serif" font-size="14" letter-spacing="6" fill="url(#goldEditorial)" font-weight="600">XIV · XI · MMXXVI</text>
+  <text x="250" y="445" text-anchor="middle" font-family="'Bodoni Moda', 'Montserrat', sans-serif" font-size="10" letter-spacing="4" fill="url(#goldEditorial)" opacity="0.8">SAN MIGUEL DE ALLENDE</text>
+</svg>
