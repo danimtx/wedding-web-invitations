@@ -1,785 +1,1141 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="h-full">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Archivum Nuptiale · Catálogo de Invitaciones de Boda</title>
-  <meta name="description" content="Colección archival de invitaciones de boda de alta distinción. Gabinete clásico de piezas nupciales exclusivas.">
+  <title>Stealth Studio · Wedding Invitations Catalog</title>
+  <meta name="description"
+    content="Workspace para previsualizar plantillas de invitaciones de boda organizadas por versiones.">
 
-  <!-- Google Fonts: Cinzel, Cormorant Garamond, Outfit -->
+  <!-- Google Fonts: Sora & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-  <!-- FontAwesome Icons -->
+  <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            archival: {
-              void: '#070605',
-              base: '#0B0A09',
-              plate: '#12100E',
-              elevated: '#171512',
-              hover: '#1D1A16',
-              gold: '#C5A880',
-              goldBright: '#DFCAAB',
-              goldMuted: '#9B815B',
-              bronze: '#7D6544',
-              parchment: '#F4F1EA',
-              bone: '#DCD5C5',
-              ash: '#8E867A',
-              border: 'rgba(197, 168, 128, 0.20)',
-              borderSubtle: 'rgba(197, 168, 128, 0.10)'
-            }
-          },
           fontFamily: {
-            cinzel: ['"Cinzel"', 'serif'],
-            cormorant: ['"Cormorant Garamond"', 'serif'],
-            outfit: ['"Outfit"', 'sans-serif']
+            sans: ['"Outfit"', '"Sora"', 'system-ui', 'sans-serif']
           }
         }
       }
     }
   </script>
 
-  <style>
-    :root {
-      --bg-base: #0B0A09;
-      --gold-primary: #C5A880;
-      --gold-bright: #DFCAAB;
-      --gold-muted: #8E7754;
-      --parchment: #F4F1EA;
-      --parchment-dim: #DCD5C5;
-      --border-subtle: rgba(197, 168, 128, 0.18);
-    }
-
-    body {
-      background-color: #0B0A09;
-      color: #F4F1EA;
-      background-image: 
-        radial-gradient(ellipse at 50% 0%, rgba(197, 168, 128, 0.08) 0%, transparent 65%),
-        radial-gradient(circle at 100% 100%, rgba(197, 168, 128, 0.03) 0%, transparent 45%),
-        linear-gradient(to right, rgba(197, 168, 128, 0.015) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(197, 168, 128, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #090807;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #2A241D;
-      border: 1px solid rgba(197, 168, 128, 0.25);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #473B2C;
-    }
-
-    /* Header Crest Badge */
-    .crest-container {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 7px 20px;
-      border: 1px solid rgba(197, 168, 128, 0.28);
-      background: rgba(18, 16, 14, 0.7);
-    }
-
-    /* Archival Row Container */
-    .archival-row {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      padding: 1.4rem 1.75rem;
-      background: linear-gradient(90deg, rgba(22, 19, 16, 0.95) 0%, rgba(16, 14, 12, 0.98) 100%);
-      border: 1px solid rgba(197, 168, 128, 0.20);
-      border-left: 3px solid rgba(197, 168, 128, 0.40);
-      position: relative;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @media (min-width: 1024px) {
-      .archival-row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-    }
-    .archival-row:hover {
-      border-color: rgba(197, 168, 128, 0.55);
-      border-left-color: #DFCAAB;
-      background: linear-gradient(90deg, rgba(29, 25, 21, 0.98) 0%, rgba(20, 17, 14, 1) 100%);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(197, 168, 128, 0.10);
-      transform: translateX(4px);
-    }
-
-    /* Row Number */
-    .row-num {
-      font-size: 1.85rem;
-      font-weight: 700;
-      color: var(--gold-primary);
-      letter-spacing: 0.05em;
-      min-width: 46px;
-      display: inline-block;
-      opacity: 0.9;
-      transition: color 0.3s ease;
-    }
-    .archival-row:hover .row-num {
-      color: var(--gold-bright);
-      opacity: 1;
-    }
-
-    /* Classification Tag */
-    .row-genre {
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      color: var(--gold-primary);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* Wedding Title */
-    .row-title {
-      font-size: 1.65rem;
-      font-weight: 700;
-      color: var(--parchment);
-      line-height: 1.2;
-    }
-
-    /* Couple Names */
-    .row-couple {
-      font-size: 1.05rem;
-      color: var(--parchment-dim);
-      margin-top: 0.15rem;
-    }
-
-    /* Brief Description */
-    .row-desc {
-      font-size: 0.8rem;
-      color: #9E9689;
-      margin-top: 0.3rem;
-      font-weight: 300;
-      line-height: 1.45;
-    }
-
-    /* Folder Index Pill */
-    .folder-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.85rem;
-      background: rgba(197, 168, 128, 0.08);
-      border: 1px solid rgba(197, 168, 128, 0.32);
-      border-radius: 4px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.78rem;
-      color: #DFCAAB;
-      letter-spacing: 0.02em;
-    }
-
-    /* Action Open Button */
-    .archival-row-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      padding: 0.65rem 1.4rem;
-      background: rgba(197, 168, 128, 0.08);
-      border: 1px solid rgba(197, 168, 128, 0.40);
-      color: #F4F1EA;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .archival-row:hover .archival-row-btn {
-      background: #C5A880;
-      color: #0B0A09;
-      border-color: #C5A880;
-      box-shadow: 0 4px 18px rgba(197, 168, 128, 0.35);
-    }
-  </style>
+  <!-- Dedicated Catalog Stylesheet -->
+  <link rel="stylesheet" href="catalog/catalog.css">
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-[#C5A880] selection:text-[#0B0A09]">
 
-  <!-- Main Archive Container -->
-  <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12">
+<body class="h-full font-sans antialiased overflow-hidden flex">
 
-    <!-- Header Section -->
-    <header class="text-center max-w-4xl mx-auto space-y-5 mb-12 sm:mb-16">
-      
-      <!-- Seal Badge -->
-      <div class="inline-block">
-        <div class="crest-container">
-          <span class="text-archival-gold text-xs">⚜</span>
-          <span class="font-cinzel text-archival-goldBright text-[11px] tracking-[0.28em] uppercase font-semibold">ARCHIVUM NUPTIALE · COLECCIÓN DE ÉPOCA</span>
-          <span class="text-archival-gold text-xs">⚜</span>
+  <!-- Left Sidebar (Full height, starts with Studio Header aligned with navbar) -->
+  <aside id="sidebar" class="flex flex-col justify-between shrink-0 z-20 overflow-hidden">
+
+    <!-- Top Header of Sidebar (aligned horizontally with the navbar: height h-16) -->
+    <div class="h-16 px-4 flex items-center justify-between border-b shrink-0"
+      style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div
+          class="w-9 h-9 rounded-xl overflow-hidden shrink-0 shadow-sm bg-black flex items-center justify-center border border-white/10">
+          <img src="cat-stealth.svg" alt="Stealth Studio" class="w-full h-full object-cover">
+        </div>
+        <div class="min-w-0">
+          <h2 class="text-xs font-bold truncate leading-tight" style="color: var(--text-primary);">Stealth Studio</h2>
+          <p class="text-[11px] truncate leading-tight" style="color: var(--text-muted);">danimtx03@gmail.com</p>
         </div>
       </div>
 
-      <!-- Main Title -->
-      <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-wider text-archival-parchment leading-tight">
-        Catálogo de Invitaciones
-      </h1>
-      
-      <!-- Subtitle -->
-      <p class="font-cormorant italic text-lg sm:text-2xl text-archival-bone font-normal max-w-2xl mx-auto leading-relaxed">
-        Índice general de modelos nupciales de alta distinción. Seleccione cualquier fila para abrir la invitación y explorar su composición interactiva en vivo.
-      </p>
+      <!-- Collapse Sidebar Icon Button [|] -->
+      <button type="button" id="btn-collapse-sidebar"
+        class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 hover:opacity-80 text-xs transition-colors"
+        style="color: var(--text-muted);" title="Ocultar menú lateral">
+        <i class="fa-solid fa-table-columns text-sm"></i>
+      </button>
+    </div>
 
-      <!-- Decorative Filet Line -->
-      <div class="flex items-center justify-center gap-3 pt-2 text-archival-goldMuted/60 text-xs">
-        <div class="w-20 h-[1px] bg-gradient-to-r from-transparent to-archival-gold/40"></div>
-        <span class="text-archival-gold text-xs">❖</span>
-        <span class="text-archival-gold text-[10px] font-cinzel tracking-[0.22em]">11 MODELOS DISPONIBLES · ACCESO DIRECTO</span>
-        <span class="text-archival-gold text-xs">❖</span>
-        <div class="w-20 h-[1px] bg-gradient-to-l from-transparent to-archival-gold/40"></div>
+    <!-- Sidebar Body: Starts with MAIN MENU -->
+    <div class="p-4 flex-1 flex flex-col overflow-y-auto">
+
+      <!-- Sidebar starts immediately with MAIN MENU -->
+      <div class="px-2 mb-2 pt-1">
+        <span class="text-[10px] font-bold tracking-wider uppercase" style="color: var(--text-subtle);">MAIN MENU</span>
+      </div>
+
+      <!-- Menu Navigation Items -->
+      <nav class="space-y-1.5">
+
+        <!-- 1. Dashboard -->
+        <a href="#dashboard" data-nav-view="dashboard"
+          class="nav-link-item active-nav-item flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer"
+          style="color: var(--text-primary);">
+          <i class="fa-solid fa-gauge-high w-4 text-center text-sm" style="color: var(--brand-orange);"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <!-- 2. Templates v1 (Accordion Folder - Expanded by default) -->
+        <div class="folder-group pt-1">
+          <div
+            class="folder-header is-open flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:opacity-90"
+            data-folder-target="v1" style="background-color: var(--bg-surface-elevated); color: var(--text-primary);">
+            <div class="flex items-center gap-2.5">
+              <i class="fa-regular fa-folder-open w-4 text-center text-sm text-amber-500"></i>
+              <span>Templates v1</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full"
+                style="background-color: var(--bg-input); color: var(--text-muted);">11</span>
+              <i class="fa-solid fa-chevron-right folder-chevron text-[10px]" style="color: var(--text-subtle);"></i>
+            </div>
+          </div>
+
+          <!-- Sublist with smooth slide animation -->
+          <div class="folder-sublist-wrapper is-expanded">
+            <div class="folder-sublist-inner pl-6 pr-2 py-1 space-y-0.5 border-l-2 ml-4 mt-1"
+              style="border-color: var(--border-color);">
+              <a href="#v1" data-jump-model="model-edition-vogue"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #01- Edition Vogue
+              </a>
+              <a href="#v1" data-jump-model="model-ecrin-celeste"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #02- Écrin Céleste (3D)
+              </a>
+              <a href="#v1" data-jump-model="carmesi-gold" class="block text-[11px] py-1 truncate hover:text-orange-500"
+                style="color: var(--text-muted);">
+                #03- Carmesí & Gold
+              </a>
+              <a href="#v1" data-jump-model="dark-luxury-1"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #04- Dark Luxury Noir
+              </a>
+              <a href="#v1" data-jump-model="dark-marble-kintsugi"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #05- Kintsugi Marble
+              </a>
+              <a href="#v1" data-jump-model="model-barbie-glam"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #06- Barbie Glam
+              </a>
+              <a href="#v1" data-jump-model="model-imperial-noir"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #07- Imperial Noir
+              </a>
+              <a href="#v1" data-jump-model="model-jardin-rose"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #08- Jardin Rosé
+              </a>
+              <a href="#v1" data-jump-model="model-palazzo-cristallo"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #09- Palazzo Cristallo
+              </a>
+              <a href="#v1" data-jump-model="model-rosee-celeste"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #10- Rosée Céleste
+              </a>
+              <a href="#v1" data-jump-model="model-villa-botanica"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--text-muted);">
+                #11- Villa Botánica
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Templates v2 (Accordion Folder) -->
+        <div class="folder-group pt-1">
+          <div
+            class="folder-header flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:opacity-90"
+            data-folder-target="v2" style="background-color: var(--bg-surface-elevated); color: var(--text-primary);">
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-wand-magic-sparkles w-4 text-center text-sm" style="color: var(--brand-lime);"></i>
+              <span>Templates v2</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded-full"
+                style="background-color: var(--bg-input); color: var(--text-muted);">1</span>
+              <i class="fa-solid fa-chevron-right folder-chevron text-[10px]" style="color: var(--text-subtle);"></i>
+            </div>
+          </div>
+
+          <div class="folder-sublist-wrapper">
+            <div class="folder-sublist-inner pl-6 pr-2 py-1 space-y-0.5 border-l-2 ml-4 mt-1"
+              style="border-color: var(--border-color);">
+              <a href="templates/v2/_starter-kit/" target="_blank"
+                class="block text-[11px] py-1 truncate hover:text-orange-500" style="color: var(--brand-orange);">
+                #v2- Starter Kit (Modular) ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Templates v3 (Accordion Folder) -->
+        <div class="folder-group pt-1">
+          <div
+            class="folder-header flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold cursor-pointer hover:opacity-90"
+            data-folder-target="v3" style="background-color: var(--bg-surface-elevated); color: var(--text-primary);">
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-cubes w-4 text-center text-sm text-purple-400"></i>
+              <span>Templates v3</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span
+                class="text-[9px] font-bold px-1.5 py-0.5 rounded-full text-purple-300 bg-purple-950/60 border border-purple-800/40">Roadmap</span>
+              <i class="fa-solid fa-chevron-right folder-chevron text-[10px]" style="color: var(--text-subtle);"></i>
+            </div>
+          </div>
+
+          <div class="folder-sublist-wrapper">
+            <div class="folder-sublist-inner pl-6 pr-2 py-1 space-y-0.5 border-l-2 ml-4 mt-1"
+              style="border-color: var(--border-color);">
+              <span class="block text-[11px] py-1 truncate italic" style="color: var(--text-subtle);">
+                #v3- Three.js Shaders (3D)
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+
+    <!-- Bottom Card: Appearance & Theme Switcher (Dark Mode by default) -->
+    <div class="p-4 border-t" style="border-color: var(--border-subtle);">
+      <div class="p-3.5 rounded-2xl flex flex-col gap-2.5"
+        style="background-color: var(--bg-surface-elevated); border: 1px solid var(--border-color);">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-moon text-xs" style="color: var(--brand-orange);"></i>
+            <span class="text-xs font-bold" style="color: var(--text-primary);">Tema de Interfaz</span>
+          </div>
+          <span class="text-[10px] font-medium" style="color: var(--text-subtle);">Por defecto</span>
+        </div>
+
+        <!-- Dark / Light Mode Switcher Buttons -->
+        <div class="theme-switch-pill">
+          <button type="button" id="theme-btn-dark" class="theme-btn active">
+            <i class="fa-solid fa-moon text-[11px]"></i>
+            <span>Oscuro</span>
+          </button>
+          <button type="button" id="theme-btn-light" class="theme-btn">
+            <i class="fa-solid fa-sun text-[11px]"></i>
+            <span>Claro</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- Right Main Column (Full height) -->
+  <div class="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
+
+    <!-- Top Navbar (height h-16, perfectly flush with sidebar's top header) -->
+    <header class="h-16 border-b px-5 flex items-center justify-between shrink-0 z-10"
+      style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+
+      <div class="flex items-center gap-4 min-w-0">
+        <!-- Re-open Sidebar Trigger (visible only when sidebar is collapsed!) -->
+        <button type="button" id="btn-reopen-sidebar" class="btn-reopen-sidebar hidden" title="Mostrar menú lateral">
+          <img src="cat-stealth.svg" alt="Stealth Logo" class="icon-logo">
+          <i class="fa-solid fa-table-columns icon-panel"></i>
+        </button>
+
+        <!-- Breadcrumbs: < > | Main Menu / Dashboard (matching image.png) -->
+        <div class="flex items-center gap-1.5 text-xs truncate">
+          <button class="w-6 h-6 flex items-center justify-center rounded hover:opacity-80"
+            style="color: var(--text-muted);">
+            <i class="fa-solid fa-chevron-left text-[10px]"></i>
+          </button>
+          <button class="w-6 h-6 flex items-center justify-center rounded hover:opacity-80"
+            style="color: var(--text-muted);">
+            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+          </button>
+          <span class="mx-1" style="color: var(--border-color);">|</span>
+          <span style="color: var(--text-muted);">Main Menu</span>
+          <span style="color: var(--border-color);">/</span>
+          <span id="current-view-label" class="font-semibold" style="color: var(--text-primary);">Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Right Header Utilities -->
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold"
+          style="background-color: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+          <!-- <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> -->
+          <!-- <span>12 Demos Online</span> -->
+        </div>
+
+        <a href="templates/v1/model-edition-vogue/" target="_blank"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white shadow-xs transition-all transform active:scale-95"
+          style="background-color: var(--brand-orange);">
+          <span>Ver Modelo Destacado</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
       </div>
     </header>
 
-    <!-- List of Invitation Rows -->
-    <main class="space-y-4">
+    <!-- Main Workspace Content -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+      <div class="max-w-7xl w-full mx-auto px-6 py-8 flex flex-col gap-6">
 
-      <!-- ========================================== -->
-      <!-- ROW 01: model-barbie-glam                  -->
-      <!-- ========================================== -->
-      <a href="templates/model-barbie-glam/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">01</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">HAUTE COUTURE & RUNWAY GLAMOUR</span>
+        <!-- Hero Header -->
+        <div class="flex items-start gap-4 pb-4 border-b" style="border-color: var(--border-subtle);">
+          <!-- Brand Squircle Logo -->
+          <div class="w-14 h-14 rounded-2xl p-1 shadow-sm shrink-0 flex items-center justify-center"
+            style="background-color: var(--bg-surface-elevated); border: 1px solid var(--border-color);">
+            <img src="cat-stealth.svg" alt="Stealth Cat" class="w-full h-full object-cover rounded-xl">
           </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            The Pink Palace
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Valentina Ferraro & Rodrigo De La Tour
-          </p>
-          <p class="row-desc font-outfit">
-            Edición de pasarela con lazo de seda virtual, sello de lacre interactivo, cuenta regresiva y pase VIP.
-          </p>
-        </div>
-
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-barbie-glam/</span>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-bold tracking-tight" style="color: var(--text-primary);">
+              Hello, previsualiza los diseños de las invitaciones de boda.
+            </h1>
+            <p class="text-xs sm:text-sm mt-1" style="color: var(--text-muted);">
+              Colección nupcial de plantillas web organizadas por versiones.
+            </p>
           </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-location-dot text-[9px] mr-1 text-archival-gold"></i>Cabo San Lucas, MX
-          </span>
         </div>
 
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
+        <!-- ================================================================ -->
+        <!-- VIEW 1: DASHBOARD OVERVIEW (Default initial view)                 -->
+        <!-- ================================================================ -->
+        <section id="view-dashboard" class="view-section space-y-6">
 
-      <!-- ========================================== -->
-      <!-- ROW 02: carmesi-gold                       -->
-      <!-- ========================================== -->
-      <a href="templates/carmesi-gold/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">02</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
+          <!-- Executive Showcase Banner -->
+          <div
+            class="p-6 rounded-3xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
+            style="background-color: var(--bg-surface); border: 1px solid var(--border-color);">
+            <div class="space-y-2 max-w-xl z-10">
+              <span class="text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md"
+                style="background-color: var(--brand-orange-soft); color: var(--brand-orange);">
+                Stealth Nuptiale Architecture
+              </span>
+              <h2 class="text-xl font-bold" style="color: var(--text-primary);">
+                Arquitectura Integral de Invitaciones Digitales
+              </h2>
+              <p class="text-xs leading-relaxed" style="color: var(--text-muted);">
+                Accede directamente a los modelos clásicos en producción (v1), al nuevo entorno modular desacoplado
+                orientado a configuración (v2), o explora la visión tecnológica futura (v3).
+              </p>
+              <div class="pt-2 flex items-center gap-3">
+                <button type="button" onclick="document.querySelector('[data-folder-target=v1]').click()"
+                  class="px-4 py-2 rounded-xl text-xs font-semibold text-white shadow-xs"
+                  style="background-color: var(--brand-orange);">
+                  Explorar Templates v1
+                </button>
+                <button type="button" onclick="document.querySelector('[data-folder-target=v2]').click()"
+                  class="px-4 py-2 rounded-xl text-xs font-semibold"
+                  style="background-color: var(--bg-surface-elevated); color: var(--text-primary); border: 1px solid var(--border-color);">
+                  Ver Templates v2
+                </button>
+              </div>
+            </div>
 
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">GALA REAL & ROJO CARMESÍ</span>
+            <div
+              class="w-28 h-28 shrink-0 rounded-2xl bg-black p-2 border border-white/10 shadow-elevated flex items-center justify-center">
+              <img src="cat-stealth.svg" alt="Stealth Mark" class="w-full h-full object-cover">
+            </div>
           </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            Nuestra Boda de Gala
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Sofía & Alejandro
-          </p>
-          <p class="row-desc font-outfit">
-            Elegancia aristocrática con terciopelo carmesí profundo, pátina de oro bruñido e itinerario ceremonial.
-          </p>
-        </div>
 
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/carmesi-gold/</span>
+          <!-- Featured Highlights Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+            <div class="p-5 rounded-2xl flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border: 1px solid var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-editorial mb-2">EDITORIAL VOGUE</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Edition Vogue Lookbook</h3>
+                <p class="text-xs mt-1 leading-relaxed" style="color: var(--text-muted);">
+                  Inspirado en revistas de alta moda nupcial con desatado de cinta de seda 3D y menú degustación.
+                </p>
+              </div>
+              <div class="pt-4 mt-4 border-t flex justify-end" style="border-color: var(--border-subtle);">
+                <a href="templates/v1/model-edition-vogue/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">
+                  Previsualizar Demo ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border: 1px solid var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-celestial mb-2">HAUTE HORLOGERIE</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Écrin Céleste (Astrolabio)</h3>
+                <p class="text-xs mt-1 leading-relaxed" style="color: var(--text-muted);">
+                  Relojería astronómica con esfera mecánica en Three.js interactiva, constelaciones y domo estelar.
+                </p>
+              </div>
+              <div class="pt-4 mt-4 border-t flex justify-end" style="border-color: var(--border-subtle);">
+                <a href="templates/v1/model-ecrin-celeste/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">
+                  Previsualizar Demo ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border: 1px solid var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-carmesi mb-2">ROMÁNTICO CLÁSICO</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Carmesí & Gold Romance</h3>
+                <p class="text-xs mt-1 leading-relaxed" style="color: var(--text-muted);">
+                  Terciopelo borgoña, laminado de oro, sobre digital interactivo y confirmación por WhatsApp.
+                </p>
+              </div>
+              <div class="pt-4 mt-4 border-t flex justify-end" style="border-color: var(--border-subtle);">
+                <a href="templates/v1/carmesi-gold/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">
+                  Previsualizar Demo ↗
+                </a>
+              </div>
+            </div>
+
           </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-clock text-[9px] mr-1 text-archival-gold"></i>Boda de Gala
-          </span>
-        </div>
 
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
+        </section>
 
-      <!-- ========================================== -->
-      <!-- ROW 03: dark-luxury-1                      -->
-      <!-- ========================================== -->
-      <a href="templates/dark-luxury-1/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">03</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
+        <!-- ================================================================ -->
+        <!-- VIEW 2: TEMPLATES V1 COLLECTION                                  -->
+        <!-- ================================================================ -->
+        <section id="view-v1" class="view-section hidden space-y-5">
 
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">BLACK TIE & OBSIDIANA NOCTURNA</span>
+          <!-- Toolbar (Only List vs Grid) -->
+          <div class="flex items-center justify-between p-2 rounded-2xl border"
+            style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+
+            <!-- Static Folder Title Header -->
+            <div class="flex items-center gap-3 px-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--text-primary);">
+                COLECCIÓN V1 · CLÁSICA (11 MODELOS)
+              </span>
+              <span class="text-xs hidden sm:inline" style="color: var(--text-muted);">
+                — Plantillas autosuficientes en Vanilla HTML/CSS/JS clásico
+              </span>
+            </div>
+
+            <!-- View switcher tabs (Only List vs Grid) -->
+            <div class="flex items-center gap-1 p-1 rounded-xl" style="background-color: var(--bg-input);">
+              <button id="tab-view-list"
+                class="active-tab flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-xs"
+                style="background-color: var(--bg-surface); color: var(--text-primary);">
+                <i class="fa-solid fa-list-ul text-[11px]"></i>
+                <span>List</span>
+              </button>
+
+              <button id="tab-view-grid"
+                class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium hover:opacity-80"
+                style="color: var(--text-muted);">
+                <i class="fa-solid fa-border-all text-[11px]"></i>
+                <span>Grid</span>
+              </button>
+            </div>
           </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            Dark Luxury
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Isabella & Mateo
-          </p>
-          <p class="row-desc font-outfit">
-            Minimalismo nocturno de ultra lujo: fondos negro ébano, filetes dorados milimétricos y sobriedad lapidaria.
-          </p>
-        </div>
 
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/dark-luxury-1/</span>
+          <!-- LIST VIEW TABLE -->
+          <div class="view-mode-list rounded-2xl border overflow-hidden"
+            style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b font-medium"
+                    style="border-color: var(--border-subtle); background-color: var(--bg-surface-elevated); color: var(--text-subtle);">
+                    <th class="py-3.5 px-5 w-10">
+                      <input type="checkbox" class="custom-checkbox select-all-checkbox">
+                    </th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Template / Modelo</th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Estilo / Vibe</th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Características Clave</th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Versión</th>
+                    <th class="py-3.5 px-5 text-right font-semibold" style="color: var(--text-muted);">Acción</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y text-xs" style="border-color: var(--border-subtle); color: var(--text-primary);">
+
+                  <!-- 1. model-edition-vogue -->
+                  <tr class="table-row-item" data-model-row="model-edition-vogue">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-edition-vogue/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-edition-vogue
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-edition-vogue/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-editorial">
+                        Editorial / Vogue
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Cinta de seda interactiva 3D, tipografía Bodoni, menú degustación Michelin
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-edition-vogue/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 2. model-ecrin-celeste -->
+                  <tr class="table-row-item" data-model-row="model-ecrin-celeste">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-ecrin-celeste/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-ecrin-celeste
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-ecrin-celeste/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-celestial">
+                        Haute Horlogerie 3D
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Astrolabio mecánico 3D Three.js, constelaciones en vivo, domo estelar
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-ecrin-celeste/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 3. carmesi-gold -->
+                  <tr class="table-row-item" data-model-row="carmesi-gold">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/carmesi-gold/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        carmesi-gold
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/carmesi-gold/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-carmesi">
+                        Carmesí & Oro
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Terciopelo borgoña, acentos oro brillante, sobre digital y countdown
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/carmesi-gold/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 4. dark-luxury-1 -->
+                  <tr class="table-row-item" data-model-row="dark-luxury-1">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/dark-luxury-1/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        dark-luxury-1
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/dark-luxury-1/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-noir">
+                        Dark Luxury Noir
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Negro mate profundo, líneas de oro pulido, atmósfera íntima nocturna
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/dark-luxury-1/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 5. dark-marble-kintsugi -->
+                  <tr class="table-row-item" data-model-row="dark-marble-kintsugi">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/dark-marble-kintsugi/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        dark-marble-kintsugi
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/dark-marble-kintsugi/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-kintsugi">
+                        Mármol Kintsugi
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Mármol negro fracturado con venas de oro, concepto wabi-sabi
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/dark-marble-kintsugi/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 6. model-barbie-glam -->
+                  <tr class="table-row-item" data-model-row="model-barbie-glam">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-barbie-glam/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-barbie-glam
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-barbie-glam/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-barbie">
+                        Barbie Glam
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Rosa chic audaz, destellos de cristal, estética vibrante y moderna
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-barbie-glam/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 7. model-imperial-noir -->
+                  <tr class="table-row-item" data-model-row="model-imperial-noir">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-imperial-noir/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-imperial-noir
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-imperial-noir/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-imperial">
+                        Imperial Barroco
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Monograma heráldico, filigranas barrocas en oro, tipografía majestuosa
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-imperial-noir/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 8. model-jardin-rose -->
+                  <tr class="table-row-item" data-model-row="model-jardin-rose">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-jardin-rose/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-jardin-rose
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-jardin-rose/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-botanical">
+                        Jardín Rosé
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Acuarelas florales francesas, rosas pastel y detalles sutiles
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-jardin-rose/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 9. model-palazzo-cristallo -->
+                  <tr class="table-row-item" data-model-row="model-palazzo-cristallo">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-palazzo-cristallo/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-palazzo-cristallo
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-palazzo-cristallo/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-palazzo">
+                        Palazzo Veneciano
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Efecto cristal translúcido, dorados sutiles, arquitectura veneciana
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-palazzo-cristallo/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 10. model-rosee-celeste -->
+                  <tr class="table-row-item" data-model-row="model-rosee-celeste">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-rosee-celeste/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-rosee-celeste
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-rosee-celeste/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-rosee">
+                        Rosée Céleste
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Azul zafiro polvo, nubes nacaradas, atmósfera etérea y romántica
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-rosee-celeste/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!-- 11. model-villa-botanica -->
+                  <tr class="table-row-item" data-model-row="model-villa-botanica">
+                    <td class="py-3.5 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-3.5 px-4 font-semibold">
+                      <a href="templates/v1/model-villa-botanica/" target="_blank"
+                        class="hover:text-orange-500 font-bold block">
+                        model-villa-botanica
+                      </a>
+                      <span class="text-[10px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v1/model-villa-botanica/</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <span class="badge-vibe badge-vibe-rustic">
+                        Rústico Toscano
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Ramas de olivo, papel artesanal de algodón, calidez campestre toscana
+                    </td>
+                    <td class="py-3.5 px-4 font-mono" style="color: var(--text-muted);">v1.0</td>
+                    <td class="py-3.5 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v1/model-villa-botanica/" target="_blank"
+                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold hover:opacity-90"
+                        style="background-color: var(--bg-surface-elevated); color: var(--brand-orange); border: 1px solid var(--border-color);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
           </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-moon text-[9px] mr-1 text-archival-gold"></i>Alta Noche Nupcial
-          </span>
-        </div>
 
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
+          <!-- GRID VIEW CARDS (Contains ALL 11 models!) -->
+          <div class="view-mode-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <!-- ========================================== -->
-      <!-- ROW 04: dark-marble-kintsugi               -->
-      <!-- ========================================== -->
-      <a href="templates/dark-marble-kintsugi/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">04</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
+            <!-- 1. model-edition-vogue -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-editorial mb-2">EDITORIAL / VOGUE</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Edition Vogue Lookbook</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Cinta de seda 3D, tipografía Bodoni, menú
+                  degustación Michelin.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-edition-vogue/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
 
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">MÁRMOL NEGRO & ORO KINTSUGI</span>
+            <!-- 2. model-ecrin-celeste -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-celestial mb-2">HAUTE HORLOGERIE 3D</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Écrin Céleste (Astrolabio)</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Astrolabio mecánico 3D Three.js,
+                  constelaciones en vivo, domo estelar.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-ecrin-celeste/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 3. carmesi-gold -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-carmesi mb-2">CARMESÍ & ORO</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Carmesí & Gold Romance</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Terciopelo borgoña, acentos oro brillante,
+                  sobre digital y countdown.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/carmesi-gold/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 4. dark-luxury-1 -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-noir mb-2">DARK LUXURY NOIR</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Dark Luxury Noir</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Negro mate profundo, líneas de oro pulido,
+                  atmósfera íntima nocturna.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/dark-luxury-1/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 5. dark-marble-kintsugi -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-kintsugi mb-2">MÁRMOL KINTSUGI</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Dark Marble Kintsugi</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Mármol negro fracturado con venas de oro,
+                  concepto wabi-sabi.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/dark-marble-kintsugi/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 6. model-barbie-glam -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-barbie mb-2">BARBIE GLAM</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Barbie Glam Chic</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Rosa chic audaz, destellos de cristal,
+                  estética vibrante y moderna.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-barbie-glam/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 7. model-imperial-noir -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-imperial mb-2">IMPERIAL BARROCO</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Imperial Noir</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Monograma heráldico, filigranas barrocas en
+                  oro, tipografía majestuosa.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-imperial-noir/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 8. model-jardin-rose -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-botanical mb-2">JARDÍN ROSÉ</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Jardin Rosé</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Acuarelas florales francesas, rosas pastel y
+                  detalles sutiles.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-jardin-rose/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 9. model-palazzo-cristallo -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-palazzo mb-2">PALAZZO CRISTALLO</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Palazzo Cristallo</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Efecto cristal translúcido, dorados sutiles,
+                  arquitectura veneciana.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-palazzo-cristallo/" target="_blank"
+                  class="text-xs font-bold hover:underline" style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 10. model-rosee-celeste -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-rosee mb-2">ROSÉE CÉLESTE</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Rosée Céleste</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Azul zafiro polvo, nubes nacaradas, atmósfera
+                  etérea y romántica.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-rosee-celeste/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
+            <!-- 11. model-villa-botanica -->
+            <div class="p-5 rounded-2xl border flex flex-col justify-between"
+              style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+              <div>
+                <span class="badge-vibe badge-vibe-rustic mb-2">RÚSTICO TOSCANO</span>
+                <h3 class="text-sm font-bold mt-2" style="color: var(--text-primary);">Villa Botánica Toscana</h3>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Ramas de olivo, papel artesanal de algodón,
+                  calidez campestre toscana.</p>
+              </div>
+              <div class="pt-3 mt-4 border-t flex items-center justify-between"
+                style="border-color: var(--border-subtle);">
+                <span class="text-[11px] font-mono" style="color: var(--text-subtle);">v1.0</span>
+                <a href="templates/v1/model-villa-botanica/" target="_blank" class="text-xs font-bold hover:underline"
+                  style="color: var(--brand-orange);">Ver Demo ↗</a>
+              </div>
+            </div>
+
           </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            Dark Marble Kintsugi
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Valeria & Fernando
-          </p>
-          <p class="row-desc font-outfit">
-            Inspirada en el arte noble japonés del Kintsugi: piedra de mármol negro veteada con oro ancestral.
-          </p>
-        </div>
 
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/dark-marble-kintsugi/</span>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- VIEW 3: TEMPLATES V2 COLLECTION                                  -->
+        <!-- ================================================================ -->
+        <section id="view-v2" class="view-section hidden space-y-5">
+
+          <div class="p-4 rounded-2xl border flex items-center justify-between"
+            style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full" style="background-color: var(--brand-lime);"></span>
+              <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--text-primary);">
+                COLECCIÓN V2 · NEXT-GEN (MODULAR)
+              </span>
+              <span class="text-xs hidden sm:inline" style="color: var(--text-muted);">
+                — Separación de datos (wedding.config.js), tokens CSS y motor central en core/
+              </span>
+            </div>
+
+            <!-- View switcher tabs for v2 -->
+            <div class="flex items-center gap-1 p-1 rounded-xl" style="background-color: var(--bg-input);">
+              <button class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-xs"
+                style="background-color: var(--bg-surface); color: var(--text-primary);">
+                <i class="fa-solid fa-list-ul text-[11px]"></i>
+                <span>List</span>
+              </button>
+            </div>
           </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-calendar-check text-[9px] mr-1 text-archival-gold"></i>06.11.2027 · La Paz, BO
-          </span>
-        </div>
 
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 05: model-ecrin-celeste                -->
-      <!-- ========================================== -->
-      <a href="templates/model-ecrin-celeste/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">05</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">JOYERO CELESTIAL & AZUL ZAFIRO</span>
+          <div class="rounded-2xl border overflow-hidden"
+            style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b font-medium"
+                    style="border-color: var(--border-subtle); background-color: var(--bg-surface-elevated); color: var(--text-subtle);">
+                    <th class="py-3.5 px-5 w-10">
+                      <input type="checkbox" class="custom-checkbox select-all-checkbox">
+                    </th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Template / Modelo</th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Estilo / Vibe</th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Características Clave</th>
+                    <th class="py-3.5 px-4 font-semibold" style="color: var(--text-muted);">Versión</th>
+                    <th class="py-3.5 px-5 text-right font-semibold" style="color: var(--text-muted);">Acción</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y text-xs" style="border-color: var(--border-subtle); color: var(--text-primary);">
+                  <tr class="table-row-item">
+                    <td class="py-4 px-5">
+                      <input type="checkbox" class="custom-checkbox">
+                    </td>
+                    <td class="py-4 px-4 font-semibold">
+                      <a href="templates/v2/_starter-kit/" target="_blank"
+                        class="hover:text-orange-500 font-bold block text-sm">
+                        _starter-kit (Camila & Sebastián)
+                      </a>
+                      <span class="text-[11px] font-mono font-normal"
+                        style="color: var(--text-subtle);">templates/v2/_starter-kit/</span>
+                    </td>
+                    <td class="py-4 px-4">
+                      <span class="badge-vibe badge-vibe-modular">
+                        Minimal Luxe & Gold
+                      </span>
+                    </td>
+                    <td class="py-4 px-4 max-w-xs truncate" style="color: var(--text-muted);">
+                      Datos aislados en <code class="font-mono text-amber-500 font-semibold">wedding.config.js</code>,
+                      motor JS compartido, tokens de diseño
+                    </td>
+                    <td class="py-4 px-4 font-mono font-bold" style="color: var(--brand-orange);">v2.0</td>
+                    <td class="py-4 px-5 text-right whitespace-nowrap">
+                      <a href="templates/v2/_starter-kit/" target="_blank"
+                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white hover:opacity-90"
+                        style="background-color: var(--brand-orange);">
+                        <span>Abrir Demo</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            L'Écrin Céleste
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Valentina & Maximiliano
-          </p>
-          <p class="row-desc font-outfit">
-            Estuche de alta joyería nupcial: azul zafiro nocturno, constelaciones en filigrana y caligrafía francesa.
-          </p>
-        </div>
 
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-ecrin-celeste/</span>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- VIEW 4: TEMPLATES V3 ROADMAP                                     -->
+        <!-- ================================================================ -->
+        <section id="view-v3" class="view-section hidden space-y-5">
+
+          <div class="p-4 rounded-2xl border flex items-center justify-between"
+            style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+              <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--text-primary);">
+                COLECCIÓN V3 · ROADMAP (WEBGL & SHADERS)
+              </span>
+              <span class="text-xs hidden sm:inline" style="color: var(--text-muted);">
+                — Espacio reservado para experiencias 3D inmersivas
+              </span>
+            </div>
           </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-gem text-[9px] mr-1 text-archival-gold"></i>Gabinete de Joyería
-          </span>
-        </div>
 
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 06: model-edition-vogue                -->
-      <!-- ========================================== -->
-      <a href="templates/model-edition-vogue/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">06</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">EDITORIAL NUPCIAL & ALTA REVISTA</span>
+          <div class="p-8 rounded-2xl border text-center space-y-3"
+            style="background-color: var(--bg-surface); border-color: var(--border-subtle);">
+            <div
+              class="w-12 h-12 rounded-2xl bg-purple-950/60 text-purple-400 border border-purple-800/40 mx-auto flex items-center justify-center text-xl">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <h3 class="text-base font-bold" style="color: var(--text-primary);">Próxima Generación v3 en Planificación
+            </h3>
+            <p class="text-xs max-w-md mx-auto leading-relaxed" style="color: var(--text-muted);">
+              Esta versión integrará shaders WebGL en Three.js con simulación de física para cintas de satén, tarjetas
+              3D holográficas reactivas al audio y compilador optimizado.
+            </p>
           </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            L'Édition Nupciale
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Sofía & Leonardo
-          </p>
-          <p class="row-desc font-outfit">
-            Formato de portada y gaceta nupcial: tipografía serif clásica de imprenta, crónica fotográfica y lookbook.
-          </p>
-        </div>
 
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-edition-vogue/</span>
-          </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-newspaper text-[9px] mr-1 text-archival-gold"></i>Gaceta Nupcial
-          </span>
-        </div>
+        </section>
 
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 07: model-imperial-noir                -->
-      <!-- ========================================== -->
-      <a href="templates/model-imperial-noir/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">07</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">ARQUITECTURA GÓTICA & ORO ANTIGUO</span>
-          </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            Imperial Noir
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Valeria & Fernando
-          </p>
-          <p class="row-desc font-outfit">
-            Solemne arquitectura de salón imperial: relieves dorados en bajorrelieve y atmósfera de nobleza clásica.
-          </p>
-        </div>
-
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-imperial-noir/</span>
-          </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-crown text-[9px] mr-1 text-archival-gold"></i>Corte Imperial
-          </span>
-        </div>
-
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 08: model-jardin-rose                  -->
-      <!-- ========================================== -->
-      <a href="templates/model-jardin-rose/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">08</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">INVERNADERO BOTÁNICO & ROSAS DE ÉPOCA</span>
-          </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            La Serre de Cristal
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Isabella & Julián
-          </p>
-          <p class="row-desc font-outfit">
-            Invernadero botánico decimonónico: grabados florales antiguos, rosas clásicas y caligrafía renacentista.
-          </p>
-        </div>
-
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-jardin-rose/</span>
-          </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-leaf text-[9px] mr-1 text-archival-gold"></i>Primavera Nupcial
-          </span>
-        </div>
-
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 09: model-palazzo-cristallo            -->
-      <!-- ========================================== -->
-      <a href="templates/model-palazzo-cristallo/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">09</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">PALACIO VENECIANO & ESPEJOS BARROCOS</span>
-          </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            Palazzo Cristallo
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Isabella & Sebastián
-          </p>
-          <p class="row-desc font-outfit">
-            Evocación veneciana sobre el Gran Canal: candelabros de cristal de Murano, plata vieja y oros barrocos.
-          </p>
-        </div>
-
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-palazzo-cristallo/</span>
-          </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-calendar-check text-[9px] mr-1 text-archival-gold"></i>23.10.2027 · Santa Cruz, BO
-          </span>
-        </div>
-
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 10: model-rosee-celeste                -->
-      <!-- ========================================== -->
-      <a href="templates/model-rosee-celeste/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">10</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">AURORA POÉTICA & ROSA ATENUADO</span>
-          </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            L'Aurore Céleste
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Camila & Mateo
-          </p>
-          <p class="row-desc font-outfit">
-            Tonalidades de alba sobre pergamino antiguo: rosa empolvado tenue, oro champán y lírica de época.
-          </p>
-        </div>
-
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-rosee-celeste/</span>
-          </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-feather text-[9px] mr-1 text-archival-gold"></i>Romance Poético
-          </span>
-        </div>
-
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- ========================================== -->
-      <!-- ROW 11: model-villa-botanica               -->
-      <!-- ========================================== -->
-      <a href="templates/model-villa-botanica/" class="archival-row group">
-        <!-- Number Column -->
-        <div class="flex items-center gap-4 min-w-[65px]">
-          <span class="font-cinzel row-num">11</span>
-          <div class="hidden lg:block w-[1px] h-10 bg-archival-gold/20"></div>
-        </div>
-
-        <!-- Main Info Column -->
-        <div class="flex-1 min-w-0 pr-0 lg:pr-6">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="row-genre font-cinzel">HERBARIO NOBLE & QUINTA MEDITERRÁNEA</span>
-          </div>
-          <h2 class="row-title font-cormorant group-hover:text-archival-goldBright transition-colors">
-            Villa Botánica
-          </h2>
-          <p class="row-couple font-cormorant italic">
-            Camila & Mateo
-          </p>
-          <p class="row-desc font-outfit">
-            Celebración campestre de abolengo: botánica de olivo silvestre, eucalipto heráldico y papel verjurado.
-          </p>
-        </div>
-
-        <!-- Folder & Metadata Column -->
-        <div class="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-          <div class="folder-badge">
-            <i class="fa-regular fa-folder text-archival-gold text-xs"></i>
-            <span class="font-mono">folder: templates/model-villa-botanica/</span>
-          </div>
-          <span class="text-[11px] text-archival-goldMuted font-cinzel tracking-wider">
-            <i class="fa-solid fa-calendar-check text-[9px] mr-1 text-archival-gold"></i>18.09.2027 · Tarija, BO
-          </span>
-        </div>
-
-        <!-- Action Button Column -->
-        <div class="shrink-0 pt-2 lg:pt-0">
-          <span class="archival-row-btn">
-            <span>Abrir Invitación</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
-          </span>
-        </div>
-      </a>
-
+      </div>
     </main>
 
   </div>
 
-  <!-- Archival Colophon / Footer -->
-  <footer class="mt-16 border-t border-archival-gold/15 py-12 px-4 bg-archival-void/90 text-center space-y-4">
-    <div class="flex items-center justify-center gap-3 text-archival-goldMuted/60 text-xs">
-      <div class="w-12 h-[1px] bg-gradient-to-r from-transparent to-archival-gold/40"></div>
-      <span class="text-archival-gold text-xs">⚜</span>
-      <div class="w-12 h-[1px] bg-gradient-to-l from-transparent to-archival-gold/40"></div>
-    </div>
-    <p class="font-cinzel text-xs tracking-[0.25em] text-archival-gold uppercase font-semibold">
-      ARCHIVUM NUPTIALE · GABINETE DE INVITACIONES DE ALTA DISTINCIÓN
-    </p>
-    <p class="text-xs text-archival-ash font-light max-w-lg mx-auto leading-relaxed">
-      Catálogo interactivo preservado para despliegue estático de alto rendimiento. Once modelos originales clasificados por estilo y repertorio ornamental.
-    </p>
-    <p class="font-cinzel text-[10px] tracking-[0.18em] text-archival-goldMuted/70 uppercase">
-      MCMLXXVIII · MMXXVI · TODOS LOS DERECHOS RESERVADOS
-    </p>
-  </footer>
-
+  <!-- Dedicated Catalog Script Controller -->
+  <script src="catalog/catalog.js"></script>
 </body>
+
 </html>
