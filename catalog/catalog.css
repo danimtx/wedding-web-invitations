@@ -1,0 +1,406 @@
+/* ==========================================================================
+   Stealth Studio Catalog Stylesheet
+   Crafted for wedding-web-invitations management with Dark Mode by default
+   ========================================================================== */
+
+:root {
+  /* Default Dark Mode Palette */
+  --bg-app: #0B0D11;
+  --bg-sidebar: #11141A;
+  --bg-surface: #161922;
+  --bg-surface-elevated: #1D222E;
+  --bg-card: #151821;
+  --bg-input: #1B1F2A;
+  
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-active: rgba(249, 87, 56, 0.4);
+
+  --text-primary: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-subtle: #64748B;
+  
+  --brand-orange: #F95738;
+  --brand-orange-hover: #EA4728;
+  --brand-orange-soft: rgba(249, 87, 56, 0.15);
+  --brand-lime: #D4F014;
+
+  --row-hover: rgba(255, 255, 255, 0.035);
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 20px 35px -5px rgba(0, 0, 0, 0.5);
+
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Override */
+html.light-mode {
+  --bg-app: #F8FAFC;
+  --bg-sidebar: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --bg-input: #F8FAFC;
+
+  --border-subtle: #EEF2F6;
+  --border-color: #E2E8F0;
+  --border-active: rgba(249, 87, 56, 0.4);
+
+  --text-primary: #0F172A;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+
+  --row-hover: #F8FAFC;
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  transition: background-color 0.3s var(--ease-smooth), color 0.3s var(--ease-smooth);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-subtle);
+}
+
+/* Checkboxes with Brand Orange */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 4px;
+  background-color: transparent;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  transition: all 0.15s var(--ease-smooth);
+}
+
+.custom-checkbox:hover {
+  border-color: var(--brand-orange);
+}
+
+.custom-checkbox:checked {
+  background-color: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+
+.custom-checkbox:checked::before {
+  content: "";
+  width: 8px;
+  height: 5px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+/* Sidebar Animation */
+#sidebar {
+  width: 270px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  transition: margin-left 0.35s var(--ease-smooth), opacity 0.35s var(--ease-smooth);
+}
+
+#sidebar.is-collapsed {
+  margin-left: -270px;
+  pointer-events: none;
+}
+
+/* Re-open Sidebar Navbar Trigger (visible when sidebar is collapsed) */
+.btn-reopen-sidebar {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.25s var(--ease-smooth);
+  flex-shrink: 0;
+}
+
+.btn-reopen-sidebar:hover {
+  border-color: var(--brand-orange);
+  transform: scale(1.05);
+}
+
+.btn-reopen-sidebar .icon-logo {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s var(--ease-smooth), transform 0.2s var(--ease-smooth);
+}
+
+.btn-reopen-sidebar .icon-panel {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.7);
+  color: var(--brand-orange);
+  font-size: 14px;
+  transition: opacity 0.2s var(--ease-smooth), transform 0.2s var(--ease-smooth);
+}
+
+.btn-reopen-sidebar:hover .icon-logo {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.btn-reopen-sidebar:hover .icon-panel {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Active Nav Item Styling */
+.nav-link-item.active-nav-item {
+  background-color: var(--bg-surface-elevated);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion Folders with CSS Grid */
+.folder-sublist-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease-smooth);
+}
+
+.folder-sublist-wrapper.is-expanded {
+  grid-template-rows: 1fr;
+}
+
+.folder-sublist-inner {
+  overflow: hidden;
+}
+
+.folder-chevron {
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.folder-header.is-open .folder-chevron {
+  transform: rotate(90deg);
+}
+
+/* Row Hover & Transitions */
+.table-row-item {
+  transition: background-color 0.15s var(--ease-smooth);
+}
+
+.table-row-item:hover {
+  background-color: var(--row-hover);
+}
+
+/* Theme Switcher Toggle */
+.theme-switch-pill {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 3px;
+  display: flex;
+  gap: 3px;
+}
+
+.theme-btn {
+  flex: 1;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.theme-btn.active {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+html.light-mode .theme-btn.active {
+  background-color: #ffffff;
+  color: #0F172A;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   STYLE / VIBE BADGES (ADAPTIVE: DARK & LIGHT MODE)
+   ========================================================================== */
+.badge-vibe {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-width: 1px;
+  border-style: solid;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+/* Editorial / Vogue */
+.badge-vibe-editorial {
+  background-color: rgba(49, 46, 129, 0.45);
+  color: #c7d2fe;
+  border-color: rgba(99, 102, 241, 0.35);
+}
+html.light-mode .badge-vibe-editorial {
+  background-color: #EEF2FF;
+  color: #3730A3;
+  border-color: #C7D2FE;
+}
+
+/* Haute Horlogerie / 3D */
+.badge-vibe-celestial {
+  background-color: rgba(30, 58, 138, 0.45);
+  color: #bae6fd;
+  border-color: rgba(59, 130, 246, 0.35);
+}
+html.light-mode .badge-vibe-celestial {
+  background-color: #EFF6FF;
+  color: #1E40AF;
+  border-color: #BFDBFE;
+}
+
+/* Carmesí & Oro */
+.badge-vibe-carmesi {
+  background-color: rgba(136, 19, 55, 0.45);
+  color: #fecdd3;
+  border-color: rgba(244, 63, 94, 0.35);
+}
+html.light-mode .badge-vibe-carmesi {
+  background-color: #FFF1F2;
+  color: #9F1239;
+  border-color: #FECDD3;
+}
+
+/* Dark Luxury Noir */
+.badge-vibe-noir {
+  background-color: rgba(69, 26, 3, 0.45);
+  color: #fde68a;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+html.light-mode .badge-vibe-noir {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border-color: #FDE68A;
+}
+
+/* Kintsugi Marble */
+.badge-vibe-kintsugi {
+  background-color: rgba(39, 39, 42, 0.7);
+  color: #f4f4f5;
+  border-color: rgba(113, 113, 122, 0.45);
+}
+html.light-mode .badge-vibe-kintsugi {
+  background-color: #F4F4F5;
+  color: #18181B;
+  border-color: #D4D4D8;
+}
+
+/* Barbie Glam */
+.badge-vibe-barbie {
+  background-color: rgba(131, 24, 67, 0.45);
+  color: #fbcfe8;
+  border-color: rgba(236, 72, 153, 0.35);
+}
+html.light-mode .badge-vibe-barbie {
+  background-color: #FDF2F8;
+  color: #9D174D;
+  border-color: #FBCFE8;
+}
+
+/* Imperial Barroco */
+.badge-vibe-imperial {
+  background-color: rgba(120, 53, 15, 0.45);
+  color: #fef08a;
+  border-color: rgba(217, 119, 6, 0.35);
+}
+html.light-mode .badge-vibe-imperial {
+  background-color: #FEF3C7;
+  color: #854D0E;
+  border-color: #FDE68A;
+}
+
+/* Jardín Rosé / Botanical */
+.badge-vibe-botanical {
+  background-color: rgba(6, 78, 59, 0.45);
+  color: #a7f3d0;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+html.light-mode .badge-vibe-botanical {
+  background-color: #ECFDF5;
+  color: #065F46;
+  border-color: #A7F3D0;
+}
+
+/* Palazzo Veneciano */
+.badge-vibe-palazzo {
+  background-color: rgba(22, 78, 99, 0.45);
+  color: #a5f3fc;
+  border-color: rgba(6, 182, 212, 0.35);
+}
+html.light-mode .badge-vibe-palazzo {
+  background-color: #ECFEFF;
+  color: #155E75;
+  border-color: #A5F3FC;
+}
+
+/* Rosée Céleste */
+.badge-vibe-rosee {
+  background-color: rgba(12, 74, 110, 0.45);
+  color: #bae6fd;
+  border-color: rgba(14, 165, 233, 0.35);
+}
+html.light-mode .badge-vibe-rosee {
+  background-color: #F0F9FF;
+  color: #075985;
+  border-color: #BAE6FD;
+}
+
+/* Rústico Toscano */
+.badge-vibe-rustic {
+  background-color: rgba(54, 83, 20, 0.45);
+  color: #d9f99d;
+  border-color: rgba(132, 204, 22, 0.35);
+}
+html.light-mode .badge-vibe-rustic {
+  background-color: #F7FEE7;
+  color: #3F6212;
+  border-color: #D9F99D;
+}
+
+/* Modular v2 */
+.badge-vibe-modular {
+  background-color: rgba(120, 53, 15, 0.45);
+  color: #fef08a;
+  border-color: rgba(217, 119, 6, 0.35);
+}
+html.light-mode .badge-vibe-modular {
+  background-color: #FEF3C7;
+  color: #854D0E;
+  border-color: #FDE68A;
+}

@@ -13,29 +13,27 @@ Este repositorio contiene una colección de **plantillas y modelos de invitacion
 
 ## 📂 Estructura del Repositorio
 
-El proyecto está organizado de manera modular:
+El proyecto está organizado de manera modular por generaciones:
 
-*   **`templates/`**: Aquí viven todos los diseños completos (ej. `carmesi-gold`, `dark-luxury-1`, `dark-marble-kintsugi`). Cada carpeta es una invitación web 100% independiente con su código (`index.html`, `styles.css`, `main.js`) y sus recursos (`assets/`).
-*   **`shared_assets/`**: Es la caja de herramientas global del proyecto de donde sacamos piezas para construir nuevas invitaciones.
-    *   **`audio/`**: Banco de canciones de fondo en MP3.
-    *   **`icons/`**: Colección de archivos vectoriales e iconos genéricos (SVG).
-    *   **`images/`**: Galería de texturas de acuarela, papel, mármol, flores y marcos decorativos.
-*   **`scripts/`**: Utilidades y pequeños scripts de ayuda para el desarrollo del proyecto.
+*   **`core/`**: Motor central y componentes reutilizables para la arquitectura v2 y v3.
+    *   `css/`: `reset.css` y `tokens.css` (escalas de espaciado, sombras y transiciones compartidas).
+    *   `js/`: `audio-controller.js`, `countdown.js`, `rsvp-whatsapp.js`, `copy-clipboard.js`, `scroll-observer.js`.
+*   **`templates/`**:
+    *   **`v1/`**: Las 11 plantillas clásicas monolíticas autosuficientes (`carmesi-gold`, `model-edition-vogue`, `model-ecrin-celeste`, etc.).
+    *   **`v2/`**: La nueva generación orientada a configuración.
+        *   `_starter-kit/`: Kit inicial para crear nuevos modelos con separación de datos (`wedding.config.js`), tokens de diseño y módulos JS desacoplados.
+    *   **`v3/`**: Espacio reservado para futura expansión (WebGL, Three.js shaders interactivos).
+*   **`shared_assets/`**: Galería global de canciones MP3, iconos y texturas.
+*   **`index.html`**: Dashboard y catálogo interactivo de gestión de plantillas (con vistas Lista, Grid y Kanban, búsqueda instantánea y filtros).
 
 ## 🛠️ Skill de Desarrollo: `wedding-invitation-builder`
 
-Dentro del repositorio, en la ruta `.agents/skills/wedding-invitation-builder/`, se incluye una **Skill personalizada**. 
+Dentro del repositorio, en la ruta `.agents/skills/wedding-invitation-builder/`, se incluye la Skill personalizada con los lineamientos de diseño, paletas y estructura obligatoria de 14 secciones.
 
-Esta skill actúa como el "motor" y la documentación principal del proyecto. Define los estándares arquitectónicos para crear nuevos modelos, incluyendo:
-*   **Estructura Base HTML/CSS**: El flujo obligatorio de las secciones (Hero, Padres, Historia, Vestimenta, Hospedaje, etc.).
-*   **Paletas de Colores (Design Tokens)**: Guías visuales para diferentes estéticas (Carmesí & Oro, Botanical Olive, Pastel Lavender, Dark Marble).
-*   **Componentes Interactivos**: La lógica base en JavaScript para que todas las invitaciones funcionen igual.
-*   **Prompts de Generación**: Instrucciones detalladas de Inteligencia Artificial para generar nuevos bordes florales y texturas para futuras invitaciones.
+## 🚀 Cómo crear una nueva plantilla v2
 
-## 🚀 Cómo usar una plantilla
-
-1. Entra a `templates/` y copia la carpeta del diseño que te guste, luego renómbrala para tu nuevo proyecto.
-2. Reemplaza las imágenes genéricas dentro de la carpeta `assets/` (como `couple-hero.jpg` o `background.jpg`) con las fotografías reales de los novios.
-3. Edita el archivo `index.html` para actualizar los nombres, fechas, ubicaciones y textos.
-4. Ajusta el número de teléfono en `main.js` para que el RSVP llegue al destino correcto.
-5. Sube tu carpeta a cualquier servicio de hosting estático (GitHub Pages, Netlify, Vercel, etc.) y estará lista para compartirse mediante un enlace.
+1. Duplica la carpeta `templates/v2/_starter-kit/` y renómbrala a tu nuevo modelo (ej. `templates/v2/model-nombre-estilo/`).
+2. Edita `wedding.config.js` para personalizar novios, fechas, lugares, cuenta bancaria y RSVP.
+3. Personaliza la paleta en `:root` dentro de `styles.css`.
+4. Añade tus imágenes a `assets/`.
+5. Abre `index.html` del modelo para probarlo en el navegador.
